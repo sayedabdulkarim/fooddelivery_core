@@ -34,19 +34,50 @@ export const protectedRoutes = asyncHandler(async (req, res, next) => {
 
 // module.exports = protectedRoutes;
 
+// export const protectedRoutesWithParser = asyncHandler(
+//   async (req, res, next) => {
+//     // console.log(req, " from top");
+//     const token = req.cookies.jwt; // 'jwt' is the cookie name you've set
+//     // console.log(token, " ttoken");
+//     if (token) {
+//       try {
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//         // console.log(decoded, " ddddeee");
+//         // console.log(req, " reqqqq");
+//         // Populate req.user
+//         req.user = await UserModal.findById(decoded.id).select("-password");
+
+//         next();
+//       } catch (error) {
+//         console.error(error);
+//         res.status(401);
+//         throw new Error("Not authorized, token failed");
+//       }
+//     } else {
+//       res.status(401);
+//       throw new Error("Not authorized, no token");
+//     }
+//   }
+// );
+
 export const protectedRoutesWithParser = asyncHandler(
   async (req, res, next) => {
-    // console.log(req, " from top");
-    const token = req.cookies.jwt; // 'jwt' is the cookie name you've set
-    // console.log(token, " ttoken");
-    if (token) {
+    const token = req.cookies.jwt; // JWT token from cookie
+    const csrfToken = req.cookies["XSRF-TOKEN"]; // CSRF token from cookie
+    const csrfTokenFromHeader = req.headers["x-xsrf-token"]; // CSRF token from header
+
+    if (token && csrfToken && csrfTokenFromHeader) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        // console.log(decoded, " ddddeee");
-        // console.log(req, " reqqqq");
-        // Populate req.user
-        req.user = await UserModal.findById(decoded.id).select("-password");
 
+        // Verify CSRF token
+        if (csrfToken !== csrfTokenFromHeader) {
+          res.status(403);
+          throw new Error("CSRF token validation failed");
+        }
+
+        // Token is valid, set the user in the request
+        req.user = await UserModal.findById(decoded.id).select("-password");
         next();
       } catch (error) {
         console.error(error);
@@ -55,7 +86,7 @@ export const protectedRoutesWithParser = asyncHandler(
       }
     } else {
       res.status(401);
-      throw new Error("Not authorized, no token");
+      throw new Error("Not authorized, token missing or CSRF token missing");
     }
   }
 );
