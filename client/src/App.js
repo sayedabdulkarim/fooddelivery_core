@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import addFontsLoadedClass from "./utils/fontFaceHelper"; // Import the helper
 import { useEffect } from "react";
+import Footer from "./components/footer";
 
 const App = () => {
   ///
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <div className="main_wrapper">
       <Outlet />
+      <Footer />
     </div>
   );
 };
