@@ -1,8 +1,12 @@
 function isMobile() {
-  const isMobile = window.innerWidth < 768; //
+  //window way
+  // const isMobile = window.innerWidth < 768; //
+  // return isMobile;
 
-  //   console.log({ isMobile }, " isMPbile");
-  return isMobile;
+  //userAgent way
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 }
 
 export { isMobile };
