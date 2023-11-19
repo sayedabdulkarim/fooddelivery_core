@@ -2,10 +2,10 @@ import React from "react";
 
 const AppDownloadSection = () => {
   return (
-    <div class="_3tAmb">
-      <div class="_2ZpEk">
-        <div class="_221uw">Restaurants in your pocket</div>
-        <div class="_1C4_O">
+    <div className="_3tAmb">
+      <div className="_2ZpEk">
+        <div className="_221uw">Restaurants in your pocket</div>
+        <div className="_1C4_O">
           Order from your favorite restaurants &amp; track on the go, with the
           all-new Swiggy app.
         </div>
@@ -17,7 +17,7 @@ const AppDownloadSection = () => {
           >
             <img
               alt=""
-              class="_12dJy"
+              className="_12dJy"
               height="54"
               src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/play_ip0jfp"
             />
@@ -29,7 +29,7 @@ const AppDownloadSection = () => {
           >
             <img
               alt=""
-              class="_37Cft"
+              className="_37Cft"
               height="54"
               src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_108/iOS_ajgrty"
             />
@@ -37,14 +37,14 @@ const AppDownloadSection = () => {
         </div>
         <img
           alt=""
-          class="_3QGpR"
+          className="_3QGpR"
           width="384"
           height="489"
           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_768,h_978/pixel_wbdy4n"
         />
         <img
           alt=""
-          class="_2SJnz"
+          className="_2SJnz"
           width="384"
           height="489"
           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_768,h_978/iPhone_wgconp_j0d1fn"

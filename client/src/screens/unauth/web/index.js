@@ -2,17 +2,19 @@ import React from "react";
 //component
 import DeliverInputField from "../../../components/unAuth/DeliverInputFieldSection";
 import PopularCities from "../../../components/unAuth/PopularCitiesSection";
+import CustomDrawerComponent from "../../../components/drawer/CustomDrawer";
 //hooks
-import { useTextCycle } from "../../../hooks/useTextCycle";
 import ServiceHighlights from "../../../components/unAuth/ServiceHighlightsSection";
 import AppDownloadSection from "../../../components/unAuth/AppDownloadSection";
+import Signup from "./signup";
+import Login from "./login";
 
-const Index = () => {
-  const texts = ["Hungry?", "Unexpected guests?", "Cooking gone wrong?"];
-  const currentText = useTextCycle(texts, 3000); // 1000ms = 1 second
-
+const Index = ({ open, showDrawer, onClose, currentText, isLoginActive }) => {
   return (
     <div className="unauth_wrapper">
+      <CustomDrawerComponent open={open} onClose={onClose}>
+        <div>{isLoginActive ? <Signup /> : <Login />}</div>
+      </CustomDrawerComponent>
       {/* banner_section_start */}
 
       <div className="banner_section">
@@ -25,8 +27,12 @@ const Index = () => {
             />
             {/* button_sec */}
             <div className="button_container">
-              <button className="x4bK8">Login</button>
-              <button className="r2iyh">Sign up</button>
+              <button className="x4bK8" onClick={() => showDrawer(true)}>
+                Login
+              </button>
+              <button className="r2iyh" onClick={() => showDrawer(false)}>
+                Sign up
+              </button>
             </div>
           </div>
           {/* text_animate */}
