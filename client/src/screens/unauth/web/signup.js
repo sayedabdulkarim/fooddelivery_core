@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Signup = () => {
+const Signup = ({ signupFormData, handleSingUpForm, handleSingnUpSubmit }) => {
+  const { phone, name, email } = signupFormData;
   return (
     <div className="">
       <div>
@@ -20,21 +21,22 @@ const Signup = () => {
             src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
           />
         </div>
-        <form>
+        <form onSubmit={handleSingnUpSubmit}>
           <div>
             <div className="_3Um38 _3lG1r">
               <input
                 className="_381fS"
                 type="tel"
-                name="mobile"
+                name="phone"
                 id="mobile"
-                tabindex="1"
-                maxlength="10"
-                autocomplete="off"
-                value=""
+                tabIndex="1"
+                maxLength="10"
+                autoComplete="off"
+                value={phone}
+                onChange={handleSingUpForm}
               />
               <div className="_2EeI1 _26LFr"></div>
-              <label className="_1Cvlf _2tL9P " for="mobile">
+              <label className="_1Cvlf _2tL9P " htmlFor="mobile">
                 Phone number
               </label>
             </div>
@@ -44,12 +46,13 @@ const Signup = () => {
                 type="text"
                 name="name"
                 id="name"
-                tabindex="2"
-                autocomplete="off"
-                value=""
+                tabIndex="2"
+                autoComplete="off"
+                value={name}
+                onChange={handleSingUpForm}
               />
               <div className="_2EeI1"></div>
-              <label className="_1Cvlf " for="name">
+              <label className="_1Cvlf " htmlFor="name">
                 Name
               </label>
             </div>
@@ -59,23 +62,32 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
-                tabindex="3"
-                autocomplete="off"
-                value=""
+                tabIndex="3"
+                autoComplete="off"
+                value={email}
+                onChange={handleSingUpForm}
               />
               <div className="_2EeI1"></div>
-              <label className="_1Cvlf " for="email">
+              <label className="_1Cvlf " htmlFor="email">
                 Email
               </label>
             </div>
           </div>
           <button className="_3GOZo">Have a referral code?</button>
-          <div className="_25qBi _2-hTu">
-            <a className="a-ayg">
+
+          {/* <div className="_25qBi _2-hTu">
+            <span className="a-ayg">
               <input type="submit" style={{ display: "none" }} />
               CONTINUE
-            </a>
+            </span>
+          </div> */}
+
+          <div className="_25qBi _2-hTu">
+            <button type="submit" className="a-ayg">
+              CONTINUE
+            </button>
           </div>
+
           <div className="_1FvHn">
             By creating an account, I accept the{" "}
             <a className="IBw2l" href="/terms-and-conditions">

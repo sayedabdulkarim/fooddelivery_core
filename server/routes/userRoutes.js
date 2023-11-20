@@ -3,15 +3,15 @@ import { protectedRoutesWithParser } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 import {
-  authenticateUser,
+  userLogin,
   getUserProfile,
   logoutUser,
-  registerUser,
+  userSignUp,
   updateUserProfile,
 } from "../controller/userController.js";
 
-router.post("/", registerUser);
-router.post("/auth", authenticateUser);
+router.post("/signup", userSignUp);
+router.post("/login", userLogin);
 router.post("/logout", logoutUser);
 
 // router.get("/profile", getUserProfile);

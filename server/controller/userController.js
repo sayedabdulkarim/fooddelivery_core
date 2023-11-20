@@ -8,7 +8,7 @@ import matchPassword from "../utils/matchPassword.js";
 // @desc authenticated users/ token
 // route POST /api/users/auth
 // @ccess PUBLIC
-const authenticateUser = asyncHandler(async (req, res) => {
+const userLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
   const user = await UserModal.findOne({ email });
@@ -28,47 +28,121 @@ const authenticateUser = asyncHandler(async (req, res) => {
   }
 });
 
+// const userLogin = asyncHandler(async (req, res) => {
+//   const { phone } = req.body;
+
+//   const user = await UserModal.findOne({ phone });
+
+//   if (user) {
+//     // Generate and send OTP to the user's phone
+//     // This requires integration with an SMS service
+//     const otp = generateOtp(); // This should be your method to generate an OTP
+//     sendOtpToUserPhone(otp, user.phone); // This should be your method to send the OTP
+
+//     // You might want to save the OTP or a hash of it temporarily to verify later
+//     // Consider security implications of storing OTPs
+
+//     res.status(200).json({
+//       message: "OTP sent to registered phone number.",
+//       // You may return other necessary details, but avoid sensitive information
+//     });
+//   } else {
+//     res.status(401).json({ message: "User with this phone number does not exist." });
+//   }
+// });
+
+// Implement these functions as per your requirements
+function generateOtp() {
+  // Implement OTP generation logic
+}
+
+function sendOtpToUserPhone(otp, phone) {
+  // Implement logic to send OTP to user's phone
+}
+
 // @desc register a new user
 // route POST /api/users
 // @ccess PUBLIC
-const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+// const userSignUp = asyncHandler(async (req, res) => {
+//   const { name, email, password } = req.body;
 
-  // Check if the user already exists
-  const existingUser = await UserModal.findOne({ email });
-  //   res.cookie("hello", "1234");
-  //   console.log(res, " ress from existing");
+//   // Check if the user already exists
+//   const existingUser = await UserModal.findOne({ email });
+//   //   res.cookie("hello", "1234");
+//   //   console.log(res, " ress from existing");
+//   if (existingUser) {
+//     res.status(400).json({
+//       message: "User already exists.",
+//     });
+//     return;
+//   }
+
+//   // Hash the password
+//   const salt = await bcrypt.genSalt(10);
+//   const hashedPassword = await bcrypt.hash(password, salt);
+
+//   // Create a new user
+//   const newUser = new UserModal({
+//     name,
+//     email,
+//     password: hashedPassword,
+//   });
+
+//   await newUser.save();
+//   generateToken(res, newUser._id);
+//   console.log(newUser, " newwwwwUser");
+//   //   console.log(res, " ress");
+//   res.status(201).json({
+//     message: "User registered successfully.",
+//     user: {
+//       name,
+//       email,
+//     },
+//     // Other user data can go here
+//   });
+// });
+
+const userSignUp = asyncHandler(async (req, res) => {
+  const { name, email, phone } = req.body;
+
+  // Check if the user already exists based on phone
+  const existingUser = await UserModal.findOne({ phone });
   if (existingUser) {
-    res.status(400).json({
-      message: "User already exists.",
-    });
+    res
+      .status(400)
+      .json({ message: "User with this phone number already exists." });
     return;
   }
 
-  // Hash the password
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  // Check if the user already exists based on email
+  const existingUserByEmail = await UserModal.findOne({ email });
+  if (existingUserByEmail) {
+    res.status(400).json({ message: "User with this email already exists." });
+    return;
+  }
 
   // Create a new user
   const newUser = new UserModal({
     name,
     email,
-    password: hashedPassword,
+    phone,
   });
 
   await newUser.save();
+  // Generate token or handle OTP logic here (if applicable)
   generateToken(res, newUser._id);
-  console.log(newUser, " newwwwwUser");
-  //   console.log(res, " ress");
+
   res.status(201).json({
     message: "User registered successfully.",
     user: {
       name,
       email,
+      phone,
     },
     // Other user data can go here
   });
 });
+
 // @desc logout
 // route POST /api/users/logout
 // @ccess PUBLIC
@@ -187,10 +261,4 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-export {
-  authenticateUser,
-  registerUser,
-  logoutUser,
-  getUserProfile,
-  updateUserProfile,
-};
+export { userLogin, userSignUp, logoutUser, getUserProfile, updateUserProfile };

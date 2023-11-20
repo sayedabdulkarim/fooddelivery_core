@@ -9,11 +9,32 @@ import AppDownloadSection from "../../../components/unAuth/AppDownloadSection";
 import Signup from "./signup";
 import Login from "./login";
 
-const Index = ({ open, showDrawer, onClose, currentText, isLoginActive }) => {
+const Index = ({
+  open,
+  showDrawer,
+  onClose,
+  currentText,
+  isLoginActive,
+  signupFormData,
+  handleSingUpForm,
+  handleSingnUpSubmit,
+  loginFormData,
+  handleLogInForm,
+}) => {
   return (
     <div className="unauth_wrapper">
       <CustomDrawerComponent open={open} onClose={onClose}>
-        <div>{isLoginActive ? <Signup /> : <Login />}</div>
+        <div>
+          {isLoginActive ? (
+            <Signup
+              signupFormData={signupFormData}
+              handleSingUpForm={handleSingUpForm}
+              handleSingnUpSubmit={handleSingnUpSubmit}
+            />
+          ) : (
+            <Login />
+          )}
+        </div>
       </CustomDrawerComponent>
       {/* banner_section_start */}
 
