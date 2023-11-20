@@ -1,20 +1,27 @@
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { isMobile } from "../../utils/unauthHelper";
-
+import { useTextCycle } from "../../hooks/useTextCycle";
 import UnAuthMobileScreen from "./mobile";
 import UnAuthWebScreen from "./web";
-import { useTextCycle } from "../../hooks/useTextCycle";
+
+//Store n api's Queries, Mutation
+import { useRegisterUserMutation } from "../../apiSlices/userApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 
 const Index = () => {
+  //misc
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const texts = ["Hungry?", "Unexpected guests?", "Cooking gone wrong?"];
   const currentText = useTextCycle(texts, 3000); // 1000ms = 1 second
+  const { userInfo } = useSelector((state) => state.authReducer);
+  const { name } = useSelector((state) => state.testReducer);
   //misc
-
   //useState
-  //drawer
   const [open, setOpen] = useState(true);
   const [isLoginActive, setIsLoginActive] = useState(true);
-  //form
   const [signupFormData, setSignUpFormData] = useState({
     phone: "",
     name: "",
@@ -23,21 +30,18 @@ const Index = () => {
   const [loginFormData, setLoginFormData] = useState({
     phone: "",
   });
-  //func
+  //queries n mutation
+  const [registerUser, { isLoading: registerLoading, error: registerError }] =
+    useRegisterUserMutation();
 
-  //drawer
+  //func
   const showDrawer = useCallback((isTrue) => {
     setOpen(true);
     setIsLoginActive(isTrue);
-    // console.log({ open });
   }, []);
-
   const onClose = useCallback(() => {
     setOpen(false);
   }, []);
-
-  //form data
-
   // signup
   const handleSingUpForm = (e) => {
     setSignUpFormData({
@@ -45,22 +49,36 @@ const Index = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  const handleSingnUpSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
+    const { phone, email, name } = signupFormData;
+
+    try {
+      const res = await registerUser({ name, email, phone }).unwrap();
+      console.log(res, " resss");
+      // dispatch(setCredentials({ ...res }));
+      // navigate("/");
+    } catch (err) {
+      console.log(err, " errr");
+      // toast.error(err?.data?.message || err.error);
+    }
     console.log(signupFormData, " signupFormData");
   };
-
+  ///
   const handleLogInForm = (e) => {
     setLoginFormData({
       ...signupFormData,
       [e.target.name]: e.target.value,
     });
   };
-
+  const handleLogInSubmit = (e) => {
+    e.preventDefault();
+    console.log(loginFormData, " loginFormData");
+  };
   // console.log(open, " opennnnn");
   return (
     <div>
+      <button onClick={() => console.log({ userInfo, name })}>CLick</button>
       {isMobile() ? (
         <UnAuthMobileScreen />
       ) : (
@@ -74,7 +92,7 @@ const Index = () => {
           //form
           signupFormData={signupFormData}
           handleSingUpForm={handleSingUpForm}
-          handleSingnUpSubmit={handleSingnUpSubmit}
+          handleSignUpSubmit={handleSignUpSubmit}
           loginFormData={loginFormData}
           handleLogInForm={handleLogInForm}
         />

@@ -17,7 +17,7 @@ const Index = ({
   isLoginActive,
   signupFormData,
   handleSingUpForm,
-  handleSingnUpSubmit,
+  handleSignUpSubmit,
   loginFormData,
   handleLogInForm,
 }) => {
@@ -29,7 +29,7 @@ const Index = ({
             <Signup
               signupFormData={signupFormData}
               handleSingUpForm={handleSingUpForm}
-              handleSingnUpSubmit={handleSingnUpSubmit}
+              handleSignUpSubmit={handleSignUpSubmit}
             />
           ) : (
             <Login />

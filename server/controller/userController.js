@@ -1,107 +1,41 @@
 import asyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
 //modals
 import UserModal from "../modals/userModal.js";
+//helpers
 import generateToken from "../utils/generateToken.js";
-import matchPassword from "../utils/matchPassword.js";
 
 // @desc authenticated users/ token
 // route POST /api/users/auth
 // @ccess PUBLIC
 const userLogin = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { phone } = req.body; // Expecting phone from the client
 
-  const user = await UserModal.findOne({ email });
+  // Find user by phone number
+  const user = await UserModal.findOne({ phone });
 
-  // make sure to pass both passwords for matchPassword
-  if (user && (await matchPassword(password, user.password))) {
-    // console.log(user, " userrr");
-    generateToken(res, user._id); // Capture the generated token
+  if (user) {
+    // If user is found, generate a token (Assuming you're still using token-based authentication)
+    generateToken(res, user._id);
+
+    // Respond with user details
     res.status(200).json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
+      data: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+      },
+      message: "Login successful",
     });
   } else {
-    res.status(401);
-    throw new Error("Invalid email or password");
+    // If user is not found, send an error response
+    res.status(404).json({ message: "User not found" });
   }
 });
-
-// const userLogin = asyncHandler(async (req, res) => {
-//   const { phone } = req.body;
-
-//   const user = await UserModal.findOne({ phone });
-
-//   if (user) {
-//     // Generate and send OTP to the user's phone
-//     // This requires integration with an SMS service
-//     const otp = generateOtp(); // This should be your method to generate an OTP
-//     sendOtpToUserPhone(otp, user.phone); // This should be your method to send the OTP
-
-//     // You might want to save the OTP or a hash of it temporarily to verify later
-//     // Consider security implications of storing OTPs
-
-//     res.status(200).json({
-//       message: "OTP sent to registered phone number.",
-//       // You may return other necessary details, but avoid sensitive information
-//     });
-//   } else {
-//     res.status(401).json({ message: "User with this phone number does not exist." });
-//   }
-// });
-
-// Implement these functions as per your requirements
-function generateOtp() {
-  // Implement OTP generation logic
-}
-
-function sendOtpToUserPhone(otp, phone) {
-  // Implement logic to send OTP to user's phone
-}
 
 // @desc register a new user
 // route POST /api/users
 // @ccess PUBLIC
-// const userSignUp = asyncHandler(async (req, res) => {
-//   const { name, email, password } = req.body;
-
-//   // Check if the user already exists
-//   const existingUser = await UserModal.findOne({ email });
-//   //   res.cookie("hello", "1234");
-//   //   console.log(res, " ress from existing");
-//   if (existingUser) {
-//     res.status(400).json({
-//       message: "User already exists.",
-//     });
-//     return;
-//   }
-
-//   // Hash the password
-//   const salt = await bcrypt.genSalt(10);
-//   const hashedPassword = await bcrypt.hash(password, salt);
-
-//   // Create a new user
-//   const newUser = new UserModal({
-//     name,
-//     email,
-//     password: hashedPassword,
-//   });
-
-//   await newUser.save();
-//   generateToken(res, newUser._id);
-//   console.log(newUser, " newwwwwUser");
-//   //   console.log(res, " ress");
-//   res.status(201).json({
-//     message: "User registered successfully.",
-//     user: {
-//       name,
-//       email,
-//     },
-//     // Other user data can go here
-//   });
-// });
-
 const userSignUp = asyncHandler(async (req, res) => {
   const { name, email, phone } = req.body;
 

@@ -51,7 +51,6 @@ const generateToken = (res, userId, expiresIn = "1h") => {
 
   // CSRF Token
   res.cookie("XSRF-TOKEN", csrfToken, {
-    httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",
     expires: expiration,

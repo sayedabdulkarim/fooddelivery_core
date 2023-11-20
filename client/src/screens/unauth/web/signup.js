@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Signup = ({ signupFormData, handleSingUpForm, handleSingnUpSubmit }) => {
+const Signup = ({ signupFormData, handleSingUpForm, handleSignUpSubmit }) => {
   const { phone, name, email } = signupFormData;
   return (
     <div className="">
@@ -21,7 +21,7 @@ const Signup = ({ signupFormData, handleSingUpForm, handleSingnUpSubmit }) => {
             src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
           />
         </div>
-        <form onSubmit={handleSingnUpSubmit}>
+        <form onSubmit={handleSignUpSubmit}>
           <div>
             <div className="_3Um38 _3lG1r">
               <input
