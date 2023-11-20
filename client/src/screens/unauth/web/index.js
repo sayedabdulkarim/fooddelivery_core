@@ -20,19 +20,23 @@ const Index = ({
   handleSignUpSubmit,
   loginFormData,
   handleLogInForm,
+  handleLogInSubmit,
 }) => {
   return (
     <div className="unauth_wrapper">
       <CustomDrawerComponent open={open} onClose={onClose}>
         <div>
-          {isLoginActive ? (
+          {!isLoginActive ? (
             <Signup
               signupFormData={signupFormData}
               handleSingUpForm={handleSingUpForm}
               handleSignUpSubmit={handleSignUpSubmit}
             />
           ) : (
-            <Login />
+            <Login
+              loginFormData={loginFormData}
+              handleLogInForm={handleLogInForm}
+            />
           )}
         </div>
       </CustomDrawerComponent>

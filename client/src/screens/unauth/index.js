@@ -22,6 +22,7 @@ const Index = () => {
   //useState
   const [open, setOpen] = useState(true);
   const [isLoginActive, setIsLoginActive] = useState(true);
+  const [isOtp, setIsOtp] = useState(false);
   const [signupFormData, setSignUpFormData] = useState({
     phone: "",
     name: "",
@@ -29,6 +30,7 @@ const Index = () => {
   });
   const [loginFormData, setLoginFormData] = useState({
     phone: "",
+    otp: "",
   });
   //queries n mutation
   const [registerUser, { isLoading: registerLoading, error: registerError }] =
@@ -56,8 +58,6 @@ const Index = () => {
     try {
       const res = await registerUser({ name, email, phone }).unwrap();
       console.log(res, " resss");
-      // dispatch(setCredentials({ ...res }));
-      // navigate("/");
     } catch (err) {
       console.log(err, " errr");
       // toast.error(err?.data?.message || err.error);
@@ -95,6 +95,7 @@ const Index = () => {
           handleSignUpSubmit={handleSignUpSubmit}
           loginFormData={loginFormData}
           handleLogInForm={handleLogInForm}
+          handleLogInSubmit={handleLogInSubmit}
         />
       )}
     </div>
