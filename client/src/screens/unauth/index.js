@@ -13,6 +13,7 @@ import {
   useRegisterUserMutation,
 } from "../../apiSlices/userApiSlice";
 import { setCredentials } from "../../slices/authSlice";
+import { handleShowAlert } from "../../utils/commonHelper";
 
 const Index = () => {
   //misc
@@ -70,11 +71,12 @@ const Index = () => {
         phone: formattedNumber,
       }).unwrap();
       console.log(res, " resss");
+      handleShowAlert(dispatch, "success", res?.message);
       dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (err) {
+      handleShowAlert(dispatch, "error", err?.data?.message);
       console.log(err, " errr");
-      // toast.error(err?.data?.message || err.error);
     }
     console.log(signupFormData, " signupFormData");
   };
