@@ -2,7 +2,7 @@ import React from "react";
 
 const Index = () => {
   return (
-    <div className="d_rQj">
+    <div className="d_rQj footer_container">
       <div className="_25jJQ">
         {/* near me links */}
         <div id="near-me-links" className="RB8ET">

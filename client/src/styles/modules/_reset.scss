@@ -23303,4 +23303,221 @@ html {
   }
   
   /*# sourceMappingURL=styles.9732cedbdaf4ad0603d0ae5d6b7590e8.css.map*/
-  
+  //
+/* Main container style */
+._3EFMg {
+  margin: 0;
+  padding: 16px;
+  background-color: rgba(211, 219, 234, .3);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(40, 44, 63, .05);
+  box-shadow: 0 1px 1px 0 rgba(40, 44, 63, .05);
+  height: 160px;
+  position: relative;
+}
+
+/* Style for a positioned element, possibly for an image or overlay */
+._1im59 {
+  // position: absolute !important;
+  overflow: hidden !important;
+  top: 0;
+  left: 0;
+}
+
+/* Style for elements positioned at the bottom */
+._1IbBN {
+  position: absolute;
+  bottom: 20px;
+}
+
+/* Style for headings or important text */
+._2clOW {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+/* Style for secondary or descriptive text */
+.DLItg {
+  color: #7e808c;
+  line-height: 1.4;
+  margin-top: 4px;
+  font-size: .93rem;
+}
+
+/* Style for an element with margin adjustments */
+._2_k47 {
+  margin-right: 85px;
+}
+
+/* Style for an element positioned absolutely on the right, possibly for icons or buttons */
+._1rfuP {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  max-height: 134px;
+}
+
+/* Base style for a container with class 'cDWSj' */
+.cDWSj {
+  padding: 5px 16px;
+  position: relative;
+}
+
+/* Style for 'input' elements inside the 'cDWSj' container */
+.cDWSj input {
+  font-weight: 500;
+  color: #000;
+  opacity: 1;
+}
+
+/* Style for elements with class '_1A4qu', adjusted margin-top */
+._1A4qu {
+  margin-top: -6px !important;
+  width: 100%;
+}
+
+/* Style for elements with class '_3nBzT' inside the 'cDWSj' container, adjusted margin-top */
+.cDWSj ._3nBzT {
+  margin-top: 30px;
+}
+
+/* Style for elements with class '_1bFid' inside the 'cDWSj' container, adjusted margin-top */
+.cDWSj ._1bFid {
+  margin-top: -6px;
+}
+
+/* Style for elements with class '_1CZpY' inside the 'cDWSj' container, with color, font-size adjustments */
+.cDWSj ._1CZpY {
+  margin-top: 12px;
+  color: #686b78;
+  font-size: .86rem;
+}
+
+/* Style for elements with class '_1yKIM' inside the 'cDWSj' container, with color, font-weight, and text-decoration */
+.cDWSj ._1yKIM {
+  color: #282c3f;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+/* Base style for elements with class 'npnSS', commonly used for a container with relative positioning */
+.npnSS {
+  position: relative;
+}
+
+/* Style for elements with class '_2YNHY', typically used for absolutely positioned elements with specific opacity and transition effects */
+._2YNHY {
+  top: 0;
+  line-height: 42px;
+  font-weight: 500;
+  position: absolute;
+  font-size: 15px;
+  opacity: 0;
+  will-change: opacity;
+  -webkit-transition: opacity .25s ease-in-out;
+  -o-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
+}
+
+/* Modifier class for '_2YNHY' for active state or when an element becomes visible */
+._2YNHY.mnuxf {
+  opacity: 1;
+}
+
+/* Style for elements with class '_9yl1z', used for items like labels or icons, positioned absolutely with specific coloring and font settings */
+._9yl1z {
+  font-size: 14px;
+  line-height: 42px;
+  position: absolute;
+  color: #60b246;
+  top: 0;
+  right: 10px;
+  opacity: .8;
+  font-weight: 600;
+}
+
+/* Style for elements with class '_1g81h', adjusting padding and font-weight, often used for text or content within a container */
+._1g81h {
+  padding-left: 35px !important;
+  font-weight: 500 !important;
+}
+
+/* Style for elements with class '_1dAqO', typically used for positioning icons or buttons absolutely within a container */
+._1dAqO {
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+._11Jfu {
+    margin: 30px 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+._3Aw9B {
+    font-size: .8rem;
+    -webkit-transform: translateY(-158%);
+    -ms-transform: translateY(-158%);
+    transform: translateY(-158%);
+}
+
+._21cv8 {
+    color: #7e808c;
+    // position: absolute;
+    bottom: 13px;
+    left: 0;
+    font-size: .93rem;
+    cursor: text;
+    -webkit-transition: .2s ease;
+    -o-transition: .2s ease;
+    transition: .2s ease;
+    width: 100%;
+    text-transform: uppercase;
+    will-change: transform,color,font-size;
+}
+
+.cDWSj input {
+    font-weight: 500;
+    color: #000;
+    opacity: 1;
+}
+
+._1g81h {
+    padding-left: 35px!important;
+    font-weight: 500!important;
+}
+
+._1ZK9h {
+    background-color: rgba(0,0,0,0);
+    line-height: normal;
+    border: none;
+    border-bottom: 1px solid #bebfc5;
+    outline: 0;
+    height: 42px;
+    width: 100%;
+    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+._2UPEv {
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    background-color: #fc8019;
+    color: #fff;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 2rem;
+    outline: 0;
+}
