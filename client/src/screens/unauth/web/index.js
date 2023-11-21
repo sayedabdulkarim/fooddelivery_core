@@ -20,7 +20,10 @@ const Index = ({
   handleSignUpSubmit,
   loginFormData,
   handleLogInForm,
+  handleLogInContinue,
+  handleVerifyOtp,
   handleLogInSubmit,
+  isOtp,
 }) => {
   return (
     <div className="unauth_wrapper">
@@ -36,6 +39,10 @@ const Index = ({
             <Login
               loginFormData={loginFormData}
               handleLogInForm={handleLogInForm}
+              handleLogInContinue={handleLogInContinue}
+              handleVerifyOtp={handleVerifyOtp}
+              // handleLogInSubmit={handleLogInSubmit}
+              isOtp={isOtp}
             />
           )}
         </div>

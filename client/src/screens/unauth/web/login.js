@@ -1,6 +1,14 @@
 import React from "react";
 
-const login = () => {
+const login = ({
+  loginFormData,
+  handleLogInForm,
+  isOtp,
+  handleLogInContinue,
+  handleVerifyOtp,
+  handleLogInSubmit,
+}) => {
+  const { phone, otp } = loginFormData;
   return (
     <div className="_12S7_">
       <div className="">
@@ -22,46 +30,51 @@ const login = () => {
               src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
             />
           </div>
-          <form>
+          <form onSubmit={!isOtp ? handleLogInContinue : handleVerifyOtp}>
             <div>
               <div className="_3Um38 _3lG1r">
                 <input
                   className="_381fS"
                   type="tel"
-                  name="mobile"
+                  name="phone"
                   id="mobile"
-                  tabindex="1"
-                  maxlength="10"
-                  autocomplete="off"
-                  value=""
+                  tabIndex="1"
+                  maxLength="10"
+                  autoComplete="off"
+                  value={phone}
+                  onChange={handleLogInForm}
                 />
                 <div className="_2EeI1 _26LFr"></div>
-                <label className="_1Cvlf _2tL9P " for="mobile">
+                <label className="_1Cvlf _2tL9P " htmlFor="mobile">
                   Phone number
                 </label>
               </div>
-              <div className="_3Um38 _3lG1r">
-                <input
-                  className="_381fS"
-                  type="tel"
-                  name="mobile"
-                  id="mobile"
-                  tabindex="1"
-                  maxlength="10"
-                  autocomplete="off"
-                  value=""
-                />
-                <div className="_2EeI1 _26LFr"></div>
-                <label className="_1Cvlf _2tL9P " for="mobile">
-                  One Time Password
-                </label>
-              </div>
+
+              {isOtp && (
+                <div className="_3Um38 _3lG1r">
+                  <input
+                    className="_381fS"
+                    type="text"
+                    name="otp"
+                    id="mobile"
+                    tabIndex="2"
+                    maxLength="6"
+                    autoComplete="off"
+                    value={otp}
+                    onChange={handleLogInForm}
+                  />
+                  <div className="_2EeI1 _26LFr"></div>
+                  <label className="_1Cvlf _2tL9P " htmlFor="otp">
+                    One Time Password
+                  </label>
+                </div>
+              )}
             </div>
+
             <div className="_25qBi _2-hTu">
-              <span className="a-ayg">
-                <input type="submit" style={{ display: "none" }} />
-                Login
-              </span>
+              <button type="submit" className="a-ayg">
+                CONTINUE
+              </button>
             </div>
             <div className="_1FvHn">
               By clicking on Login, I accept the{" "}
