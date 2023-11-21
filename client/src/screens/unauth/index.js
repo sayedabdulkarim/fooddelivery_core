@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import UnAuthMobileScreen from "./mobile";
 import UnAuthWebScreen from "./web";
@@ -20,8 +20,6 @@ const Index = () => {
   const navigate = useNavigate();
   const texts = ["Hungry?", "Unexpected guests?", "Cooking gone wrong?"];
   const currentText = useTextCycle(texts, 3000); // 1000ms = 1 second
-  const { userInfo } = useSelector((state) => state.authReducer);
-  const { name } = useSelector((state) => state.testReducer);
   //misc
   //useState
   const [open, setOpen] = useState(true);
@@ -72,6 +70,8 @@ const Index = () => {
         phone: formattedNumber,
       }).unwrap();
       console.log(res, " resss");
+      dispatch(setCredentials({ ...res }));
+      navigate("/");
     } catch (err) {
       console.log(err, " errr");
       // toast.error(err?.data?.message || err.error);
