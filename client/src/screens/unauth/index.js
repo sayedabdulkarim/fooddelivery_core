@@ -152,7 +152,14 @@ const Index = () => {
       {/* <button onClick={() => console.log({ userInfo, name })}>CLick</button> */}
       <div id="recaptcha"></div>
       {isMobile() ? (
-        <UnAuthMobileScreen />
+        <UnAuthMobileScreen
+          loginFormData={loginFormData}
+          handleLogInForm={handleLogInForm}
+          isOtp={isOtp}
+          handleLogInContinue={handleLogInContinue}
+          handleVerifyOtp={handleVerifyOtp}
+          handleLogInSubmit={handleLogInSubmit}
+        />
       ) : (
         <UnAuthWebScreen
           currentText={currentText}

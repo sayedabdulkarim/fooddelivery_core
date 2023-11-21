@@ -1,6 +1,14 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({
+  toggleLogin,
+  loginFormData,
+  handleLogInForm,
+  isOtp,
+  handleLogInContinue,
+  handleVerifyOtp,
+}) => {
+  const { phone, otp } = loginFormData;
   return (
     <div>
       <div className="_3EFMg">
@@ -15,6 +23,7 @@ const Login = () => {
           className="_2QN4q _1im59"
           data-cy="back-button"
           aria-label="Double tap to go back"
+          onClick={() => toggleLogin(false)}
         >
           <svg className="uHGrw" viewBox="0 0 32 32" height="18" width="18">
             <path d="M3.333 14.984l28.667-0v2.097l-0.16 0.006h-28.506l-0.16-0.16v-1.782l0.16-0.16zM1.114 14.986l10.079-10.079 0.121-0.108 1.465 1.467-0.101 0.127-10.079 10.079h-0.226l-1.26-1.26v-0.226zM12.679 25.676l0.108 0.117-1.468 1.484-0.126-0.115-10.079-10.079v-0.226l1.26-1.26h0.226l10.079 10.079zM3.268 12.87l0.272 0.116-0.022 6.125-0.272 0.114-3.245-3.18 0.111-0.112 3.157-3.062z"></path>
@@ -35,12 +44,15 @@ const Login = () => {
         </div>
       </div>
       <div className="cDWSj">
-        <form autocomplete="off">
+        <form
+          autoComplete="off"
+          onSubmit={!isOtp ? handleLogInContinue : handleVerifyOtp}
+        >
           <div className="npnSS">
             <div className="_11Jfu" aria-hidden="true">
               <label
                 className="_21cv8"
-                for="mobile"
+                htmlFor="mobile"
                 data-cy="input-label-mobile"
                 aria-hidden="true"
               >
@@ -50,13 +62,14 @@ const Login = () => {
                 <input
                   className="_1ZK9h _1g81h"
                   type="tel"
-                  name="mobile"
+                  name="phone"
                   id="mobile"
-                  autocomplete="on"
-                  tabindex="1"
+                  autoComplete="on"
+                  tabIndex="1"
                   data-cy="input-phone-number"
                   data-testid="input-field-mobile"
-                  value=""
+                  value={phone}
+                  onChange={handleLogInForm}
                 />
               </label>
               <span className="Qe5_f"></span>
@@ -65,6 +78,27 @@ const Login = () => {
               +91 -{" "}
             </span>
           </div>
+
+          {isOtp && (
+            <div className="_3Um38 _3lG1r">
+              <input
+                className="_381fS"
+                type="text"
+                name="otp"
+                id="mobile"
+                tabIndex="2"
+                maxLength="6"
+                autoComplete="off"
+                value={otp}
+                onChange={handleLogInForm}
+              />
+              <div className="_2EeI1 _26LFr"></div>
+              <label className="_1Cvlf _2tL9P " htmlFor="otp">
+                One Time Password
+              </label>
+            </div>
+          )}
+
           <div className="_3JGzG _3nBzT">
             <button
               className="_1vTVI _2UPEv"
