@@ -44,14 +44,18 @@ const userSignUp = asyncHandler(async (req, res) => {
   if (existingUser) {
     res
       .status(400)
-      .json({ message: "User with this phone number already exists." });
+      .json({
+        message: "User with this phone number already exists.Please Login.",
+      });
     return;
   }
 
   // Check if the user already exists based on email
   const existingUserByEmail = await UserModal.findOne({ email });
   if (existingUserByEmail) {
-    res.status(400).json({ message: "User with this email already exists." });
+    res
+      .status(400)
+      .json({ message: "User with this email already exists.Please Login." });
     return;
   }
 
