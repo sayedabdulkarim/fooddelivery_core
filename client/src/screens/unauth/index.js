@@ -24,9 +24,9 @@ const Index = () => {
   //misc
   //useState
   const [open, setOpen] = useState(true);
-  const [isLoginActive, setIsLoginActive] = useState(true);
   const [isOtp, setIsOtp] = useState(false);
   const [user, setUser] = useState(null);
+  const [isLoginActive, setIsLoginActive] = useState(true);
   const [signupFormData, setSignUpFormData] = useState({
     phone: "",
     name: "",
@@ -36,6 +36,9 @@ const Index = () => {
     phone: "",
     otp: "",
   });
+  //loader cond
+  const [isLoadingOtp, setIsLoadingOtp] = useState(false);
+
   //queries n mutation
   const [registerUser, { isLoading: registerLoading, error: registerError }] =
     useRegisterUserMutation();
@@ -90,6 +93,7 @@ const Index = () => {
   };
   //send OTP
   const sendOtp = async () => {
+    setIsLoadingOtp(true);
     try {
       const recaptcha = new RecaptchaVerifier(auth, "recaptcha", {
         size: "invisible",
@@ -107,13 +111,25 @@ const Index = () => {
         recaptcha
       );
       if (confirmation?.verificationId) {
-        console.log("Please check your phone, we send the OTP.");
+        console.log("");
+        handleShowAlert(
+          dispatch,
+          "success",
+          "Please check your phone, we send the OTP."
+        );
         setIsOtp(true);
         setUser(confirmation);
+        setIsLoadingOtp(false);
       }
       console.log(confirmation, " conffff");
     } catch (error) {
       console.log(error, " errorr");
+      handleShowAlert(
+        dispatch,
+        "error",
+        "Something went wrong.Please try after sometime."
+      );
+      setIsLoadingOtp(false);
     }
   };
 
@@ -124,6 +140,7 @@ const Index = () => {
   };
 
   const handleVerifyOtp = async (e) => {
+    setIsLoadingOtp(true);
     e.preventDefault();
     try {
       const { otp } = loginFormData;
@@ -134,6 +151,7 @@ const Index = () => {
         handleLogInSubmit(data.user.phoneNumber);
       }
     } catch (error) {
+      setIsLoadingOtp(false);
       console.log(error, " eerr from opttt");
     }
   };
@@ -143,8 +161,12 @@ const Index = () => {
       const res = await login({ phone }).unwrap();
       dispatch(setCredentials({ ...res }));
       setIsOtp(false);
+      setIsLoadingOtp(false);
+      handleShowAlert(dispatch, "success", res?.message);
       console.log(res, " ressssss");
     } catch (err) {
+      setIsLoadingOtp(false);
+      handleShowAlert(dispatch, "error", err?.message);
       console.log(err.data.message, " errrrrrrrr from login");
     }
   };
@@ -171,9 +193,13 @@ const Index = () => {
           onClose={onClose}
           isLoginActive={isLoginActive}
           //form
+          registerLoading={registerLoading}
           signupFormData={signupFormData}
           handleSingUpForm={handleSingUpForm}
           handleSignUpSubmit={handleSignUpSubmit}
+          //
+          isLoadingOtp={isLoadingOtp}
+          loginLoading={loginLoading}
           loginFormData={loginFormData}
           handleLogInForm={handleLogInForm}
           handleLogInContinue={handleLogInContinue}

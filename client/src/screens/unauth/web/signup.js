@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { Spin } from "antd";
 
-const Signup = ({ signupFormData, handleSingUpForm, handleSignUpSubmit }) => {
+const Signup = ({
+  signupFormData,
+  handleSingUpForm,
+  handleSignUpSubmit,
+  registerLoading,
+}) => {
   const { phone, name, email } = signupFormData;
   return (
     <div className="">
@@ -83,8 +89,12 @@ const Signup = ({ signupFormData, handleSingUpForm, handleSignUpSubmit }) => {
           </div> */}
 
           <div className="_25qBi _2-hTu">
-            <button type="submit" className="a-ayg">
-              CONTINUE
+            <button
+              type="submit"
+              className="a-ayg"
+              disabled={registerLoading ? true : false}
+            >
+              {registerLoading ? <Spin size="small" /> : "CONTINUE"}
             </button>
           </div>
 

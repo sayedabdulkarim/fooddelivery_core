@@ -1,6 +1,10 @@
 import React from "react";
+import { Spin } from "antd";
 
 const login = ({
+  loginLoading,
+  isLoadingOtp,
+
   loginFormData,
   handleLogInForm,
   isOtp,
@@ -71,9 +75,23 @@ const login = ({
               )}
             </div>
 
+            {/* loginLoading,
+  isLoadingOtp, */}
+
             <div className="_25qBi _2-hTu">
-              <button type="submit" className="a-ayg">
-                CONTINUE
+              <button
+                type="submit"
+                className="a-ayg"
+                disabled={loginLoading || isLoadingOtp ? true : false}
+              >
+                {/* { isOtp ? "Verify Otp" : "CONTINUE" } */}
+                {loginLoading || isLoadingOtp ? (
+                  <Spin size="small" />
+                ) : isOtp ? (
+                  "Verify Otp"
+                ) : (
+                  "CONTINUE"
+                )}
               </button>
             </div>
             <div className="_1FvHn">

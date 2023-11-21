@@ -15,14 +15,16 @@ const Index = ({
   onClose,
   currentText,
   isLoginActive,
+  registerLoading,
   signupFormData,
   handleSingUpForm,
   handleSignUpSubmit,
+  loginLoading,
+  isLoadingOtp,
   loginFormData,
   handleLogInForm,
   handleLogInContinue,
   handleVerifyOtp,
-  handleLogInSubmit,
   isOtp,
 }) => {
   return (
@@ -31,12 +33,15 @@ const Index = ({
         <div>
           {!isLoginActive ? (
             <Signup
+              registerLoading={registerLoading}
               signupFormData={signupFormData}
               handleSingUpForm={handleSingUpForm}
               handleSignUpSubmit={handleSignUpSubmit}
             />
           ) : (
             <Login
+              loginLoading={loginLoading}
+              isLoadingOtp={isLoadingOtp}
               loginFormData={loginFormData}
               handleLogInForm={handleLogInForm}
               handleLogInContinue={handleLogInContinue}
