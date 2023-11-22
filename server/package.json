@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "server": "nodemon index",
-    "seedOffers": "node dataInsertion/bestOffersProduct.js"
+    "seedOffers": "node dataInsertion/bestOffersProduct.js",
+    "seedTopRestaurants": "node dataInsertion/topRestaurantsProduct.js"
   },
   "keywords": [],
   "author": "",
