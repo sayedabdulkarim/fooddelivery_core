@@ -10,9 +10,9 @@ import PrivateRoute from "../components/PrivateRoute";
 import PublicRoute from "../components/PublicRoute";
 //auth
 import Home from "../screens/auth/home";
+import About from "../screens/auth/about";
 //unauth
 import UnAuthScreen from "../screens/unauth";
-import About from "../screens/auth/About";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
