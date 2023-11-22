@@ -41,8 +41,13 @@ function useImageCarousel(images, widthPerSlide = 260) {
       if (carouselViewportRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } =
           carouselViewportRef.current;
+
+        // Check if at start
         setIsAtStart(scrollLeft <= 0);
-        setIsAtEnd(scrollLeft + clientWidth >= scrollWidth);
+
+        // Check if at end - consider the width of the last image and some margin if applicable
+        const atEnd = scrollLeft + clientWidth >= scrollWidth - widthPerSlide;
+        setIsAtEnd(atEnd);
       }
     };
 
