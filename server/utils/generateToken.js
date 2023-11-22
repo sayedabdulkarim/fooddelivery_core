@@ -32,7 +32,7 @@ import crypto from "crypto";
 
 // export default generateToken;
 
-const generateToken = (res, userId, expiresIn = "1h") => {
+const generateToken = (res, userId, expiresIn = "2d") => {
   const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: expiresIn,
   });

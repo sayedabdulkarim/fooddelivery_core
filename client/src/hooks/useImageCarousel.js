@@ -1,48 +1,51 @@
-import { useRef, useState, useEffect } from "react";
-import { scrollTo } from "../utils/commonHelper";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 function useImageCarousel(images, widthPerSlide = 260) {
   const carouselViewportRef = useRef(null);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
-  useEffect(() => {
-    const checkPosition = () => {
-      if (carouselViewportRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } =
-          carouselViewportRef.current;
-
-        // Check if at start
-        setIsAtStart(scrollLeft <= 0);
-
-        // Check if at end - consider the width of the last image and some margin if applicable
-        const atEnd = scrollLeft + clientWidth >= scrollWidth - widthPerSlide;
-        setIsAtEnd(atEnd);
-      }
-    };
-
-    // Check initial position
-    checkPosition();
-
-    // Add event listener to update state on scroll
-    const element = carouselViewportRef.current;
-    element.addEventListener("scroll", checkPosition, { passive: true });
-
-    // Clean up
-    return () => {
-      element.removeEventListener("scroll", checkPosition);
-    };
+  const checkPosition = useCallback(() => {
+    if (carouselViewportRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        carouselViewportRef.current;
+      setIsAtStart(scrollLeft < 5);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 5);
+    }
   }, []);
+
+  useEffect(() => {
+    const element = carouselViewportRef.current;
+    if (element) {
+      // Set scroll behavior to smooth
+      element.style.scrollBehavior = "smooth";
+
+      // MutationObserver for changes
+      const observer = new MutationObserver(checkPosition);
+      observer.observe(element, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["style"],
+      });
+
+      // Initial check
+      checkPosition();
+
+      // Clean up
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [checkPosition]);
 
   const moveCarousel = (directionMultiplier) => {
     const scrollAmount = widthPerSlide * directionMultiplier;
-    const newPos = carouselViewportRef.current.scrollLeft + scrollAmount;
-    scrollTo({
-      element: carouselViewportRef.current,
-      to: newPos,
-      duration: 300,
-      scrollDirection: "scrollLeft",
-    });
+    if (carouselViewportRef.current) {
+      carouselViewportRef.current.scrollLeft += scrollAmount;
+    }
+    // Delay check position to allow for smooth scrolling to finish
+    setTimeout(checkPosition, 300); // Adjust this duration as needed
   };
 
   const moveLeft = () => moveCarousel(-1);

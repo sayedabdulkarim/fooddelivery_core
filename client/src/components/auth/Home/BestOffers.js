@@ -1,30 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import useImageCarousel from "../../../hooks/useImageCarousel"; // Update with the correct path
 
-const imagedata = [
-  {
-    name: "Alabama",
-    abbreviation: "AL",
-    image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/rng/md/carousel/production/bdc54e63721168abc2f98c358c3a6d94`,
-  },
-  {
-    name: "Alaska",
-    abbreviation: "AK",
-    image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/rng/md/carousel/production/fbc34ac620431050364365ad2c589909`,
-  },
-  {
-    name: "Alaska",
-    abbreviation: "AK",
-    image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/rng/md/carousel/production/0fc2086fd43ab60b9d1e7606934efd00`,
-  },
-  {
-    name: "Alabama",
-    abbreviation: "AL",
-    image: `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_850,h_504/rng/md/carousel/production/bdc54e63721168abc2f98c358c3a6d94`,
-  },
-];
-
 const Imagesection = () => {
+  // Redux state
+  const { homePageData } = useSelector((state) => state.homeReducer);
+  //misc
   const {
     carouselViewportRef,
     moveLeft,
@@ -32,14 +13,20 @@ const Imagesection = () => {
     images,
     isAtStart,
     isAtEnd,
-  } = useImageCarousel(imagedata);
+  } = useImageCarousel(homePageData?.data?.offerList || []);
+  // } = useImageCarousel(imagedata);
 
   return (
     <div className="home_best_offers">
       {/*  */}
       <div className="sc-esYiGF cfAhyi title_section">
         <div className="sc-fXSgeo FedBt">
-          <h2 className="sc-aXZVg fRsBsl title">Best offers for you</h2>
+          <h2
+            onClick={() => console.log(homePageData)}
+            className="sc-aXZVg fRsBsl title"
+          >
+            Best offers for you
+          </h2>
           <div className="sc-aXZVg dtXMSY"></div>
         </div>
 
