@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 //apiSLice
 import { useGetHomePageDataQuery } from "../../apiSlices/homeApiSlice";
 //dispatcher
 import { setHomePageData } from "../../slices/homeSlice";
 //comps
 import BestOffers from "../../components/auth/Home/BestOffers";
-import ShowSkeleton from "../../components/skeleton/homeSkeleton";
 import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 
 const Home = () => {
@@ -28,18 +27,8 @@ const Home = () => {
 
   return (
     <div className="home_container fXbKft">
-      {isLoadingHomePage ? (
-        <ShowSkeleton
-          isLoading={isLoadingHomePage}
-          numSkeletons={40}
-          columnsPerRow={4}
-        />
-      ) : (
-        <>
-          <BestOffers />
-          <TopRestaurantSection />
-        </>
-      )}
+      <BestOffers isLoadingHomePage={isLoadingHomePage} />
+      <TopRestaurantSection isLoadingHomePage={isLoadingHomePage} />
     </div>
   );
 };

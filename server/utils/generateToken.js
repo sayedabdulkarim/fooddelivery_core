@@ -39,7 +39,8 @@ const generateToken = (res, userId, expiresIn = "2d") => {
 
   const csrfToken = crypto.randomBytes(24).toString("hex");
   const expiration = new Date();
-  expiration.setMilliseconds(expiration.getMilliseconds() + 3600000); // Set it to 1 hour from now
+  // expiration.setMilliseconds(expiration.getMilliseconds() + 3600000); // Set it to 1 hour from now
+  expiration.setDate(expiration.getDate() + 2); // Set it to 2 days from now
 
   // JWT Token
   res.cookie("jwt", token, {
