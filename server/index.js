@@ -7,6 +7,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDb from "./config/db.js";
 //routes
 import userRoutes from "./routes/userRoutes.js";
+import homeRoutes from "./routes/homeRoutes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -31,6 +32,7 @@ app.use(cookieParser());
 //users
 app.use("/api/users", userRoutes);
 //home
+app.use("/api/users", homeRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
