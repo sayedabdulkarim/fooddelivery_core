@@ -93,6 +93,68 @@
 
     }
 
+    .TopRestaurantSection {
+      // background-color: #171A29;
+
+      .Imagesdiv {
+        // width: 90%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+
+        /* border: 1px solid red; */
+        ul {
+          overflow: hidden;
+          /* border: 1px solid green; */
+          list-style: none;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          li {
+            /* border: 1px solid red; */
+            box-sizing: border-box;
+            /* width: 22%; */
+            /* height: 100%; */
+            margin: 2rem 0;
+
+            button {
+              color: black;
+              cursor: pointer;
+              outline: none;
+              box-sizing: border-box;
+              padding: 10px;
+              border: 1px solid white;
+              border-radius: 50%;
+              background: #fff;
+
+              /* font-weight: lighter */
+              i {
+                font-size: 1.5rem;
+              }
+            }
+
+            img {
+              margin-right: 40px;
+              width: 260px;
+              height: 250px;
+              /* width: 100%; */
+              cursor: pointer;
+              transition: 1s all ease-in-out;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+
+          }
+        }
+      }
+
+    }
+
+
   }
 
 }

@@ -7,6 +7,7 @@ import { setHomePageData } from "../../slices/homeSlice";
 //comps
 import BestOffers from "../../components/auth/Home/BestOffers";
 import ShowSkeleton from "../../components/skeleton/homeSkeleton";
+import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 
 const Home = () => {
   // Dispatch
@@ -34,7 +35,10 @@ const Home = () => {
           columnsPerRow={4}
         />
       ) : (
-        <BestOffers />
+        <>
+          <BestOffers />
+          <TopRestaurantSection />
+        </>
       )}
     </div>
   );
