@@ -135,18 +135,27 @@
               }
             }
 
-            img {
-              margin-right: 40px;
-              width: 250px;
-              height: 250px;
-              /* width: 100%; */
-              cursor: pointer;
-              transition: 1s all ease-in-out;
-              margin-right: 40px;
-              &:hover {
-                transform: scale(1.1);
+            .image_wrapper {
+
+              width: 80%;
+              /* border: 1px solid red; */
+              border-radius: 16px;
+              overflow: hidden;
+
+              img {
+                margin-right: 40px;
+                width: 250px;
+                height: 250px;
+                /* width: 100%; */
+                cursor: pointer;
+                transition: 1s all ease-in-out;
+                &:hover {
+                  transform: scale(1.1);
+                }
               }
+
             }
+
 
           }
         }
