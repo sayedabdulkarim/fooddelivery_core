@@ -28,8 +28,9 @@ app.use(cors(corsOptions));
 // app.use(cors());
 app.use(cookieParser());
 
-//
+//users
 app.use("/api/users", userRoutes);
+//home
 
 app.use(notFound);
 app.use(errorHandler);
