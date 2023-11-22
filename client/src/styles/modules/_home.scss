@@ -115,9 +115,6 @@
           li {
             /* border: 1px solid red; */
             box-sizing: border-box;
-            /* width: 22%; */
-            /* height: 100%; */
-            margin: 2rem 0;
 
             button {
               color: black;
@@ -133,6 +130,28 @@
               i {
                 font-size: 1.5rem;
               }
+            }
+
+            .kiywRV {
+              position: relative;
+              display: flex;
+              top: 36px;
+              z-index: 1;
+
+              .liwPIr {
+                position: absolute;
+                top: 30%;
+                left: 5px;
+                display: flex;
+                
+                .jLNRCt {
+                  font-size: 10px;
+                  margin-left: 12px;
+                  color: #fff;
+                }
+
+              }
+
             }
 
             .image_wrapper {

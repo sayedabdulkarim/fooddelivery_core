@@ -1,5 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+//component
+import TopRestaurantOfferBadge from "../../svgs/TopRestaurantOfferBadge";
+//custom hooks
 import useImageCarousel from "../../../hooks/useImageCarousel"; // Update with the correct path
 
 const TopRestaurantSection = () => {
@@ -25,7 +28,7 @@ const TopRestaurantSection = () => {
             onClick={() => console.log(homePageData)}
             className="sc-aXZVg fRsBsl title"
           >
-            Best offers for you
+            Top restaurant chains in Bangalore
           </h2>
           <div className="sc-aXZVg dtXMSY"></div>
         </div>
@@ -97,6 +100,8 @@ const TopRestaurantSection = () => {
           <ul ref={carouselViewportRef}>
             {images.map((item, index) => (
               <li key={index}>
+                {/* {item?.badges && <TopRestaurantOfferBadge />} */}
+                {<TopRestaurantOfferBadge isShow={item?.badges} />}
                 <div className="image_wrapper">
                   <img
                     src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item.cloudinaryImageId}`}
