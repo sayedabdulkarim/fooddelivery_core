@@ -13,7 +13,7 @@ const baseQuery = fetchBaseQuery({
     const csrfToken = getCsrfToken();
     if (csrfToken) {
       // Set the CSRF token in the request headers
-      headers.set("X-CSRF-TOKEN", csrfToken);
+      headers.set("x-csrf-token", csrfToken);
     }
     return headers;
   },

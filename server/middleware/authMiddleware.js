@@ -64,7 +64,10 @@ export const protectedRoutesWithParser = asyncHandler(
   async (req, res, next) => {
     const token = req.cookies.jwt; // JWT token from cookie
     const csrfToken = req.cookies["XSRF-TOKEN"]; // CSRF token from cookie
-    const csrfTokenFromHeader = req.headers["x-xsrf-token"]; // CSRF token from header
+    // const csrfTokenFromHeader = req.headers["X-CSRF-TOKEN"]; // CSRF token from header
+    const csrfTokenFromHeader = req.headers["x-csrf-token"]; // CSRF token from header
+
+    console.log({ token, csrfToken, csrfTokenFromHeader, req: req.headers });
 
     if (token && csrfToken && csrfTokenFromHeader) {
       try {
