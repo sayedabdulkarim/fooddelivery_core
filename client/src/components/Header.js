@@ -72,7 +72,7 @@ const Header = () => {
               <div className="_1fmVk _30y3a">
                 <div>
                   <div className="_2CgXb">
-                    <a className="_1T-E4" href="/my-account">
+                    <a className="_1T-E4 header_myAccount" href="/my-account">
                       <span className="_3yZyp">
                         <svg
                           className="_1GTCc"
@@ -88,9 +88,9 @@ const Header = () => {
                       <div className="Dropdown">
                         <span className="_1qbcC">abdul</span>
                         <div className="Dropdowncontent">
-                          <li>Profiles</li>
-                          <li>Profiles</li>
-                          <li>Profiles</li>
+                          <span>Profiles</span>
+                          <span>Profiles</span>
+                          <span>Profiles</span>
                         </div>
                       </div>
                     </a>
