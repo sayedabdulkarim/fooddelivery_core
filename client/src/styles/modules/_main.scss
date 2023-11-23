@@ -7,17 +7,44 @@
       .Dropdown {
         position: relative;
         display: inline-block;
+        
+        .Dropdowncontent::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            border: 8px solid transparent;
+            border-top-color: orange;
+            border-bottom: 0;
+            margin-left: -8px;
+            z-index: 0;
+            top: -10px;
+            transform: rotate(180deg);
+          }
+          
+          /* White part of the caret */
+          .Dropdowncontent::after {
+            content: "";
+            position: absolute;
+            bottom: calc(100% + 0px);
+            left: 50%;
+            border: 6px solid transparent;
+            border-top-color: white;
+            border-bottom: 0;
+            margin-left: -6px;
+            z-index: 1;
+            transform: rotate(180deg);
+          }
+          
+        
         .Dropdowncontent {
           border-top: 2px solid orange;
           // display: none;
-          /* margin-top: 0px; */
           position: absolute;
-          /* background-color: rgba(238, 238, 238, 0.9); */
           min-width: 200px;
           box-shadow: 0px 8px 16px 10px rgba(0,0,0,0.2);
           z-index: 1;
           background-color: #f9f9f9;
-          /* border-top: 3px solid orange; */
           box-sizing: border-box;
           margin-top: 32px;
           right: -70px;
@@ -26,7 +53,7 @@
           li {
             color: #3d4512;
             margin-bottom: 10px;
-            
+
             &:hover {
                 // color: red;
                 color: rgba(2, 6, 12, 0.92);
