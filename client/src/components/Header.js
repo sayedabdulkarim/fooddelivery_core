@@ -14,15 +14,14 @@ const Header = () => {
 
   //func
   const handleLogout = async (e) => {
-    console.log("clickedddddd");
-    // try {
-    //   const res = await logOut().unwrap();
-    //   console.log(res, "res, from logoutttt");
-    //   dispatch(logOutUser());
-    //   navigate("/auth");
-    // } catch (error) {
-    //   console.log(error, " errrrrrrr");
-    // }
+    try {
+      const res = await logOut().unwrap();
+      console.log(res, "res, from logoutttt");
+      dispatch(logOutUser());
+      navigate("/auth");
+    } catch (error) {
+      console.log(error, " errrrrrrr");
+    }
   };
 
   return (
