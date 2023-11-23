@@ -45,46 +45,15 @@ const App = () => {
           <div className="sc-lnPyaJ kriBiB">
             <div className="sc-ePDLzJ jRJFVS">
               <ul className="sc-cVzyXs ibgRwr">
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Sort</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Sort</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Sort</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Sort</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Sort</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Delivery Time</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Cuisines</div>
-                  </div>
-                </li>
-                <li className="sc-YysOf eGsoBa">
-                  <div className="item-wrapper">
-                    <div className="sc-aXZVg cbGKQI">Cost for two</div>
-                  </div>
-                </li>
+                {Object.keys(homePageFilterOptionsObj).map((o) => {
+                  return (
+                    <li className="sc-YysOf eGsoBa" key={o}>
+                      <div className="item-wrapper">
+                        <div className="sc-aXZVg cbGKQI">{o}</div>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
               {/* right */}
               <div className="content">
