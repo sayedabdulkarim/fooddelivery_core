@@ -8,6 +8,9 @@ import { setHomePageData } from "../../slices/homeSlice";
 import BestOffers from "../../components/auth/Home/BestOffers";
 import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 
+//
+import FilterModal from "../../components/modals/FilterModal";
+
 const Home = () => {
   // Dispatch
   const dispatch = useDispatch();
@@ -27,6 +30,7 @@ const Home = () => {
 
   return (
     <div className="home_container fXbKft">
+      <FilterModal />
       <BestOffers isLoadingHomePage={isLoadingHomePage} />
       <TopRestaurantSection isLoadingHomePage={isLoadingHomePage} />
     </div>
