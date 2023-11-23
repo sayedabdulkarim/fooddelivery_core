@@ -9,7 +9,7 @@ import BestOffers from "../../components/auth/Home/BestOffers";
 import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 
 //
-import FilterModal from "../../components/modals/FilterModal";
+import FilterModal from "../../components/modals/HomeFilter/FilterModal";
 
 const Home = () => {
   // Dispatch

@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
-import {
-  CheckedInputRadio,
-  UnCheckedInputRadio,
-  CheckedInput,
-  UnCheckedInput,
-} from "../../utils/svgs";
+import { homePageFilterOptionsObj } from "../../../utils/constant";
+import Sort from "./Sort";
 
-import { homePageFilterOptionsObj } from "../../utils/constant";
-
-const App = () => {
+const FilterModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -39,9 +33,6 @@ const App = () => {
         centered
       >
         <div className="sc-iEXKAA gQcZGA dwebBottomSheet">
-          <div className="sc-iXzfSG dSLBnV">
-            {/* <div className="sc-aXZVg iCWdvm">Filter</div> */}
-          </div>
           <div className="sc-lnPyaJ kriBiB">
             <div className="sc-ePDLzJ jRJFVS">
               <ul className="sc-cVzyXs ibgRwr">
@@ -57,48 +48,18 @@ const App = () => {
               </ul>
               {/* right */}
               <div className="content">
-                <div className="sc-aXZVg jxDVMd">
-                  <div className="sc-eulNck gNHAci">
-                    <div className="sc-aXZVg hMjUKj">Sort By</div>
-                  </div>
-                  <div className="sc-bXCLTC hcmGqD">
-                    <div
-                      label="Relevance (Default)"
-                      orientation="ltr"
-                      class="sc-hmdomO biZBXM"
-                    >
-                      <input
-                        type="radio"
-                        id="Sort-0"
-                        name="Sort"
-                        value="relevance"
-                        checked=""
-                      />
-                      <span class="custom-checkbox">
-                        <div>
-                          <CheckedInputRadio />
-                        </div>
-                      </span>
-                      <label for="Sort-0" class="sc-aXZVg MCNps">
-                        Relevance (Default)
-                      </label>
-                    </div>
-                  </div>
-                </div>
+                <Sort />
               </div>
+              {/* right */}
             </div>
           </div>
           <button className="sc-EgOXT eYVseU" aria-label="click here to close">
             {/* SVG for close button */}
           </button>
         </div>
-
-        {/* <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p> */}
       </Modal>
     </div>
   );
 };
 
-export default App;
+export default FilterModal;
