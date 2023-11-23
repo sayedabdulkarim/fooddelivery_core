@@ -3,17 +3,18 @@
 
 
   .header_myAccount {
+  }
+  
+  ._2CgXb {
+    
     &:hover .Dropdowncontent {
       display: block;
-      // flex-direction: column
     }
-
   }
 
   .Dropdown {
     position: relative;
     display: inline-block;
-
 
     .Dropdowncontent::before {
       content: "";
