@@ -89,8 +89,9 @@ const Header = () => {
                         <span className="_1qbcC">abdul</span>
                         <div className="Dropdowncontent">
                           <span>Profiles</span>
-                          <span>Profiles</span>
-                          <span>Profiles</span>
+                          <span>Orders</span>
+                          <span>Favourites</span>
+                          <span>Logout</span>
                         </div>
                       </div>
                     </a>
