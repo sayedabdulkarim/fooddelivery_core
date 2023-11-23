@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
+import {
+  CheckedInputRadio,
+  UnCheckedInputRadio,
+  CheckedInput,
+  UnCheckedInput,
+} from "../../utils/svgs";
+
+import { homePageFilterOptionsObj } from "../../utils/constant";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -78,13 +86,34 @@ const App = () => {
                   </div>
                 </li>
               </ul>
+              {/* right */}
               <div className="content">
                 <div className="sc-aXZVg jxDVMd">
                   <div className="sc-eulNck gNHAci">
                     <div className="sc-aXZVg hMjUKj">Sort By</div>
                   </div>
                   <div className="sc-bXCLTC hcmGqD">
-                    {/* Radio buttons and labels would be mapped here */}
+                    <div
+                      label="Relevance (Default)"
+                      orientation="ltr"
+                      class="sc-hmdomO biZBXM"
+                    >
+                      <input
+                        type="radio"
+                        id="Sort-0"
+                        name="Sort"
+                        value="relevance"
+                        checked=""
+                      />
+                      <span class="custom-checkbox">
+                        <div>
+                          <CheckedInputRadio />
+                        </div>
+                      </span>
+                      <label for="Sort-0" class="sc-aXZVg MCNps">
+                        Relevance (Default)
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
