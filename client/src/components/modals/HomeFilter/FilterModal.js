@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { homePageFilterOptionsObj } from "../../../utils/constant";
-import Sort from "./Sort";
+import Sort from "./OptionsComponents/Sort";
 
-const FilterModal = () => {
+const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -38,7 +38,11 @@ const FilterModal = () => {
               <ul className="sc-cVzyXs ibgRwr">
                 {Object.keys(homePageFilterOptionsObj).map((o) => {
                   return (
-                    <li className="sc-YysOf eGsoBa" key={o}>
+                    <li
+                      className="sc-YysOf eGsoBa"
+                      key={o}
+                      onClick={() => handleSetIsActiveOption(o)}
+                    >
                       <div className="item-wrapper">
                         <div className="sc-aXZVg cbGKQI">{o}</div>
                       </div>
@@ -48,6 +52,7 @@ const FilterModal = () => {
               </ul>
               {/* right */}
               <div className="content">
+                {isActiveOption}
                 <Sort />
               </div>
               {/* right */}

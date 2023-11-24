@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckedInputRadio } from "../../../utils/svgs";
+import { CheckedInputRadio } from "../../../../utils/svgs";
 
 const Sort = () => {
   return (

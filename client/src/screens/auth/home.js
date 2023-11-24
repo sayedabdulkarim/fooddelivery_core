@@ -9,7 +9,7 @@ import BestOffers from "../../components/auth/Home/BestOffers";
 import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 
 //
-import FilterModal from "../../components/modals/HomeFilter/FilterModal";
+import HomeFilter from "../../components/modals/HomeFilter";
 
 const Home = () => {
   // Dispatch
@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <div className="home_container fXbKft">
-      <FilterModal />
+      <HomeFilter />
       <BestOffers isLoadingHomePage={isLoadingHomePage} />
       <TopRestaurantSection isLoadingHomePage={isLoadingHomePage} />
     </div>
