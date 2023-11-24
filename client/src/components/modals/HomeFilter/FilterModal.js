@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 import { homePageFilterOptionsObj } from "../../../utils/constant";
-import Sort from "./OptionsComponents/Sort";
+//filter option vomponents
+import SortComponent from "./OptionsComponents/Sort";
+import DeliveryTimeComponent from "./OptionsComponents/DeliveryTime";
+import CuisinesComponent from "./OptionsComponents/Cuisines";
+import ExploreComponent from "./OptionsComponents/Explore";
+import RatingsComponent from "./OptionsComponents/Ratings";
+import VegNonVegComponent from "./OptionsComponents/VegNonVeg";
+import CostForTwoComponent from "./OptionsComponents/CostForTwo";
 
 const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,8 +59,10 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
               </ul>
               {/* right */}
               <div className="content">
-                {isActiveOption}
-                <Sort />
+                <SortComponent
+                  isActiveOption={isActiveOption}
+                  homePageFilterOptionsObj={homePageFilterOptionsObj}
+                />
               </div>
               {/* right */}
             </div>

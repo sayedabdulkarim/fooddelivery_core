@@ -1,34 +1,47 @@
 import React from "react";
-import { CheckedInputRadio } from "../../../../utils/svgs";
+import { CheckedInputRadio, UnCheckedInputRadio } from "../../../../utils/svgs";
 
-const Sort = () => {
+const Sort = ({ homePageFilterOptionsObj, isActiveOption }) => {
   return (
     <div className="sc-aXZVg jxDVMd">
       <div className="sc-eulNck gNHAci">
-        <div className="sc-aXZVg hMjUKj">Sort By</div>
+        <div
+          className="sc-aXZVg hMjUKj"
+          onClick={() =>
+            console.log(homePageFilterOptionsObj, " homePageFilterOptionsObj")
+          }
+        >
+          Sort By
+        </div>
       </div>
       <div className="sc-bXCLTC hcmGqD">
-        <div
-          label="Relevance (Default)"
-          orientation="ltr"
-          class="sc-hmdomO biZBXM"
-        >
-          <input
-            type="radio"
-            id="Sort-0"
-            name="Sort"
-            value="relevance"
-            checked=""
-          />
-          <span class="custom-checkbox">
-            <div>
-              <CheckedInputRadio />
+        {homePageFilterOptionsObj[isActiveOption]?.map((item) => {
+          return (
+            <div
+              label="Relevance (Default)"
+              orientation="ltr"
+              className="sc-hmdomO biZBXM"
+              key={item}
+            >
+              <input
+                type="radio"
+                id="Sort-0"
+                name={item}
+                value={item}
+                checked=""
+              />
+              <span class="custom-checkbox">
+                <div>
+                  <CheckedInputRadio />
+                  {/* <UnCheckedInputRadio /> */}
+                </div>
+              </span>
+              <label htmlFor="Sort-0" className="sc-aXZVg MCNps">
+                {item}
+              </label>
             </div>
-          </span>
-          <label for="Sort-0" class="sc-aXZVg MCNps">
-            Relevance (Default)
-          </label>
-        </div>
+          );
+        })}
       </div>
     </div>
   );
