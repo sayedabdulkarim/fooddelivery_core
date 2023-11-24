@@ -46,7 +46,9 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
                 {Object.keys(homePageFilterOptionsObj).map((o) => {
                   return (
                     <li
-                      className="sc-YysOf eGsoBa"
+                      className={`sc-YysOf eGsoBa ${
+                        isActiveOption === o ? "isActiveOption" : ""
+                      }`}
                       key={o}
                       onClick={() => handleSetIsActiveOption(o)}
                     >
@@ -59,10 +61,44 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
               </ul>
               {/* right */}
               <div className="content">
-                <SortComponent
-                  isActiveOption={isActiveOption}
-                  homePageFilterOptionsObj={homePageFilterOptionsObj}
-                />
+                {isActiveOption === "Sort" ? (
+                  <SortComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Delivery Time" ? (
+                  <DeliveryTimeComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Cuisines" ? (
+                  <CuisinesComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Explore" ? (
+                  <ExploreComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Ratings" ? (
+                  <RatingsComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Veg/ Non Veg" ? (
+                  <VegNonVegComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Cost For Two" ? (
+                  <CostForTwoComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
               {/* right */}
             </div>
