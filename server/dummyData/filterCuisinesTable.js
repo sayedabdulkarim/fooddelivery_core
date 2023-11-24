@@ -1,4 +1,4 @@
-const filterCuisinesTable = [
+export const filterCuisinesTable = [
   {
     label: "Afghani",
     queryType: "query_afghani",
