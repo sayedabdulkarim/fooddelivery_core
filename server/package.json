@@ -8,7 +8,8 @@
     "server": "nodemon index",
     "seedOffers": "node dataInsertion/bestOffersProduct.js",
     "seedTopRestaurants": "node dataInsertion/topRestaurantsProduct.js",
-    "seedCuisines": "node dataInsertion/filterCuisinesProduct.js"
+    "seedCuisines": "node dataInsertion/filterCuisinesProduct.js",
+    "seedAllRestaurants": "node dataInsertion/allRestaurants.js"
   },
   "keywords": [],
   "author": "",
