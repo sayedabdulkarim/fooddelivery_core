@@ -10,7 +10,7 @@ const getHomePageData = asyncHandler(async (req, res) => {
   try {
     const offerList = await BestOffersModal.find(); // Fetch all documents from BestOffersModal
     const topRestaurantList = await TopRestaurantModal.find(); // Fetch all documents from TopRestaurantModal
-    const cuisinesList = await CuisinesModal.find(); // Fetch all documents from TopRestaurantModal
+    const cuisinesList = await CuisinesModal.find(); // Fetch all documents from CuisinesModal
 
     res.status(200).json({
       data: {
