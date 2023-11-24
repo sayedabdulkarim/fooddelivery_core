@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckedInput, UnCheckedInput } from "../../../../utils/svgs";
 
-const VegNonVeg = ({ homePageFilterOptionsObj, isActiveOption }) => {
+const Offers = ({ homePageFilterOptionsObj, isActiveOption }) => {
   return (
     <div className="sc-aXZVg jxDVMd">
       <div className="sc-eulNck gNHAci">
@@ -11,7 +11,7 @@ const VegNonVeg = ({ homePageFilterOptionsObj, isActiveOption }) => {
             console.log(homePageFilterOptionsObj, " homePageFilterOptionsObj")
           }
         >
-          Filter By
+          Restaurants With
         </div>
       </div>
       <div className="sc-bXCLTC hcmGqD">
@@ -47,4 +47,4 @@ const VegNonVeg = ({ homePageFilterOptionsObj, isActiveOption }) => {
   );
 };
 
-export default VegNonVeg;
+export default Offers;

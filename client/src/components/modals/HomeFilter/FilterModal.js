@@ -9,6 +9,7 @@ import ExploreComponent from "./OptionsComponents/Explore";
 import RatingsComponent from "./OptionsComponents/Ratings";
 import VegNonVegComponent from "./OptionsComponents/VegNonVeg";
 import CostForTwoComponent from "./OptionsComponents/CostForTwo";
+import OffersComponent from "./OptionsComponents/Offers";
 
 const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,6 +94,11 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
                   />
                 ) : isActiveOption === "Cost For Two" ? (
                   <CostForTwoComponent
+                    isActiveOption={isActiveOption}
+                    homePageFilterOptionsObj={homePageFilterOptionsObj}
+                  />
+                ) : isActiveOption === "Offers" ? (
+                  <OffersComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
                   />
