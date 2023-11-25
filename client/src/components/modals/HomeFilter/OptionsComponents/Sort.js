@@ -1,15 +1,19 @@
 import React from "react";
 import { CheckedInputRadio, UnCheckedInputRadio } from "../../../../utils/svgs";
 
-const Sort = ({ homePageFilterOptionsObj, isActiveOption }) => {
+const Sort = ({
+  homePageFilterOptionsObj,
+  isActiveOption,
+  handleFilterChange,
+  filters,
+}) => {
+  const { sort } = filters;
   return (
     <div className="sc-aXZVg jxDVMd">
       <div className="sc-eulNck gNHAci">
         <div
           className="sc-aXZVg hMjUKj"
-          onClick={() =>
-            console.log(homePageFilterOptionsObj, " homePageFilterOptionsObj")
-          }
+          onClick={() => console.log({ homePageFilterOptionsObj, filters })}
         >
           Sort By
         </div>
@@ -22,17 +26,19 @@ const Sort = ({ homePageFilterOptionsObj, isActiveOption }) => {
               orientation="ltr"
               className="sc-hmdomO biZBXM"
               key={item}
+              style={{
+                padding: "10px 0",
+              }}
+              onClick={() => handleFilterChange("sort", item)}
             >
-              <input
-                type="radio"
-                id="Sort-0"
-                name={item}
-                value={item}
-                checked=""
-              />
-              <span class="custom-checkbox">
+              <span className="custom-checkbox">
                 <div>
-                  <CheckedInputRadio />
+                  {sort === item ? (
+                    <CheckedInputRadio />
+                  ) : (
+                    <UnCheckedInputRadio />
+                  )}
+                  {/* <CheckedInputRadio /> */}
                   {/* <UnCheckedInputRadio /> */}
                 </div>
               </span>

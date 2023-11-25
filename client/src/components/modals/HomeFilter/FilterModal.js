@@ -11,7 +11,12 @@ import VegNonVegComponent from "./OptionsComponents/VegNonVeg";
 import CostForTwoComponent from "./OptionsComponents/CostForTwo";
 import OffersComponent from "./OptionsComponents/Offers";
 
-const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
+const FilterModal = ({
+  isActiveOption,
+  handleSetIsActiveOption,
+  handleFilterChange,
+  filters,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -66,6 +71,8 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
                   <SortComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Delivery Time" ? (
                   <DeliveryTimeComponent
@@ -86,6 +93,8 @@ const FilterModal = ({ isActiveOption, handleSetIsActiveOption }) => {
                   <RatingsComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Veg/ Non Veg" ? (
                   <VegNonVegComponent
