@@ -1,15 +1,19 @@
 import React from "react";
-import { CheckedInput, UnCheckedInput } from "../../../../utils/svgs";
+import { CheckedInputRadio, UnCheckedInputRadio } from "../../../../utils/svgs";
 
-const VegNonVeg = ({ homePageFilterOptionsObj, isActiveOption }) => {
+const VegNonVeg = ({
+  homePageFilterOptionsObj,
+  isActiveOption,
+  handleFilterChange,
+  filters,
+}) => {
+  const { vegNonVeg } = filters;
   return (
     <div className="sc-aXZVg jxDVMd">
       <div className="sc-eulNck gNHAci">
         <div
           className="sc-aXZVg hMjUKj"
-          onClick={() =>
-            console.log(homePageFilterOptionsObj, " homePageFilterOptionsObj")
-          }
+          onClick={() => console.log(filters, " homePageFilterOptionsObj")}
         >
           Filter By
         </div>
@@ -22,18 +26,18 @@ const VegNonVeg = ({ homePageFilterOptionsObj, isActiveOption }) => {
               orientation="ltr"
               className="sc-hmdomO biZBXM"
               key={item}
+              style={{
+                padding: "10px 0",
+              }}
+              onClick={() => handleFilterChange("vegNonVeg", item)}
             >
-              <input
-                type="radio"
-                id="Sort-0"
-                name={item}
-                value={item}
-                checked=""
-              />
-              <span class="custom-checkbox">
+              <span className="custom-checkbox">
                 <div>
-                  <CheckedInput />
-                  {/* <UnCheckedInputRadio /> */}
+                  {vegNonVeg === item ? (
+                    <CheckedInputRadio />
+                  ) : (
+                    <UnCheckedInputRadio />
+                  )}{" "}
                 </div>
               </span>
               <label htmlFor="Sort-0" className="sc-aXZVg MCNps">

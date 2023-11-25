@@ -12,7 +12,7 @@ const HomeFilter = () => {
     explore: [],
     rating: [],
     vegNonVeg: null,
-    costForTwo: null,
+    costForTwo: [],
     offers: null,
     // Add other filter categories as needed
   });

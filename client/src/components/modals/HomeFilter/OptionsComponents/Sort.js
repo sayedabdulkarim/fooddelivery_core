@@ -38,8 +38,6 @@ const Sort = ({
                   ) : (
                     <UnCheckedInputRadio />
                   )}
-                  {/* <CheckedInputRadio /> */}
-                  {/* <UnCheckedInputRadio /> */}
                 </div>
               </span>
               <label htmlFor="Sort-0" className="sc-aXZVg MCNps">
