@@ -7,12 +7,13 @@ const HomeFilter = () => {
 
   const [filters, setFilters] = useState({
     sort: "",
+    deliveryTime: [],
     cuisines: [],
+    explore: [],
     rating: [],
     vegNonVeg: null,
     costForTwo: null,
     offers: null,
-    deliveryTime: [],
     // Add other filter categories as needed
   });
 

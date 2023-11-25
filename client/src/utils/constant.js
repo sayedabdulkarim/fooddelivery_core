@@ -8,7 +8,7 @@ export const homePageFilterOptionsObj = {
   ],
   "Delivery Time": ["Fast Delivery"],
   Cuisines: ["Afghani"],
-  Explore: ["New On Swiggy"],
+  Explore: ["New On Swiggy", "Swiggy Exclusives"],
   Ratings: ["Ratings 4.5+", "Ratings 4.0+", "Ratings 3.5+"],
   "Veg/ Non Veg": ["Pure Veg", "Non Veg"],
   "Cost For Two": ["Rs. 300-Rs. 600", "Rs. 300-Rs. 600", "Rs. 300-Rs. 600"],
