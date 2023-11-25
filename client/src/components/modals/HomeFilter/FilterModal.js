@@ -78,16 +78,22 @@ const FilterModal = ({
                   <DeliveryTimeComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Cuisines" ? (
                   <CuisinesComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Explore" ? (
                   <ExploreComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Ratings" ? (
                   <RatingsComponent
@@ -100,16 +106,22 @@ const FilterModal = ({
                   <VegNonVegComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Cost For Two" ? (
                   <CostForTwoComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : isActiveOption === "Offers" ? (
                   <OffersComponent
                     isActiveOption={isActiveOption}
                     homePageFilterOptionsObj={homePageFilterOptionsObj}
+                    handleFilterChange={handleFilterChange}
+                    filters={filters}
                   />
                 ) : (
                   ""

@@ -12,6 +12,7 @@ const HomeFilter = () => {
     vegNonVeg: null,
     costForTwo: null,
     offers: null,
+    deliveryTime: [],
     // Add other filter categories as needed
   });
 
