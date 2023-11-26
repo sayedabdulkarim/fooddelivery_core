@@ -41,4 +41,18 @@ const easeInOut = (currentTime, start, change, duration) => {
   return (-change / 2) * (currentTime * (currentTime - 2) - 1) + start;
 };
 
-export { toggleTheme, handleShowAlert, scrollTo };
+const arrayToString = (arr) => {
+  if (arr.length === 0) {
+    return "";
+  }
+  if (arr.length === 1) {
+    return arr[0];
+  }
+  // Join all elements except the last with a comma and a space
+  const firstPart = arr.slice(0, -1).join(", ");
+  // Add the last element with 'and' before it
+  const lastPart = arr[arr.length - 1];
+  return firstPart + " and " + lastPart;
+};
+
+export { toggleTheme, handleShowAlert, scrollTo, arrayToString };
