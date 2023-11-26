@@ -32,7 +32,7 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
                 badges,
                 cloudinaryImageId,
                 name,
-                ggregatedDiscountInfoV3,
+                aggregatedDiscountInfoV3,
                 avgRating,
                 sla,
                 cuisines,
@@ -41,7 +41,6 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
 
               return (
                 <li key={_id}>
-                  {/* {item?.badges && <TopRestaurantOfferBadge />} */}
                   {<TopRestaurantOfferBadge isShow={badges} />}
                   <div className="image_wrapper">
                     <img
@@ -49,6 +48,14 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
                       alt={name}
                       loading="lazy"
                     />
+
+                    <div className="sc-gFqAkR ijUZYo sc-feUZmu fdeemW">
+                      <div className="sc-aXZVg bBhNat sc-ikkxIA fUpspG">
+                        {" "}
+                        {aggregatedDiscountInfoV3 &&
+                          `${aggregatedDiscountInfoV3?.header} ${aggregatedDiscountInfoV3?.subHeader}`}
+                      </div>
+                    </div>
                   </div>
                   {/* detail wrapper */}
                   <div className="detail_wrapper">
