@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import FilterModal from "./FilterModal";
-
+import { setStoreFilters } from "../../../slices/homeSlice";
 const HomeFilter = () => {
+  //misc
+  const dispatch = useDispatch();
   //state
   const [isActiveOption, setIsActiveOption] = useState("Sort");
 
@@ -14,7 +17,6 @@ const HomeFilter = () => {
     vegNonVeg: null,
     costForTwo: [],
     offers: null,
-    // Add other filter categories as needed
   });
 
   //func
@@ -48,6 +50,12 @@ const HomeFilter = () => {
       }
     });
   };
+
+  //async
+  useEffect(() => {
+    console.log("calledddd");
+    dispatch(setStoreFilters(filters));
+  }, [filters, dispatch]);
 
   return (
     <div>

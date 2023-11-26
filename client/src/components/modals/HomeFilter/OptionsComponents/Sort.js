@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { CheckedInputRadio, UnCheckedInputRadio } from "../../../../utils/svgs";
 
 const Sort = ({
@@ -8,12 +9,16 @@ const Sort = ({
   filters,
 }) => {
   const { sort } = filters;
+  const { homePageData, filterOption } = useSelector(
+    (state) => state.homeReducer
+  );
+
   return (
     <div className="sc-aXZVg jxDVMd">
       <div className="sc-eulNck gNHAci">
         <div
           className="sc-aXZVg hMjUKj"
-          onClick={() => console.log({ homePageFilterOptionsObj, filters })}
+          onClick={() => console.log({ filterOption, filters })}
         >
           Sort By
         </div>
