@@ -31,7 +31,7 @@ const DeliveryTime = ({
               }}
               onClick={() => handleFilterChange("deliveryTime", item)}
             >
-              <span class="custom-checkbox">
+              <span className="custom-checkbox">
                 <div>
                   {deliveryTime?.includes(item) ? (
                     <CheckedInput />
