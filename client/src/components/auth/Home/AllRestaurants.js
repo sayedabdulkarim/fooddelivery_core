@@ -29,16 +29,6 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
   }, [filteredRestaurantsList, allRestaurantsList, currentRestaurants]);
   return (
     <div className="home_best_offers home_all_restaurants">
-      <button
-        onClick={() =>
-          console.log(
-            { currentRestaurants, filteredAllRestaurantData },
-            " currentRestaurants"
-          )
-        }
-      >
-        currentRestaurants
-      </button>
       <div className="sc-esYiGF cfAhyi title_section">
         <div className="sc-fXSgeo FedBt">
           <h2
