@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, Modal } from "antd";
 import { homePageFilterOptionsObj } from "../../../utils/constant";
+//slice
+import { applyStoreFilters } from "../../../slices/homeSlice";
 //filter option vomponents
 import SortComponent from "./OptionsComponents/Sort";
 import DeliveryTimeComponent from "./OptionsComponents/DeliveryTime";
@@ -17,17 +20,25 @@ const FilterModal = ({
   handleFilterChange,
   filters,
 }) => {
+  //misc
+  const dispatch = useDispatch();
+
+  //state
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  //func
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    console.log("OK calleddd");
+    dispatch(applyStoreFilters());
+    // setIsModalOpen(false);
   };
 
   const handleCancel = () => {
+    console.log("Cancel calleddd");
     setIsModalOpen(false);
   };
 

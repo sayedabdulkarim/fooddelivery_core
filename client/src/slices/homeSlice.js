@@ -28,53 +28,67 @@ const homeSlice = createSlice({
       console.log(action.payload, " payload");
       state.filterOption = action.payload;
     },
-    applyFilters: (state) => {
-      let filteredData = [...state.homePageData.data.allRestaurantList];
+    applyStoreFilters: (state) => {
+      if (
+        state.homePageData.data &&
+        Array.isArray(state.homePageData.data.allRestaurantsList)
+      ) {
+        // let filteredData = [...state.homePageData.data.allRestaurantsList];
+        let filteredData = state.homePageData.data.allRestaurantsList.slice();
 
-      // Apply delivery time filter
-      if (state.filterOption.deliveryTime.length > 0) {
-        filteredData = filteredData.filter((restaurant) =>
-          state.filterOption.deliveryTime.includes(restaurant.sla.deliveryTime)
-        );
-      }
-
-      // Apply cuisines filter
-      if (state.filterOption.cuisines.length > 0) {
-        filteredData = filteredData.filter((restaurant) =>
-          restaurant.cuisines.some((cuisine) =>
-            state.filterOption.cuisines.includes(cuisine)
-          )
-        );
-      }
-
-      // Apply other filters like rating, vegNonVeg, etc.
-      // Note: Add logic for each filter according to your requirements
-
-      // Apply sorting
-      switch (state.filterOption.sort) {
-        case "deliveryTime":
-          filteredData.sort((a, b) => a.sla.deliveryTime - b.sla.deliveryTime);
-          break;
-        case "rating":
-          filteredData.sort((a, b) => b.avgRating - a.avgRating);
-          break;
-        case "costLowToHigh":
-          filteredData.sort(
-            (a, b) => parseCost(a.costForTwo) - parseCost(b.costForTwo)
+        // Apply sorting
+        switch (state.filterOption.sort) {
+          case "Delivery Time":
+            filteredData.sort(
+              (a, b) => a.sla.deliveryTime - b.sla.deliveryTime
+            );
+            break;
+          case "Rating":
+            filteredData.sort((a, b) => b.avgRating - a.avgRating);
+            break;
+          case "Cost: Low to High":
+            filteredData.sort(
+              (a, b) => parseCost(a.costForTwo) - parseCost(b.costForTwo)
+            );
+            break;
+          case "Cost: High to Low":
+            filteredData.sort(
+              (a, b) => parseCost(b.costForTwo) - parseCost(a.costForTwo)
+            );
+            break;
+          case "Relevance ( Default )":
+            filteredData = state.homePageData.data.allRestaurantsList.slice();
+            break;
+          default:
+            break;
+          // Add default case if needed
+        }
+        // Apply delivery time filter
+        if (state.filterOption.deliveryTime.length > 0) {
+          filteredData = filteredData.filter((restaurant) =>
+            state.filterOption.deliveryTime.includes(
+              restaurant.sla.deliveryTime
+            )
           );
-          break;
-        case "costHighToLow":
-          filteredData.sort(
-            (a, b) => parseCost(b.costForTwo) - parseCost(a.costForTwo)
-          );
-          break;
-        default:
-          break;
-        // Add default case if needed
-      }
+        }
 
-      // Update filtered data
-      state.filteredHomePageData = filteredData;
+        // Apply cuisines filter
+        if (state.filterOption.cuisines.length > 0) {
+          filteredData = filteredData.filter((restaurant) =>
+            restaurant.cuisines.some((cuisine) =>
+              state.filterOption.cuisines.includes(cuisine)
+            )
+          );
+        }
+
+        // Update filtered data
+        state.filteredAllRestaurantData = filteredData;
+      } else {
+        console.log(JSON.parse(JSON.stringify(state)), "Complete State");
+
+        // Handle the case where allRestaurantList is not available or not an array
+        console.error("allRestaurantList is not available or not an array");
+      }
     },
 
     clearFilters: (state) => {
@@ -87,7 +101,7 @@ const homeSlice = createSlice({
   },
 });
 
-export const { setHomePageData, setStoreFilters, applyFilters } =
+export const { setHomePageData, setStoreFilters, applyStoreFilters } =
   homeSlice.actions;
 
 export default homeSlice.reducer;

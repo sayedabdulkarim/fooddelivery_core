@@ -9,7 +9,7 @@ const Sort = ({
   filters,
 }) => {
   const { sort } = filters;
-  const { homePageData, filterOption } = useSelector(
+  const { homePageData, filterOption, filteredAllRestaurantData } = useSelector(
     (state) => state.homeReducer
   );
 
@@ -18,7 +18,13 @@ const Sort = ({
       <div className="sc-eulNck gNHAci">
         <div
           className="sc-aXZVg hMjUKj"
-          onClick={() => console.log({ filterOption, filters })}
+          onClick={() =>
+            console.log({
+              filterOption,
+              filteredAllRestaurantData,
+              homePageData,
+            })
+          }
         >
           Sort By
         </div>
