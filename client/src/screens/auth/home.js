@@ -7,9 +7,9 @@ import { setHomePageData } from "../../slices/homeSlice";
 //comps
 import BestOffers from "../../components/auth/Home/BestOffers";
 import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
-
 //
 import HomeFilter from "../../components/modals/HomeFilter";
+import AllRestaurants from "../../components/auth/Home/AllRestaurants";
 
 const Home = () => {
   // Dispatch
@@ -33,6 +33,7 @@ const Home = () => {
       <HomeFilter />
       <BestOffers isLoadingHomePage={isLoadingHomePage} />
       <TopRestaurantSection isLoadingHomePage={isLoadingHomePage} />
+      <AllRestaurants isLoadingHomePage={isLoadingHomePage} />
     </div>
   );
 };

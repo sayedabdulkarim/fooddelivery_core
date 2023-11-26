@@ -186,7 +186,39 @@
 
   }
 
+  .home_all_restaurants {
+    .title_section {
+      display: block;
+    }
+    .TopRestaurantSection {
+      // border: 1px solid red;
 
+      .Imagesdiv {
+        display: block;
+
+        ul {
+          width: 100%;
+          overflow: unset;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          li {
+            width: 24%;
+            // border: 1px solid green;
+            .image_wrapper {
+              width: 100%;
+              height: 165px;
+              img {
+                // height: 100%;
+                width: 100%;
+              }
+            }
+          }
+
+        }
+      }
+
+    }
+  }
 
 }
 

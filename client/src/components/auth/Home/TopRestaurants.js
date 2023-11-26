@@ -5,6 +5,7 @@ import ShowSkeleton from "../../skeleton/homeSkeleton";
 import TopRestaurantOfferBadge from "../../svgs/TopRestaurantOfferBadge";
 //custom hooks
 import useImageCarousel from "../../../hooks/useImageCarousel"; // Update with the correct path
+import DividerComponent from "../../Divider";
 
 const TopRestaurantSection = ({ isLoadingHomePage }) => {
   // Redux state
@@ -123,6 +124,7 @@ const TopRestaurantSection = ({ isLoadingHomePage }) => {
               </ul>
             </div>
           </div>
+          <DividerComponent type="horizontal" />
         </>
       )}
     </div>

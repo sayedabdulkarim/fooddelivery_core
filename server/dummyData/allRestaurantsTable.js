@@ -12,21 +12,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.3,
     avgRatingString: "4.3",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "0030071ac2d8f8fb3ca435e4023e0fb7",
     costForTwo: "₹200 for two",
     cuisines: [
@@ -59,7 +45,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.6,
     avgRatingString: "4.6",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "27d43f8a2c1ca62704bb2dfd88d5b268",
     costForTwo: "₹250 for two",
     cuisines: ["Fast Food", "Snacks", "Indian", "Beverages"],
@@ -84,15 +70,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.4,
     avgRatingString: "4.4",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "t6c2esjgibs3nluwubvk",
     costForTwo: "₹600 for two",
     cuisines: [
@@ -141,7 +119,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "bwkz4uv3qyx33brboywf",
     costForTwo: "₹100 for two",
     cuisines: ["Snacks", "Beverages", "Bakery", "Desserts", "Fast Food"],
@@ -171,15 +149,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "bayh1ifkif253odm76x1",
     costForTwo: "₹399 for two",
     cuisines: ["Kerala", "South Indian", "Indian", "Chinese"],
@@ -208,15 +178,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "tmfsttzf2uxtufett2gu",
     costForTwo: "₹150 for two",
     cuisines: ["American", "Beverages", "Juices", "Snacks"],
@@ -245,7 +207,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "t6vrkkgnnphonerbkqmu",
     costForTwo: "₹150 for two",
     cuisines: ["South Indian", "Ice Cream", "Beverages"],
@@ -275,7 +237,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "8f0ff57e34acbded7099ba0207adb6c9",
     costForTwo: "₹250 for two",
     cuisines: ["North Indian", "Snacks", "Desserts"],
@@ -305,7 +267,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4,
     avgRatingString: "4.0",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "b39dbe0e90cd74c7af494d46bba888eb",
     costForTwo: "₹120 for two",
     cuisines: ["Snacks", "Fast Food"],
@@ -334,14 +296,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "b61937637b1066762d041c3f479e6ee6",
     costForTwo: "₹400 for two",
     cuisines: [
@@ -376,7 +331,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.4,
     avgRatingString: "4.4",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "cd832b6167eb9f88aeb1ccdebf38d942",
     costForTwo: "₹350 for two",
     cuisines: ["American", "Beverages", "Continental", "Desserts", "Italian"],
@@ -405,15 +360,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "af33b81798b11deba338e94b7585d348",
     costForTwo: "₹500 for two",
     cuisines: [
@@ -451,15 +398,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "4edcfc66d91018d69894941ebb3c8d16",
     costForTwo: "₹300 for two",
     cuisines: [
@@ -496,7 +435,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4,
     avgRatingString: "4.0",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "nhuh3xfmqhqhmytonsux",
     costForTwo: "₹400 for two",
     cuisines: ["Pizzas", "Italian", "Pastas", "Desserts"],
@@ -523,14 +462,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4,
     avgRatingString: "4.0",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "yhbw3q7cpqcdulli3m8c",
     costForTwo: "₹300 for two",
     cuisines: ["Maharashtrian", "Fast Food", "North Indian", "Beverages"],
@@ -560,15 +492,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.5,
     avgRatingString: "4.5",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "d96267738c19ec62acb5390e52faba41",
     costForTwo: "₹400 for two",
     cuisines: ["Beverages", "Bakery", "Continental"],
@@ -593,15 +517,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "xyabtge77bltvbdzzpqw",
     costForTwo: "₹250 for two",
     cuisines: ["Kerala", "Biryani", "South Indian", "Chinese"],
@@ -626,7 +542,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4,
     avgRatingString: "4.0",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "35af35bbe264c75d355c8e68959d1dcc",
     costForTwo: "₹300 for two",
     cuisines: ["Kerala", "Biryani", "Seafood", "South Indian"],
@@ -655,15 +571,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 3.9,
     avgRatingString: "3.9",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "6dcc0253613f704d1a2ef76dd2a3615a",
     costForTwo: "₹400 for two",
     cuisines: ["Snacks", "Indian", "Beverages"],
@@ -692,15 +600,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 3.9,
     avgRatingString: "3.9",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "a06715b3035935ddbf5d0a3a57900857",
     costForTwo: "₹300 for two",
     cuisines: ["Snacks", "Beverages"],
@@ -725,7 +625,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "a2c090bfa2b350174e3062a8201f6daf",
     costForTwo: "₹200 for two",
     cuisines: ["North Indian", "Chaat", "Beverages"],
@@ -751,14 +651,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.4,
     avgRatingString: "4.4",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "newg.png",
-          description: "Gourmet",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "d43174beec6460f7db06b147ef8d438c",
     costForTwo: "₹800 for two",
     cuisines: ["Bakery", "Desserts", "Beverages", "Continental", "Italian"],
@@ -788,15 +681,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {
-      textExtendedBadges: [
-        {
-          iconId: "guiltfree/GF_Logo_android_3x",
-          shortDescription: "options available",
-          fontColor: "#7E808C",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "hk39cgljd1cor1cynmpu",
     costForTwo: "₹99 for two",
     cuisines: ["Snacks", "Beverages"],
@@ -822,14 +707,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.3,
     avgRatingString: "4.3",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "newg.png",
-          description: "Gourmet",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "d6608954945e3221cc95ce0efa1dc581",
     costForTwo: "₹600 for two",
     cuisines: ["Cafe", "Healthy Food", "Beverages", "Desserts", "American"],
@@ -858,7 +736,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4,
     avgRatingString: "4.0",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "fbkihhbpn9dpcirfea2w",
     costForTwo: "₹300 for two",
     cuisines: ["Biryani", "Mughlai", "North Indian"],
@@ -887,7 +765,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "nkgmotigo3crhistijm4",
     costForTwo: "₹250 for two",
     cuisines: ["Kerala", "Seafood", "Biryani", "South Indian"],
@@ -916,14 +794,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.1,
     avgRatingString: "4.1",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-    },
+    badges: true,
     cloudinaryImageId: "cfuy40sao5rn3hgfjkok",
     costForTwo: "₹150 for two",
     cuisines: ["South Indian", "Beverages", "Chinese"],
@@ -953,7 +824,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.3,
     avgRatingString: "4.3",
-    badges: {},
+    badges: false,
     cloudinaryImageId: "0984acc0ed7b914206dbbcb90297becc",
     costForTwo: "₹300 for two",
     cuisines: [
@@ -991,7 +862,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 3.8,
     avgRatingString: "3.8",
-    badges: {},
+    badges: true,
     cloudinaryImageId: "umocqqvl4q3jxchqalfz",
     costForTwo: "₹400 for two",
     cuisines: ["Biryani", "Kebabs", "North Indian", "Hyderabadi"],
@@ -1021,14 +892,7 @@ export const allRestaurantsTable = [
     },
     avgRating: 4.2,
     avgRatingString: "4.2",
-    badges: {
-      imageBadges: [
-        {
-          imageId: "v1695133679/badges/Pure_Veg111.png",
-          description: "pureveg",
-        },
-      ],
-    },
+    badges: false,
     cloudinaryImageId: "pdkvqzq3hn28cvzfsnos",
     costForTwo: "₹200 for two",
     cuisines: ["South Indian", "North Indian", "Chinese"],
