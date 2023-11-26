@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import TopRestaurantOfferBadge from "../../svgs/TopRestaurantOfferBadge";
 import { RestaurantsRatingStar } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
+import FilterStrip from "./FilterStrip";
 
 const AllRestaurants = ({ isLoadingHomePage }) => {
   // Redux state
@@ -22,6 +23,8 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
           <div className="sc-aXZVg dtXMSY"></div>
         </div>
       </div>
+
+      <FilterStrip />
 
       <div className="TopRestaurantSection">
         <div className="Imagesdiv">

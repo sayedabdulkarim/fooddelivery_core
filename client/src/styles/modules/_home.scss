@@ -2,6 +2,7 @@
   // margin-top: 80px;
   // border: 2px solid red;
 
+  //best offers
   .home_best_offers {
 
     // margin-top: 100px;
@@ -245,6 +246,7 @@
 
   }
 
+  //all restaurants
   .home_all_restaurants {
     .title_section {
       display: block;
@@ -321,6 +323,58 @@
       }
 
     }
+  }
+
+  //filterStrip_container
+  .filterStrip_container {
+    
+    margin-top: 40px;
+
+    @media (min-width: 961px) {
+
+      .cJbckw {
+        margin: 0px calc(10% + 52px);
+      }
+
+    }
+
+    .Gwefh {
+      height: 44px;
+      width: 100%;
+
+      .fUaZa {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        height: 44px;
+        width: 100%;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+        overflow: auto;
+        
+        .hxCqch {
+          margin-right: 8px;
+          white-space: nowrap;
+
+          .gymrnd {
+              border-radius: 18px;
+              background-color: rgb(255, 255, 255);
+              border: 1px solid rgb(226, 226, 231);
+              padding: 9px 12px;
+              display: inline-grid;
+              width: max-content;
+              grid-auto-flow: column;
+              gap: 8px;
+              box-shadow: rgba(2, 6, 12, 0.04) 0px 2px 12px;
+              transition: all 100ms ease-in 0s;
+          }
+
+        }
+      
+      }
+
+    }
+
   }
 
 }
