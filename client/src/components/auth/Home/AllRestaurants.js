@@ -1,17 +1,44 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TopRestaurantOfferBadge from "../../svgs/TopRestaurantOfferBadge";
 import { RestaurantsRatingStar } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
 import FilterStrip from "./FilterStrip";
-
 const AllRestaurants = ({ isLoadingHomePage }) => {
   // Redux state
+  const { filteredAllRestaurantData } = useSelector(
+    (state) => state.homeReducer
+  );
   const homePageData = useSelector((state) => state.homeReducer.homePageData);
-  const allRestaurantsList = homePageData?.data?.allRestaurantsList || [];
+  const allRestaurantsList = useMemo(() => {
+    return homePageData?.data?.allRestaurantsList || [];
+  }, [homePageData?.data?.allRestaurantsList]);
 
+  const filteredRestaurantsList = useMemo(() => {
+    return filteredAllRestaurantData || [];
+  }, [filteredAllRestaurantData]);
+  //state
+  const [currentRestaurants, setCurrentRestaurants] = useState([]);
+
+  useEffect(() => {
+    const listToUse =
+      filteredRestaurantsList.length > 0
+        ? filteredRestaurantsList
+        : allRestaurantsList;
+    setCurrentRestaurants(listToUse);
+  }, [filteredRestaurantsList, allRestaurantsList, currentRestaurants]);
   return (
     <div className="home_best_offers home_all_restaurants">
+      <button
+        onClick={() =>
+          console.log(
+            { currentRestaurants, filteredAllRestaurantData },
+            " currentRestaurants"
+          )
+        }
+      >
+        currentRestaurants
+      </button>
       <div className="sc-esYiGF cfAhyi title_section">
         <div className="sc-fXSgeo FedBt">
           <h2
@@ -29,7 +56,7 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
       <div className="TopRestaurantSection">
         <div className="Imagesdiv">
           <ul>
-            {allRestaurantsList.map((item, index) => {
+            {currentRestaurants.map((item, index) => {
               const {
                 _id,
                 badges,

@@ -39,6 +39,7 @@ const FilterModal = ({
   const handleOk = () => {
     console.log("OK calleddd");
     dispatch(applyStoreFilters());
+    dispatch(setFilterModalOpen(false));
     // setIsModalOpen(false);
   };
 
