@@ -190,6 +190,7 @@
     .title_section {
       display: block;
     }
+
     .TopRestaurantSection {
       // border: 1px solid red;
 
@@ -201,12 +202,15 @@
           overflow: unset;
           flex-wrap: wrap;
           justify-content: space-between;
+
           li {
             width: 24%;
+
             // border: 1px solid green;
             .image_wrapper {
               width: 100%;
               height: 165px;
+
               img {
                 // height: 100%;
                 width: 100%;
@@ -223,6 +227,22 @@
 }
 
 .homeFilterModal {
+
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
   .kriBiB {
     height: 50vh;
 
@@ -326,13 +346,14 @@
             .biZBXM {
               display: flex;
               align-items: center;
-              
+
               .custom-checkbox {
-                > div {
+                >div {
                   display: flex;
                 }
-                
+
               }
+
               .MCNps {
                 margin-left: 10px;
               }
@@ -346,5 +367,63 @@
       }
 
     }
+  }
+
+  .ant-modal-footer {
+
+    .btn_container {
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .left_space {
+        flex: 1;
+      }
+      
+      .clear_btn {
+        margin-right: 10px;
+        background-color: unset;
+        box-shadow: unset;
+        position: relative;
+        overflow: hidden;
+        // width: 100%;
+        transition: transform 0.1s ease-in 0s;
+        padding: 8px;
+        border: 0px;
+        outline: none;
+
+        span {
+          -webkit-font-smoothing: antialiased;
+          // font-family: "Basis Grotesque Pro";
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 24px;
+          letter-spacing: -0.3px;
+          color: rgb(241, 87, 0);
+          overflow: hidden;
+          display: -webkit-box;
+          overflow-wrap: break-word;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+      
+        }
+      }
+      
+      .apply_btn {
+        width: 200px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        background-color: rgb(241, 87, 0);
+        transition: transform 0.1s ease-in 0s;
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 44px;
+        border: 0px;
+        border-radius: 12px;
+      }
+    }
+
   }
 }

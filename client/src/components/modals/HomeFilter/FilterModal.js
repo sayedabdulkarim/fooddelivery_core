@@ -42,6 +42,18 @@ const FilterModal = ({
     setIsModalOpen(false);
   };
 
+  const modalFooter = (
+    <div className="btn_container">
+      <div className="left_space"></div>
+      <Button onClick={() => console.log("clearreddd")} className="clear_btn">
+        <span>Clear Filters</span>
+      </Button>
+      <Button type="primary" onClick={handleOk} className="apply_btn">
+        Apply
+      </Button>
+    </div>
+  );
+
   return (
     <div>
       <Button type="primary" onClick={showModal}>
@@ -52,6 +64,7 @@ const FilterModal = ({
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        footer={modalFooter} // Set the custom footer
         className="homeFilterModal"
         width={800}
         centered
