@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  isFilterModalOpen: false,
   homePageData: [],
   name: "homeSlice",
   filterOption: {
@@ -20,6 +21,9 @@ const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
+    setFilterModalOpen: (state, action) => {
+      state.isFilterModalOpen = action.payload;
+    },
     setHomePageData: (state, action) => {
       state.homePageData = action.payload;
       state.filteredHomePageData = action.payload.data.allRestaurantList;
@@ -101,8 +105,12 @@ const homeSlice = createSlice({
   },
 });
 
-export const { setHomePageData, setStoreFilters, applyStoreFilters } =
-  homeSlice.actions;
+export const {
+  setFilterModalOpen,
+  setHomePageData,
+  setStoreFilters,
+  applyStoreFilters,
+} = homeSlice.actions;
 
 export default homeSlice.reducer;
 

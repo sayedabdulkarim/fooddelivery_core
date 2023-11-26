@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal } from "antd";
 import { homePageFilterOptionsObj } from "../../../utils/constant";
 //slice
-import { applyStoreFilters } from "../../../slices/homeSlice";
+import {
+  applyStoreFilters,
+  setFilterModalOpen,
+} from "../../../slices/homeSlice";
 //filter option vomponents
 import SortComponent from "./OptionsComponents/Sort";
 import DeliveryTimeComponent from "./OptionsComponents/DeliveryTime";
@@ -22,13 +25,15 @@ const FilterModal = ({
 }) => {
   //misc
   const dispatch = useDispatch();
+  const { isFilterModalOpen } = useSelector((state) => state.homeReducer);
 
   //state
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   //func
   const showModal = () => {
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
+    dispatch(setFilterModalOpen(true));
   };
 
   const handleOk = () => {
@@ -39,7 +44,8 @@ const FilterModal = ({
 
   const handleCancel = () => {
     console.log("Cancel calleddd");
-    setIsModalOpen(false);
+    // setIsModalOpen(false);
+    dispatch(setFilterModalOpen(false));
   };
 
   const modalFooter = (
@@ -56,12 +62,9 @@ const FilterModal = ({
 
   return (
     <div>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
       <Modal
         title="Filter"
-        open={isModalOpen}
+        open={isFilterModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={modalFooter} // Set the custom footer

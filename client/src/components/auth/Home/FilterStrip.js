@@ -1,10 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import {
   HomeFilterStripFilterIcon,
   HomeFilterStripSortIcon,
 } from "../../../utils/svgs";
+import { setFilterModalOpen } from "../../../slices/homeSlice";
 
 const FilterStrip = () => {
+  //misc
+  const dispatch = useDispatch();
+
+  const handleModalOpen = () => {
+    dispatch(setFilterModalOpen(true));
+  };
+
   return (
     <div
       id="container-grid-filter-sort"
@@ -14,7 +23,10 @@ const FilterStrip = () => {
         <div className="sc-eZYNyq Gwefh">
           <div className="sc-hHOBiw fUaZa">
             <div className="sc-ecPEgm hxCqch">
-              <div className="sc-gdyeKB gymrnd">
+              <div
+                className="sc-gdyeKB gymrnd"
+                onClick={() => handleModalOpen()}
+              >
                 <div className="sc-aXZVg bjdsYL">Filter</div>
                 <div className="sc-dSIIpw iOMfXs">
                   <HomeFilterStripFilterIcon />
