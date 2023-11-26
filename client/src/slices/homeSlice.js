@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { initialFilterOption } from "../utils/commonHelper";
 
 const initialState = {
   isFilterModalOpen: false,
@@ -97,9 +98,12 @@ const homeSlice = createSlice({
 
     clearFilters: (state) => {
       // Reset filters
-      state.filters = initialState.filters;
+      console.log();
+      // state.filterOption = initialState.filters;
+      state.filterOption = initialFilterOption;
       // Reset filtered data to original
-      state.filteredHomePageData = state.homePageData.data.allRestaurantList;
+      state.filteredAllRestaurantData =
+        state.homePageData.data.allRestaurantList;
     },
     // ... other reducers ...
   },
@@ -110,6 +114,7 @@ export const {
   setHomePageData,
   setStoreFilters,
   applyStoreFilters,
+  clearFilters,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

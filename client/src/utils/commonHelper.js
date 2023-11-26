@@ -55,4 +55,35 @@ const arrayToString = (arr) => {
   return firstPart + " and " + lastPart;
 };
 
-export { toggleTheme, handleShowAlert, scrollTo, arrayToString };
+const hasActiveFilters = (filterOption) => {
+  return (
+    filterOption.sort !== "" ||
+    filterOption.deliveryTime.length > 0 ||
+    filterOption.cuisines.length > 0 ||
+    filterOption.explore.length > 0 ||
+    filterOption.rating.length > 0 ||
+    filterOption.vegNonVeg !== null ||
+    filterOption.costForTwo.length > 0 ||
+    filterOption.offers !== null
+  );
+};
+
+const initialFilterOption = {
+  sort: "",
+  deliveryTime: [],
+  cuisines: [],
+  explore: [],
+  rating: [],
+  vegNonVeg: null,
+  costForTwo: [],
+  offers: null,
+};
+
+export {
+  toggleTheme,
+  handleShowAlert,
+  scrollTo,
+  arrayToString,
+  hasActiveFilters,
+  initialFilterOption,
+};

@@ -6,6 +6,7 @@ import { homePageFilterOptionsObj } from "../../../utils/constant";
 import {
   applyStoreFilters,
   setFilterModalOpen,
+  clearFilters,
 } from "../../../slices/homeSlice";
 //filter option vomponents
 import SortComponent from "./OptionsComponents/Sort";
@@ -16,26 +17,24 @@ import RatingsComponent from "./OptionsComponents/Ratings";
 import VegNonVegComponent from "./OptionsComponents/VegNonVeg";
 import CostForTwoComponent from "./OptionsComponents/CostForTwo";
 import OffersComponent from "./OptionsComponents/Offers";
+import { hasActiveFilters } from "../../../utils/commonHelper";
 
 const FilterModal = ({
   isActiveOption,
   handleSetIsActiveOption,
   handleFilterChange,
   filters,
+  handleClearFilter,
 }) => {
   //misc
   const dispatch = useDispatch();
-  const { isFilterModalOpen } = useSelector((state) => state.homeReducer);
+  const { isFilterModalOpen, filterOption } = useSelector(
+    (state) => state.homeReducer
+  );
 
   //state
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   //func
-  const showModal = () => {
-    // setIsModalOpen(true);
-    dispatch(setFilterModalOpen(true));
-  };
-
   const handleOk = () => {
     console.log("OK calleddd");
     dispatch(applyStoreFilters());
@@ -49,10 +48,14 @@ const FilterModal = ({
     dispatch(setFilterModalOpen(false));
   };
 
+  const handleClear = () => {
+    handleClearFilter();
+  };
+
   const modalFooter = (
     <div className="btn_container">
       <div className="left_space"></div>
-      <Button onClick={() => console.log("clearreddd")} className="clear_btn">
+      <Button onClick={() => handleClear()} className="clear_btn">
         <span>Clear Filters</span>
       </Button>
       <Button type="primary" onClick={handleOk} className="apply_btn">
@@ -68,7 +71,7 @@ const FilterModal = ({
         open={isFilterModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        footer={modalFooter} // Set the custom footer
+        footer={hasActiveFilters(filterOption) ? modalFooter : ""} // Set the custom footer
         className="homeFilterModal"
         width={800}
         centered

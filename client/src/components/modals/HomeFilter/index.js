@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import FilterModal from "./FilterModal";
-import { setStoreFilters } from "../../../slices/homeSlice";
+import { clearFilters, setStoreFilters } from "../../../slices/homeSlice";
+import { initialFilterOption } from "../../../utils/commonHelper";
 const HomeFilter = () => {
   //misc
   const dispatch = useDispatch();
@@ -51,6 +52,11 @@ const HomeFilter = () => {
     });
   };
 
+  const handleClearFilter = () => {
+    setFilters(initialFilterOption);
+    dispatch(clearFilters());
+  };
+
   //async
   useEffect(() => {
     console.log("calledddd");
@@ -66,6 +72,7 @@ const HomeFilter = () => {
         //
         filters={filters}
         handleFilterChange={handleFilterChange}
+        handleClearFilter={handleClearFilter}
       />
     </div>
   );
