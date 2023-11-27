@@ -1,29 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-// Custom hook for sticky behaviort to the top
-function useSticky(ref) {
+function useSticky(ref, hysteresis = 100) {
+  // hysteresis value can be adjusted
   const [isSticky, setSticky] = useState(false);
+  const originalPos = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setSticky(entry.intersectionRatio < 1);
-      },
-      { threshold: [1] }
-    );
-
-    const current = ref.current;
-
-    if (current) {
-      observer.observe(current);
+  const handleScroll = () => {
+    if (originalPos.current === null) {
+      originalPos.current =
+        ref.current.getBoundingClientRect().top + window.scrollY;
     }
 
+    const scrollY = window.scrollY;
+    // Add hysteresis here
+    if (scrollY > originalPos.current + hysteresis && !isSticky) {
+      setSticky(true);
+    } else if (scrollY < originalPos.current - hysteresis && isSticky) {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, [ref]);
+  }, [isSticky]); // Added isSticky as a dependency
 
   return isSticky;
 }

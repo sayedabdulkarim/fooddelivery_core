@@ -28,7 +28,7 @@ const FilterStrip = () => {
     dispatch(setIsFilterStripStick(isSticky));
   }, [isSticky, dispatch]);
 
-  console.log({ isSticky, isFilterStripStick }, " isStickyisSticky");
+  // console.log({ isSticky, isFilterStripStick }, " isStickyisSticky");
 
   return (
     <div
@@ -36,24 +36,12 @@ const FilterStrip = () => {
       className={`filterStrip_container sc-gVJvzJ cJbckw ${
         isFilterStripStick ? "makeSticky" : ""
       }`}
-      // className={`filterStrip_container sc-gVJvzJ cJbckw`}
       ref={stickyRef}
-      // {isSticky ? 'sticky' : ''}
     >
       <div>
         <div className="sc-eZYNyq Gwefh">
           <div className="sc-hHOBiw fUaZa">
             <div className="sc-ecPEgm hxCqch">
-              <span
-                onClick={() =>
-                  console.log(
-                    { isSticky, isFilterStripStick },
-                    " isStickyisSticky"
-                  )
-                }
-              >
-                Click
-              </span>
               <div
                 className="sc-gdyeKB gymrnd"
                 onClick={() => handleModalOpen()}
@@ -64,6 +52,7 @@ const FilterStrip = () => {
                 </div>
               </div>
             </div>
+
             <div className="sc-ecPEgm hxCqch">
               <div className="sc-dtInlm gyKZpB gymrnd">
                 <div className="sc-aXZVg eNiJHh">Sort By</div>
