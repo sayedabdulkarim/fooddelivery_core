@@ -114,14 +114,14 @@ const FilterStrip = () => {
             {/*  */}
             {/* {isFilterStripStick ? <h1>Hello</h1> : ""} */}
             {isFilterStripStick ? (
-              <div class="sc-bVHCgj hCdxdR search_box">
-                <div class="sc-gvZAcH gPsFGd">
+              <div className="sc-bVHCgj hCdxdR search_box">
+                <div className="sc-gvZAcH gPsFGd">
                   <button
                     type="button"
-                    class="sc-koXPp fvWCFk sc-kRRyDe dxLavW"
+                    className="sc-koXPp fvWCFk sc-kRRyDe dxLavW"
                   >
-                    <div class="sc-aXZVg bbEbJr sc-bmzYkS gcOyzI">
-                      <div class="sc-aXZVg gvILiC">
+                    <div className="sc-aXZVg bbEbJr sc-bmzYkS gcOyzI">
+                      <div className="sc-aXZVg gvILiC">
                         Search for restaurant and food
                       </div>
                     </div>
