@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { initialFilterOption } from "../utils/commonHelper";
 
 const initialState = {
+  isFilterStripStick: false,
   isFilterModalOpen: false,
   homePageData: [],
   name: "homeSlice",
@@ -22,6 +23,9 @@ const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
+    setIsFilterStripStick: (state, action) => {
+      state.isFilterStripStick = action.payload;
+    },
     setFilterModalOpen: (state, action) => {
       state.isFilterModalOpen = action.payload;
     },
@@ -99,13 +103,11 @@ const homeSlice = createSlice({
     clearFilters: (state) => {
       // Reset filters
       console.log();
-      // state.filterOption = initialState.filters;
       state.filterOption = initialFilterOption;
       // Reset filtered data to original
       state.filteredAllRestaurantData =
         state.homePageData.data.allRestaurantList;
     },
-    // ... other reducers ...
   },
 });
 
@@ -115,6 +117,7 @@ export const {
   setStoreFilters,
   applyStoreFilters,
   clearFilters,
+  setIsFilterStripStick,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

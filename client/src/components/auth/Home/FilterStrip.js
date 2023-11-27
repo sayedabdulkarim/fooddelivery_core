@@ -1,28 +1,59 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useSticky from "../../../hooks/useSticky"; // Import the custom hook
+
 import {
   HomeFilterStripFilterIcon,
   HomeFilterStripSortIcon,
 } from "../../../utils/svgs";
-import { setFilterModalOpen } from "../../../slices/homeSlice";
+import {
+  setFilterModalOpen,
+  setIsFilterStripStick,
+} from "../../../slices/homeSlice";
 
 const FilterStrip = () => {
+  const stickyRef = useRef(null);
+  const isSticky = useSticky(stickyRef);
+
   //misc
   const dispatch = useDispatch();
-
+  const { isFilterStripStick } = useSelector((state) => state.homeReducer);
+  //func
   const handleModalOpen = () => {
     dispatch(setFilterModalOpen(true));
   };
 
+  //async
+  useEffect(() => {
+    dispatch(setIsFilterStripStick(isSticky));
+  }, [isSticky, dispatch]);
+
+  console.log({ isSticky, isFilterStripStick }, " isStickyisSticky");
+
   return (
     <div
       id="container-grid-filter-sort"
-      className="filterStrip_container sc-gVJvzJ cJbckw"
+      className={`filterStrip_container sc-gVJvzJ cJbckw ${
+        isFilterStripStick ? "makeSticky" : ""
+      }`}
+      // className={`filterStrip_container sc-gVJvzJ cJbckw`}
+      ref={stickyRef}
+      // {isSticky ? 'sticky' : ''}
     >
       <div>
         <div className="sc-eZYNyq Gwefh">
           <div className="sc-hHOBiw fUaZa">
             <div className="sc-ecPEgm hxCqch">
+              <span
+                onClick={() =>
+                  console.log(
+                    { isSticky, isFilterStripStick },
+                    " isStickyisSticky"
+                  )
+                }
+              >
+                Click
+              </span>
               <div
                 className="sc-gdyeKB gymrnd"
                 onClick={() => handleModalOpen()}
