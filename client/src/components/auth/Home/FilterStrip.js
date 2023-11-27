@@ -4,6 +4,7 @@ import useSticky from "../../../hooks/useSticky"; // Import the custom hook
 
 import {
   HomeFilterStripFilterIcon,
+  HomeFilterStripSearchIcon,
   HomeFilterStripSortIcon,
 } from "../../../utils/svgs";
 import {
@@ -28,7 +29,7 @@ const FilterStrip = () => {
     dispatch(setIsFilterStripStick(isSticky));
   }, [isSticky, dispatch]);
 
-  // console.log({ isSticky, isFilterStripStick }, " isStickyisSticky");
+  console.log({ isSticky, isFilterStripStick }, " isStickyisSticky");
 
   return (
     <div
@@ -110,6 +111,29 @@ const FilterStrip = () => {
                 </div>
               </div>
             </div>
+            {/*  */}
+            {/* {isFilterStripStick ? <h1>Hello</h1> : ""} */}
+            {isFilterStripStick ? (
+              <div class="sc-bVHCgj hCdxdR search_box">
+                <div class="sc-gvZAcH gPsFGd">
+                  <button
+                    type="button"
+                    class="sc-koXPp fvWCFk sc-kRRyDe dxLavW"
+                  >
+                    <div class="sc-aXZVg bbEbJr sc-bmzYkS gcOyzI">
+                      <div class="sc-aXZVg gvILiC">
+                        Search for restaurant and food
+                      </div>
+                    </div>
+                  </button>
+                  <div>
+                    <HomeFilterStripSearchIcon />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div></div>
