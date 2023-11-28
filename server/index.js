@@ -8,6 +8,7 @@ import connectDb from "./config/db.js";
 //routes
 import userRoutes from "./routes/userRoutes.js";
 import homeRoutes from "./routes/homeRoutes.js";
+import restaurantRoutes from "./routes/restaurantRoute.js";
 
 const port = process.env.PORT || 5000;
 
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use("/api/users", userRoutes);
 //home
 app.use("/api/users", homeRoutes);
+app.use("/api/users", restaurantRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

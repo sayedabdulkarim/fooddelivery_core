@@ -18,7 +18,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   //apis
-  const [logOut, { isLoading }] = useLogoutMutation();
+  const [logOut] = useLogoutMutation();
 
   //func
   const handleLogout = async (e) => {
