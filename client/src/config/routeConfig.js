@@ -11,7 +11,7 @@ import PublicRoute from "../components/PublicRoute";
 //auth
 import HomeScreen from "../screens/auth/HomeScreen";
 import HelpScreen from "../screens/auth/HelpScreen";
-import RestaurantDetailsScreen from "../screens/auth/RestaurantDetails";
+import RestaurantDetailsScreen from "../screens/auth/RestaurantDetailsScreen";
 //unauth
 import UnAuthScreen from "../screens/unauth";
 
