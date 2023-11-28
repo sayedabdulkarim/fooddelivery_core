@@ -25,11 +25,6 @@ const RestaurantDetails = () => {
 
   return (
     <div className="nDVxx restaurant_details_section">
-      {/* <button
-          onClick={() => console.log(restaurantDetails, " restaurantDetails")}
-        >
-          CLick
-        </button> */}
       <div className="OF_5P restaurant_details_container">
         {/* breadcrumb_sec */}
         <div className="_2p-Tc _3jpiZ breadcrumb_container">
