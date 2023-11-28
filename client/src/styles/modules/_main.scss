@@ -1,5 +1,6 @@
 .main_wrapper {
-  margin-top: 100px;
+  // margin-top: 100px;
+  margin-top: 80px;
 
 
   .header_myAccount {
@@ -81,6 +82,14 @@
     }
 
 
+  }
+
+  .d-none {
+    display: none;
+  }
+
+  .d-block {
+    display: block;
   }
 
 

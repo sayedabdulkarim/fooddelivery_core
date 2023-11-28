@@ -33,7 +33,7 @@ const HelpScreen = () => {
 
   return (
     <div className="help_page_container">
-      <div className={"Helptop"}>
+      <div className={"Helptop fXbKft"}>
         <div className={"Helptoptext"}>
           <div>Help & Support</div>
           <p>Let's take a step ahead and help you better.</p>
@@ -44,21 +44,17 @@ const HelpScreen = () => {
             <div className={"AccordianBtn"}>
               <ul>
                 <li onClick={() => setActiveSection("orderHelp")}>
-                  <NavLink to="/helppage" className={"Nav_link"}>
-                    Help with Orders
-                  </NavLink>
+                  Help with Orders
                 </li>
                 <li onClick={() => setActiveSection("generalissues")}>
-                  <NavLink to="/helppage">General Issues</NavLink>
+                  General Issues
                 </li>
                 <li onClick={() => setActiveSection("legalterms")}>
-                  <NavLink to="/helppage">Legal, Term & Conditions</NavLink>
+                  Legal, Term & Conditions
                 </li>
-                <li onClick={() => setActiveSection("faq")}>
-                  <NavLink to="/helppage">FAQs</NavLink>
-                </li>
+                <li onClick={() => setActiveSection("faq")}>FAQs</li>
                 <li onClick={() => setActiveSection("super")}>
-                  <NavLink to="helppage">Our Super FAQs</NavLink>
+                  Our Super FAQs
                 </li>
               </ul>
             </div>
