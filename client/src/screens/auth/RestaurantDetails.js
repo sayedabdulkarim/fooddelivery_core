@@ -3,40 +3,15 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetRestaurantDetailsByIdQuery } from "../../apiSlices/restaurantDetailsSlice";
 import { setRestaurantDetailsById } from "../../slices/restaurantSlice";
-import { Breadcrumb } from "antd";
-
-//
-
-const App = () => (
-  <Breadcrumb
-    items={[
-      {
-        title: "Home",
-      },
-      {
-        title: <a href="">Application Center</a>,
-      },
-      {
-        title: <a href="">Application List</a>,
-      },
-      {
-        title: "An Application",
-      },
-    ]}
-  />
-);
 
 const RestaurantDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-
   //queries n mutation
   const {
     data: getRestaurantDetailById,
     isLoading: isLoadingRestaurantDetail,
-    //   } = useGetRestaurantDetailsByIdQuery("6562b871e80e73e2cb0e696e");
   } = useGetRestaurantDetailsByIdQuery(id);
-
   // Redux state
   const { restaurantDetails } = useSelector(
     (state) => state.restaurantDetailReducer
