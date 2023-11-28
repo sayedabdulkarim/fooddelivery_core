@@ -26,7 +26,10 @@ export const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<HomeScreen />} />
         <Route path="support" element={<HelpScreen />} />
-        <Route path="/restaurant/:id" element={<RestaurantDetailsScreen />} />
+        <Route
+          path="/restaurant/:name/:id"
+          element={<RestaurantDetailsScreen />}
+        />
       </Route>
       <Route path="*" element={<h1>404 Component</h1>} />
     </Route>

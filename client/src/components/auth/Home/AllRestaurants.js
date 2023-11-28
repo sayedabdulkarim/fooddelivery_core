@@ -1,10 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import TopRestaurantOfferBadge from "../../svgs/TopRestaurantOfferBadge";
 import { RestaurantsRatingStar } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
 import FilterStrip from "./FilterStrip";
 const AllRestaurants = ({ isLoadingHomePage }) => {
+  //misc
+  const navigate = useNavigate();
   // Redux state
   const { filteredAllRestaurantData } = useSelector(
     (state) => state.homeReducer
@@ -19,7 +22,12 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
   }, [filteredAllRestaurantData]);
   //state
   const [currentRestaurants, setCurrentRestaurants] = useState([]);
+  //func
+  const handleNavigation = (name, id) => {
+    navigate(`/restaurant/${name}/${id}`);
+  };
 
+  //async
   useEffect(() => {
     const listToUse =
       filteredRestaurantsList.length > 0
@@ -60,7 +68,7 @@ const AllRestaurants = ({ isLoadingHomePage }) => {
               } = item;
 
               return (
-                <li key={_id}>
+                <li key={_id} onClick={() => handleNavigation(name, _id)}>
                   {<TopRestaurantOfferBadge isShow={badges} />}
                   <div className="image_wrapper">
                     <img
