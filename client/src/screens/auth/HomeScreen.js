@@ -10,6 +10,7 @@ import TopRestaurantSection from "../../components/auth/Home/TopRestaurants";
 //
 import HomeFilter from "../../components/modals/HomeFilter";
 import AllRestaurants from "../../components/auth/Home/AllRestaurants";
+import ProgressBar from "../../components/ProgressBar";
 
 const Home = () => {
   // Dispatch
@@ -30,6 +31,7 @@ const Home = () => {
 
   return (
     <div className="home_container fXbKft">
+      <ProgressBar onStart={isLoadingHomePage} onEnd={!isLoadingHomePage} />
       <HomeFilter />
       <BestOffers isLoadingHomePage={isLoadingHomePage} />
       <TopRestaurantSection isLoadingHomePage={isLoadingHomePage} />
