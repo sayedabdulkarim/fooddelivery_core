@@ -1,7 +1,17 @@
 import React from "react";
 import { MoneyLogo, RestaurantTimeCostLogo } from "../../../utils/svgs";
+import { arrayToString } from "../../../utils/commonHelper";
 
-const RestaurantDetailsTopComponent = () => {
+const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
+  const {
+    name,
+    cuisines,
+    areaName,
+    costForTwo,
+    sla,
+    avgRating,
+    totalRatingsString,
+  } = restaurantDetails;
   return (
     <>
       {/* breadcrumb_sec */}
@@ -23,7 +33,7 @@ const RestaurantDetailsTopComponent = () => {
             </a>
           </span>
           <span className="_1yRfx"></span>
-          <span className="kpkwa">Rolls on Wheels</span>
+          <span className="kpkwa">{name}</span>
         </div>
 
         <div className="right_section">
@@ -54,25 +64,25 @@ const RestaurantDetailsTopComponent = () => {
           {/*  */}
           <div className="left_section">
             <div aria-hidden="true" className="name_section">
-              <p className="title">Rolls on Wheels</p>
-              <p className="cusines">Fast Food, North Indian</p>
+              <p className="title">{name}</p>
+              <p className="cusines">{arrayToString(cuisines)}</p>
             </div>
             <div className="distance_section" aria-label="">
               <p className="address_area" aria-hidden="true">
-                Geddalahalli,{" "}
+                {areaName},{" "}
               </p>
               <p className="address_lastMile" aria-hidden="true">
-                0.1 km
+                {sla?.lastMileTravel} km
               </p>
             </div>
           </div>
           {/*  */}
           <div className="right_section">
             <span className="avgRating" aria-hidden="true">
-              <span className="icon-star"></span> <span>4.0</span>{" "}
+              <span className="icon-star"></span> <span>{avgRating}</span>{" "}
             </span>
             <span className="totalRatings" aria-hidden="true">
-              500+ ratings
+              {totalRatingsString} ratings
             </span>
           </div>
         </div>
@@ -84,7 +94,7 @@ const RestaurantDetailsTopComponent = () => {
             aria-hidden="true"
           />
           <span className="message_text" aria-hidden="true">
-            0.1 kms | ₹34 Delivery fee will apply
+            {sla.lastMileTravel} kms | ₹34 Delivery fee will apply
           </span>
         </div>
 
@@ -95,11 +105,11 @@ const RestaurantDetailsTopComponent = () => {
           <ul className="timeCost_wrapper">
             <li>
               <RestaurantTimeCostLogo />
-              <span>27 MINS</span>
+              <span>{sla?.deliveryTime} MINS</span>
             </li>
             <li>
               <MoneyLogo />
-              <span>₹300 for two</span>
+              <span>{costForTwo}</span>
             </li>
           </ul>
           {/* time cost */}

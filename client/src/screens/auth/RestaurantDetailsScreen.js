@@ -31,7 +31,7 @@ const RestaurantDetails = () => {
         <button
           onClick={() =>
             console.log(
-              restaurantDetails?.data?.menu?.menu,
+              restaurantDetails?.data,
               "restaurantDetailsrestaurantDetails"
             )
           }
@@ -39,7 +39,9 @@ const RestaurantDetails = () => {
           restaurantDetails
         </button>
         {/* top_section */}
-        <RestaurantDetailsTopComponent />
+        <RestaurantDetailsTopComponent
+          restaurantDetails={restaurantDetails?.data}
+        />
         {/* bottom_section */}
         <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />;
       </div>
