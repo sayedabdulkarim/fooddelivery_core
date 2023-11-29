@@ -7,6 +7,7 @@ import { setRestaurantDetailsById } from "../../slices/restaurantSlice";
 import RestaurantDetailsTopComponent from "../../components/auth/RestaurantDetails/RestaurantDetailsTopComponent";
 import { Accordion } from "../../components/Accordion";
 import ProgressBar from "../../components/ProgressBar";
+import { setMenuBottomSlice } from "../../slices/menuBottomSlice";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
@@ -26,6 +27,12 @@ const RestaurantDetails = () => {
       dispatch(setRestaurantDetailsById(getRestaurantDetailById));
     }
   }, [getRestaurantDetailById, dispatch]);
+
+  useEffect(() => {
+    dispatch(setMenuBottomSlice(true));
+
+    return () => dispatch(setMenuBottomSlice(false));
+  }, [dispatch]);
 
   return (
     <div className="nDVxx restaurant_details_section">

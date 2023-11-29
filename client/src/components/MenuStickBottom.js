@@ -1,6 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const MenuStickBottom = () => {
+  const { isShowBottomStickMenu } = useSelector(
+    (state) => state.menuBottomSlice
+  );
+
+  if (!isShowBottomStickMenu) {
+    return "";
+  }
+
   return (
     <div className="menuStickyBottom">
       <div className="fabButton">

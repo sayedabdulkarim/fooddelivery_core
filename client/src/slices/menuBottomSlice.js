@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isShowMenu: false,
+  isShowBottomStickMenu: false,
 };
 
 const menuBottomSlice = createSlice({
@@ -9,7 +9,7 @@ const menuBottomSlice = createSlice({
   initialState,
   reducers: {
     setMenuBottomSlice: (state, action) => {
-      state.isShowMenu = action.payload;
+      state.isShowBottomStickMenu = action.payload;
     },
   },
 });
