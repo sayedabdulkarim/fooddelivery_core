@@ -1,44 +1,44 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-// Accordion Content Component
-const AccordionContent = ({ menus }) => {
+// Single Item Component
+const MenuItem = ({ item }) => {
+  // You can add more markup or style based on your design needs
   return (
-    <ul>
-      {menus.map((menu, index) => (
-        <li key={index}>{menu.name}</li>
-      ))}
-    </ul>
+    <div>
+      <h4>{item.name}</h4>
+      <p>{item.description}</p>
+      {/* You can also display price, image, etc. */}
+    </div>
   );
 };
 
-// Accordion Section Component
-const AccordionSection = ({ title, count, menus }) => {
+// Accordion for Each Category
+const MenuCategoryAccordion = ({ category }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
       <button onClick={() => setIsOpen(!isOpen)}>
-        {title} ({count}) {isOpen ? "▲" : "▼"}
+        {category.categoryName} {isOpen ? "▲" : "▼"}
       </button>
-      {isOpen && <AccordionContent menus={menus} />}
+      {isOpen && (
+        <div>
+          {category.items.map((item) => (
+            <MenuItem key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-// Accordion Component
-const Accordion = ({ items }) => {
+// Main Accordion Component
+export const Accordion = ({ categories }) => {
   return (
     <div>
-      {items.map((item, index) => (
-        <AccordionSection
-          key={index}
-          title={item.title}
-          count={item.menus.length}
-          menus={item.menus}
-        />
+      {categories.map((category) => (
+        <MenuCategoryAccordion key={category._id} category={category} />
       ))}
     </div>
   );
 };
-
-export { Accordion };

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useGetRestaurantDetailsByIdQuery } from "../../apiSlices/restaurantDetailsSlice";
 import { setRestaurantDetailsById } from "../../slices/restaurantSlice";
 import RestaurantDetailsTopComponent from "../../components/auth/RestaurantDetails/RestaurantDetailsTopComponent";
+import { Accordion } from "../../components/Accordion";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
@@ -27,9 +28,20 @@ const RestaurantDetails = () => {
   return (
     <div className="nDVxx restaurant_details_section">
       <div className="OF_5P restaurant_details_container">
+        <button
+          onClick={() =>
+            console.log(
+              restaurantDetails?.data?.menu?.menu,
+              "restaurantDetailsrestaurantDetails"
+            )
+          }
+        >
+          restaurantDetails
+        </button>
         {/* top_section */}
         <RestaurantDetailsTopComponent />
         {/* bottom_section */}
+        <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />;
       </div>
     </div>
   );
