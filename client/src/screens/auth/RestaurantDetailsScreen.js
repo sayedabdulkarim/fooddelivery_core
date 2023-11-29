@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetRestaurantDetailsByIdQuery } from "../../apiSlices/restaurantDetailsSlice";
@@ -46,7 +47,7 @@ const RestaurantDetails = () => {
         </button> */}
         {/* top_section */}
         {isLoadingRestaurantDetail ? (
-          <h1>...Loading</h1>
+          <Skeleton active paragraph={{ rows: 20 }} />
         ) : (
           <>
             <RestaurantDetailsTopComponent

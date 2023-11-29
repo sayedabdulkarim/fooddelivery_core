@@ -66,7 +66,7 @@ const MenuItem = ({ item }) => {
 
 // Accordion for Each Category
 const MenuCategoryAccordion = ({ category }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="accordion_item">
