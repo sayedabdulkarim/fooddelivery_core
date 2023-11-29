@@ -1,7 +1,7 @@
 .main_wrapper {
   // margin-top: 100px;
   margin-top: 80px;
-
+  // position: relative;
 
   .header_myAccount {
   }
@@ -92,6 +92,135 @@
     display: block;
   }
 
+
+  .menuStickyBottom {
+
+    width: 800px;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+
+    .fabButton {
+      transform: translateZ(0);
+      height: 64px;
+      z-index: 1;
+      transition: transform .25s ease;
+      will-change: transform;
+      // -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      contain: content;
+
+      .MenuFabButton {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 40px;
+        pointer-events: auto;
+
+        .FabButton_container {
+          height: 40px;
+          width: 150px;
+          border-radius: 30px;
+          background: #5d8ed5;
+          color: #fff;
+          text-align: center;
+          box-shadow: 0 5px 10px 0 rgba(0,0,0,.3), 0 2px 1px 0 rgba(93,141,213,.2);
+          padding: 14px;
+          font-weight: 600;
+          font-size: .93rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-transform: uppercase;
+          will-change: transform;
+          backface-visibility: hidden;
+          transform: scaleX(1);
+          transition: transform .25s ease-in-out;
+
+          .icon-menu {
+            margin-right: 6px;
+            font-size: .86rem;
+            font-family: icomoon;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+          }
+
+        }
+
+      }
+
+    }
+
+    .viewCart {
+      transform: translateZ(0);
+      height: 48px;
+      overflow: hidden;
+      z-index: 3;
+      transition: transform .25s ease;
+      will-change: transform;
+      backface-visibility: hidden;
+      transform: translate3d(0,100%,0);
+      contain: content;
+      position: relative;
+
+      > button {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+
+        .styles_content {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0 16px;
+
+          .styles_main {
+            flex: 1;
+            flex-direction: column;
+            line-height: 1.2;
+            .styles_mainTitle{ 
+              font-weight: 600;
+              font-size: 1rem;
+              display: block;
+            }
+            .styles_mainSubTitle {
+              font-size: .93rem;
+              display: block;
+            }
+          }
+
+          .styles_viewCart {
+            text-transform: uppercase;
+            font-size: 1.07rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+
+            // > span {}
+
+            > img {
+              margin-left: 5px;
+            }
+          }
+
+        }
+
+      }
+
+    }
+
+  }
 
 
 }
