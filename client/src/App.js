@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Footer from "./components/footer";
 import { useSelector } from "react-redux";
 import { useMessage } from "./hooks/useAlert.js";
-import MenuStickBottom from "./components/MenuStickBottom.js";
 
 const App = () => {
   const { showMessage } = useMessage();
@@ -30,7 +29,6 @@ const App = () => {
   return (
     <div className="main_wrapper">
       <Outlet />
-      <MenuStickBottom />
       <Footer />
     </div>
   );

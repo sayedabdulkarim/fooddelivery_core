@@ -8,6 +8,7 @@ import RestaurantDetailsTopComponent from "../../components/auth/RestaurantDetai
 import { Accordion } from "../../components/Accordion";
 import ProgressBar from "../../components/ProgressBar";
 import { setMenuBottomSlice } from "../../slices/menuBottomSlice";
+import MenuStickBottom from "../../components/MenuStickBottom";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
@@ -62,7 +63,9 @@ const RestaurantDetails = () => {
             />
             {/* bottom_section */}
             <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />
-            ;
+
+            {/* menu stick bottom */}
+            <MenuStickBottom />
           </>
         )}
       </div>

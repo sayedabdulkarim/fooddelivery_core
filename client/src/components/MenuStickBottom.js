@@ -6,9 +6,9 @@ const MenuStickBottom = () => {
     (state) => state.menuBottomSlice
   );
 
-  if (!isShowBottomStickMenu) {
-    return "";
-  }
+  // if (!isShowBottomStickMenu) {
+  //   return "";
+  // }
 
   return (
     <div className="menuStickyBottom">
