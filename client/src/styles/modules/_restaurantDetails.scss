@@ -12,7 +12,25 @@
             max-width: none;
             justify-content: space-between;
 
-            .left_section {}
+            .left_section {
+                .hotelName {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: .93rem;
+                    color: #3d4152;
+                    font-weight: 600;
+                }
+                .duration {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: .78rem;
+                    color: #7e808c;
+                    text-transform: lowercase;
+                    margin-top: 2px;
+                }
+            }
 
             .right_section {
                 button {
@@ -23,11 +41,6 @@
             }
         }
 
-    //     top: 0px;
-    // background-color: green;
-    // position: sticky;
-    // height: 80px;
-    // z-index: 100;
         .restaurant_details_header_sticky {
             height: 52px;
             background-color: #fff;

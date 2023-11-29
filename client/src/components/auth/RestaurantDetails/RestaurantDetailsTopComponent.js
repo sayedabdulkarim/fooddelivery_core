@@ -38,27 +38,39 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
         className={`_2p-Tc _3jpiZ breadcrumb_container ${
           isSticky ? "restaurant_details_header_sticky" : ""
         }`}
-        // style={{ backgroundColor: isSticky ? "red" : "green" }}
         ref={stickyRef}
       >
         <div className="left_section">
-          <span>
-            <a href="https://www.swiggy.com/" data-url="/" className="kpkwa">
-              <span className="_3duMr">Home</span>
-            </a>
-          </span>
-          <span className="_1yRfx"></span>
-          <span>
-            <a
-              href="https://www.swiggy.com/city/bangalore"
-              data-url="/city/bangalore"
-              className="kpkwa"
-            >
-              <span className="_3duMr">Bangalore</span>
-            </a>
-          </span>
-          <span className="_1yRfx"></span>
-          <span className="kpkwa">{name ?? ""}</span>
+          {isSticky ? (
+            <>
+              <h5 className="hotelName">{name}</h5>
+              <span className="duration">{sla?.deliveryTime} mins</span>
+            </>
+          ) : (
+            <>
+              <span>
+                <a
+                  href="https://www.swiggy.com/"
+                  data-url="/"
+                  className="kpkwa"
+                >
+                  <span className="_3duMr">Home</span>
+                </a>
+              </span>
+              <span className="_1yRfx"></span>
+              <span>
+                <a
+                  href="https://www.swiggy.com/city/bangalore"
+                  data-url="/city/bangalore"
+                  className="kpkwa"
+                >
+                  <span className="_3duMr">Bangalore</span>
+                </a>
+              </span>
+              <span className="_1yRfx"></span>
+              <span className="kpkwa">{name ?? ""}</span>
+            </>
+          )}
         </div>
 
         <div className="right_section">
