@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logOutUser } from "../slices/authSlice";
 import { useLogoutMutation } from "../apiSlices/userApiSlice";
 import { Link, useNavigate } from "react-router-dom";
@@ -17,6 +17,10 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { isRestaurantDetailHeaderStick } = useSelector(
+    (state) => state.restaurantDetailReducer
+  );
+
   //apis
   const [logOut] = useLogoutMutation();
 
@@ -33,7 +37,10 @@ const Header = () => {
   };
 
   return (
-    <header className="_76q0O">
+    <header
+      className="_76q0O"
+      style={{ display: isRestaurantDetailHeaderStick ? "none" : "block" }}
+    >
       <div className="global-nav">
         <div className="_1EuBh">
           <Link to="/" className="d9y3g" title="Swiggy">

@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import useSticky from "../../../hooks/useSticky";
 import { MoneyLogo, RestaurantTimeCostLogo } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
+import { setRestaurantDetailsHeaderStick } from "../../../slices/restaurantSlice";
 
 const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
+  //misc
+  const dispatch = useDispatch();
+  const stickyRef = useRef(null);
+  const isSticky = useSticky(stickyRef);
+
+  //async
+  useEffect(() => {
+    dispatch(setRestaurantDetailsHeaderStick(isSticky));
+  }, [isSticky, dispatch]);
+
   if (!restaurantDetails) {
     // Render a loading indicator or null if the data is not yet available
     return <div>Loading...</div>; // Or return null;
@@ -17,10 +30,17 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
     avgRating,
     totalRatingsString,
   } = restaurantDetails;
+
   return (
     <>
       {/* breadcrumb_sec */}
-      <div className="_2p-Tc _3jpiZ breadcrumb_container">
+      <div
+        className={`_2p-Tc _3jpiZ breadcrumb_container ${
+          isSticky ? "restaurant_details_header_sticky" : ""
+        }`}
+        // style={{ backgroundColor: isSticky ? "red" : "green" }}
+        ref={stickyRef}
+      >
         <div className="left_section">
           <span>
             <a href="https://www.swiggy.com/" data-url="/" className="kpkwa">

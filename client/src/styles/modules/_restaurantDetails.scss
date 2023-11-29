@@ -23,6 +23,30 @@
             }
         }
 
+    //     top: 0px;
+    // background-color: green;
+    // position: sticky;
+    // height: 80px;
+    // z-index: 100;
+        .restaurant_details_header_sticky {
+            height: 52px;
+            background-color: #fff;
+            color: #3d4152;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 6;
+            overflow: hidden;
+            contain: strict;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid transparent;
+            padding-right: 4px;
+            margin-top: -52px;
+            border-color: rgba(40,44,63,.1);
+        }
+
         .prod_details {
 
             .dotted_separator {
