@@ -39,11 +39,18 @@ const RestaurantDetails = () => {
           restaurantDetails
         </button>
         {/* top_section */}
-        <RestaurantDetailsTopComponent
-          restaurantDetails={restaurantDetails?.data}
-        />
-        {/* bottom_section */}
-        <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />;
+        {isLoadingRestaurantDetail ? (
+          <h1>...Loading</h1>
+        ) : (
+          <>
+            <RestaurantDetailsTopComponent
+              restaurantDetails={restaurantDetails?.data}
+            />
+            {/* bottom_section */}
+            <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />
+            ;
+          </>
+        )}
       </div>
     </div>
   );

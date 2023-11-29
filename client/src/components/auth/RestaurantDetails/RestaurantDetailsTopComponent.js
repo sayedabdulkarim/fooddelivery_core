@@ -3,6 +3,11 @@ import { MoneyLogo, RestaurantTimeCostLogo } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
 
 const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
+  if (!restaurantDetails) {
+    // Render a loading indicator or null if the data is not yet available
+    return <div>Loading...</div>; // Or return null;
+  }
+
   const {
     name,
     cuisines,
@@ -33,7 +38,7 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
             </a>
           </span>
           <span className="_1yRfx"></span>
-          <span className="kpkwa">{name}</span>
+          <span className="kpkwa">{name ?? ""}</span>
         </div>
 
         <div className="right_section">
@@ -64,12 +69,12 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
           {/*  */}
           <div className="left_section">
             <div aria-hidden="true" className="name_section">
-              <p className="title">{name}</p>
-              <p className="cusines">{arrayToString(cuisines)}</p>
+              <p className="title">{name ?? ""}</p>
+              <p className="cusines">{arrayToString(cuisines || [])}</p>
             </div>
             <div className="distance_section" aria-label="">
               <p className="address_area" aria-hidden="true">
-                {areaName},{" "}
+                {areaName ?? ""},{" "}
               </p>
               <p className="address_lastMile" aria-hidden="true">
                 {sla?.lastMileTravel} km
@@ -79,10 +84,10 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
           {/*  */}
           <div className="right_section">
             <span className="avgRating" aria-hidden="true">
-              <span className="icon-star"></span> <span>{avgRating}</span>{" "}
+              <span className="icon-star"></span> <span>{avgRating ?? ""}</span>{" "}
             </span>
             <span className="totalRatings" aria-hidden="true">
-              {totalRatingsString} ratings
+              {totalRatingsString ?? ""} ratings
             </span>
           </div>
         </div>
@@ -94,7 +99,7 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
             aria-hidden="true"
           />
           <span className="message_text" aria-hidden="true">
-            {sla.lastMileTravel} kms | ₹34 Delivery fee will apply
+            {sla?.lastMileTravel} kms | ₹34 Delivery fee will apply
           </span>
         </div>
 
@@ -109,7 +114,7 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
             </li>
             <li>
               <MoneyLogo />
-              <span>{costForTwo}</span>
+              <span>{costForTwo ?? ""}</span>
             </li>
           </ul>
           {/* time cost */}

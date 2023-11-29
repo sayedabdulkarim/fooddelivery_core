@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // Single Item Component
 const MenuItem = ({ item }) => {
-  const { name, description } = item;
+  const { name, description, price, imageId } = item;
   return (
     <>
       <div className="item_description">
@@ -20,19 +20,17 @@ const MenuItem = ({ item }) => {
             </span>
           </div>
           <div className="itemName" aria-hidden="true">
-            <h3>Butter Chicken Frankie Roll</h3>
+            <h3>{name}</h3>
           </div>
 
           <div className="itemPortionContainer" aria-hidden="true">
             <span className="itemPrice" aria-hidden="true">
-              <span className="priceStrike">229</span>
-              <span className="rupee">129</span>
+              <span className="priceStrike">{price}</span>
+              <span className="rupee">{price}</span>
             </span>
           </div>
           <div className="itemDesc" aria-hidden="true">
-            Parotha wrapped with juicy chunks of butter chicken, fried and fresh
-            onions &amp; Veggies with secret sauces. Chatpata, Spicy, Juicy,
-            Crunchy - we have it all in our wraps and rolls.
+            {description}
           </div>
         </div>
         {/* img_container */}
@@ -47,7 +45,7 @@ const MenuItem = ({ item }) => {
                 className="styles_itemImage__3CsDL"
                 loading="lazy"
                 width="256"
-                src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/7fa2425e48f6b87359666d3855f2b5b1"
+                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
               />
             </button>
           </div>
@@ -68,7 +66,7 @@ const MenuItem = ({ item }) => {
 
 // Accordion for Each Category
 const MenuCategoryAccordion = ({ category }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="accordion_item">
