@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -35,6 +36,21 @@ app.use("/api/users", userRoutes);
 //home
 app.use("/api/users", homeRoutes);
 app.use("/api/users", restaurantRoutes);
+
+////////////DEPLOYMENT //////////////
+
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "../client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "../client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api running successfully");
+  });
+}
+////////////DEPLOYMENT //////////////
 
 app.use(notFound);
 app.use(errorHandler);
