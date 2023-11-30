@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 
-const RestaurantMenuModal = ({ isShowMenu, setIsShowMenu }) => {
+const RestaurantMenuModal = ({
+  isShowMenu,
+  setIsShowMenu,
+  restaurantCategories,
+}) => {
   const showModal = () => {
     setIsShowMenu(true);
   };
@@ -27,18 +31,30 @@ const RestaurantMenuModal = ({ isShowMenu, setIsShowMenu }) => {
         footer={null} // remove the footer with OK and Cancel buttons
       >
         <div class="menu_Nav_content">
-          <button
-            class="MenuNav_item-"
-            data-testid="nav-cid-Pav_Bhaji"
-            aria-label="Category: Pav Bhaji; 9 items available."
-          >
-            <span class="itemTitle" aria-hidden="true">
-              Pav Bhaji
-            </span>
-            <span class="itemCount" aria-hidden="true">
-              9
-            </span>
-          </button>
+          {restaurantCategories?.map((item) => {
+            const { categoryName, items } = item;
+            return (
+              <button
+                key={categoryName}
+                onClick={() =>
+                  console.log(
+                    restaurantCategories,
+                    "restaurantCategoriesrestaurantCategories"
+                  )
+                }
+                class="MenuNav_item-"
+                data-testid="nav-cid-Pav_Bhaji"
+                aria-label="Category: Pav Bhaji; 9 items available."
+              >
+                <span class="itemTitle" aria-hidden="true">
+                  {categoryName}
+                </span>
+                <span class="itemCount" aria-hidden="true">
+                  {items?.length}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </Modal>
     </>
