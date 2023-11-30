@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const MenuStickBottom = () => {
-  const { isShowBottomStickMenu } = useSelector(
-    (state) => state.menuBottomSlice
-  );
+const MenuStickBottom = ({ isShowMenu, setIsShowMenu }) => {
+  // const { isShowBottomStickMenu } = useSelector(
+  //   (state) => state.menuBottomSlice
+  // );
 
   // if (!isShowBottomStickMenu) {
   //   return "";
@@ -18,6 +18,7 @@ const MenuStickBottom = () => {
           id="browse-menu-btn"
           data-testid="menu-fab-button"
           aria-label="Double tap to open Browse Menu modal."
+          onClick={() => setIsShowMenu(true)}
         >
           <div className="FabButton_container">
             <span className="icon-menu" aria-hidden="true"></span>

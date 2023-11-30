@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,10 +9,15 @@ import { Accordion } from "../../components/Accordion";
 import ProgressBar from "../../components/ProgressBar";
 import { setMenuBottomSlice } from "../../slices/menuBottomSlice";
 import MenuStickBottom from "../../components/MenuStickBottom";
+import RestaurantMenuModal from "../../components/modals/RestaurantMenuModal";
 
 const RestaurantDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  //state
+  const [isShowMenu, setIsShowMenu] = useState(false);
+
   //queries n mutation
   const {
     data: getRestaurantDetailById,
@@ -34,6 +39,8 @@ const RestaurantDetails = () => {
 
     return () => dispatch(setMenuBottomSlice(false));
   }, [dispatch]);
+
+  console.log(isShowMenu, "isShowMenuisShowMenu");
 
   return (
     <div className="nDVxx restaurant_details_section">
@@ -65,7 +72,14 @@ const RestaurantDetails = () => {
             <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />
 
             {/* menu stick bottom */}
-            <MenuStickBottom />
+            <RestaurantMenuModal
+              isShowMenu={isShowMenu}
+              setIsShowMenu={setIsShowMenu}
+            />
+            <MenuStickBottom
+              isShowMenu={isShowMenu}
+              setIsShowMenu={setIsShowMenu}
+            />
           </>
         )}
       </div>

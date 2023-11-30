@@ -682,3 +682,66 @@
 
   }
 }
+
+.restaurant_menu_modal {
+  .ant-modal-content {
+    // border: 1px solid red;
+    height: 300px;
+    overflow-y: scroll;
+
+    .menu_Nav_content {
+      // border: 1px solid green;
+
+      padding: 26px 24px 26px 40px;
+      max-height: 320px;
+      // width: 85vw;
+      border-radius: 8px;
+      // overflow: auto;
+      background: #fff;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      will-change: transform,opacity;
+      transform-origin: bottom;
+      opacity: 1;
+      // -webkit-animation: MenuNav_expand__1n5NU .25s ease-out;
+      animation: MenuNav_expand__1n5NU .25s ease-out;
+    
+      > button {
+        margin-bottom: 20px;
+        font-size: 1.15rem;
+        color: #3d4152;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        font-weight: 500;
+
+        &:before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          background-color: #5d8ed5;
+          transform: rotate(45deg) translateY(-100%);
+          position: absolute;
+          left: -24px;
+          top: 50%;
+        }
+
+        .itemTitle {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          text-transform: capitalize;
+          flex: 1;
+        }
+
+        .itemCount {
+          margin-left: 16px;
+        }
+
+      }
+      
+    }
+  }
+}
