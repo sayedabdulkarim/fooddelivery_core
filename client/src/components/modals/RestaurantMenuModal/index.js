@@ -21,9 +21,6 @@ const RestaurantMenuModal = ({
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
       <Modal
         title=""
         open={isShowMenu}
