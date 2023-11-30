@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
 // Single Item Component
 const MenuItem = ({ item }) => {
@@ -64,18 +64,19 @@ const MenuItem = ({ item }) => {
   );
 };
 
-// Accordion for Each Category
-const MenuCategoryAccordion = ({ category }) => {
+// MenuCategoryAccordion now accepts a ref prop
+const MenuCategoryAccordion = forwardRef(({ category }, ref) => {
   const [isOpen, setIsOpen] = useState(true);
 
+  // Use the ref on the outermost div that you want to scroll into view
   return (
     <div className="accordion_item">
       <button onClick={() => setIsOpen(!isOpen)} className="item_title">
-        <h3 onClick={() => console.log(category, " ccc")}>
+        <h3 onClick={() => console.log(category, " ccc")} ref={ref}>
           {category?.categoryName} ({category?.items?.length})
         </h3>
         <span className={`icon-downArrow ${isOpen ? "rotate" : ""}`}>
-          {/* {isOpen ? "▲" : "▼"} */}
+          {/* Icon logic */}
         </span>
       </button>
       {isOpen && (
@@ -88,14 +89,19 @@ const MenuCategoryAccordion = ({ category }) => {
       <div className="main_border"></div>
     </div>
   );
-};
+});
 
 // Main Accordion Component
-export const Accordion = ({ categories }) => {
+export const Accordion = ({ categories, categoryRefs }) => {
   return (
     <div className="prod_accordion">
       {categories.map((category) => (
-        <MenuCategoryAccordion key={category._id} category={category} />
+        // Pass the corresponding ref to each accordion item
+        <MenuCategoryAccordion
+          key={category._id}
+          category={category}
+          ref={categoryRefs.current[category.categoryName]}
+        />
       ))}
     </div>
   );

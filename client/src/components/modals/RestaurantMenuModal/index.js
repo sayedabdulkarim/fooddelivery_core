@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Modal } from "antd";
 
 const RestaurantMenuModal = ({
   isShowMenu,
   setIsShowMenu,
   restaurantCategories,
+  onCategoryClick,
 }) => {
   const showModal = () => {
     setIsShowMenu(true);
   };
+
   const handleOk = () => {
     setIsShowMenu(false);
   };
+
   const handleCancel = () => {
     setIsShowMenu(false);
   };
+
   return (
     <>
       <Button type="primary" onClick={showModal}>
@@ -27,29 +31,26 @@ const RestaurantMenuModal = ({
         onCancel={handleCancel}
         wrapClassName="restaurant_menu_modal"
         centered
-        closable={false} // remove the close (X) button
-        footer={null} // remove the footer with OK and Cancel buttons
+        closable={false}
+        footer={null}
       >
-        <div class="menu_Nav_content">
-          {restaurantCategories?.map((item) => {
-            const { categoryName, items } = item;
+        <div className="menu_Nav_content">
+          {restaurantCategories?.map((category) => {
+            const { categoryName, items } = category;
             return (
               <button
                 key={categoryName}
-                onClick={() =>
-                  console.log(
-                    restaurantCategories,
-                    "restaurantCategoriesrestaurantCategories"
-                  )
-                }
-                class="MenuNav_item-"
-                data-testid="nav-cid-Pav_Bhaji"
-                aria-label="Category: Pav Bhaji; 9 items available."
+                onClick={() => onCategoryClick(categoryName, handleCancel)}
+                className="MenuNav_item"
+                data-testid={`nav-cid-${categoryName}`}
+                aria-label={`Category: ${categoryName}; ${
+                  items?.length || 0
+                } items available.`}
               >
-                <span class="itemTitle" aria-hidden="true">
+                <span className="itemTitle" aria-hidden="true">
                   {categoryName}
                 </span>
-                <span class="itemCount" aria-hidden="true">
+                <span className="itemCount" aria-hidden="true">
                   {items?.length}
                 </span>
               </button>
@@ -60,4 +61,5 @@ const RestaurantMenuModal = ({
     </>
   );
 };
+
 export default RestaurantMenuModal;

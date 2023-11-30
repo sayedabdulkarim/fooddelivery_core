@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,10 +14,11 @@ import RestaurantMenuModal from "../../components/modals/RestaurantMenuModal";
 const RestaurantDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [activeCategory, setActiveCategory] = useState(null);
+  const categoryRefs = useRef({});
 
   //state
   const [isShowMenu, setIsShowMenu] = useState(false);
-
   //queries n mutation
   const {
     data: getRestaurantDetailById,
@@ -28,6 +29,17 @@ const RestaurantDetails = () => {
     (state) => state.restaurantDetailReducer
   );
 
+  const categories = useMemo(() => {
+    return restaurantDetails?.data?.menu?.menu || [];
+  }, [restaurantDetails]);
+
+  //func
+  const handleCategoryClick = (categoryName, cb) => {
+    setActiveCategory(categoryName);
+    cb();
+  };
+
+  //async
   useEffect(() => {
     if (getRestaurantDetailById) {
       dispatch(setRestaurantDetailsById(getRestaurantDetailById));
@@ -40,7 +52,36 @@ const RestaurantDetails = () => {
     return () => dispatch(setMenuBottomSlice(false));
   }, [dispatch]);
 
-  console.log(isShowMenu, "isShowMenuisShowMenu");
+  //
+
+  useEffect(() => {
+    // Reset refs on categories change
+    categoryRefs.current = categories.reduce((acc, category) => {
+      acc[category.categoryName] = React.createRef();
+      return acc;
+    }, {});
+  }, [categories]);
+
+  useEffect(() => {
+    // This effect runs when activeCategory changes
+    if (activeCategory) {
+      const ref = categoryRefs.current[activeCategory];
+      if (ref && ref.current) {
+        ref.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+        ref.current.style.backgroundColor = "#5D8ED5";
+        setTimeout(() => {
+          if (ref.current) {
+            ref.current.style.backgroundColor = "";
+          }
+        }, 5000);
+      }
+    }
+  }, [activeCategory]);
+
+  console.log({ activeCategory, categoryRefs }, " activeCategory");
 
   return (
     <div className="nDVxx restaurant_details_section">
@@ -69,13 +110,17 @@ const RestaurantDetails = () => {
               restaurantDetails={restaurantDetails?.data}
             />
             {/* bottom_section */}
-            <Accordion categories={restaurantDetails?.data?.menu?.menu || []} />
+            <Accordion
+              categories={restaurantDetails?.data?.menu?.menu || []}
+              categoryRefs={categoryRefs}
+            />
 
             {/* menu stick bottom */}
             <RestaurantMenuModal
               isShowMenu={isShowMenu}
               setIsShowMenu={setIsShowMenu}
               restaurantCategories={restaurantDetails?.data?.menu?.menu || []}
+              onCategoryClick={handleCategoryClick}
             />
             <MenuStickBottom
               isShowMenu={isShowMenu}
