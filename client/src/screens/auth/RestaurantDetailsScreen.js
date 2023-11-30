@@ -63,20 +63,27 @@ const RestaurantDetails = () => {
   }, [categories]);
 
   useEffect(() => {
-    // This effect runs when activeCategory changes
     if (activeCategory) {
       const ref = categoryRefs.current[activeCategory];
       if (ref && ref.current) {
-        ref.current.scrollIntoView({
+        // Calculate the top offset of the element
+        const offsetTop = ref.current.offsetTop;
+        // Define the offset you want to apply. For example, 100 pixels for a fixed header
+        const additionalOffset = 100; // Adjust this value as needed
+
+        // Scroll to the element with the additional offset
+        window.scrollTo({
+          top: offsetTop - additionalOffset,
           behavior: "smooth",
-          block: "start",
         });
+
+        // Apply the background color highlight
         ref.current.style.backgroundColor = "#5D8ED5";
         setTimeout(() => {
           if (ref.current) {
             ref.current.style.backgroundColor = "";
           }
-        }, 5000);
+        }, 3000);
       }
     }
   }, [activeCategory]);
