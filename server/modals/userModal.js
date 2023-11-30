@@ -16,6 +16,12 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true, // Ensure phone numbers are unique
     },
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AllRestaurant", // Replace 'RestaurantItem' with whatever your restaurant item model is called
+      },
+    ],
   },
   {
     timestamps: true,

@@ -24,6 +24,7 @@ const userLogin = asyncHandler(async (req, res) => {
         name: user.name,
         email: user.email,
         phoneNumber: user.phoneNumber,
+        favorites: user.favorites, // Add this line to include the favorites in the response
       },
       message: "Login successful",
     });
@@ -42,11 +43,9 @@ const userSignUp = asyncHandler(async (req, res) => {
   // Check if the user already exists based on phone
   const existingUser = await UserModal.findOne({ phone });
   if (existingUser) {
-    res
-      .status(400)
-      .json({
-        message: "User with this phone number already exists.Please Login.",
-      });
+    res.status(400).json({
+      message: "User with this phone number already exists.Please Login.",
+    });
     return;
   }
 
