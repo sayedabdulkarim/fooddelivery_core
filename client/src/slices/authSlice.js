@@ -23,6 +23,18 @@ const authSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem("userInfo");
     },
+
+    updateFavorites: (state, action) => {
+      if (state.userInfo) {
+        state.userInfo.data = {
+          ...state.userInfo.data,
+          favorites: action.payload,
+        };
+        // Update localStorage
+        localStorage.setItem("userInfo", JSON.stringify(state.userInfo));
+      }
+    },
+
     setPosts: (state, action) => {
       console.log(action.payload, " setPosts");
       state.posts = action.payload;
@@ -30,6 +42,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, logOutUser, setPosts } = authSlice.actions;
+export const { setCredentials, logOutUser, updateFavorites, setPosts } =
+  authSlice.actions;
 
 export default authSlice.reducer;

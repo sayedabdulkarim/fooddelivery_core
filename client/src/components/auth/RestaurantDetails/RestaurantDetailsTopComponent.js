@@ -1,20 +1,76 @@
-import React, { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import useSticky from "../../../hooks/useSticky";
 import { MoneyLogo, RestaurantTimeCostLogo } from "../../../utils/svgs";
 import { arrayToString } from "../../../utils/commonHelper";
 import { setRestaurantDetailsHeaderStick } from "../../../slices/restaurantSlice";
+import {
+  useAddFavoriteRestaurantMutation,
+  useRemoveFavoriteRestaurantMutation,
+} from "../../../apiSlices/restaurantDetailsSlice";
+import { updateFavorites } from "../../../slices/authSlice";
 
 const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
   //misc
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.authReducer);
   const stickyRef = useRef(null);
   const isSticky = useSticky(stickyRef);
+  const [isFavorite, setIsFavorite] = useState(false);
+  //queires n mutation
+  const [
+    addFavoriteRestaurant,
+    { isLoading, isSuccess, data: addfavoritesData, isError, error },
+  ] = useAddFavoriteRestaurantMutation();
+
+  const [
+    removeFavoriteRestaurant,
+    {
+      isLoading: isLoadingRemoveFavorite,
+      isSuccess: isSuccessRemoveFavorite,
+      data: removefavoritesData,
+    },
+  ] = useRemoveFavoriteRestaurantMutation();
+
+  //func
+  const handleAddFavorite = (restaurantId) => {
+    addFavoriteRestaurant(restaurantId);
+  };
+
+  const handleRemoveFavorite = (restaurantId) => {
+    removeFavoriteRestaurant(restaurantId);
+  };
 
   //async
   useEffect(() => {
+    if (userInfo && restaurantDetails) {
+      const isPresent = userInfo?.data?.favorites.includes(
+        restaurantDetails?._id
+      );
+      setIsFavorite(isPresent);
+    }
+  }, [userInfo, restaurantDetails]);
+
+  useEffect(() => {
     dispatch(setRestaurantDetailsHeaderStick(isSticky));
   }, [isSticky, dispatch]);
+
+  useEffect(() => {
+    //for adding fav
+    if (isSuccess && addfavoritesData) {
+      dispatch(updateFavorites(addfavoritesData?.data?.favorites));
+    }
+    //for removing fav
+    if (isSuccessRemoveFavorite && removefavoritesData) {
+      dispatch(updateFavorites(removefavoritesData?.data?.favorites));
+    }
+  }, [
+    isSuccess,
+    isSuccessRemoveFavorite,
+    addfavoritesData,
+    removefavoritesData,
+    dispatch,
+  ]);
 
   if (!restaurantDetails) {
     // Render a loading indicator or null if the data is not yet available
@@ -22,6 +78,7 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
   }
 
   const {
+    _id,
     name,
     cuisines,
     areaName,
@@ -81,8 +138,19 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
               role="checkbox"
               aria-checked="false"
               aria-label="Mark as favourite"
+              // onClick={() => handleAddFavorite(_id)}
+              onClick={() =>
+                isFavorite ? handleRemoveFavorite(_id) : handleAddFavorite(_id)
+              }
             >
-              <span className="icon-heartInverse"></span>
+              <span
+                className={`${
+                  isFavorite
+                    ? "MenuTopHeader_isFavorite__2Y6dD icon-heart"
+                    : "icon-heartInverse"
+                }`}
+                style={{ color: isFavorite ? "red" : "" }}
+              ></span>
             </button>
             <button
               className="MenuTopHeader_rightNavItem__3dysE"

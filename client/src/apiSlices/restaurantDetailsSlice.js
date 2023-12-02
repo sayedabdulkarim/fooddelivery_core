@@ -9,7 +9,23 @@ export const restaurantDetailsSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}/getRestaurantDetails/${id}`,
       }),
     }),
+    addFavoriteRestaurant: builder.mutation({
+      query: (restaurantId) => ({
+        url: `${USERS_URL}/addFavoriteRestaurant/${restaurantId}`,
+        method: "POST",
+      }),
+    }),
+    removeFavoriteRestaurant: builder.mutation({
+      query: (restaurantId) => ({
+        url: `${USERS_URL}/removeFavoriteRestaurant/${restaurantId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetRestaurantDetailsByIdQuery } = restaurantDetailsSlice;
+export const {
+  useGetRestaurantDetailsByIdQuery,
+  useAddFavoriteRestaurantMutation,
+  useRemoveFavoriteRestaurantMutation,
+} = restaurantDetailsSlice;
