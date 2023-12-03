@@ -4,6 +4,8 @@ import { logOutUser } from "../slices/authSlice";
 import { useLogoutMutation } from "../apiSlices/userApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import AddressDrawerComponent from "../components/drawer/CustomDrawer";
+import AddressDrawerContent from "./auth/AddressDrawerContent";
+import WithMap from "./auth/AddressDrawerContent/WithMap";
 
 import {
   NavbarCartLogo,
@@ -14,7 +16,6 @@ import {
   NavbarSearchLogo,
 } from "../utils/svgs";
 import { closeAddressDrawer, openAddressDrawer } from "../slices/headerSlice";
-import AddressDrawerContent from "./auth/AddressDrawerContent";
 
 const Header = () => {
   //misc
@@ -158,7 +159,8 @@ const Header = () => {
         width={580}
         className={"address_custom_drawer"}
       >
-        <AddressDrawerContent />
+        <WithMap />
+        {/* <AddressDrawerContent /> */}
       </AddressDrawerComponent>
     </>
   );
