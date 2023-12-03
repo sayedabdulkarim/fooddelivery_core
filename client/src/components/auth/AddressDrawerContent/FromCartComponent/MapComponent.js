@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import GoogleMapReact from "google-map-react";
 
 const CustomMarker = ({ imageSrc }) => (
@@ -16,11 +16,12 @@ const CustomMarker = ({ imageSrc }) => (
   </div>
 );
 
-const MapComponent = () => {
+const MapComponent = ({ handleChange }) => {
   const [center, setCenter] = useState({ lat: 12.9716, lng: 77.5946 }); // Default to Bangalore as an example
   const [address, setAddress] = useState("");
-  const [markerVisible, setMarkerVisible] = useState(true); // New state to track marker visibility
-
+  const prevCenter = useRef(center);
+  const prevAddress = useRef(address);
+  const [markerVisible, setMarkerVisible] = useState(true); //
   // This function performs reverse geocoding
   const reverseGeocode = async (lat, lng) => {
     const API_KEY = "AIzaSyDhfax4vDfrht7K17odVAEx1Vtq20YwfIk"; // Replace with your actual API key
@@ -75,10 +76,29 @@ const MapComponent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Check if center or address actually changed
+    if (
+      prevCenter.current.lat !== center.lat ||
+      prevCenter.current.lng !== center.lng ||
+      prevAddress.current !== address
+    ) {
+      handleChange("mapObj", { center, address });
+
+      // Update previous values
+      prevCenter.current = center;
+      prevAddress.current = address;
+    }
+  }, [center, address, handleChange]);
+
   // Define the marker image URL here
   const markerImageUrl =
     "https://media-assets.swiggy.com/swiggy/image/upload/Other_Pin_urgkbb.png";
 
+  console.log({
+    center,
+    address,
+  });
   return (
     <div style={{ height: "300px", width: "100%" }}>
       <GoogleMapReact

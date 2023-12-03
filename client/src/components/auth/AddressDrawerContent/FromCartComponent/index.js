@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import MapComponent from "./MapComponent";
 
 const FromCartComponent = () => {
+  //state
+  const [formData, setFormData] = useState({
+    mapObj: {},
+    flatNo: "",
+    landMark: "",
+    landMarkType: "",
+  });
+
+  //function
+  const handleChange = (key, value) => {
+    setFormData({
+      ...formData,
+      [key]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData, " formData");
+  };
+
   return (
     <div>
-      <MapComponent />
+      <MapComponent handleChange={handleChange} />
       {/* form */}
       <div className="jbXOs" style={{ marginTop: "100px" }}>
         <div>
@@ -12,11 +33,12 @@ const FromCartComponent = () => {
             <input
               className="_381fS"
               type="text"
-              name="building"
+              name="flatNo"
               id="building"
               tabindex="1"
               autocomplete="off"
-              value=""
+              value={formData?.flatNo}
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
             <div className="_2EeI1"></div>
             <label className="_1Cvlf" for="building">
@@ -29,11 +51,12 @@ const FromCartComponent = () => {
             <input
               className="_381fS"
               type="text"
-              name="landmark"
+              name="landMark"
               id="landmark"
               tabindex="1"
               autocomplete="off"
-              value=""
+              value={formData?.landMark}
+              onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
             <div className="_2EeI1"></div>
             <label className="_1Cvlf" for="landmark">
@@ -75,7 +98,9 @@ const FromCartComponent = () => {
       {/* button */}
       <div className="gbzB0">
         <div className="_25qBi">
-          <a className="_2sd1x">SAVE ADDRESS &amp; PROCEED</a>
+          <button className="_2sd1x" onClick={handleSubmit}>
+            SAVE ADDRESS &amp; PROCEED
+          </button>
         </div>
       </div>
     </div>
