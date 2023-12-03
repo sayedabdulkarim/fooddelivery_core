@@ -14,6 +14,7 @@ import {
   NavbarSearchLogo,
 } from "../utils/svgs";
 import { closeAddressDrawer, openAddressDrawer } from "../slices/headerSlice";
+import AddressDrawerContent from "./auth/AddressDrawerContent";
 
 const Header = () => {
   //misc
@@ -154,29 +155,9 @@ const Header = () => {
         open={isOpenAddressDrawer}
         placement={"left"}
         onClose={handleCloseAddressDrawer}
+        width={580}
       >
-        <>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-          <h1>Hello</h1>
-        </>
+        <AddressDrawerContent />
       </AddressDrawerComponent>
     </>
   );
