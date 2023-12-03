@@ -7,6 +7,7 @@ const CustomDrawerComponent = ({
   placement,
   width,
   children,
+  className,
 }) => {
   return (
     <Drawer
@@ -15,7 +16,7 @@ const CustomDrawerComponent = ({
       onClose={onClose}
       open={open}
       width={width}
-      className="custom_drawer"
+      className={className}
     >
       {children}
     </Drawer>

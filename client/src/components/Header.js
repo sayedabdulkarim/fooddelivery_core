@@ -156,6 +156,7 @@ const Header = () => {
         placement={"left"}
         onClose={handleCloseAddressDrawer}
         width={580}
+        className={"address_custom_drawer"}
       >
         <AddressDrawerContent />
       </AddressDrawerComponent>
