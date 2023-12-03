@@ -19,6 +19,7 @@ const CustomMarker = ({ imageSrc }) => (
 const MapComponent = () => {
   const [center, setCenter] = useState({ lat: 12.9716, lng: 77.5946 }); // Default to Bangalore as an example
   const [address, setAddress] = useState("");
+  const [markerVisible, setMarkerVisible] = useState(true); // New state to track marker visibility
 
   // This function performs reverse geocoding
   const reverseGeocode = async (lat, lng) => {
@@ -39,6 +40,18 @@ const MapComponent = () => {
     }
   };
 
+  const handleApiLoaded = ({ map, maps }) => {
+    // Perform actions once the API is loaded
+    setMarkerVisible(true); // Ensure marker is visible once the map is loaded
+  };
+
+  const handleOnChange = ({ center }) => {
+    setCenter(center);
+    setMarkerVisible(true); // Ensure marker is visible after dragging
+    reverseGeocode(center.lat, center.lng);
+  };
+
+  //async
   useEffect(() => {
     // Attempt to get the user's current location
     if (navigator.geolocation) {
@@ -71,11 +84,13 @@ const MapComponent = () => {
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDhfax4vDfrht7K17odVAEx1Vtq20YwfIk" }} // Replace with your actual API key
         center={center}
-        defaultZoom={15}
-        onChange={({ center }) => {
-          setCenter(center);
-          reverseGeocode(center.lat, center.lng);
-        }}
+        defaultZoom={8}
+        onGoogleApiLoaded={handleApiLoaded}
+        onChange={handleOnChange}
+        // onChange={({ center }) => {
+        //   setCenter(center);
+        //   reverseGeocode(center.lat, center.lng);
+        // }}
         yesIWantToUseGoogleMapApiInternals
       >
         <CustomMarker
