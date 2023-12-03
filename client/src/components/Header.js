@@ -4,8 +4,8 @@ import { logOutUser } from "../slices/authSlice";
 import { useLogoutMutation } from "../apiSlices/userApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import AddressDrawerComponent from "../components/drawer/CustomDrawer";
-import AddressDrawerContent from "./auth/AddressDrawerContent";
-import WithMap from "./auth/AddressDrawerContent/WithMap";
+import AddressDrawerContentFromHome from "./auth/AddressDrawerContent/FromHomeComponent";
+import AddressDrawerContentFromCart from "./auth/AddressDrawerContent/FromCartComponent";
 
 import {
   NavbarCartLogo,
@@ -156,11 +156,11 @@ const Header = () => {
         open={isOpenAddressDrawer}
         placement={"left"}
         onClose={handleCloseAddressDrawer}
-        width={580}
+        width={480}
         className={"address_custom_drawer"}
       >
-        <WithMap />
-        {/* <AddressDrawerContent /> */}
+        {/* <AddressDrawerContentFromHome /> */}
+        <AddressDrawerContentFromCart />
       </AddressDrawerComponent>
     </>
   );
