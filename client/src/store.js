@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./apiSlices/index";
 import authReducer from "./slices/authSlice";
 import alertReducer from "./slices/alertSlice";
+import headerReducer from "./slices/headerSlice";
 import homeReducer from "./slices/homeSlice";
 import restaurantDetailReducer from "./slices/restaurantSlice";
 import menuBottomSlice from "./slices/menuBottomSlice";
@@ -13,6 +14,7 @@ const store = configureStore({
     authReducer,
     testReducer,
     alertReducer,
+    headerReducer,
     homeReducer,
     restaurantDetailReducer,
     menuBottomSlice,

@@ -15,4 +15,5 @@ const CustomDrawerComponent = ({ open, onClose, placement, children }) => {
   );
 };
 
+// export { CustomDrawerComponent };
 export default CustomDrawerComponent;
