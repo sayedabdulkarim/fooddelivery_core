@@ -1,24 +1,31 @@
 import React from "react";
+import AddressesComponent from "../../components/auth/Checkout/AddressesComponent";
+import CartComponent from "../../components/auth/Checkout/CartComponent";
+//apiSLice
+import { useGetAddressesByUserQuery } from "../../apiSlices/addressApiSlice";
 
 const Checkout = () => {
+  // RTK Query hook
+  const {
+    data: getAddressData,
+    refetch,
+    isLoading: isLoadingAddressData,
+  } = useGetAddressesByUserQuery();
+
   return (
     <div className="nDVxx _340-t cart_container">
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
-      <h1>Checkout</h1>
+      <div className="_3-bcQ cart_wrapper" style={{ padding: "40px 0" }}>
+        {/* left */}
+        {isLoadingAddressData ? (
+          <h1>Loading....</h1>
+        ) : (
+          <>
+            <AddressesComponent getAddressData />
+            {/* right */}
+            <CartComponent />
+          </>
+        )}
+      </div>
     </div>
   );
 };
