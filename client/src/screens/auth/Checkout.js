@@ -20,7 +20,7 @@ const Checkout = () => {
           <h1>Loading....</h1>
         ) : (
           <>
-            <AddressesComponent getAddressData />
+            <AddressesComponent getAddressData={getAddressData} />
             {/* right */}
             <CartComponent />
           </>
