@@ -50,7 +50,7 @@ const addAddress = asyncHandler(async (req, res) => {
 });
 
 // @desc Get addresses for a user
-// @route GET /api/users/getAddresses
+// @route GET /api/users/getAddressesByUser
 // @access PRIVATE
 const getAddressesByUser = asyncHandler(async (req, res) => {
   // Assuming user's ID is stored in req.user._id

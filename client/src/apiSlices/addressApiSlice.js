@@ -11,6 +11,11 @@ export const addressApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getAddressesByUser: builder.query({
+      query: (id) => ({
+        url: `${USERS_URL}/getAddressesByUser`,
+      }),
+    }),
   }),
 });
 
