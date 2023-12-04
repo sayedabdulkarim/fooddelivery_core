@@ -59,10 +59,10 @@ const getAddressesByUser = asyncHandler(async (req, res) => {
   // Find all addresses associated with the user
   const addresses = await AddressModal.find({ user: userId });
 
-  console.log({
-    userId,
-    addresses,
-  });
+  // console.log({
+  //   userId,
+  //   addresses,
+  // });
   res.status(200).json({
     message: "Addresses retrieved successfully",
     addresses,
