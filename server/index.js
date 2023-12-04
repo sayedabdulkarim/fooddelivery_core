@@ -10,6 +10,7 @@ import connectDb from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import homeRoutes from "./routes/homeRoutes.js";
 import restaurantRoutes from "./routes/restaurantRoute.js";
+import addressRoutes from "./routes/addressRoutes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -35,7 +36,10 @@ app.use(cookieParser());
 app.use("/api/users", userRoutes);
 //home
 app.use("/api/users", homeRoutes);
+//restaurant
 app.use("/api/users", restaurantRoutes);
+//address
+app.use("/api/users", addressRoutes);
 
 ////////////DEPLOYMENT //////////////
 
