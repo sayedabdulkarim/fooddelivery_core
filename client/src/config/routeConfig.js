@@ -12,6 +12,7 @@ import PublicRoute from "../components/PublicRoute";
 import HomeScreen from "../screens/auth/HomeScreen";
 import HelpScreen from "../screens/auth/HelpScreen";
 import RestaurantDetailsScreen from "../screens/auth/RestaurantDetailsScreen";
+import CheckoutScreen from "../screens/auth/Checkout";
 //unauth
 import UnAuthScreen from "../screens/unauth";
 
@@ -25,6 +26,7 @@ export const router = createBrowserRouter(
       {/* private routes */}
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<HomeScreen />} />
+        <Route path="checkout" element={<CheckoutScreen />} />
         <Route path="support" element={<HelpScreen />} />
         <Route
           path="/restaurant/:name/:id"

@@ -55,13 +55,13 @@ const FromCartComponent = () => {
               type="text"
               name="flatNo"
               id="building"
-              tabindex="1"
-              autocomplete="off"
+              tabIndex="1"
+              autoComplete="off"
               value={formData?.flatNo}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
             <div className="_2EeI1"></div>
-            <label className="_1Cvlf" for="building">
+            <label className="_1Cvlf" htmlFor="building">
               Door / Flat No.
             </label>
           </div>
@@ -73,13 +73,13 @@ const FromCartComponent = () => {
               type="text"
               name="landMark"
               id="landmark"
-              tabindex="1"
-              autocomplete="off"
+              tabIndex="1"
+              autoComplete="off"
               value={formData?.landMark}
               onChange={(e) => handleChange(e.target.name, e.target.value)}
             />
             <div className="_2EeI1"></div>
-            <label className="_1Cvlf" for="landmark">
+            <label className="_1Cvlf" htmlFor="landmark">
               Landmark
             </label>
           </div>
@@ -137,13 +137,13 @@ const FromCartComponent = () => {
                 type="text"
                 name="annotation"
                 id="annotation"
-                tabindex="1"
+                tabIndex="1"
                 placeholder="Dad’s home, my man cave"
                 maxlength="20"
                 value=""
               />
               <div className="_2EeI1 _26LFr"></div>
-              <label className="_1Cvlf _2tL9P" for="annotation"></label>
+              <label className="_1Cvlf _2tL9P" htmlFor="annotation"></label>
             </div>
           </div> */}
         </div>
