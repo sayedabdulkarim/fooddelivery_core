@@ -1,6 +1,5 @@
 import asyncHandler from "express-async-handler";
 // Models
-import UserModal from "../modals/userModal.js";
 import AddressModal from "../modals/addressModal.js";
 // const Address = require('../models/addressModel'); // Assuming this is the path to your Mongoose model
 
