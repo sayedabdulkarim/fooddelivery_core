@@ -95,10 +95,10 @@ const MapComponent = ({ handleChange }) => {
   const markerImageUrl =
     "https://media-assets.swiggy.com/swiggy/image/upload/Other_Pin_urgkbb.png";
 
-  console.log({
-    center,
-    address,
-  });
+  // console.log({
+  //   center,
+  //   address,
+  // });
   return (
     <div style={{ height: "300px", width: "100%" }}>
       <GoogleMapReact

@@ -29,3 +29,16 @@ const addressSchema = new mongoose.Schema(
 addressSchema.index({ location: "2dsphere" });
 
 const Address = mongoose.model("Address", addressSchema);
+
+// {
+//   "mapObj": {
+//       "center": {
+//           "lat": 12.9634,
+//           "lng": 77.5855
+//       },
+//       "address": "40, JC Rd, Kumbaragundi, Nagarathpete, Bengaluru, Karnataka 560002, India"
+//   },
+//   "flatNo": "doorq",
+//   "landMark": "mark",
+//   "landMarkType": "Home"
+// }

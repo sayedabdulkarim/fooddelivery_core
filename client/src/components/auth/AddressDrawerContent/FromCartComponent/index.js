@@ -65,19 +65,52 @@ const FromCartComponent = () => {
           </div>
         </div>
         <div className="_2i256">
-          <div className="_1dzL9">
-            <span className="_3Ey3V icon-home"></span>
+          <div
+            className={`_1dzL9 ${
+              formData?.landMarkType === "Home" ? "_2I0ZJ" : ""
+            }`}
+            onClick={() => handleChange("landMarkType", "Home")}
+          >
+            <span
+              className={`_3Ey3V ${
+                formData?.landMarkType === "Home"
+                  ? "icon-homeDark"
+                  : "icon-home"
+              }`}
+            ></span>
             <div className="sf8jl">Home</div>
           </div>
-          <div className="_1dzL9">
-            <span className="_3Ey3V icon-work"></span>
+          <div
+            className={`_1dzL9 ${
+              formData?.landMarkType === "Work" ? "_2I0ZJ" : ""
+            }`}
+            onClick={() => handleChange("landMarkType", "Work")}
+          >
+            <span
+              className={`_3Ey3V ${
+                formData?.landMarkType === "Work"
+                  ? "icon-workDark"
+                  : "icon-work"
+              }`}
+            ></span>
             <div className="sf8jl">Work</div>
           </div>
-          <div className="_1dzL9">
-            <span className="_3Ey3V icon-location"></span>
+          <div
+            className={`_1dzL9 ${
+              formData?.landMarkType === "Other" ? "_2I0ZJ" : ""
+            }`}
+            onClick={() => handleChange("landMarkType", "Other")}
+          >
+            <span
+              className={`_3Ey3V ${
+                formData?.landMarkType === "Other"
+                  ? "icon-markerDark"
+                  : "icon-location"
+              }`}
+            ></span>
             <div className="sf8jl">Other</div>
           </div>
-          <div className="_1qe1S">
+          {/* <div className="_1qe1S">
             <div className="_3Um38 _3vwW5">
               <input
                 className="_381fS _1oTLG _2VYMY"
@@ -92,7 +125,7 @@ const FromCartComponent = () => {
               <div className="_2EeI1 _26LFr"></div>
               <label className="_1Cvlf _2tL9P" for="annotation"></label>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* button */}
