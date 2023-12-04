@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MapComponent from "./MapComponent";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useAddAddressMutation,
-  useGetAddressesByUserQuery,
-} from "../../../../apiSlices/addressApiSlice";
+import { useAddAddressMutation } from "../../../../apiSlices/addressApiSlice";
 
 const FromCartComponent = () => {
   //queires n mutation
@@ -12,12 +9,6 @@ const FromCartComponent = () => {
     addAddress,
     { isLoading, isSuccess, data: addAddressData, isError, error },
   ] = useAddAddressMutation();
-  // RTK Query hook
-  // const {
-  //   data: getAddressesByUser,
-  //   refetch,
-  //   isLoading: isLoadingAddressesByUser,
-  // } = useGetAddressesByUserQuery();
 
   //state
   const [formData, setFormData] = useState({
