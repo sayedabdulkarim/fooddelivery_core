@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import MapComponent from "./MapComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { useAddAddressMutation } from "../../../../apiSlices/addressApiSlice";
 
 const FromCartComponent = () => {
+  //queires n mutation
+  const [
+    addAddress,
+    { isLoading, isSuccess, data: addAddressData, isError, error },
+  ] = useAddAddressMutation();
+
   //state
   const [formData, setFormData] = useState({
     mapObj: {},
@@ -20,7 +28,19 @@ const FromCartComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { mapObj, flatNo, landMark, landMarkType } = formData;
+    const data = {
+      address: mapObj?.address,
+      doorNumber: flatNo,
+      landmark: landMark,
+      location: {
+        type: "Point",
+        coordinates: [mapObj?.center?.lng, mapObj?.center?.lat],
+      },
+      type: landMarkType,
+    };
     console.log(formData, " formData");
+    addAddress(data);
   };
 
   return (

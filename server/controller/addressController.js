@@ -1,7 +1,6 @@
 import asyncHandler from "express-async-handler";
 // Models
 import AddressModal from "../modals/addressModal.js";
-// const Address = require('../models/addressModel'); // Assuming this is the path to your Mongoose model
 
 // @desc Add a new address for a user
 // @route POST /api/users/addAddress
@@ -50,6 +49,4 @@ const addAddress = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
-  addAddress,
-};
+export { addAddress };

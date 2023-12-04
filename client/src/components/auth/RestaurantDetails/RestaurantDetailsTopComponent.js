@@ -7,7 +7,7 @@ import { setRestaurantDetailsHeaderStick } from "../../../slices/restaurantSlice
 import {
   useAddFavoriteRestaurantMutation,
   useRemoveFavoriteRestaurantMutation,
-} from "../../../apiSlices/restaurantDetailsSlice";
+} from "../../../apiSlices/restaurantDetailsApiSlice";
 import { updateFavorites } from "../../../slices/authSlice";
 
 const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Skeleton } from "antd";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useGetRestaurantDetailsByIdQuery } from "../../apiSlices/restaurantDetailsSlice";
+import { useGetRestaurantDetailsByIdQuery } from "../../apiSlices/restaurantDetailsApiSlice";
 import { setRestaurantDetailsById } from "../../slices/restaurantSlice";
 import RestaurantDetailsTopComponent from "../../components/auth/RestaurantDetails/RestaurantDetailsTopComponent";
 import { Accordion } from "../../components/Accordion";

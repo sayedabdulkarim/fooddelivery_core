@@ -1,8 +1,8 @@
-import { apiSlice } from "./";
+import { apiSlice } from ".";
 
 const USERS_URL = "api/users";
 
-export const restaurantDetailsSlice = apiSlice.injectEndpoints({
+export const restaurantDetailsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getRestaurantDetailsById: builder.query({
       query: (id) => ({
@@ -28,4 +28,4 @@ export const {
   useGetRestaurantDetailsByIdQuery,
   useAddFavoriteRestaurantMutation,
   useRemoveFavoriteRestaurantMutation,
-} = restaurantDetailsSlice;
+} = restaurantDetailsApiSlice;
