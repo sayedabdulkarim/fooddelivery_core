@@ -8,7 +8,7 @@ import {
 } from "../controller/addressController.js";
 
 router.post("/addAddress", protectedRoutesWithParser, addAddress);
-router.post(
+router.get(
   "/getAddressesByUser",
   protectedRoutesWithParser,
   getAddressesByUser

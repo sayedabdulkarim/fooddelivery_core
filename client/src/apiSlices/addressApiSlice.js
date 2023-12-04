@@ -19,4 +19,5 @@ export const addressApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddAddressMutation } = addressApiSlice;
+export const { useAddAddressMutation, useGetAddressesByUserQuery } =
+  addressApiSlice;
