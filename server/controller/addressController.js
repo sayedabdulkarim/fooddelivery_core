@@ -49,4 +49,20 @@ const addAddress = asyncHandler(async (req, res) => {
   });
 });
 
-export { addAddress };
+// @desc Get addresses for a user
+// @route GET /api/users/getAddresses
+// @access PRIVATE
+const getAddressesByUser = asyncHandler(async (req, res) => {
+  // Assuming user's ID is stored in req.user._id
+  const userId = req.user._id;
+
+  // Find all addresses associated with the user
+  const addresses = await AddressModal.find({ user: userId });
+
+  res.status(200).json({
+    message: "Addresses retrieved successfully",
+    addresses,
+  });
+});
+
+export { addAddress, getAddressesByUser };
