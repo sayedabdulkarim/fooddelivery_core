@@ -1,6 +1,18 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const CartComponent = () => {
+  // Redux state
+  const { cart } = useSelector((state) => state.cartReducer);
+  const { restaurantDetails } = useSelector(
+    (state) => state.restaurantDetailReducer
+  );
+
+  if (!restaurantDetails) return null;
+
+  const { name, areaName } = restaurantDetails?.data;
+  const { items, deliveryFee, gst, platformFee, totalCost } = cart;
+
   return (
     <div className="_2sMsA">
       <div className="_1LDW5">
@@ -17,8 +29,8 @@ const CartComponent = () => {
             />
           </span>
           <span className="u1PgV">
-            <div className="V7Usk">{"name"}</div>
-            <div className="_2ofXa">{"location"}</div>
+            <div className="V7Usk">{name}</div>
+            <div className="_2ofXa">{areaName}</div>
           </span>
         </button>
         {/* Other nested components can go here */}
@@ -28,6 +40,7 @@ const CartComponent = () => {
             <div className="_2ObNr _2XVjJ _1S7oI">
               <div>
                 <div className="_2zsON"></div>
+                {/* loop */}
                 <div className="_2pdCL">
                   <div className="_2bXOy">
                     <div className="_3SG03">
@@ -36,7 +49,12 @@ const CartComponent = () => {
                         role="presentation"
                         aria-hidden="true"
                       ></i>
-                      <div className="_33KRy">
+                      <div
+                        className="_33KRy"
+                        onClick={() =>
+                          console.log({ cart, restaurantDetails }, " cartcart")
+                        }
+                      >
                         Picco Latte<button className="_23dMP">Customize</button>
                       </div>
                     </div>
