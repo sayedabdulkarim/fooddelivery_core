@@ -4,6 +4,9 @@ const initialState = {
   cart: {
     items: [],
     totalCost: 0,
+    deliveryFee: 0, // You can set a default value or update it dynamically
+    platformFee: 0, // Same as above
+    gst: 0, // Same as above
   },
 };
 
@@ -51,6 +54,26 @@ const cartSlice = createSlice({
         (total, item) => total + item.count * item.price,
         0
       );
+    },
+
+    updateFeesAndTotal: (state, action) => {
+      // Update fees
+      state.cart.deliveryFee = action.payload.deliveryFee;
+      state.cart.platformFee = action.payload.platformFee;
+      state.cart.gst = action.payload.gst;
+
+      // Calculate subtotal from items
+      const itemsSubtotal = state.cart.items.reduce(
+        (total, item) => total + item.count * item.price,
+        0
+      );
+
+      // Update total cost
+      state.cart.totalCost =
+        itemsSubtotal +
+        state.cart.deliveryFee +
+        state.cart.platformFee +
+        state.cart.gst;
     },
 
     clearItemFromcart: (state, action) => {
