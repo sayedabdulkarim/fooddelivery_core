@@ -70,11 +70,13 @@ const MenuItem = ({ item }) => {
               >
                 +
               </div>
-              <div
-                className="minus _29Y5Z _2od4M"
-                style={{ opacity: "initial" }}
-                onClick={() => dispatch(removeFromcart(_id))}
-              ></div>
+              {itemCount ? (
+                <div
+                  className="minus _29Y5Z _2od4M"
+                  style={{ opacity: "initial" }}
+                  onClick={() => dispatch(removeFromcart({ _id }))}
+                ></div>
+              ) : null}
             </div>
           </div>
         </div>
