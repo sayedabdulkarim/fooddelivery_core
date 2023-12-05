@@ -79,6 +79,14 @@ const initialFilterOption = {
   offers: null,
 };
 
+const getCountByProductIdFromCart = (items, productId) => {
+  // Find the item by id
+  const item = items.find((item) => item._id === productId);
+
+  // Return the count if the item is found, otherwise return 0
+  return item ? item.count : 0;
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -86,4 +94,5 @@ export {
   arrayToString,
   hasActiveFilters,
   initialFilterOption,
+  getCountByProductIdFromCart,
 };

@@ -25,6 +25,7 @@ const cartSlice = createSlice({
     },
 
     removeFromcart: (state, action) => {
+      console.log(action.payload);
       const itemIndex = state.cart.items.findIndex(
         (item) => item._id === action.payload._id
       );

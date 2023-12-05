@@ -1,12 +1,20 @@
 import { forwardRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //dispatcher
-import { addTocart } from "../slices/cartSlice";
+import { addTocart, removeFromcart } from "../slices/cartSlice";
+import { getCountByProductIdFromCart } from "../utils/commonHelper";
 // Single Item Component
 const MenuItem = ({ item }) => {
-  const { name, description, price, imageId } = item;
+  const { _id, name, description, price, imageId } = item;
   // Dispatch
   const dispatch = useDispatch();
+  // Redux state
+  const { cart } = useSelector((state) => state.cartReducer);
+  const itemCount = useSelector((state) =>
+    getCountByProductIdFromCart(state.cartReducer.cart.items, _id)
+  );
+
+  console.log({ cart, itemCount }, " itemCount");
   return (
     <>
       <div className="item_description">
@@ -55,10 +63,9 @@ const MenuItem = ({ item }) => {
           </div>
           <div className="addButton">
             <div className="main_buttonInner">
-              <div className="text">ADD</div>
+              <div className="text"> {itemCount === 0 ? "Add" : itemCount}</div>
               <div
                 className="plus _1ds9T _2Thnf"
-                // onClick={() => console.log(item, " adddd")}
                 onClick={() => dispatch(addTocart(item))}
               >
                 +
@@ -66,9 +73,8 @@ const MenuItem = ({ item }) => {
               <div
                 className="minus _29Y5Z _2od4M"
                 style={{ opacity: "initial" }}
-                onClick={() => console.log(item, " minussss")}
+                onClick={() => dispatch(removeFromcart(_id))}
               ></div>
-              <div className="count">0</div>
             </div>
           </div>
         </div>
