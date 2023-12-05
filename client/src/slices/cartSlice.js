@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cart: {
     items: [],
+    totalCost: 0,
   },
 };
 
@@ -22,10 +23,15 @@ const cartSlice = createSlice({
         // Item does not exist, add to the cart with count 1
         state.cart.items.push({ ...action.payload, count: 1 });
       }
+
+      // Update total cost
+      state.cart.totalCost = state.cart.items.reduce(
+        (total, item) => total + item.count * item.price,
+        0
+      );
     },
 
     removeFromcart: (state, action) => {
-      console.log(action.payload);
       const itemIndex = state.cart.items.findIndex(
         (item) => item._id === action.payload._id
       );
@@ -39,12 +45,23 @@ const cartSlice = createSlice({
           state.cart.items.splice(itemIndex, 1);
         }
       }
+
+      // Update total cost
+      state.cart.totalCost = state.cart.items.reduce(
+        (total, item) => total + item.count * item.price,
+        0
+      );
     },
 
-    // You might want to have an action to remove an item regardless of count
     clearItemFromcart: (state, action) => {
       state.cart.items = state.cart.items.filter(
         (item) => item.itemName !== action.payload.itemName
+      );
+
+      // Update total cost
+      state.cart.totalCost = state.cart.items.reduce(
+        (total, item) => total + item.count * item.price,
+        0
       );
     },
   },
