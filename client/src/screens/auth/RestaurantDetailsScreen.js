@@ -88,8 +88,6 @@ const RestaurantDetails = () => {
     }
   }, [activeCategory]);
 
-  console.log({ activeCategory, categoryRefs }, " activeCategory");
-
   return (
     <div className="nDVxx restaurant_details_section">
       <ProgressBar
