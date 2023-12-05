@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cart: {
-    restaurantDetail: {}, // assuming you set this somewhere else
     items: [],
   },
 };
@@ -11,12 +10,9 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setRestaurantDetail: (state, action) => {
-      state.cart.restaurantDetail = action.payload;
-    },
     addTocart: (state, action) => {
       const itemIndex = state.cart.items.findIndex(
-        (item) => item.itemName === action.payload.itemName
+        (item) => item._id === action.payload._id
       );
 
       if (itemIndex >= 0) {
@@ -30,7 +26,7 @@ const cartSlice = createSlice({
 
     removeFromcart: (state, action) => {
       const itemIndex = state.cart.items.findIndex(
-        (item) => item.itemName === action.payload.itemName
+        (item) => item._id === action.payload._id
       );
 
       if (itemIndex >= 0) {
@@ -53,11 +49,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  setRestaurantDetail,
-  addTocart,
-  removeFromcart,
-  clearItemFromcart,
-} = cartSlice.actions;
+export const { addTocart, removeFromcart, clearItemFromcart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -1,8 +1,12 @@
 import { forwardRef, useState } from "react";
-
+import { useDispatch } from "react-redux";
+//dispatcher
+import { addTocart } from "../slices/cartSlice";
 // Single Item Component
 const MenuItem = ({ item }) => {
   const { name, description, price, imageId } = item;
+  // Dispatch
+  const dispatch = useDispatch();
   return (
     <>
       <div className="item_description">
@@ -52,8 +56,18 @@ const MenuItem = ({ item }) => {
           <div className="addButton">
             <div className="main_buttonInner">
               <div className="text">ADD</div>
-              <div className="plus">+</div>
-              <div className="minus"></div>
+              <div
+                className="plus _1ds9T _2Thnf"
+                // onClick={() => console.log(item, " adddd")}
+                onClick={() => dispatch(addTocart(item))}
+              >
+                +
+              </div>
+              <div
+                className="minus _29Y5Z _2od4M"
+                style={{ opacity: "initial" }}
+                onClick={() => console.log(item, " minussss")}
+              ></div>
               <div className="count">0</div>
             </div>
           </div>
