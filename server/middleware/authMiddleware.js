@@ -67,7 +67,8 @@ export const protectedRoutesWithParser = asyncHandler(
     // const csrfTokenFromHeader = req.headers["X-CSRF-TOKEN"]; // CSRF token from header
     const csrfTokenFromHeader = req.headers["x-csrf-token"]; // CSRF token from header
 
-    console.log({ token, csrfToken, csrfTokenFromHeader, req: req.headers });
+    // console.log({ token, csrfToken, csrfTokenFromHeader, req: req.headers });
+    console.log({ token, csrfToken, csrfTokenFromHeader }, " from clinet");
 
     if (token && csrfToken && csrfTokenFromHeader) {
       try {
