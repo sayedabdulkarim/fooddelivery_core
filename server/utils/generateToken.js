@@ -75,17 +75,19 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   res.cookie("jwt", token, {
     httpOnly: true,
     secure: !isDevelopment,
-    sameSite: "Lax",
+    sameSite: isDevelopment ? "strict" : "none",
     expires: expiration,
-    // path: "/", // Set the path to root
+    path: "/", // Set the path to root
+    domain: ".vercel.app",
   });
 
   // CSRF Token
   res.cookie("XSRF-TOKEN", csrfToken, {
     secure: !isDevelopment,
-    sameSite: "Lax",
+    sameSite: isDevelopment ? "strict" : "none",
     expires: expiration,
-    // path: "/", // Set the path to root
+    path: "/", // Set the path to root
+    domain: ".vercel.app",
   });
 
   console.log(

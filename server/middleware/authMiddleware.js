@@ -70,14 +70,12 @@ export const protectedRoutesWithParser = asyncHandler(
     // console.log({ token, csrfToken, csrfTokenFromHeader, req: req.headers });
     console.log({ token, csrfToken, csrfTokenFromHeader }, " from clinet");
 
-    // if (token && csrfToken && csrfTokenFromHeader) {
-    if (token && csrfToken) {
+    if (token && csrfToken && csrfTokenFromHeader) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // Verify CSRF token
-        // if (csrfToken !== csrfTokenFromHeader) {
-        if (csrfToken) {
+        if (csrfToken !== csrfTokenFromHeader) {
           res.status(403);
           throw new Error("CSRF token validation failed");
         }
