@@ -69,6 +69,8 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   const expiration = new Date();
   expiration.setDate(expiration.getDate() + 2); // Set it to 2 days from now
 
+  console.log({ res, userId }, " from login");
+
   const isDevelopment = process.env.NODE_ENV === "development";
 
   // JWT Token
