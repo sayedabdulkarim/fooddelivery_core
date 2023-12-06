@@ -23,7 +23,10 @@ app.use(express.json()); // to get req.body
 app.use(express.urlencoded({ extended: true })); //to get form data
 
 const corsOptions = {
-  origin: ["http://localhost:3000"], // Client's URL, not the server's
+  origin: [
+    "http://localhost:3000",
+    "https://fooddelivery-core-client.vercel.app",
+  ], // Client's URL, not the server's
   methds: ["GET", "POST", "DELETE"],
   credentials: true, // <-- REQUIRED backend setting
 };
