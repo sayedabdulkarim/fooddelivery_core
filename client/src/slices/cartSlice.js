@@ -7,6 +7,7 @@ const initialState = {
     deliveryFee: 0, // You can set a default value or update it dynamically
     platformFee: 0, // Same as above
     gst: 0, // Same as above
+    finalCost: 0, //after including platform, gst
   },
 };
 
@@ -69,7 +70,7 @@ const cartSlice = createSlice({
       );
 
       // Update total cost
-      state.cart.totalCost =
+      state.cart.finalCost =
         itemsSubtotal +
         state.cart.deliveryFee +
         state.cart.platformFee +
@@ -90,7 +91,11 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addTocart, removeFromcart, clearItemFromcart } =
-  cartSlice.actions;
+export const {
+  addTocart,
+  removeFromcart,
+  updateFeesAndTotal,
+  clearItemFromcart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

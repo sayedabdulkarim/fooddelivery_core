@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  addTocart,
+  removeFromcart,
+  updateFeesAndTotal,
+} from "../../../slices/cartSlice";
 
 const CartComponent = () => {
+  // Dispatch
+  const dispatch = useDispatch();
   // Redux state
   const { cart } = useSelector((state) => state.cartReducer);
   const { restaurantDetails } = useSelector(
     (state) => state.restaurantDetailReducer
   );
 
+  useEffect(() => {
+    if (cart.items.length > 0) {
+      const deliveryFee = 50; // Example delivery fee
+      const platformFee = 20; // Example platform fee
+      const gst = 30; // Example GST
+
+      dispatch(
+        updateFeesAndTotal({
+          deliveryFee,
+          platformFee,
+          gst,
+        })
+      );
+    }
+  }, [cart.items, dispatch]);
+
   if (!restaurantDetails) return null;
 
   const { name, areaName, cloudinaryImageId } = restaurantDetails?.data;
-  const { items, deliveryFee, gst, platformFee, totalCost } = cart;
+  const { items, deliveryFee, gst, platformFee, totalCost, finalCost } = cart;
 
   return (
     <div className="_2sMsA">
@@ -39,39 +62,60 @@ const CartComponent = () => {
               <div>
                 <div className="_2zsON"></div>
                 {/* loop */}
-                <div className="_2pdCL">
-                  <div className="_2bXOy">
-                    <div className="_3SG03">
-                      <i
-                        className="styles_icon__m6Ujp _2MJB6 icon-Veg styles_iconVeg__shLxJ"
-                        role="presentation"
-                        aria-hidden="true"
-                      ></i>
-                      <div
-                        className="_33KRy"
-                        onClick={() =>
-                          console.log({ cart, restaurantDetails }, " cartcart")
-                        }
-                      >
-                        Picco Latte<button className="_23dMP">Customize</button>
+                {items?.map((item) => {
+                  const { _id, name, price, count } = item;
+                  return (
+                    <div className="_2pdCL" key={_id}>
+                      <div className="_2bXOy">
+                        <div className="_3SG03">
+                          <i
+                            className="styles_icon__m6Ujp _2MJB6 icon-Veg styles_iconVeg__shLxJ"
+                            role="presentation"
+                            aria-hidden="true"
+                          ></i>
+                          <div
+                            className="_33KRy"
+                            onClick={() =>
+                              console.log(
+                                { cart, restaurantDetails },
+                                " cartcart"
+                              )
+                            }
+                          >
+                            {name}
+                            <button className="_23dMP">Customize</button>
+                          </div>
+                        </div>
+                        <div className="_2bWmk">
+                          <div className="_1yTZI">
+                            <div className="_3L1X9 _29ugw">
+                              <div className="_1RPOp _36fT9 _4aKW6">ADD</div>
+                              {/* <div className="_3Hy2E hDN3x _4aKW6">+</div> */}
+                              <div
+                                className="_1ds9T"
+                                onClick={() => dispatch(addTocart(item))}
+                                // onClick={() => console.log("addd")}
+                              >
+                                +
+                              </div>
+                              <div
+                                className="_29Y5Z"
+                                // onClick={() => console.log("minusss")}
+                                onClick={() =>
+                                  dispatch(removeFromcart({ _id }))
+                                }
+                              ></div>
+                              <div className="_2zAXs">{count}</div>
+                            </div>
+                            <div className="_1mx0r">
+                              <span className="_2W2U4">{price * count}</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="_2bWmk">
-                      <div className="_1yTZI">
-                        <div className="_3L1X9 _29ugw">
-                          <div className="_1RPOp _36fT9 _4aKW6">ADD</div>
-                          <div className="_3Hy2E hDN3x _4aKW6">+</div>
-                          <div className="_1ds9T">+</div>
-                          <div className="_29Y5Z"></div>
-                          <div className="_2zAXs">3</div>
-                        </div>
-                        <div className="_1mx0r">
-                          <span className="_2W2U4">600</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
                 {/*  */}
                 <div className="_2JQh7">
                   <textarea className="aeGJF" maxLength="140"></textarea>
@@ -132,7 +176,7 @@ const CartComponent = () => {
                     <div className="_1I8bA">
                       <span className="">
                         <span></span>
-                        <span className="ZH2UW">600</span>
+                        <span className="ZH2UW">{totalCost}</span>
                       </span>
                     </div>
                   </div>
@@ -148,7 +192,7 @@ const CartComponent = () => {
                     <div className="_1I8bA">
                       <span className="">
                         <span></span>
-                        <span className="ZH2UW">37</span>
+                        <span className="ZH2UW">{deliveryFee}</span>
                       </span>
                     </div>
                   </div>
@@ -174,10 +218,12 @@ const CartComponent = () => {
                       </div>
                     </div>
                     <div className="_1I8bA">
-                      <span className="_1A4pB _3Lk3Q ZH2UW">5.00</span>
+                      <span className="_1A4pB _3Lk3Q ZH2UW">
+                        {platformFee + 10}
+                      </span>
                       <span className="">
                         <span></span>
-                        <span className="">3</span>
+                        <span className="">{platformFee}</span>
                       </span>
                     </div>
                   </div>
@@ -193,7 +239,7 @@ const CartComponent = () => {
                     <div className="_1I8bA">
                       <span className="">
                         <span></span>
-                        <span className="ZH2UW">50.54</span>
+                        <span className="ZH2UW">{gst}</span>
                       </span>
                     </div>
                   </div>
@@ -204,7 +250,7 @@ const CartComponent = () => {
                 {/*  */}
                 <div className="ZBf6d">
                   <div>TO PAY</div>
-                  <div className="_3ZAW1">{"price"}</div>
+                  <div className="_3ZAW1">{finalCost}</div>
                 </div>
                 {/*  */}
                 {/* <div className="_3QkCH">Savings of ₹2</div> */}
