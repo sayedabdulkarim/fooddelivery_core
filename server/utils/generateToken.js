@@ -92,6 +92,7 @@ const generateToken = (res, userId, expiresIn = "2d") => {
     { res, userId, token, csrfToken, cookie: res["cookie"] },
     " from login"
   );
+  console.log("Set-Cookie:", res.get("Set-Cookie"));
   return csrfToken; // Return CSRF token to include in the response
 };
 
