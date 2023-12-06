@@ -2,11 +2,11 @@ import React from "react";
 
 const Payments = () => {
   return (
-    <div className="_14X78 payment_wrapper">
-      <div className="style_container_2wGgmQBL payment_container">
-        <div className="styles_container_2U_BJoll styles_containerUx4_2R4FRGb5 payment_sections">
+    <div className="payment_wrapper">
+      <div className="payment_container">
+        <div className="payment_sections">
           {/*  */}
-          <div className="styles_header_3pJd-soj styles_headerUx4_1WAu6S4B payment_header">
+          <div className="payment_header">
             <div className="header_container">
               <button
                 data-testid="header_back"
@@ -47,9 +47,9 @@ const Payments = () => {
           {/*  */}
           <div className="styles_content_3vmBOQV0 styles_contentUx4_2ASL4wVh payment_content">
             {/*  */}
-            <div className="DeliveryAddressView_wrapper_1zazTnRd">
-              <div className="DeliveryAddressView_innerWrapper_3H4RKzRr">
-                <div className="DeliveryAddressView_icons_3L9XU_AK">
+            <div className="DeliveryAddressView_wrapper_1zazTnRd delivery_address_view_wrapper">
+              <div className="DeliveryAddressView_innerWrapper_3H4RKzRr delivery_address_inner_wrapper">
+                <div className="DeliveryAddressView_icons_3L9XU_AK delivery_address_view_icon">
                   <span data-testid="dav_outlet_icon">
                     <svg
                       width="12"
@@ -96,41 +96,30 @@ const Payments = () => {
                     </svg>
                   </span>
                 </div>
-                <p className="ScreenReaderOnly_screenReaderOnly_15MQ-BaD">
-                  Delivering to: Other Looks Studio, Looks Studio ,, # 10/5, 1st
-                  Main, Koramangala, Khb Colony, 5th Block, Koramangala,
-                  Bengaluru, Karnataka 560034, India
-                </p>
                 <div
-                  className="DeliveryAddressView_details_3OknIm69"
+                  className="DeliveryAddressView_details_3OknIm69 delivery_view_details"
                   aria-hidden="true"
                 >
-                  <div className="DeliveryAddressView_pickupDetails_1rjxaQZT">
+                  <div className="DeliveryAddressView_pickupDetails_1rjxaQZT pickup_details">
                     <div
-                      className="DeliveryAddressView_restaurantName_2QejD4Cm"
+                      className="DeliveryAddressView_restaurantName_2QejD4Cm outlet_name"
                       data-testid="dav_outlet_name"
                     >
                       Chai Point
                     </div>
-                    <span className="DeliveryAddressView_separator_nkPQ345c">
-                      |
-                    </span>
-                    <p className="DeliveryAddressView_pickupSubtext_3IKZifcp">
-                      Delivery in: 92 mins
-                    </p>
+                    <span className="separator">|</span>
+                    <p className="pickup_Subtext">Delivery in: 92 mins</p>
                   </div>
-                  <div className="DeliveryAddressView_deliveryDetails_2yW-ZRVX">
+                  <div className="DeliveryAddressView_deliveryDetails_2yW-ZRVX to_deliver_details">
                     <div
-                      className="DeliveryAddressView_annotation_1pIAn_Ia"
+                      className="address_annotation"
                       data-testid="dav_addr_tag"
                     >
                       Other
                     </div>
-                    <span className="DeliveryAddressView_separator_nkPQ345c">
-                      |
-                    </span>
+                    <span className="separator">|</span>
                     <div
-                      className="DeliveryAddressView_deliveryAddress_21_UKzb1"
+                      className="delivery_address_text"
                       data-testid="dav_addr_dtls"
                     >
                       Looks Studio, Looks Studio ,, # 10/5, 1st Main,
@@ -142,16 +131,16 @@ const Payments = () => {
               </div>
             </div>
             {/*  */}
-            <div className="PaymentUIHandler-v4_container_3VG0fIsc PaymentUIHandler-v4_containerUx4_2dradPLX">
+            <div className="payment_options_wrapper">
               {/*  */}
               <div
-                className="OffersStrip_banner_NB4h2gO4"
+                className="offersStrip_banner"
                 data-testid="offer_strip_container"
               >
-                <div className="OffersStrip_wrapper_dv1b7JqT">
-                  <div className="OffersStrip_carousel_2zTB23eO">
-                    <div className="OffersStrip_carouselStaticItem_3vD3V5nT">
-                      <div className="OffersStrip_carouselIcon_1WXuKVSe">
+                <div className="offersStrip_wrapper">
+                  <div className="offersStrip_carousel">
+                    <div className="offersStrip_carousel_static_item">
+                      <div className="offersStrip_carousel_static_icon">
                         <img
                           crossOrigin="anonymous"
                           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/v1685605082/Ratnesh_Badges/Icon_for_offer.png"
