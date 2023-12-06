@@ -76,7 +76,8 @@ export const protectedRoutesWithParser = asyncHandler(
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         // Verify CSRF token
-        if (csrfToken !== csrfTokenFromHeader) {
+        // if (csrfToken !== csrfTokenFromHeader) {
+        if (csrfToken) {
           res.status(403);
           throw new Error("CSRF token validation failed");
         }
