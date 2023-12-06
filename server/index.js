@@ -32,6 +32,11 @@ app.use(cors(corsOptions));
 // app.use(cors());
 app.use(cookieParser());
 
+//test
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
+
 //users
 app.use("/api/users", userRoutes);
 //home
