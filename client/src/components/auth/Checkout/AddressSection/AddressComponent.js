@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addSelectedAddress } from "../../../../slices/cartSlice";
 
 const AddressesComponent = ({ getAddressData }) => {
+  // Dispatch
+  const dispatch = useDispatch();
+  //props
   const { addresses } = getAddressData;
   return (
     <div className="_3djal">
@@ -45,7 +50,12 @@ const AddressesComponent = ({ getAddressData }) => {
                         <div className="_2xgU6">{type}</div>
                         <div className="KYAcN">{address}</div>
                         <div className="_3w1k-">23 MINS - ***</div>
-                        <div className="_3dNWs">Deliver Here</div>
+                        <div
+                          className="_3dNWs"
+                          onClick={() => dispatch(addSelectedAddress(item))}
+                        >
+                          Deliver Here
+                        </div>
                       </div>
                     </div>
                   </div>

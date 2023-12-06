@@ -1,5 +1,5 @@
 import React from "react";
-import AddressesComponent from "../../components/auth/Checkout/AddressesComponent";
+import AddressesSection from "../../components/auth/Checkout/AddressSection";
 import CartComponent from "../../components/auth/Checkout/CartComponent";
 //apiSLice
 import { useGetAddressesByUserQuery } from "../../apiSlices/addressApiSlice";
@@ -20,7 +20,7 @@ const Checkout = () => {
           <h1>Loading....</h1>
         ) : (
           <>
-            <AddressesComponent getAddressData={getAddressData} />
+            <AddressesSection getAddressData={getAddressData} />
             {/* right */}
             <CartComponent />
           </>

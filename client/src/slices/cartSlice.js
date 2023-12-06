@@ -9,6 +9,7 @@ const initialState = {
     gst: 0, // Same as above
     finalCost: 0, //after including platform, gst
   },
+  selectedAddress: null,
 };
 
 const cartSlice = createSlice({
@@ -88,6 +89,10 @@ const cartSlice = createSlice({
         0
       );
     },
+
+    addSelectedAddress: (state, action) => {
+      state.selectedAddress = action.payload;
+    },
   },
 });
 
@@ -96,6 +101,7 @@ export const {
   removeFromcart,
   updateFeesAndTotal,
   clearItemFromcart,
+  addSelectedAddress,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
