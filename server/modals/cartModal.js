@@ -11,11 +11,25 @@ const cartSchema = new mongoose.Schema({
     ref: "Restaurant", // Assuming you have a Restaurant model
     required: true,
   },
-  address: {
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    zipCode: { type: String, required: true },
-    country: { type: String, required: true },
+  addressDetails: {
+    address: String,
+    doorNumber: String,
+    landmark: String,
+    location: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        required: true,
+      },
+      coordinates: {
+        type: [Number],
+        required: true,
+      },
+    },
+    type: {
+      type: String,
+      enum: ["Home", "Work", "Other"],
+    },
   },
   items: [
     {
