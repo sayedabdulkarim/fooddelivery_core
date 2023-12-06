@@ -70,7 +70,8 @@ export const protectedRoutesWithParser = asyncHandler(
     // console.log({ token, csrfToken, csrfTokenFromHeader, req: req.headers });
     console.log({ token, csrfToken, csrfTokenFromHeader }, " from clinet");
 
-    if (token && csrfToken && csrfTokenFromHeader) {
+    // if (token && csrfToken && csrfTokenFromHeader) {
+    if (token && csrfToken) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
