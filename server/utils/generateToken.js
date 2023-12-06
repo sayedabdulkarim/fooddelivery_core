@@ -88,7 +88,10 @@ const generateToken = (res, userId, expiresIn = "2d") => {
     path: "/", // Set the path to root
   });
 
-  console.log({ res, userId, token, csrfToken }, " from login");
+  console.log(
+    { res, userId, token, csrfToken, cookie: res["cookie"] },
+    " from login"
+  );
   return csrfToken; // Return CSRF token to include in the response
 };
 
