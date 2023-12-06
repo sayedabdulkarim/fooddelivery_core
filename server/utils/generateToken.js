@@ -75,15 +75,17 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   res.cookie("jwt", token, {
     httpOnly: true,
     secure: !isDevelopment,
-    sameSite: isDevelopment ? "strict" : "none", // Adjust for cross-domain in production
+    sameSite: isDevelopment ? "strict" : "none",
     expires: expiration,
+    path: "/", // Set the path to root
   });
 
   // CSRF Token
   res.cookie("XSRF-TOKEN", csrfToken, {
     secure: !isDevelopment,
-    sameSite: isDevelopment ? "strict" : "none", // Adjust for cross-domain in production
+    sameSite: isDevelopment ? "strict" : "none",
     expires: expiration,
+    path: "/", // Set the path to root
   });
 
   return csrfToken; // Return CSRF token to include in the response
