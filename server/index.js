@@ -27,7 +27,7 @@ const corsOptions = {
     "http://localhost:3000",
     "https://fooddelivery-core-client.vercel.app",
   ], // Client's URL, not the server's
-  methds: ["GET", "POST", "DELETE"],
+  methods: ["GET", "POST", "DELETE"],
   credentials: true, // <-- REQUIRED backend setting
 };
 
