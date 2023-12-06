@@ -69,8 +69,6 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   const expiration = new Date();
   expiration.setDate(expiration.getDate() + 2); // Set it to 2 days from now
 
-  console.log({ res, userId }, " from login");
-
   const isDevelopment = process.env.NODE_ENV === "development";
 
   // JWT Token
@@ -90,6 +88,7 @@ const generateToken = (res, userId, expiresIn = "2d") => {
     path: "/", // Set the path to root
   });
 
+  console.log({ res, userId, token, csrfToken }, " from login");
   return csrfToken; // Return CSRF token to include in the response
 };
 
