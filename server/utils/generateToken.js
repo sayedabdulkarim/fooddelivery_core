@@ -75,9 +75,9 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   res.cookie("jwt", token, {
     httpOnly: true,
     secure: !isDevelopment,
-    sameSite: "none",
+    sameSite: "Lax",
     expires: expiration,
-    path: "/", // Set the path to root
+    // path: "/", // Set the path to root
   });
 
   // CSRF Token
@@ -85,7 +85,7 @@ const generateToken = (res, userId, expiresIn = "2d") => {
     secure: !isDevelopment,
     sameSite: "none",
     expires: expiration,
-    path: "/", // Set the path to root
+    // path: "/", // Set the path to root
   });
 
   console.log(
