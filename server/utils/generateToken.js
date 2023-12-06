@@ -83,7 +83,7 @@ const generateToken = (res, userId, expiresIn = "2d") => {
   // CSRF Token
   res.cookie("XSRF-TOKEN", csrfToken, {
     secure: !isDevelopment,
-    sameSite: "none",
+    sameSite: "Lax",
     expires: expiration,
     // path: "/", // Set the path to root
   });
