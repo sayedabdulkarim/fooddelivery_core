@@ -13,6 +13,7 @@ import HomeScreen from "../screens/auth/HomeScreen";
 import HelpScreen from "../screens/auth/HelpScreen";
 import RestaurantDetailsScreen from "../screens/auth/RestaurantDetailsScreen";
 import CheckoutScreen from "../screens/auth/Checkout";
+import PaymentScreen from "../screens/auth/Payments";
 //unauth
 import UnAuthScreen from "../screens/unauth";
 
@@ -28,6 +29,7 @@ export const router = createBrowserRouter(
         <Route index={true} path="/" element={<HomeScreen />} />
         <Route path="checkout" element={<CheckoutScreen />} />
         <Route path="support" element={<HelpScreen />} />
+        <Route path="payments" element={<PaymentScreen />} />
         <Route
           path="/restaurant/:name/:id"
           element={<RestaurantDetailsScreen />}
