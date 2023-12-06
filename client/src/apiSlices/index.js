@@ -7,7 +7,8 @@ const getCsrfToken = () => {
 };
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/",
+  // baseUrl: "http://localhost:5000/",
+  baseUrl: "https://fooddelivery-core-api.vercel.app/",
   credentials: "include", // Necessary for cookies to be included
   prepareHeaders: (headers) => {
     const csrfToken = getCsrfToken();
