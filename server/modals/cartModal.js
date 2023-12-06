@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 const cartSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Assuming you have a User model
+    ref: "User",
     required: true,
   },
   restaurantId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Restaurant", // Assuming you have a Restaurant model
+    ref: "Restaurant",
     required: true,
   },
   addressDetails: {
@@ -33,10 +33,16 @@ const cartSchema = new mongoose.Schema({
   },
   items: [
     {
-      itemId: { type: String, required: true },
+      id: String,
       name: { type: String, required: true },
+      description: String,
+      imageId: String,
+      inStock: Boolean,
       price: { type: Number, required: true },
-      quantity: { type: Number, required: true, min: 1 },
+      variants: [{}], // This can be more detailed based on your variant structure
+      offers: [{}], // Similarly, adjust as needed for your offers structure
+      _id: { type: String, required: true },
+      count: { type: Number, required: true, min: 1 },
     },
   ],
   status: {
