@@ -7,7 +7,7 @@ const Payments = () => {
         <div className="styles_container_2U_BJoll styles_containerUx4_2R4FRGb5 payment_sections">
           {/*  */}
           <div className="styles_header_3pJd-soj styles_headerUx4_1WAu6S4B payment_header">
-            <div className="Header_container_17TeZht_ Header_containerUx4_2XTqmRvT">
+            <div className="header_container">
               <button
                 data-testid="header_back"
                 className="Header_containerButton_8joGRyzf Header_containerButtonUx4_1oib6YLY"
@@ -30,20 +30,12 @@ const Payments = () => {
                   ></path>
                 </svg>
               </button>
-              <div className="Header_containerContent_2n-qQAeo">
-                <div className="styles_header_2m84gsh0">
-                  <h4
-                    className="styles_headerTitleUx4_2H9faJAq"
-                    data-testid="header_title"
-                  >
-                    Payment Options
-                  </h4>
-                  <div
-                    className="styles_headerSubtitleUx4_2w0M1AuO"
-                    data-testid="header_subtitle"
-                  >
+              <div className="header_content">
+                <div className="styles_header">
+                  <h4 className="header_title">Payment Options</h4>
+                  <div className="header_subtitle">
                     1 item • Total: ₹472
-                    <span className="styles_headerSubtitleOffer_2D15HBng">
+                    <span className="header_subtitle_offer">
                       {" "}
                       • Savings of ₹2
                     </span>
