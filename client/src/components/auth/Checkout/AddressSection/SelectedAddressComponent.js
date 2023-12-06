@@ -1,10 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addSelectedAddress } from "../../../../slices/cartSlice";
 
 const SelectedAddressComponent = () => {
   // Dispatch
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //function
+  const navigateToPayment = () => {
+    navigate("/payments");
+  };
+
   return (
     <div className="_3djal">
       <div>
@@ -41,7 +49,9 @@ const SelectedAddressComponent = () => {
             <div className="F8Sye">
               <div className="_2YrH-">Choose payment method</div>
             </div>
-            <button className="_3PNwl">Proceed to Pay</button>
+            <button className="_3PNwl" onClick={() => navigateToPayment()}>
+              Proceed to Pay
+            </button>
             <div className="_2b4pY">
               <span className="_1q8J4 icon-wallet-checkout"></span>
             </div>
