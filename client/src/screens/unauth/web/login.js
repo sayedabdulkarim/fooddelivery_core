@@ -34,7 +34,8 @@ const login = ({
               src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/Image-login_btpq7r"
             />
           </div>
-          <form onSubmit={!isOtp ? handleLogInContinue : handleVerifyOtp}>
+          {/* <form onSubmit={!isOtp ? handleLogInContinue : handleVerifyOtp}> */}
+          <form onSubmit={handleVerifyOtp}>
             <div>
               <div className="_3Um38 _3lG1r">
                 <input

@@ -12,6 +12,7 @@ const baseQuery = fetchBaseQuery({
   credentials: "include", // Necessary for cookies to be included
   prepareHeaders: (headers) => {
     const csrfToken = getCsrfToken();
+    console.log(csrfToken, " csrfTokencsrfTokencsrfTokencsrfToken");
     if (csrfToken) {
       // Set the CSRF token in the request headers
       headers.set("x-csrf-token", csrfToken);
