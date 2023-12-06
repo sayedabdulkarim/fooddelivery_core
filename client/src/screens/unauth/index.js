@@ -143,17 +143,13 @@ const Index = () => {
     setIsLoadingOtp(true);
     e.preventDefault();
     try {
-      // const { otp } = loginFormData;
-      // const data = await user.confirm(otp);
-      // console.log(data, " succesully login dataaaa");
-      // // data.user.phoneNumber
-      // if (data.user.phoneNumber) {
-      //   handleLogInSubmit(data.user.phoneNumber);
-      // }
-      const { phone } = loginFormData;
-      const formattedNumber = `+91${phone}`;
-
-      handleLogInSubmit(formattedNumber);
+      const { otp } = loginFormData;
+      const data = await user.confirm(otp);
+      console.log(data, " succesully login dataaaa");
+      // data.user.phoneNumber
+      if (data.user.phoneNumber) {
+        handleLogInSubmit(data.user.phoneNumber);
+      }
     } catch (error) {
       setIsLoadingOtp(false);
       console.log(error, " eerr from opttt");

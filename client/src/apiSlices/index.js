@@ -6,22 +6,11 @@ const getCsrfToken = () => {
   return Cookies.get("XSRF-TOKEN");
 };
 
-const getJwtToken = () => {
-  // set 'XSRF-TOKEN'
-  return Cookies.get("jwt");
-};
-
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "http://localhost:5000/",
-  baseUrl: "https://fooddelivery-core-api.vercel.app/",
+  baseUrl: "http://localhost:5000/",
   credentials: "include", // Necessary for cookies to be included
   prepareHeaders: (headers) => {
     const csrfToken = getCsrfToken();
-    const jwtToken = getJwtToken();
-    console.log(
-      { csrfToken, jwtToken },
-      " csrfTokencsrfTokencsrfTokencsrfToken"
-    );
     if (csrfToken) {
       // Set the CSRF token in the request headers
       headers.set("x-csrf-token", csrfToken);
