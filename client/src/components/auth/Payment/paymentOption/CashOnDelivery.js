@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useAddOrderMutation } from "../../../../apiSlices/cartApiSlice";
 
 const CashOnDelivery = ({ setIsPaymentType }) => {
   //misc
@@ -7,6 +8,12 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
   const { restaurantDetails } = useSelector(
     (state) => state.restaurantDetailReducer
   );
+
+  //queires n mutation
+  const [
+    addOrder,
+    { isLoading, isSuccess, data: addOrderData, isError, error },
+  ] = useAddOrderMutation();
 
   //func
   const handlePlaceOrder = () => {
@@ -25,6 +32,7 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
       status: "active", // or "pending" or "completed" based on the cart status
     };
     console.log(data, " ddd");
+    addOrder(data);
     // console.log({ cart, selectedAddress, restaurantDetails });
   };
 
@@ -136,7 +144,7 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
                   </div>
                   {/*  */}
                   <div className="payment_method_button">
-                    <button onClick={handlePlaceOrder}>
+                    <button onClick={() => handlePlaceOrder()}>
                       <div>Pay ₹ {cart?.finalCost} with Cash</div>
                     </button>
                   </div>

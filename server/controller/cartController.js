@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import CartModal from "../modals/cartModal";
+import CartModal from "../modals/cartModal.js";
 
 // @desc Add order for a user
 // @route POST /api/users/addOrder
@@ -8,10 +8,10 @@ const addOrder = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
   // Extract order details from request body
-  const { restaurantId, address, items } = req.body;
+  const { restaurantId, addressDetails, items } = req.body;
 
   // Validate the request body
-  if (!restaurantId || !address || !items || items.length === 0) {
+  if (!restaurantId || !addressDetails || !items || items.length === 0) {
     res.status(400);
     throw new Error("Missing order details");
   }
@@ -20,7 +20,7 @@ const addOrder = asyncHandler(async (req, res) => {
   const newOrder = new CartModal({
     userId: userId,
     restaurantId: restaurantId,
-    address: address,
+    addressDetails: addressDetails,
     items: items,
     status: "active", // or any other initial status
   });
