@@ -222,7 +222,7 @@
 
                     .offersStrip_banner {
                         background: #ddfbef;
-                        padding: 4px 0 4px 16px;
+                        padding: 4px 16px 4px 16px;
                         margin-bottom: 32px;
                         box-shadow: 0 1px 16px rgba(0,0,0,.05);
                         border-radius: 0 0 16px 16px;
@@ -276,6 +276,12 @@
 
                                 }
                             }
+                        }
+
+                        .offersStrip_bannerContentContainer {}
+
+                        .offersStrip_ArrowIconWrapper {
+                            margin-left: auto;
                         }
 
                     }

@@ -153,13 +153,13 @@ const Payments = () => {
                   </div>
                 </div>
                 <div
-                  className="OffersStrip_bannerContentContainer_36CRbueG"
+                  className="offersStrip_bannerContentContainer"
                   data-testid="offer_strip_text"
                 >
                   Save <b>upto ₹94</b> more with payment offers
                 </div>
                 <div
-                  className="OffersStrip_ArrowIconWrapper_13QbaT6S"
+                  className="offersStrip_ArrowIconWrapper"
                   aria-hidden="true"
                 >
                   <svg
