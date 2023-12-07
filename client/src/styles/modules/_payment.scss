@@ -445,6 +445,11 @@
                             .more_payment_list_item {
                                 border-bottom: 1px dashed #e2e2e7;
 
+                                .isDisabled {
+                                    opacity: 0.5;
+                                    cursor: no-drop;
+                                }
+
                                 .item {
                                     display: flex;
                                     align-items: center;
@@ -473,10 +478,28 @@
                                         outline: 0;
 
                                         .payment_option_container_header {
-
+                                            font-size: 16px;
+                                            line-height: 19px;
+                                            font-weight: 500;
+                                            letter-spacing: -.3px;
+                                            color: rgba(2,6,12,.75);
+                                            width: -webkit-max-content;
+                                            width: max-content;
                                         }
 
-                                        .payment_option_container_subText {}
+                                        .payment_option_container_subText {
+                                            font-size: 13px;
+                                            line-height: 16px;
+                                            font-weight: 400;
+                                            letter-spacing: -.3px;
+                                            flex: 1;
+                                            color: rgba(2,6,12,.6);
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            margin-top: 2px;
+                                        
+                                        }
 
                                         .payment_option_container_icon {}
                                     }

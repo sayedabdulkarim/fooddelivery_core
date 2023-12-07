@@ -236,8 +236,8 @@ const Payments = () => {
                 </div>
                 <div className="more_payment_list_wrapper">
                   {/*  */}
-                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
-                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                  <div className="more_payment_list_item">
+                    <div className="item isDisabled">
                       <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
@@ -278,23 +278,23 @@ const Payments = () => {
                   </div>
                   {/*  */}
                   {/*  */}
-                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
-                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                  <div className="more_payment_list_item">
+                    <div className="item isDisabled">
                       <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
                           className=""
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Net_banking"
                           width="24"
                           alt=""
                         />
                       </div>
                       <div className="payment_option_container">
                         <div className="payment_option_container_header">
-                          Wallets
+                          Net Banking
                         </div>
                         <div className="payment_option_container_subText">
-                          Paytm, PhonePe, Amazon Pay &amp; more
+                          Select from a list of banks
                         </div>
                       </div>
                       <div
@@ -320,23 +320,23 @@ const Payments = () => {
                   </div>
                   {/*  */}
                   {/*  */}
-                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
-                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                  <div className="more_payment_list_item">
+                    <div className="item">
                       <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
                           className=""
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Cash"
                           width="24"
                           alt=""
                         />
                       </div>
                       <div className="payment_option_container">
                         <div className="payment_option_container_header">
-                          Wallets
+                          Pay on Delivery
                         </div>
                         <div className="payment_option_container_subText">
-                          Paytm, PhonePe, Amazon Pay &amp; more
+                          Pay in cash or pay online
                         </div>
                       </div>
                       <div
@@ -362,23 +362,23 @@ const Payments = () => {
                   </div>
                   {/*  */}
                   {/*  */}
-                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
-                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                  <div className="more_payment_list_item">
+                    <div className="item isDisabled">
                       <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
                           className=""
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/food_card"
                           width="24"
                           alt=""
                         />
                       </div>
                       <div className="payment_option_container">
                         <div className="payment_option_container_header">
-                          Wallets
+                          Pluxee/Sodexo
                         </div>
                         <div className="payment_option_container_subText">
-                          Paytm, PhonePe, Amazon Pay &amp; more
+                          Not applicable as your cart has a non-food item
                         </div>
                       </div>
                       <div
