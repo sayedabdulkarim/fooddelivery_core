@@ -118,6 +118,25 @@
                         }
                     }
                 }
+
+                .right_section {
+                    border: 1px solid red;
+                    width: 100%;
+
+                    .order_details_component {
+                        flex: 1;
+                        background: #fff;
+                        padding: 37px 0 0 50px;
+                        position: relative;
+                        min-height: 80vh;
+
+                        .title {
+                            font-size: 24px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+
             }
         }
     }

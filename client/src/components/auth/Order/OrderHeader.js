@@ -2,10 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const OrderHeader = () => {
-  const { userInfo } = useSelector((state) => state.authReducer);
-  const {
-    data: { email, phoneNumber, name },
-  } = userInfo;
+  const userInfo = useSelector((state) => state.authReducer.userInfo);
+
+  // Check if userInfo is available
+  if (!userInfo) {
+    return <div>Loading...</div>; //
+  }
+
+  const { email, phoneNumber, name } = userInfo.data;
+
   return (
     <>
       <div className="order_container_header">
