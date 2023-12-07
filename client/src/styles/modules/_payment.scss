@@ -1,14 +1,14 @@
 .payment_wrapper {
     font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
     max-width: 800px;
-    height: calc(100vh - 80px - 40px);
+    // height: calc(100vh - 80px - 40px);
     position: relative;
     margin: 20px auto;
     overflow: hidden;
+    height: auto;
 
     .payment_container {
         display: flex;
-        position: absolute;
         left: 0;
         top: 0;
         width: 100%;
@@ -33,7 +33,6 @@
                 height: 100%;
                 background: #fff;
                 display: flex;
-                border: 1px solid red;
 
                 .header_container {
                     width: 100%;
