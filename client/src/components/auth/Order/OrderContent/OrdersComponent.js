@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import {
-  extractItemPrices,
   formatUTCToLocal,
+  getRestaurantById,
 } from "../../../../utils/commonHelper";
 
 const Orders = () => {
@@ -29,7 +29,7 @@ const Orders = () => {
       </div>
       {/*  */}
       {userOrderDetails?.map((item, idx) => {
-        const { _id, createdAt, items, restaurantId } = item;
+        const { _id, createdAt, items, restaurantId, finalCost } = item;
         return (
           <div className="order_detail_item">
             {/*  */}
@@ -39,12 +39,30 @@ const Orders = () => {
                   height="200"
                   width="300"
                   alt="img renderer"
-                  src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_200,c_fill/cnlhkx4qw7vcrasx8the"
+                  src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${
+                    getRestaurantById(allRestaurantsList, restaurantId)
+                      ?.cloudinaryImageId
+                  }`}
                 />
               </div>
               <div className="item_top_restaurant_details">
-                <div className="title">Chai Point</div>
-                <div className="sub_title">Kalyan Nagar</div>
+                <div
+                  className="title"
+                  onClick={() =>
+                    console.log(
+                      getRestaurantById(allRestaurantsList, restaurantId),
+                      " asdf"
+                    )
+                  }
+                >
+                  {getRestaurantById(allRestaurantsList, restaurantId)?.name}
+                </div>
+                <div className="sub_title">
+                  {
+                    getRestaurantById(allRestaurantsList, restaurantId)
+                      ?.areaName
+                  }
+                </div>
                 <div className="order_date">
                   ORDER #{_id} | {formatUTCToLocal(createdAt)}
                 </div>
@@ -54,7 +72,7 @@ const Orders = () => {
             {/*  */}
             <div className="item_bottom">
               {items?.map((o) => {
-                const { name, count, price } = o;
+                const { name, count } = o;
                 return (
                   <div className=" item_count">
                     {name} x {count}
@@ -66,7 +84,7 @@ const Orders = () => {
                 <button className="">HELP</button>
               </div>
               <div className="payment">
-                Total Paid: <span> 479 </span>
+                Total Paid: <span> {finalCost} </span>
               </div>
             </div>
           </div>

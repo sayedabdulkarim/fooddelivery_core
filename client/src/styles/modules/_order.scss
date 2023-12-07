@@ -106,7 +106,7 @@
                                     position: absolute;
                                     top: 23px;
 
-                                    &:before {
+                                    &::before {
                                         content: "\E919";
                                     }
 
@@ -121,7 +121,7 @@
                     }
 
                     .right_section {
-                        border: 1px solid red;
+                        // border: 1px solid red;
                         width: 100%;
 
                         .order_details_component {
@@ -253,7 +253,13 @@
                                         color: #535665;
                                         font-size: 14px;
 
-                                        span {}
+                                        span {
+                                            // border: 1px solid red;
+
+                                            &::before {
+                                                content: "\20B9";
+                                            }
+                                        }
                                     }
                                 }
 
