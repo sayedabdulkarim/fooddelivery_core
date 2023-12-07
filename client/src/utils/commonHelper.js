@@ -87,6 +87,21 @@ const getCountByProductIdFromCart = (items, productId) => {
   return item ? item.count : 0;
 };
 
+const formatUTCToLocal = (utcTimestamp) => {
+  const options = {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  };
+
+  const date = new Date(utcTimestamp);
+  return date.toLocaleString("en-US", options);
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -95,4 +110,5 @@ export {
   hasActiveFilters,
   initialFilterOption,
   getCountByProductIdFromCart,
+  formatUTCToLocal,
 };
