@@ -1,6 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { formatUTCToLocal } from "../../../../utils/commonHelper";
+import {
+  extractItemPrices,
+  formatUTCToLocal,
+} from "../../../../utils/commonHelper";
 
 const Orders = () => {
   const homePageData = useSelector((state) => state.homeReducer.homePageData);
@@ -25,7 +28,7 @@ const Orders = () => {
         Past Orders{" "}
       </div>
       {/*  */}
-      {userOrderDetails?.map((item) => {
+      {userOrderDetails?.map((item, idx) => {
         const { _id, createdAt, items, restaurantId } = item;
         return (
           <div className="order_detail_item">

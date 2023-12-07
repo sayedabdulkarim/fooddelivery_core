@@ -102,6 +102,10 @@ const formatUTCToLocal = (utcTimestamp) => {
   return date.toLocaleString("en-US", options);
 };
 
+const extractItemPrices = (orders) => {
+  return orders.flatMap((order) => order.items.map((item) => item.price));
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -111,4 +115,5 @@ export {
   initialFilterOption,
   getCountByProductIdFromCart,
   formatUTCToLocal,
+  extractItemPrices,
 };
