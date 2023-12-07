@@ -17,7 +17,7 @@ const getHomePageData = asyncHandler(async (req, res) => {
     const topRestaurantList = await TopRestaurantModal.find(); // Fetch all documents from TopRestaurantModal
     const cuisinesList = await CuisinesModal.find(); // Fetch all documents from CuisinesModal
     const allRestaurantsList = await AllRestaurantsModal.find(); // Fetch all documents from AllRestaurantsModal
-    const userCartDetails = await CartModal.findOne({ userId: userId }); // fetch all cart details from logged in user
+    const userCartDetails = await CartModal.find({ userId: userId }); // fetch all cart details from logged in user
 
     res.status(200).json({
       data: {
