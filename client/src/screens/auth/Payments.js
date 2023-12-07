@@ -23,9 +23,9 @@ const Payments = () => {
           <div className="payment_header">
             <div className="header_container">
               <button
-                data-testid="header_back"
-                className="Header_containerButton_8joGRyzf Header_containerButtonUx4_1oib6YLY"
+                className=""
                 aria-label="Go Back"
+                onClick={() => navigate("/checkout")}
               >
                 <svg
                   width="20"
