@@ -28,7 +28,7 @@ const addOrder = asyncHandler(async (req, res) => {
   // Save the new order to the database
   const savedOrder = await newOrder.save();
 
-  res.status(201).json(savedOrder);
+  res.status(201).json({ savedOrder, message: "Added successfully." });
 });
 
 export { addOrder };
