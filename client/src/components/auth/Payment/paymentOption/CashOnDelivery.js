@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useAddOrderMutation } from "../../../../apiSlices/cartApiSlice";
 import { handleShowAlert } from "../../../../utils/commonHelper";
+import { clearCart, clearItemFromcart } from "../../../../slices/cartSlice";
 
 const CashOnDelivery = ({ setIsPaymentType }) => {
   //misc
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart, selectedAddress } = useSelector((state) => state.cartReducer);
   const { restaurantDetails } = useSelector(
@@ -38,6 +41,8 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
       const result = await addOrder(data).unwrap(); // unwrap the result
       console.log(result, " resss");
       handleShowAlert(dispatch, "success", result?.message);
+      dispatch(clearCart());
+      navigate("/");
     } catch (err) {
       handleShowAlert(
         dispatch,

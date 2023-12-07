@@ -90,6 +90,11 @@ const cartSlice = createSlice({
       );
     },
 
+    clearCart: (state) => {
+      state.cart = initialState.cart;
+      state.selectedAddress = initialState.selectedAddress;
+    },
+
     addSelectedAddress: (state, action) => {
       state.selectedAddress = action.payload;
     },
@@ -101,6 +106,7 @@ export const {
   removeFromcart,
   updateFeesAndTotal,
   clearItemFromcart,
+  clearCart,
   addSelectedAddress,
 } = cartSlice.actions;
 
