@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useAddOrderMutation } from "../../../../apiSlices/cartApiSlice";
+import { handleShowAlert } from "../../../../utils/commonHelper";
 
 const CashOnDelivery = ({ setIsPaymentType }) => {
   //misc
+  const dispatch = useDispatch();
   const { cart, selectedAddress } = useSelector((state) => state.cartReducer);
   const { restaurantDetails } = useSelector(
     (state) => state.restaurantDetailReducer
@@ -16,7 +18,7 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
   ] = useAddOrderMutation();
 
   //func
-  const handlePlaceOrder = () => {
+  const handlePlaceOrder = async () => {
     const { address, doorNumber, landmark, location, type } = selectedAddress;
     const { items } = cart;
     const data = {
@@ -31,8 +33,18 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
       items,
       status: "active", // or "pending" or "completed" based on the cart status
     };
-    console.log(data, " ddd");
-    addOrder(data);
+    // console.log(data, " ddd");
+    try {
+      const result = await addOrder(data).unwrap(); // unwrap the result
+      console.log(result, " resss");
+      handleShowAlert(dispatch, "success", result?.message);
+    } catch (err) {
+      handleShowAlert(
+        dispatch,
+        "error",
+        err?.message || "Something went wrong."
+      );
+    }
     // console.log({ cart, selectedAddress, restaurantDetails });
   };
 
@@ -40,6 +52,7 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="web_payments_section">
       <div className="web_payments_container">
