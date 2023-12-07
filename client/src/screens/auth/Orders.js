@@ -2,15 +2,12 @@ import React from "react";
 
 const Orders = () => {
   return (
-    <div>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
-      <h1>Orders</h1>
+    <div className="order_component">
+      <div className="order_container">
+        <div className="order_container_header"></div>
+        {/*  */}
+        <div className="order_container_content"></div>
+      </div>
     </div>
   );
 };

@@ -118,7 +118,7 @@ const Header = () => {
                             <span>Favourites</span>
                           </Link>
 
-                          <Link to="/orders">
+                          <Link to="">
                             <span onClick={handleLogout}>Logout</span>
                           </Link>
                         </div>
