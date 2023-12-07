@@ -11,6 +11,7 @@ import userRoutes from "./routes/userRoutes.js";
 import homeRoutes from "./routes/homeRoutes.js";
 import restaurantRoutes from "./routes/restaurantRoute.js";
 import addressRoutes from "./routes/addressRoutes.js";
+import cartRoutes from "./routes/cartRoute.js";
 
 const port = process.env.PORT || 5000;
 
@@ -49,6 +50,8 @@ app.use("/api/users", homeRoutes);
 app.use("/api/users", restaurantRoutes);
 //address
 app.use("/api/users", addressRoutes);
+//cart
+app.use("/api/users", cartRoutes);
 
 ////////////DEPLOYMENT //////////////
 

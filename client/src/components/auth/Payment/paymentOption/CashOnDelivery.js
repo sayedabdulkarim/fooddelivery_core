@@ -1,6 +1,19 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const CashOnDelivery = ({ setIsPaymentType }) => {
+  //misc
+  const { cart, selectedAddress } = useSelector((state) => state.cartReducer);
+  const { restaurantDetails } = useSelector(
+    (state) => state.restaurantDetailReducer
+  );
+
+  //func
+  const handlePlaceOrder = () => {
+    console.log({ cart, selectedAddress, restaurantDetails });
+  };
+
+  //async
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,7 +50,9 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
                 <div className="styles_header_2m84gsh0">
                   <h4
                     className="styles_headerTitleUx4_2H9faJAq"
-                    data-testid="header_title"
+                    onClick={() =>
+                      console.log({ cart, selectedAddress, restaurantDetails })
+                    }
                   >
                     Pay on delivery
                   </h4>
@@ -45,7 +60,10 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
                     className="styles_headerSubtitleUx4_2w0M1AuO styles_headerSubtitleGray_1WiZKLxM"
                     data-testid="header_subtitle"
                   >
-                    1 item • Total: ₹466
+                    {`${cart?.items?.length} ${
+                      cart?.items?.length > 1 ? "items" : "item"
+                    } • Total: ₹${cart?.finalCost}`}
+                    {/* 1 item • Total: ₹466 */}
                   </div>
                 </div>
               </div>
@@ -103,8 +121,8 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
                   </div>
                   {/*  */}
                   <div className="payment_method_button">
-                    <button>
-                      <div>Pay ₹466 with Cash</div>
+                    <button onClick={handlePlaceOrder}>
+                      <div>Pay ₹ {cart?.finalCost} with Cash</div>
                     </button>
                   </div>
                 </div>
