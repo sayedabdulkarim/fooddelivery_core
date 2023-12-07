@@ -23,7 +23,7 @@ const userLogin = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        phoneNumber: user.phoneNumber,
+        phoneNumber: user.phone,
         favorites: user.favorites, // Add this line to include the favorites in the response
       },
       message: "Login successful",
