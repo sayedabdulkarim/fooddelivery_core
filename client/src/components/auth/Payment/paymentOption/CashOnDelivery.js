@@ -10,7 +10,22 @@ const CashOnDelivery = ({ setIsPaymentType }) => {
 
   //func
   const handlePlaceOrder = () => {
-    console.log({ cart, selectedAddress, restaurantDetails });
+    const { address, doorNumber, landmark, location, type } = selectedAddress;
+    const { items } = cart;
+    const data = {
+      restaurantId: restaurantDetails?.data?._id, // Restaurant's ObjectId from MongoDB
+      addressDetails: {
+        address,
+        doorNumber,
+        landmark,
+        location,
+        type,
+      },
+      items,
+      status: "active", // or "pending" or "completed" based on the cart status
+    };
+    console.log(data, " ddd");
+    // console.log({ cart, selectedAddress, restaurantDetails });
   };
 
   //async
