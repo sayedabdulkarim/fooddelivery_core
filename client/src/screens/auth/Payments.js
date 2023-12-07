@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Payments = () => {
+  const navigate = useNavigate("/");
+  const { cart, selectedAddress } = useSelector((state) => state.cartReducer);
+  const { restaurantDetails } = useSelector(
+    (state) => state.restaurantDetailReducer
+  );
+
+  useEffect(() => {
+    if (!selectedAddress && !cart?.items?.length) {
+      navigate("/");
+    }
+  }, [selectedAddress, cart, navigate]);
+
   return (
     <div className="payment_wrapper">
       <div className="payment_container">
@@ -32,12 +46,24 @@ const Payments = () => {
               </button>
               <div className="header_content">
                 <div className="styles_header">
-                  <h4 className="header_title">Payment Options</h4>
+                  <h4
+                    className="header_title"
+                    onClick={() =>
+                      console.log({ cart, selectedAddress, restaurantDetails })
+                    }
+                  >
+                    Payment Options
+                  </h4>
                   <div className="header_subtitle">
-                    1 item • Total: ₹472
+                    {/* 1 item • Total: ₹472 */}
+
+                    {`${cart?.items?.length} ${
+                      cart?.items?.length > 1 ? "items" : "item"
+                    } • Total: ₹${cart?.finalCost}`}
+
                     <span className="header_subtitle_offer">
                       {" "}
-                      • Savings of ₹2
+                      • Savings of ₹2*
                     </span>
                   </div>
                 </div>
@@ -105,26 +131,29 @@ const Payments = () => {
                       className="DeliveryAddressView_restaurantName_2QejD4Cm outlet_name"
                       data-testid="dav_outlet_name"
                     >
-                      Chai Point
+                      {/* Chai Point */}
+                      {restaurantDetails?.data?.name}
                     </div>
                     <span className="separator">|</span>
-                    <p className="pickup_Subtext">Delivery in: 92 mins</p>
+                    {/* <p className="pickup_Subtext">Delivery in: 92 mins</p> */}
+                    <p className="pickup_Subtext">
+                      Delivery in: {restaurantDetails?.data?.sla?.slaString}
+                    </p>
                   </div>
                   <div className="DeliveryAddressView_deliveryDetails_2yW-ZRVX to_deliver_details">
                     <div
                       className="address_annotation"
                       data-testid="dav_addr_tag"
                     >
-                      Other
+                      {/* Other */}
+                      {selectedAddress?.type}
                     </div>
                     <span className="separator">|</span>
                     <div
                       className="delivery_address_text"
                       data-testid="dav_addr_dtls"
                     >
-                      Looks Studio, Looks Studio ,, # 10/5, 1st Main,
-                      Koramangala, Khb Colony, 5th Block, Koramangala,
-                      Bengaluru, Karnataka 560034, India
+                      {selectedAddress?.address}
                     </div>
                   </div>
                 </div>
