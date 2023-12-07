@@ -1,0 +1,68 @@
+.order_component {
+
+    .order_container {
+
+        padding: 0 20px;
+        background: #37718e;
+        min-height: 100vh;
+
+    .order_container_header {
+        position: relative;
+        padding-top: 33px;
+        max-width: 1200px;
+        min-width: 1200px;
+        margin: 0 auto;
+
+        .order_container_wrapper {
+
+            color: #fff;
+            margin-bottom: 37px;
+            margin-top: 37px;
+            position: relative;
+
+            .edit_profile {
+                float: right;
+                position: absolute;
+                bottom: 7px;
+                right: 0;
+                border: 1px solid hsla(0,0%,100%,.6);
+                padding: 12px 20px;
+                text-transform: uppercase;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .userName {
+                font-size: 32px;
+                font-weight: 600;
+                text-transform: capitalize;
+            }
+
+            .contact {
+                margin-top: 2px;
+                font-size: 16px;
+                
+                .phone {}
+                .email {
+                    margin-left: 15px;
+                }
+            }
+        }
+
+    }
+
+    // 
+    .order_container_content {
+        background: #fff;
+        contain: layout;
+        box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
+        width: 1300px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+}
+
+}
