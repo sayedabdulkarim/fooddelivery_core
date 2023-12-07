@@ -8,7 +8,7 @@ const Payments = () => {
   return (
     <>
       {isPaymentType ? (
-        <CashOnDelivery />
+        <CashOnDelivery setIsPaymentType={setIsPaymentType} />
       ) : (
         <PaymentMainComponent setIsPaymentType={setIsPaymentType} />
       )}

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const CashOnDelivery = () => {
+const CashOnDelivery = ({ setIsPaymentType }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="web_payments_section">
       <div className="web_payments_container">
@@ -11,6 +14,7 @@ const CashOnDelivery = () => {
               <button
                 className="web_payments_header_button"
                 aria-label="Go Back"
+                onClick={() => setIsPaymentType(null)}
               >
                 <svg
                   width="20"
