@@ -107,10 +107,20 @@ const Header = () => {
                       </Link>
                       <div className="Dropdown">
                         <div className="Dropdowncontent">
-                          <span>Profiles</span>
-                          <span>Orders</span>
-                          <span>Favourites</span>
-                          <span onClick={handleLogout}>Logout</span>
+                          <Link to="/orders">
+                            <span>Profiles</span>
+                          </Link>
+                          <Link to="/orders">
+                            <span>Orders</span>
+                          </Link>
+
+                          <Link to="/orders">
+                            <span>Favourites</span>
+                          </Link>
+
+                          <Link to="/orders">
+                            <span onClick={handleLogout}>Logout</span>
+                          </Link>
                         </div>
                       </div>
                     </div>
