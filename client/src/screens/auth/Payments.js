@@ -179,52 +179,22 @@ const Payments = () => {
                 </div>
               </div>
               {/*  */}
-              <div
-                className="PaymentGroup-v4_paymentGroup_3Q5FegGu"
-                data-testid="pg_container"
-              >
-                <div className="PaymentGroup-v4_paymentGroupHeader_1_5oQRhP">
-                  <h2
-                    className="PaymentGroup-v4_paymentGroupHeaderTitle_1IbAmKSG"
-                    data-testid="pg_upi_title"
-                  >
-                    UPI
-                  </h2>
+              <div className="payment_group_container">
+                <div className="payment_group_header">
+                  <h2 className="payment_group_upi_title">UPI</h2>
                 </div>
-                <div className="PaymentGroup-v4_paymentGroupContainer_1u_Nn8rZ">
-                  <div className="PaymentGroup-v4_paymentGroupContainerRow_1Nym0Db5 PaymentGroup-v4_paymentGroupContainerColumn_3UHb0jUV">
-                    <div className="NewUpi-v4_paymentMethod_2C36UHdj">
-                      <div data-testid="pm_nu_container">
-                        <div className="NewUpi-v4_container_2moX6zUd">
-                          <div
-                            className="styles-v4_icon_3v8U5RPP NewUpi-v4_paymentMethodCardNewIconParent_luMuTT2V"
-                            data-testid="pm_nu_icon"
-                            aria-hidden="true"
-                          >
-                            <div className="NewUpi-v4_paymentMethodCardNewIcon_3zE4QG9C"></div>
-                          </div>
-                          <div
-                            className="styles_container_1npcgTkG styles_name_Lvfatkqb NewUpi-v4_paymentMethodCardNewTitle_UyP4Cnag"
-                            data-testid="pm_nu_name"
-                          >
-                            <div
-                              aria-disabled="false"
-                              tabIndex="0"
-                              role="button"
-                              className="styles_nameWrapper_2gaxBtO7"
-                            >
-                              <div className="styles_truncateText_AhBvukJ7">
-                                Add New UPI ID
-                              </div>
-                            </div>
-                            <div
-                              className="styles_promoMsg_1fqbWYNW"
-                              data-testid="promo-msg"
-                              aria-hidden="true"
-                            >
-                              <div>You need to have a registered UPI ID</div>
-                            </div>
-                          </div>
+                <div className="payment_method_section">
+                  <div className="payment_method_wrapper">
+                    <div className="payment_method_container">
+                      <div className="card_icon_container" aria-hidden="true">
+                        <div className="newUpi_icon"></div>
+                      </div>
+                      <div className="payment_new_upi">
+                        <div className="payment_new_upi_title">
+                          <h4>Add New UPI ID</h4>
+                        </div>
+                        <div className="payment_new_upi_subtitle">
+                          <h5>You need to have a registered UPI ID</h5>
                         </div>
                       </div>
                     </div>
@@ -232,51 +202,25 @@ const Payments = () => {
                 </div>
               </div>
               {/*  */}
-              <div
-                className="PaymentGroup-v4_paymentGroup_3Q5FegGu"
-                data-testid="pg_container"
-              >
-                <div className="PaymentGroup-v4_paymentGroupHeader_1_5oQRhP">
-                  <h2
-                    className="PaymentGroup-v4_paymentGroupHeaderTitle_1IbAmKSG"
-                    data-testid="pg_card_title"
-                  >
+
+              <div className="payment_group_container">
+                <div className="payment_group_header">
+                  <h2 className="payment_group_upi_title">
                     Credit &amp; Debit Cards
                   </h2>
                 </div>
-                <div className="PaymentGroup-v4_paymentGroupContainer_1u_Nn8rZ">
-                  <div
-                    className="NewCard-v4_paymentMethod_2KPuKabG"
-                    data-testid="pm_nc_container"
-                  >
-                    <div className="NewCard-v4_paymentMethodContainer_1XgQAF_U">
-                      <div
-                        className="styles-v4_icon_3v8U5RPP NewCard-v4_paymentMethodCardNewIconParent_1yZxWumq NewCard-v4_paymentMethodCardNewIconParentWithSubtext_2bcxr2yu"
-                        data-testid="pm_nc_icon"
-                        aria-hidden="true"
-                      >
-                        <div className="NewCard-v4_paymentMethodCardNewIcon_1hI0F09a"></div>
+                <div className="payment_method_section">
+                  <div className="payment_method_wrapper">
+                    <div className="payment_method_container">
+                      <div className="card_icon_container" aria-hidden="true">
+                        <div className="newUpi_icon"></div>
                       </div>
-                      <div
-                        className="styles_container_1npcgTkG styles_name_Lvfatkqb NewCard-v4_paymentMethodCardNewTitle_3I0DWrIV"
-                        data-testid="pm_nc_name"
-                      >
-                        <div
-                          aria-disabled="false"
-                          tabIndex="0"
-                          role="button"
-                          className="styles_nameWrapper_2gaxBtO7"
-                        >
-                          <div className="styles_truncateText_AhBvukJ7">
-                            Add New Card
-                          </div>
+                      <div className="payment_new_upi">
+                        <div className="payment_new_upi_title">
+                          <h4>Add New Card</h4>
                         </div>
-                        <div
-                          className="styles_promoMsg_1fqbWYNW"
-                          data-testid="promo-msg"
-                          aria-hidden="true"
-                        >
-                          <div>Save and Pay via Cards.</div>
+                        <div className="payment_new_upi_subtitle">
+                          <h5>Save and Pay via Cards</h5>
                         </div>
                       </div>
                     </div>
@@ -284,60 +228,35 @@ const Payments = () => {
                 </div>
               </div>
               {/*  */}
-              <div
-                className="PaymentGroup-v4_paymentGroup_3Q5FegGu"
-                data-testid="pg_container"
-              >
-                <div className="PaymentGroup-v4_paymentGroupHeader_1_5oQRhP">
-                  <h2
-                    className="PaymentGroup-v4_paymentGroupHeaderTitle_1IbAmKSG"
-                    data-testid="pg_mo_title"
-                  >
+              <div className="more_payment_container">
+                <div className="more_payment_header">
+                  <h2 className="more_payment_header_title">
                     More Payment Options
                   </h2>
                 </div>
-                <div className="PaymentGroup-v4_paymentGroupContainer_1u_Nn8rZ">
-                  <div
-                    className="PaymentOption-v4_containerBorder_2a_jNgRZ"
-                    data-testid="pg_mo_wal"
-                  >
-                    <div className="PaymentOption-v4_container_2NfWVPjQ">
-                      <div
-                        className="styles-v4_icon_3v8U5RPP PaymentOption-v4_containerIconParent_3FZDum-2"
-                        data-testid="pg_mo_wal_icon"
-                        aria-hidden="true"
-                      >
+                <div className="more_payment_list_wrapper">
+                  {/*  */}
+                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
+                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                      <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
-                          className="styles-v4_iconImg_25Y5Kzks PaymentOption-v4_containerIconWithUrl_37qhy8VR"
+                          className=""
                           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
                           width="24"
                           alt=""
                         />
                       </div>
-                      <div
-                        className="PaymentOption-v4_containerTextWrapper_2fKIj4ul"
-                        role="button"
-                        tabIndex="0"
-                        aria-label="Wallets. Paytm, PhonePe, Amazon Pay &amp; more"
-                      >
-                        <div
-                          className="PaymentOption-v4_containerText_8vTEHWoU"
-                          data-testid="pg_mo_wal_header"
-                          aria-hidden="true"
-                        >
+                      <div className="payment_option_container">
+                        <div className="payment_option_container_header">
                           Wallets
                         </div>
-                        <div
-                          className="PaymentOption-v4_containerSubtext_3xDV0ITU"
-                          data-testid="pg_mo_wal_subtext"
-                          aria-hidden="true"
-                        >
+                        <div className="payment_option_container_subText">
                           Paytm, PhonePe, Amazon Pay &amp; more
                         </div>
                       </div>
                       <div
-                        className="PaymentOption-v4_containerArrowIconWrapper_3oi8xyB4"
+                        className="payment_option_container_icon"
                         aria-hidden="true"
                       >
                         <svg
@@ -357,47 +276,29 @@ const Payments = () => {
                     </div>
                     <div></div>
                   </div>
-                  <div
-                    className="PaymentOption-v4_containerBorder_2a_jNgRZ"
-                    data-testid="pg_mo_fc"
-                  >
-                    <div className="PaymentOption-v4_container_2NfWVPjQ">
-                      <div
-                        className="styles-v4_icon_3v8U5RPP PaymentOption-v4_containerIconParent_3FZDum-2"
-                        data-testid="pg_mo_fc_icon"
-                        aria-hidden="true"
-                      >
+                  {/*  */}
+                  {/*  */}
+                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
+                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                      <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
-                          className="styles-v4_iconImg_25Y5Kzks PaymentOption-v4_containerIconWithUrl_37qhy8VR"
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/food_card"
+                          className=""
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
                           width="24"
                           alt=""
                         />
                       </div>
-                      <div
-                        className="PaymentOption-v4_containerTextWrapper_2fKIj4ul"
-                        role="button"
-                        tabIndex="0"
-                        aria-label="Pluxee/Sodexo. Pluxee/Sodexo card valid only on Food &amp; Instamart"
-                      >
-                        <div
-                          className="PaymentOption-v4_containerText_8vTEHWoU"
-                          data-testid="pg_mo_fc_header"
-                          aria-hidden="true"
-                        >
-                          Pluxee/Sodexo
+                      <div className="payment_option_container">
+                        <div className="payment_option_container_header">
+                          Wallets
                         </div>
-                        <div
-                          className="PaymentOption-v4_containerSubtext_3xDV0ITU"
-                          data-testid="pg_mo_fc_subtext"
-                          aria-hidden="true"
-                        >
-                          Pluxee/Sodexo card valid only on Food &amp; Instamart
+                        <div className="payment_option_container_subText">
+                          Paytm, PhonePe, Amazon Pay &amp; more
                         </div>
                       </div>
                       <div
-                        className="PaymentOption-v4_containerArrowIconWrapper_3oi8xyB4"
+                        className="payment_option_container_icon"
                         aria-hidden="true"
                       >
                         <svg
@@ -417,47 +318,29 @@ const Payments = () => {
                     </div>
                     <div></div>
                   </div>
-                  <div
-                    className="PaymentOption-v4_containerBorder_2a_jNgRZ"
-                    data-testid="pg_mo_nb"
-                  >
-                    <div className="PaymentOption-v4_container_2NfWVPjQ">
-                      <div
-                        className="styles-v4_icon_3v8U5RPP PaymentOption-v4_containerIconParent_3FZDum-2"
-                        data-testid="pg_mo_nb_icon"
-                        aria-hidden="true"
-                      >
+                  {/*  */}
+                  {/*  */}
+                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
+                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                      <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
-                          className="styles-v4_iconImg_25Y5Kzks PaymentOption-v4_containerIconWithUrl_37qhy8VR"
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Net_banking"
+                          className=""
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
                           width="24"
                           alt=""
                         />
                       </div>
-                      <div
-                        className="PaymentOption-v4_containerTextWrapper_2fKIj4ul"
-                        role="button"
-                        tabIndex="0"
-                        aria-label="Netbanking. Select from a list of banks"
-                      >
-                        <div
-                          className="PaymentOption-v4_containerText_8vTEHWoU"
-                          data-testid="pg_mo_nb_header"
-                          aria-hidden="true"
-                        >
-                          Netbanking
+                      <div className="payment_option_container">
+                        <div className="payment_option_container_header">
+                          Wallets
                         </div>
-                        <div
-                          className="PaymentOption-v4_containerSubtext_3xDV0ITU"
-                          data-testid="pg_mo_nb_subtext"
-                          aria-hidden="true"
-                        >
-                          Select from a list of banks
+                        <div className="payment_option_container_subText">
+                          Paytm, PhonePe, Amazon Pay &amp; more
                         </div>
                       </div>
                       <div
-                        className="PaymentOption-v4_containerArrowIconWrapper_3oi8xyB4"
+                        className="payment_option_container_icon"
                         aria-hidden="true"
                       >
                         <svg
@@ -477,47 +360,29 @@ const Payments = () => {
                     </div>
                     <div></div>
                   </div>
-                  <div
-                    className="PaymentOption-v4_containerBorder_2a_jNgRZ"
-                    data-testid="pg_mo_cod"
-                  >
-                    <div className="PaymentOption-v4_container_2NfWVPjQ">
-                      <div
-                        className="styles-v4_icon_3v8U5RPP PaymentOption-v4_containerIconParent_3FZDum-2"
-                        data-testid="pg_mo_cod_icon"
-                        aria-hidden="true"
-                      >
+                  {/*  */}
+                  {/*  */}
+                  <div className="PaymentOption-v4_containerBorder_2a_jNgRZ more_payment_list_item">
+                    <div className="PaymentOption-v4_container_2NfWVPjQ item">
+                      <div className="item_icon">
                         <img
                           crossOrigin="anonymous"
-                          className="styles-v4_iconImg_25Y5Kzks PaymentOption-v4_containerIconWithUrl_37qhy8VR"
-                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Cash"
+                          className=""
+                          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_64,e_trim/PaymentLogos/instruments/4x/Wallet"
                           width="24"
                           alt=""
                         />
                       </div>
-                      <div
-                        className="PaymentOption-v4_containerTextWrapper_2fKIj4ul"
-                        role="button"
-                        tabIndex="0"
-                        aria-label="Pay on Delivery. Pay in cash or pay online."
-                      >
-                        <div
-                          className="PaymentOption-v4_containerText_8vTEHWoU"
-                          data-testid="pg_mo_cod_header"
-                          aria-hidden="true"
-                        >
-                          Pay on Delivery
+                      <div className="payment_option_container">
+                        <div className="payment_option_container_header">
+                          Wallets
                         </div>
-                        <div
-                          className="PaymentOption-v4_containerSubtext_3xDV0ITU"
-                          data-testid="pg_mo_cod_subtext"
-                          aria-hidden="true"
-                        >
-                          Pay in cash or pay online.
+                        <div className="payment_option_container_subText">
+                          Paytm, PhonePe, Amazon Pay &amp; more
                         </div>
                       </div>
                       <div
-                        className="PaymentOption-v4_containerArrowIconWrapper_3oi8xyB4"
+                        className="payment_option_container_icon"
                         aria-hidden="true"
                       >
                         <svg
@@ -537,6 +402,7 @@ const Payments = () => {
                     </div>
                     <div></div>
                   </div>
+                  {/*  */}
                 </div>
               </div>
             </div>

@@ -286,6 +286,207 @@
 
                     }
 
+                    .payment_group_container {
+
+                        margin-top: 24px;
+
+                        .payment_group_header {
+                            
+                            padding: 0 20px;
+                            margin-bottom: 18px;
+
+                            .payment_group_upi_title {
+                                font-size: 16px;
+                                line-height: 19px;
+                                font-weight: 700;
+                                letter-spacing: -.3px;
+                                color: rgba(2,6,12,.75);
+                            }
+
+                        }
+
+                        .payment_method_section {
+
+                            background: #fff;
+                            margin: 10px 16px 16px;
+                            box-shadow: 0 1px 16px rgba(0,0,0,.05);
+                            border-radius: 16px;
+                            //
+                            
+                            .payment_method_wrapper {
+                                display: flex;
+                                flex-direction: column;
+                                background: none;
+                                margin: 0;
+                                border-bottom: 1px dashed #e2e2e7;
+                                padding: 18px 16px;
+                                position: relative;
+                                overflow: hidden;
+                                transform: translateZ(0);
+
+                                .payment_method_container {
+                                    display: flex;
+                                    align-items: center;
+                                    
+                                    .card_icon_container {
+                                        
+                                        border: none;
+                                        align-items: flex-start;
+                                        height: 36px;
+                                        display: flex;
+                                        width: 36px;
+                                        text-align: left;
+                                        align-self: flex-start;
+                                        // align-items: center;
+                                        border-radius: 6px;
+                                        // border: 1px solid #e2e2e7;
+
+                                        .newUpi_icon {
+
+                                            width: 36px;
+                                            height: 24px;
+                                            border-radius: 6px;
+                                            color: #f15700;
+                                            border: 1px solid #e2e2e7;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+
+                                            &:after {
+                                                content: "+";
+                                                font-size: 19px;
+                                                position: relative;
+                                                font-weight: 600;
+                                                margin-top: 2px;
+                                            }
+
+                                        }
+                                    
+                                    }
+
+                                    .payment_new_upi {
+
+                                        vertical-align: middle;
+                                        font-size: 16px;
+                                        line-height: 20px;
+                                        letter-spacing: -.3px;
+                                        font-weight: 700;
+                                        color: #f15700!important;
+                                        display: block;
+                                        flex: 1;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                        padding: 0 16px;
+
+                                        .payment_new_upi_title {
+                                           
+                                            display: flex;
+                                            align-items: center;
+                                            background: transparent;
+                                            border: none;
+                                            outline: none;
+                                            padding: 0;
+                                            text-align: left;
+                                            -webkit-appearance: none;
+
+                                            h4 {
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                outline: 0;
+                                                white-space: nowrap;
+                                            }
+                                        }
+
+                                        .payment_new_upi_subtitle {
+                                            font-size: 13px;
+                                            line-height: 16px;
+                                            font-weight: 400;
+                                            letter-spacing: -.3px;
+                                            color: rgba(2,6,12,.6);
+                                            margin-top: 2px;
+                                            text-transform: none;
+
+                                            h5 {}
+                                        }
+                                    
+                                    }
+
+                                }
+                            
+                            }
+                        }
+
+                    }
+
+                    .more_payment_container {
+                        border: 1px solid red;
+                        margin-top: 24px;
+
+                        .more_payment_header {
+                            padding: 0 20px;
+                            margin-bottom: 18px;
+
+                            .more_payment_header_title {
+                                font-size: 16px;
+                                line-height: 19px;
+                                font-weight: 700;
+                                letter-spacing: -.3px;
+                                color: rgba(2,6,12,.75);
+                            
+                            }
+                        
+                        }
+
+                        .more_payment_list_wrapper {
+                            background: #fff;
+                            margin: 10px 16px 16px;
+                            box-shadow: 0 1px 16px rgba(0,0,0,.05);
+                            border-radius: 16px;
+                        
+                            .more_payment_list_item {
+                                border-bottom: 1px dashed #e2e2e7;
+
+                                .item {
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 18px 16px;
+                                    overflow: hidden;
+
+                                    .item_icon {
+                                        padding: 7px;
+                                        align-self: center;
+                                        border: 1px solid #e2e2e7;
+                                        border-radius: 6px;
+                                        width: 36px;
+                                        height: 36px;
+
+                                        img {
+                                            max-width: 100%;
+                                            max-height: 100%;
+                                            width: auto;
+                                            margin: auto;
+                                        }
+                                    }
+                                    .payment_option_container {
+                                        flex: 1;
+                                        padding: 0 16px;
+                                        overflow: hidden;
+                                        outline: 0;
+
+                                        .payment_option_container_header {
+
+                                        }
+
+                                        .payment_option_container_subText {}
+
+                                        .payment_option_container_icon {}
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
                 }
 
             }
