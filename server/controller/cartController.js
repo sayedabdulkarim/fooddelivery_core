@@ -8,10 +8,16 @@ const addOrder = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
   // Extract order details from request body
-  const { restaurantId, addressDetails, items } = req.body;
+  const { restaurantId, addressDetails, items, finalCost } = req.body;
 
   // Validate the request body
-  if (!restaurantId || !addressDetails || !items || items.length === 0) {
+  if (
+    !restaurantId ||
+    !addressDetails ||
+    !finalCost ||
+    !items ||
+    items.length === 0
+  ) {
     res.status(400);
     throw new Error("Missing order details");
   }
@@ -22,6 +28,7 @@ const addOrder = asyncHandler(async (req, res) => {
     restaurantId: restaurantId,
     addressDetails: addressDetails,
     items: items,
+    finalCost,
     status: "active", // or any other initial status
   });
 
