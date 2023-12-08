@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 //cmp
 import OrdersComponent from "./OrdersComponent";
 import SwiggyOne from "./SwiggyOneComponent";
@@ -9,6 +9,14 @@ import AddressComponent from "./AddressComponent";
 import SettingComponent from "./SettingComponent";
 
 const Index = ({ savedAddress }) => {
+  //misc
+  const navigate = useNavigate();
+  //func
+  const handleNavigateToFavorite = (route) => {
+    navigate(`${route}`);
+  };
+
+  //state
   const [activeSection, setActiveSection] = useState("order");
 
   let showComponent;
@@ -19,9 +27,9 @@ const Index = ({ savedAddress }) => {
     case "swiggyone":
       showComponent = <SwiggyOne />;
       break;
-    case "favorite":
-      showComponent = <FavoritesComponent />;
-      break;
+    // case "favorite":
+    //   showComponent = <FavoritesComponent />;
+    //   break;
     case "payment":
       showComponent = <PaymentComponent />;
       break;
@@ -67,7 +75,7 @@ const Index = ({ savedAddress }) => {
                 className={`item ${
                   activeSection === "favorite" ? "isActive" : ""
                 }`}
-                onClick={() => handleActiveComponent("favorite")}
+                onClick={() => handleNavigateToFavorite("/favorites")}
               >
                 <span className="icon"></span>
                 <span className="title">Favourites</span>
