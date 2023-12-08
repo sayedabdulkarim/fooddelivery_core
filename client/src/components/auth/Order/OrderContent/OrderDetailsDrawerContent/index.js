@@ -7,14 +7,15 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
     <div>
       {/*  */}
       <div className="location_details">
-        <div className="_2d5vz">
-          <div className="_3AnQo AL1Ok">
-            <div className="_3OR7J">
+        <div className="location_details_container">
+          {/*  */}
+          <div className="restaurant_name">
+            <div className="icon_container">
               <span className="icon-location"></span>
             </div>
             <div>
               <div
-                className="_3SB3Y"
+                className=" restaurant_title"
                 onClick={() =>
                   console.log(
                     { getCurrentOrderDetails, allRestaurantsList },
@@ -24,41 +25,45 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
               >
                 {getRestaurantById(allRestaurantsList, restaurantId)?.name}
               </div>
-              <div className="_2d1Bv">
+              <div className="area_name">
                 {" "}
                 {getRestaurantById(allRestaurantsList, restaurantId)?.areaName}
               </div>
             </div>
           </div>
-          <div className="_3AnQo">
-            <div className="_3OR7J">
+          {/*  */}
+          <div className="restaurant_address_container">
+            <div className=" icon_container">
               <span className="icon-location"></span>
             </div>
-            <div>
-              <div className="_3SB3Y">{addressDetails?.type}</div>
-              <div className="_2d1Bv">{addressDetails?.address}</div>
+            <div className="detail_container">
+              <div className=" address_type">{addressDetails?.type}</div>
+              <div className=" address_det">{addressDetails?.address}</div>
             </div>
           </div>
+          {/*  */}
         </div>
-        <div className="_2tXGx"></div>
+        <div className="divider"></div>
       </div>
       {/*  */}
       <div className="item_details">
-        <div className="_9xEZF">
-          <div className="_1_7YY">1 ITEM</div>
-          <div className="LunMQ">
-            <div className="_3ix93">
+        {/*  */}
+        <div className="item_details_product">
+          <div className="count">1 ITEM</div>
+          <div className="desc_price">
+            <div className="desc">
               <i
-                className="styles_icon__m6Ujp _3NEcG icon-NonVeg"
+                className="icon-NonVeg"
                 role="presentation"
                 aria-hidden="true"
               ></i>
               Banana Cake x 2
             </div>
-            <div className="_1k5de">278</div>
+            <div className="price">278</div>
           </div>
         </div>
-        <div className="_15Yxr">
+        {/*  */}
+        <div className="_15Yxr price_description">
           <div>
             <div className="_3l9s2">
               <div className="_3l_-K UCNHQ">Item Total</div>

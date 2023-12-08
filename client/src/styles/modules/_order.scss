@@ -303,11 +303,148 @@
 
     .location_details {
         border: 1px solid red;
+
+        .location_details_container {
+
+            margin-top: 0;
+
+            .restaurant_name {
+
+                margin-bottom: 22px;
+                display: flex;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 27px;
+                    border-right: 1px dashed #a9abb2;
+                    top: 33px;
+                    left: 9px;
+                }
+
+                .icon_container {
+
+                    font-size: 25px;
+                    padding-right: 20px;
+                    align-self: center;
+
+                    .icon-location {}
+                }
+
+                .restaurant_title {
+                    font-size: 17px;
+                    font-weight: 500;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    width: 325px;
+                }
+
+                .area_name {
+                    font-size: 12px;
+                    color: #7e808c;
+                }
+            }
+
+            .restaurant_address_container {
+
+                margin-bottom: 22px;
+                display: flex;
+                position: relative;
+
+
+                .icon_container {
+                    font-size: 25px;
+                    padding-right: 20px;
+                    align-self: center;
+                    .icon-location {}
+                }
+
+                .detail_container {
+                    .address_type {
+                        font-size: 17px;
+                        font-weight: 500;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        width: 325px;
+                    }
+                    .address_det {
+                        font-size: 12px;
+                        color: #7e808c;
+                    }
+                }
+
+            }
+        }
+
+        .divider {
+            position: relative;
+            border-bottom: 1px solid #e9e9eb;
+            left: 10%;
+            width: 90%;
+            margin-bottom: 18px;
+        }
+
     }
 
     .item_details {
         border: 1px solid green;
         padding-left: 40px;
+
+        .item_details_product {
+            padding-top: 28px;
+            padding-bottom: 3px;
+            border-top: 1px solid #000;
+            background-image: linear-gradient(90deg, #a9abb2 25%, hsla(0, 0%, 100%, 0) 0);
+            background-position: bottom;
+            background-size: 4px 1px;
+            background-repeat: repeat-x;
+
+            .count {
+                color: #7e808c;
+                padding-bottom: 8px;
+                font-size: 12px;
+            }
+            
+            .desc_price {
+                display: flex;
+                margin-bottom: 15px;
+                
+                .desc {
+                    flex-grow: 1;
+                    font-size: 13px;
+                    font-weight: 500;
+                    position: relative;
+
+                    .icon-NonVeg {
+                        font-size: 8px;
+                        line-height: 1 !important;
+                        position: absolute;
+                        left: -20px;
+                        top: 2px;
+
+                        &::before {
+                            content: "\e998";
+                        }
+                    }
+                
+                }
+                .price {
+                    color: #686b78;
+                    font-size: 13px;
+                    
+                    &::before {
+                        content: "₹";
+                        padding-right: 2px;
+                    }
+                }
+            }
+        }
+    
+        .price_description {}
+    
     }
     
     .payment_details {
