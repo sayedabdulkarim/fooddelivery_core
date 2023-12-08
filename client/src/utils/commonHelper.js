@@ -110,6 +110,10 @@ const calculateTotalPrice = (items) => {
   return items.reduce((total, item) => total + item.price * item.count, 0);
 };
 
+const filterObjectsByIds = (objects, ids) => {
+  return objects.filter((obj) => ids.includes(obj._id));
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -121,4 +125,5 @@ export {
   formatUTCToLocal,
   getRestaurantById,
   calculateTotalPrice,
+  filterObjectsByIds,
 };
