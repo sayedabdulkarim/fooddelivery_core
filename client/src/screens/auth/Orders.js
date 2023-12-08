@@ -26,12 +26,6 @@ const Orders = () => {
   } = useGetAddressesByUserQuery();
 
   //
-  const savedAddress = {
-    isLoading: isLoadingAddressData,
-    data: getAddressData,
-  };
-
-  //
   useEffect(() => {
     if (getHomePageData) {
       dispatch(setHomePageData(getHomePageData));
@@ -56,7 +50,7 @@ const Orders = () => {
         <div className="order_container">
           <OrderHeader />
           {/*  */}
-          <OrderContent savedAddress={savedAddress} />
+          <OrderContent savedAddress={getAddressData} />
         </div>
       )}
     </div>

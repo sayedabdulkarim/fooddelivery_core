@@ -8,7 +8,7 @@ import PaymentComponent from "./PaymentComponent";
 import AddressComponent from "./AddressComponent";
 import SettingComponent from "./SettingComponent";
 
-const Index = () => {
+const Index = ({ savedAddress }) => {
   const [activeSection, setActiveSection] = useState("order");
 
   let showComponent;
@@ -26,7 +26,7 @@ const Index = () => {
       showComponent = <PaymentComponent />;
       break;
     case "address":
-      showComponent = <AddressComponent />;
+      showComponent = <AddressComponent savedAddress={savedAddress} />;
       break;
     case "setting":
       showComponent = <SettingComponent />;
