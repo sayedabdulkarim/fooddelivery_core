@@ -44,13 +44,13 @@ const Favorites = () => {
 
   return (
     <div className=" favorite_container">
-      <h1
+      {/* <h1
         onClick={() =>
           console.log({ getHomePageData, userInfo, favoriteData }, " gettt")
         }
       >
         click
-      </h1>
+      </h1> */}
       {isLoading ? (
         <>
           <ProgressBar onStart={isLoading} onEnd={!isLoading} />

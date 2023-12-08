@@ -96,7 +96,7 @@ const RestaurantDetails = () => {
       />
 
       <div className="OF_5P restaurant_details_container">
-        <button
+        {/* <button
           onClick={() =>
             console.log(
               restaurantDetails?.data,
@@ -105,7 +105,7 @@ const RestaurantDetails = () => {
           }
         >
           restaurantDetails
-        </button>
+        </button> */}
         {/* top_section */}
         {isLoadingRestaurantDetail ? (
           <Skeleton active paragraph={{ rows: 20 }} />

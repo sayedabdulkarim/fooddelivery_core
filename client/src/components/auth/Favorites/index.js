@@ -1,6 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { arrayToString } from "../../../utils/commonHelper";
 
 const Favorites = ({ favoriteData }) => {
+  //misc
+  const navigate = useNavigate();
+  //func
+  const handleNavigation = (name, id) => {
+    navigate(`/restaurant/${name}/${id}`);
+  };
+
   return (
     <>
       {/*  */}
@@ -13,10 +22,24 @@ const Favorites = ({ favoriteData }) => {
         <main className="items_wrapper">
           {/*  */}
           {favoriteData?.map((o) => {
+            const {
+              _id,
+              areaName,
+              avgRating,
+              badges,
+              sla,
+              name,
+              cuisines,
+              cloudinaryImageId,
+            } = o;
             return (
-              <div className=" item">
+              <div
+                className=" item"
+                key={_id}
+                onClick={() => handleNavigation(name, _id)}
+              >
                 <div className="item_wrapper">
-                  <a className=" item_card">
+                  <div className=" item_card">
                     <div className=" item_card_wrapper">
                       {/*  */}
                       <div className=" image_wrapper">
@@ -25,13 +48,17 @@ const Favorites = ({ favoriteData }) => {
                           <div width="100%" height="100%" className=" bg_img">
                             <img
                               className=""
-                              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7"
+                              //   src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7"
+                              src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
                               alt="Pizza Hut"
                             />
                             <div className="bg_overlay"></div>
                           </div>
                           {/*  */}
-                          <div className=" bg_strip">
+                          <div
+                            className=" bg_strip"
+                            style={{ display: badges ? "block" : "none" }}
+                          >
                             <svg
                               width="123"
                               height="37"
@@ -124,7 +151,7 @@ const Favorites = ({ favoriteData }) => {
                       {/*  */}
                       <div className="description_wrapper">
                         {/*  */}
-                        <div className=" title">Pizza Hut</div>
+                        <div className=" title">{name}</div>
                         {/*  */}
                         <div className=" subtext_container">
                           <div className="svg_container">
@@ -165,16 +192,20 @@ const Favorites = ({ favoriteData }) => {
                           </div>
                           {/*  */}
                           <div className=" time_container">
-                            <span className=" time">3.8 • 36 mins</span>
+                            <span className=" time">
+                              {avgRating} • {sla?.deliveryTime} mins
+                            </span>
                           </div>
                         </div>
                         <div className="descriptions_container">
-                          <div className="">Pizzas</div>
-                          <div className="">Banaswadi</div>
+                          <div className="ellipsis">
+                            {arrayToString(cuisines)}
+                          </div>
+                          <div className="">{areaName}</div>
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </div>
                   <div></div>
                 </div>
               </div>
