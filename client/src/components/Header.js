@@ -114,7 +114,7 @@ const Header = () => {
                             <span>Orders</span>
                           </Link>
 
-                          <Link to="/orders">
+                          <Link to="/favorites">
                             <span>Favourites</span>
                           </Link>
 

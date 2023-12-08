@@ -15,6 +15,7 @@ import RestaurantDetailsScreen from "../screens/auth/RestaurantDetailsScreen";
 import CheckoutScreen from "../screens/auth/Checkout";
 import PaymentScreen from "../screens/auth/Payments";
 import OrdersScreen from "../screens/auth/Orders";
+import FavoritesScreen from "../screens/auth/Favorites";
 //unauth
 import UnAuthScreen from "../screens/unauth";
 
@@ -32,6 +33,7 @@ export const router = createBrowserRouter(
         <Route path="support" element={<HelpScreen />} />
         <Route path="payments" element={<PaymentScreen />} />
         <Route path="orders" element={<OrdersScreen />} />
+        <Route path="favorites" element={<FavoritesScreen />} />
         <Route
           path="/restaurant/:name/:id"
           element={<RestaurantDetailsScreen />}
