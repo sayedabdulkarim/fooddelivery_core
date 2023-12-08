@@ -1,5 +1,8 @@
 import React from "react";
-import { getRestaurantById } from "../../../../../utils/commonHelper";
+import {
+  calculateTotalPrice,
+  getRestaurantById,
+} from "../../../../../utils/commonHelper";
 
 const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
   const { restaurantId, addressDetails } = getCurrentOrderDetails;
@@ -80,7 +83,10 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
             <div className="price_description_item_container">
               <div className=" UCNHQ title">Item Total</div>
               <div>
-                <span className="_3IQOi text">278.00</span>
+                {/* <span className="_3IQOi text">278.00</span> */}
+                <span className="_3IQOi text">
+                  {calculateTotalPrice(getCurrentOrderDetails?.items)}
+                </span>
               </div>
             </div>
           </div>

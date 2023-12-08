@@ -106,6 +106,10 @@ const getRestaurantById = (arr, id) => {
   return arr.find((o) => o?._id === id);
 };
 
+const calculateTotalPrice = (items) => {
+  return items.reduce((total, item) => total + item.price * item.count, 0);
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -116,4 +120,5 @@ export {
   getCountByProductIdFromCart,
   formatUTCToLocal,
   getRestaurantById,
+  calculateTotalPrice,
 };
