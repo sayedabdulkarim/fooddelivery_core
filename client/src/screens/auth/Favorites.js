@@ -13,7 +13,7 @@ const Favorites = () => {
         <main id="seo-core-layout" className="sc-kuVLHQ ipqzSI items_wrapper">
           {/*  */}
           <div className="sc-dOoqMo fwzxJt item">
-            <div classNameName="item_wrapper">
+            <div className="item_wrapper">
               <a className="sc-ggqIjW drPxyx item_card">
                 <div className="sc-dBmzty drsCOs item_card_wrapper">
                   {/*  */}
@@ -123,12 +123,12 @@ const Favorites = () => {
                     </div>
                   </div>
                   {/*  */}
-                  <div classNameName="description_wrapper">
+                  <div className="description_wrapper">
                     {/*  */}
                     <div className="sc-aXZVg kIsYLE title">Pizza Hut</div>
                     {/*  */}
                     <div className="sw-restaurant-card-subtext-container subtext_container">
-                      <div classNameName="svg_container">
+                      <div className="svg_container">
                         <svg
                           width="20"
                           height="20"
