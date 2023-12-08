@@ -49,18 +49,30 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
       <div className="item_details">
         {/*  */}
         <div className="item_details_product">
-          <div className="count">1 ITEM</div>
-          <div className="desc_price">
-            <div className="desc">
-              <i
-                className="icon-NonVeg"
-                role="presentation"
-                aria-hidden="true"
-              ></i>
-              Banana Cake x 2
-            </div>
-            <div className="price">278</div>
-          </div>
+          {getCurrentOrderDetails?.items?.map((item, idx) => {
+            const totalItems = getCurrentOrderDetails?.items?.length;
+            const { _id, count, name, price } = item;
+            return (
+              <div key={_id}>
+                {idx === 0 ? (
+                  <div className="count">
+                    {totalItems} {`${totalItems > 1 ? "ITEMS" : "ITEM"}`}
+                  </div>
+                ) : null}
+                <div className="desc_price">
+                  <div className="desc">
+                    <i
+                      className="icon-NonVeg"
+                      role="presentation"
+                      aria-hidden="true"
+                    ></i>
+                    {name} x {count}
+                  </div>
+                  <div className="price">{price * count}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
         {/*  */}
         <div className="_15Yxr price_description">
