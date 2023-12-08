@@ -338,6 +338,26 @@
 
                             }
                         }
+
+                        .setting_component {
+                            border: 1px solid red;
+
+                            .custom_setting_switch.ant-switch-checked .ant-switch-handle:before {
+                                background-color: #e46d47 !important;
+                              }
+                              
+                              .custom_setting_switch.ant-switch-checked {
+                                background-color: #e46d47 !important;
+                            
+                                .ant-switch-handle {
+                                    &::before {
+                                        background-color: #fff!important;
+                                    }
+                                }
+                            }
+                              
+                        }
+
                     }
 
                 }

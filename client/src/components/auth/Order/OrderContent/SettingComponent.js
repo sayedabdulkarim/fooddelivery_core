@@ -1,8 +1,10 @@
 import React from "react";
 
+import { Switch } from "antd";
+
 const Setting = () => {
   return (
-    <div className="_1stFr">
+    <div className="_1stFr setting_component">
       <div>
         <h1 className="_1jOCX">SMS Preferences</h1>
         <div className="wrLIm">
@@ -13,17 +15,7 @@ const Setting = () => {
           <div className="_2OV-J">
             <div className="_3IHEY">Recommendations &amp; Reminders</div>
             <div className="_16vv_">
-              <button
-                data-testid="toggle-switch"
-                role="switch"
-                aria-checked="false"
-              >
-                <span className="ToggleSwitch_toggleBar__1peIy RoundedToggleSwitch_roundToggleBar__28j_f">
-                  <span className="ToggleSwitch_toggleThumb__NBLuA RoundedToggleSwitch_roundToggleThumb__3iOrp ToggleSwitch_toggleThumbActive__3hBTE">
-                    <span className="ToggleSwitch_toggleThumbContent__33ZU6"></span>
-                  </span>
-                </span>
-              </button>
+              <Switch className="custom_setting_switch" />
             </div>
             <div className="_2Vb4D"></div>
             <div className="_27pFI">
