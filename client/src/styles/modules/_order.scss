@@ -129,7 +129,8 @@
                             background: #fff;
                             padding: 37px 0 0 50px;
                             position: relative;
-                            min-height: 80vh;
+                            // min-height: 80vh;
+                            height: 100%;
 
                             .title {
                                 font-size: 24px;
@@ -278,6 +279,63 @@
                                 &:hover {
                                     box-shadow: 0 4px 14px #d4d5d9
                                 }
+                            }
+                        }
+
+                        .swiggy_one_component {
+                            border: 1px solid red;
+                            height: 100%;
+                            background: #fff;
+                            padding: 37px 0 0 50px;
+                            position: relative;
+                            min-height: 80vh;
+
+                            .swiggy_one_container {
+                                display: flex;
+                                justify-content: space-between;
+                                .swiggy_left_wrapper {
+                                    margin-right: 360px;
+
+                                    .text {
+                                        font-style: normal;
+                                        font-weight: 700;
+                                        font-size: 1.5rem;
+                                        color: #282c3f;
+                                    }
+
+                                    .desc {
+                                        margin: 20px 0;
+                                        font-size: 18px;
+                                        line-height: 42px;
+                                        color: #686b78;
+                                        position: relative;
+                                        z-index: 1;
+                                    }
+
+                                    .download_section {
+                                        display: flex;
+                                        a {
+
+                                            &:first-child {
+                                                margin-right: 20px;
+                                            }
+
+                                            img {
+                                                border-style: none;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .right_image {
+                                    display: flex;
+                                    width: 360px;
+                                    height: 330px;
+                                    position: absolute;
+                                    right: 0;
+                                    z-index: 0;
+                                }
+
                             }
                         }
                     }
