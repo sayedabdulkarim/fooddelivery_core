@@ -347,7 +347,7 @@
                             position: relative;
                             min-height: 80vh;
                             height: 100%;
-                            
+
                             .title {
                                 font-size: 24px;
                                 font-weight: 600;
@@ -421,6 +421,63 @@
                             }
 
                               
+                        }
+
+                        .address_component {
+                            border: 1px solid red;
+                            flex: 1 1;
+                            background: #fff;
+                            padding: 37px 0 0 50px;
+                            position: relative;
+                            min-height: 80vh;
+
+                            .title {
+                                font-size: 24px;
+                                font-weight: 600;
+                            }
+
+                            .address_container_items {
+                                display: flex;
+                                margin-top: 35px;
+
+                                .item {
+
+                                    border: 1px solid #d4d5d9;
+                                    padding: 20px;
+                                    position: relative;
+                                    width: 400px;
+                                    display: inline-block;
+                                    color: #3d4152;
+                                    display: flex;
+
+                                    .item_icon {
+                                        padding-right: 20px;
+                                        padding-top: 3px;
+                                        font-size: 20px;
+                                    }
+
+                                    .item_desc {
+                                        .type {
+                                            font-size: 17px;
+                                            font-weight: 600;
+                                            text-transform: capitalize;
+                                            margin-top: 3px;
+                                        }
+
+                                        .address {
+                                            font-size: 13px;
+                                            color: #535665;
+                                            line-height: 20px;
+                                            margin-top: 2px;
+                                        }
+
+                                        .btn_container {
+                                            margin-top: 11px;
+                                        }
+                                    }
+                                }
+
+                            }
                         }
 
                     }
