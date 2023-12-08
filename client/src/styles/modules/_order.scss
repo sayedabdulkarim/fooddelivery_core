@@ -443,7 +443,29 @@
             }
         }
     
-        .price_description {}
+        .price_description {
+            padding-top: 18px;
+            padding-bottom: 11px;
+            
+            .price_description_item {
+                .price_description_item_container {
+                    margin-bottom: 10px;
+                    color: #7e808c;
+                    display: flex;
+
+                    .title {
+                        color: #282c3f;
+                        font-weight: 400;
+                        font-size: 13px;
+                        flex-grow: 1;
+                    }
+
+                    .text {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
     
     }
     

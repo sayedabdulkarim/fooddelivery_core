@@ -64,51 +64,51 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
         </div>
         {/*  */}
         <div className="_15Yxr price_description">
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K UCNHQ">Item Total</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className=" UCNHQ title">Item Total</div>
               <div>
-                <span className="_3IQOi">278.00</span>
+                <span className="_3IQOi text">278.00</span>
               </div>
             </div>
           </div>
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K">Order Packing Charges</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className=" title">Order Packing Charges</div>
               <div>
-                <span className="_3IQOi">30.00</span>
+                <span className=" text">30.00</span>
               </div>
             </div>
           </div>
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K">1 Month Plan Membership</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className="title">1 Month Plan Membership</div>
               <div>
-                <span className="_3IQOi">1.00</span>
+                <span className="text">1.00</span>
               </div>
             </div>
           </div>
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K">Platform fee</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className="title">Platform fee</div>
               <div>
-                <span className="_3IQOi">3.00</span>
+                <span className="text">3.00</span>
               </div>
             </div>
           </div>
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K">Delivery partner fee</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className="title">Delivery partner fee</div>
               <div>
-                <span className="_3IQOi">153.00</span>
+                <span className="text">153.00</span>
               </div>
             </div>
           </div>
-          <div>
-            <div className="_3l9s2">
-              <div className="_3l_-K">Taxes</div>
+          <div className="price_description_item">
+            <div className="price_description_item_container">
+              <div className="title">Taxes</div>
               <div>
-                <span className="_3IQOi">14.44</span>
+                <span className="text">14.44</span>
               </div>
             </div>
           </div>
