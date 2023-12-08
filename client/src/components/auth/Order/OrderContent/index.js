@@ -72,7 +72,7 @@ const Index = () => {
                 <span className="icon"></span>
                 <span className="title">Favourites</span>
               </li>
-              <li
+              {/* <li
                 className={`item ${
                   activeSection === "payment" ? "isActive" : ""
                 }`}
@@ -80,7 +80,7 @@ const Index = () => {
               >
                 <span className="icon"></span>
                 <span className="title">Payments</span>
-              </li>
+              </li> */}
               <li
                 className={`item ${
                   activeSection === "address" ? "isActive" : ""
