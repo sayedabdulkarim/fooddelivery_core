@@ -340,21 +340,86 @@
                         }
 
                         .setting_component {
-                            border: 1px solid red;
-
-                            .custom_setting_switch.ant-switch-checked .ant-switch-handle:before {
-                                background-color: #e46d47 !important;
-                              }
-                              
-                              .custom_setting_switch.ant-switch-checked {
-                                background-color: #e46d47 !important;
+                            // border: 1px solid red;
+                            flex: 1 1;
+                            background: #fff;
+                            padding: 37px 0 0 50px;
+                            position: relative;
+                            min-height: 80vh;
+                            height: 100%;
                             
-                                .ant-switch-handle {
-                                    &::before {
-                                        background-color: #fff!important;
+                            .title {
+                                font-size: 24px;
+                                font-weight: 600;
+                            }
+
+                            .setting_component_container {
+
+                                display: flex;
+                                flex-direction: column;
+                                margin-top: 35px;
+
+                                .desc {
+                                    padding: 16px;
+                                    margin-bottom: 16px;
+                                    border: 1px solid #d4d5d9;
+                                    color: #686b78;
+                                    font-size: 14px;
+                                    width: 100%;
+                                }
+
+                                .recommendation {
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: flex-start;
+                                    align-items: center;
+                                    padding: 16px;
+                                    margin-bottom: 16px;
+                                    border: 1px solid #d4d5d9;
+                                    color: #686b78;
+                                    font-size: 14px;
+
+                                    .text{
+                                        font-size: 16px;
+                                        font-weight: 600;
+                                        color: #282c3f;
+                                        margin-right: 16px;
+                                    }
+
+                                    .switch_container {
+                                        padding: 0 16px;
+
+                                        .custom_setting_switch.ant-switch-checked .ant-switch-handle:before {
+                                            background-color: #e46d47 !important;
+                                          }
+                                          
+                                          .custom_setting_switch.ant-switch-checked {
+                                            background-color: #e46d47 !important;
+                                        
+                                            .ant-switch-handle {
+                                                &::before {
+                                                    background-color: #fff!important;
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+                                    .divider {
+                                        flex: 0 0 1px;
+                                        margin: 0 16px;
+                                        width: 1px;
+                                        height: 60px;
+                                        border-right: 1px solid #d4d5d9;
+                                    }
+                                    
+                                    .desc {
+                                        flex: 0.8 1;
+                                        margin-left: 8px;
                                     }
                                 }
                             }
+
                               
                         }
 
