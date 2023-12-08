@@ -116,17 +116,14 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
       </div>
       {/*  */}
       <div className="payment_details">
-        <div className="_2FcHT">
-          <div className="_2ggYC">
-            <div className="_8b3yo">Paid Via Cash</div>
-            <div className="_2m6Fe">
-              <div className="_1OfuV">Bill Total</div>
-              <div className="rupee">479.00</div>
-            </div>
+        <div className="payment_details_container">
+          <div className=" via">Paid Via Cash</div>
+          <div className=" total">
+            <div className=" text">Bill Total</div>
+            <div className="rupee">479.00</div>
           </div>
         </div>
       </div>
-      <div className="_2MUP_">sticky_sentinel sticky_sentinel--bottom</div>
     </div>
   );
 };

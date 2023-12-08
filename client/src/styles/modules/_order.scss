@@ -302,7 +302,7 @@
     }
 
     .location_details {
-        border: 1px solid red;
+        // border: 1px solid red;
 
         .location_details_container {
 
@@ -390,7 +390,7 @@
     }
 
     .item_details {
-        border: 1px solid green;
+        // border: 1px solid green;
         padding-left: 40px;
 
         .item_details_product {
@@ -470,8 +470,41 @@
     }
     
     .payment_details {
-        border: 1px solid blue;
+        // border: 1px solid blue;
         padding-left: 40px;
+
+        .payment_details_container {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+          
+            .via {
+                font-size: 12px;
+                line-height: 15px;
+                font-weight: 500;
+                color: #686b78;
+            }
+
+            .total {
+                display: flex;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 17px;
+                color: #282c3f;
+
+                .text {
+                    margin-right: 40px;
+                    text-transform: uppercase;
+                }
+
+                .rupee {
+                    &::before {
+                        content: "₹";
+                        margin-right: 0.1rem;
+                    }
+                }
+            }
+        }
         
     }
 }
