@@ -2,23 +2,21 @@ import React from "react";
 
 const SwiggyOne = () => {
   return (
-    <div className="_1stFr swiggy_one_component">
-      <div className="HaadL swiggy_one_container">
+    <div className="swiggy_one_component">
+      <div className="swiggy_one_container">
         {/*  */}
-        <div className="_39L1A swiggy_left_wrapper">
-          <h2 className="_3jx1r text">Swiggy One</h2>
-          <p className="qYzeq desc">
+        <div className="swiggy_left_wrapper">
+          <h2 className="text">Swiggy One</h2>
+          <p className="desc">
             Get free delivery and extra discounts all across Swiggy.Your Swiggy
             One benefits can be availed only on the Swiggy App.
           </p>
-          <div className="_1lpjo download_section">
+          <div className="download_section">
             <a
               href="https://itunes.apple.com/in/app/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage"
               rel="nofollow noopener noreferrer"
               alt=""
               target="_blank"
-              className="AppDownloadLinks_appLink__3lQqz"
-              data-testid="ios-appstore"
             >
               <img
                 alt=""
@@ -30,8 +28,6 @@ const SwiggyOne = () => {
               rel="nofollow noopener noreferrer"
               alt=""
               target="_blank"
-              className="AppDownloadLinks_appLink__3lQqz"
-              data-testid="android-playstore"
             >
               <img
                 alt=""
@@ -42,7 +38,7 @@ const SwiggyOne = () => {
         </div>
         {/*  */}
         <img
-          className="_241Su right_image"
+          className="right_image"
           alt=""
           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_720,h_660/swiggy_one/my_account_super"
         />
