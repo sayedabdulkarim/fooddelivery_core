@@ -14,9 +14,12 @@ const Orders = () => {
 
   const homePageData = useSelector((state) => state.homeReducer.homePageData);
   // Check if userInfo is available
-  if (!homePageData) {
-    // You can return a loader, placeholder, or null if userInfo is not available
-    return <div>Loading...</div>; // or null, or any placeholder
+  if (
+    !homePageData ||
+    !homePageData.data ||
+    !homePageData.data.userOrderDetails
+  ) {
+    return <div>Loading...</div>;
   }
 
   const {
