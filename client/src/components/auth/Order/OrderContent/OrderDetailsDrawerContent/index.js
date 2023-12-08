@@ -132,7 +132,7 @@ const Index = ({ getCurrentOrderDetails, allRestaurantsList }) => {
           <div className=" via">Paid Via Cash</div>
           <div className=" total">
             <div className=" text">Bill Total</div>
-            <div className="rupee">479.00</div>
+            <div className="rupee">{getCurrentOrderDetails?.finalCost}</div>
           </div>
         </div>
       </div>
