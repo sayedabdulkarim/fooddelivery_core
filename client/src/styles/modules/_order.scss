@@ -424,7 +424,7 @@
                         }
 
                         .address_component {
-                            border: 1px solid red;
+                            // border: 1px solid red;
                             flex: 1 1;
                             background: #fff;
                             padding: 37px 0 0 50px;
@@ -450,6 +450,10 @@
                                     color: #3d4152;
                                     display: flex;
 
+                                    &:nth-child(2n) {
+                                        margin-left: 35px;
+                                    }
+
                                     .item_icon {
                                         padding-right: 20px;
                                         padding-top: 3px;
@@ -473,6 +477,15 @@
 
                                         .btn_container {
                                             margin-top: 11px;
+
+                                            span {
+                                                color: #fc8019;
+                                                font-weight: 600;
+                                                font-size: 14px;
+                                                margin-right: 20px;
+                                                cursor: pointer;
+                                                letter-spacing: -0.3px;
+                                            }
                                         }
                                     }
                                 }
