@@ -2,38 +2,34 @@ import React from "react";
 
 const Favorites = () => {
   return (
-    <div className="_1KWU- favorite_container">
+    <div className=" favorite_container">
       {/*  */}
-      <div className="_3_rG4 title_container">
-        <div className="_1GypL text">Favorite Restaurants</div>
-        <div className="z4LFa divider"></div>
+      <div className="title_container">
+        <div className=" text">Favorite Restaurants</div>
+        <div className=" divider"></div>
       </div>
       {/*  */}
-      <div className="_3F2iN items_container">
-        <main id="seo-core-layout" className="sc-kuVLHQ ipqzSI items_wrapper">
+      <div className=" items_container">
+        <main className="items_wrapper">
           {/*  */}
-          <div className="sc-dOoqMo fwzxJt item">
+          <div className=" item">
             <div className="item_wrapper">
-              <a className="sc-ggqIjW drPxyx item_card">
-                <div className="sc-dBmzty drsCOs item_card_wrapper">
+              <a className=" item_card">
+                <div className=" item_card_wrapper">
                   {/*  */}
-                  <div className="sc-fUnMCh bXGMFY image_wrapper">
-                    <div className="sc-hzhJZQ jYUgUl image_container">
+                  <div className=" image_wrapper">
+                    <div className=" image_container">
                       {/*  */}
-                      <div
-                        width="100%"
-                        height="100%"
-                        className="sc-dAbbOL kXPGQb bg_img"
-                      >
+                      <div width="100%" height="100%" className=" bg_img">
                         <img
-                          className="sc-dcJsrY kMtDjj"
+                          className=""
                           src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/2b4f62d606d1b2bfba9ba9e5386fabb7"
                           alt="Pizza Hut"
                         />
-                        <div className="sc-gFqAkR ijUZYo sc-feUZmu fdeemW bg_overlay"></div>
+                        <div className="bg_overlay"></div>
                       </div>
                       {/*  */}
-                      <div className="sc-fifgRP kiywRV bg_strip">
+                      <div className=" bg_strip">
                         <svg
                           width="123"
                           height="37"
@@ -70,7 +66,7 @@ const Favorites = () => {
                             </linearGradient>
                           </defs>
                         </svg>
-                        <div className="sc-bDumWk liwPIr bg_strip_over">
+                        <div className="bg_strip_over">
                           <svg
                             width="33"
                             height="12"
@@ -113,10 +109,8 @@ const Favorites = () => {
                               </linearGradient>
                             </defs>
                           </svg>
-                          <div className="sc-dkmUuB jLNRCt bg_strip_over_text">
-                            <div className="sc-aXZVg gJSirL text">
-                              Free delivery
-                            </div>
+                          <div className=" bg_strip_over_text">
+                            <div className=" text">Free delivery</div>
                           </div>
                         </div>
                       </div>
@@ -125,9 +119,9 @@ const Favorites = () => {
                   {/*  */}
                   <div className="description_wrapper">
                     {/*  */}
-                    <div className="sc-aXZVg kIsYLE title">Pizza Hut</div>
+                    <div className=" title">Pizza Hut</div>
                     {/*  */}
-                    <div className="sw-restaurant-card-subtext-container subtext_container">
+                    <div className=" subtext_container">
                       <div className="svg_container">
                         <svg
                           width="20"
@@ -165,15 +159,13 @@ const Favorites = () => {
                         </svg>
                       </div>
                       {/*  */}
-                      <div className="sc-aXZVg icltun time_container">
-                        <span className="sc-aXZVg jxDVMd time">
-                          3.8 • 36 mins
-                        </span>
+                      <div className=" time_container">
+                        <span className=" time">3.8 • 36 mins</span>
                       </div>
                     </div>
-                    <div className="sw-restaurant-card-descriptions-container descriptions_container">
-                      <div className="sc-aXZVg ftrPfO">Pizzas</div>
-                      <div className="sc-aXZVg ftrPfO">Banaswadi</div>
+                    <div className="descriptions_container">
+                      <div className="">Pizzas</div>
+                      <div className="">Banaswadi</div>
                     </div>
                   </div>
                 </div>
