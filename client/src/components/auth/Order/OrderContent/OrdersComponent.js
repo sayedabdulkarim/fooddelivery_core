@@ -31,7 +31,7 @@ const Orders = () => {
       {userOrderDetails?.map((item, idx) => {
         const { _id, createdAt, items, restaurantId, finalCost } = item;
         return (
-          <div className="order_detail_item">
+          <div className="order_detail_item" key={_id}>
             {/*  */}
             <div className="item_top">
               <div className="item_top_image">
@@ -72,9 +72,9 @@ const Orders = () => {
             {/*  */}
             <div className="item_bottom">
               {items?.map((o) => {
-                const { name, count } = o;
+                const { name, count, _id } = o;
                 return (
-                  <div className=" item_count">
+                  <div className=" item_count" key={_id}>
                     {name} x {count}
                   </div>
                 );
