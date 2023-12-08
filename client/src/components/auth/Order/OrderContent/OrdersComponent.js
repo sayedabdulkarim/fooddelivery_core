@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import OrderDetailsDrawerComponent from "../../../drawer/CustomDrawer";
+import OrderDetailsDrawerContent from "./OrderDetailsDrawerContent";
+
 import {
   formatUTCToLocal,
   getRestaurantById,
 } from "../../../../utils/commonHelper";
 
 const Orders = () => {
-  const homePageData = useSelector((state) => state.homeReducer.homePageData);
+  const [isShowDrawer, setIsShowDrawer] = useState(false);
+  const [getCurrentOrderDetails, setCurrentOrderDetails] = useState(null);
 
+  const homePageData = useSelector((state) => state.homeReducer.homePageData);
   // Check if userInfo is available
   if (!homePageData) {
     // You can return a loader, placeholder, or null if userInfo is not available
@@ -17,6 +22,16 @@ const Orders = () => {
   const {
     data: { userOrderDetails, allRestaurantsList },
   } = homePageData;
+
+  //func
+  const handleCloseOrderDetailsDrawer = () => {
+    setIsShowDrawer(false);
+  };
+
+  const handleGetCurrentOrderDetails = (data) => {
+    setIsShowDrawer(true);
+    setCurrentOrderDetails(data);
+  };
 
   return (
     <div className="order_details_component">
@@ -66,7 +81,13 @@ const Orders = () => {
                 <div className="order_date">
                   ORDER #{_id} | {formatUTCToLocal(createdAt)}
                 </div>
-                <div className="view-details">VIEW DETAILS</div>
+                <div
+                  className="view-details"
+                  // onClick={() => console.log(item, " itemm")}
+                  onClick={() => handleGetCurrentOrderDetails(item)}
+                >
+                  VIEW DETAILS
+                </div>
               </div>
             </div>
             {/*  */}
@@ -90,6 +111,21 @@ const Orders = () => {
           </div>
         );
       })}
+
+      <OrderDetailsDrawerComponent
+        title={`Order #${getCurrentOrderDetails?._id}`}
+        open={isShowDrawer}
+        placement={"right"}
+        onClose={handleCloseOrderDetailsDrawer}
+        width={480}
+        className={"order_details_custom_drawer"}
+      >
+        {/* <AddressDrawerContentFromHome /> */}
+        <OrderDetailsDrawerContent
+          getCurrentOrderDetails={getCurrentOrderDetails}
+          allRestaurantsList={allRestaurantsList}
+        />
+      </OrderDetailsDrawerComponent>
       <div className="order_detail_item" style={{ display: "none" }}>
         {/*  */}
         <div className="item_top">

@@ -233,7 +233,7 @@
                                             padding: 0 15px;
                                             margin-top: 20px;
                                             position: relative;
-                                        
+
 
                                             &.isActive {
                                                 background: #fc8019;
@@ -288,4 +288,31 @@
 
     }
 
+}
+
+.order_details_custom_drawer {
+
+    .ant-drawer-title {
+        // margin-left: 30px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #282c3f;
+        line-height: 1.2rem;
+
+    }
+
+    .location_details {
+        border: 1px solid red;
+    }
+
+    .item_details {
+        border: 1px solid green;
+        padding-left: 40px;
+    }
+    
+    .payment_details {
+        border: 1px solid blue;
+        padding-left: 40px;
+        
+    }
 }

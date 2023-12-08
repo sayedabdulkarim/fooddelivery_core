@@ -2,6 +2,7 @@ import React from "react";
 import { Drawer } from "antd";
 
 const CustomDrawerComponent = ({
+  title,
   open,
   onClose,
   placement,
@@ -11,7 +12,7 @@ const CustomDrawerComponent = ({
 }) => {
   return (
     <Drawer
-      title=""
+      title={title ?? ""}
       placement={placement}
       onClose={onClose}
       open={open}
