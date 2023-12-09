@@ -9,13 +9,7 @@ import App from "../App";
 import PrivateRoute from "../components/PrivateRoute";
 import PublicRoute from "../components/PublicRoute";
 //auth
-import HomeScreen from "../screens/auth/HomeScreen";
-import HelpScreen from "../screens/auth/HelpScreen";
-import RestaurantDetailsScreen from "../screens/auth/RestaurantDetailsScreen";
-import CheckoutScreen from "../screens/auth/Checkout";
-import PaymentScreen from "../screens/auth/Payments";
-import OrdersScreen from "../screens/auth/Orders";
-import FavoritesScreen from "../screens/auth/Favorites";
+import HomeScreen from "../screens/auth/Home";
 //unauth
 import UnAuthScreen from "../screens/unauth";
 
@@ -29,15 +23,6 @@ export const router = createBrowserRouter(
       {/* private routes */}
       <Route path="" element={<PrivateRoute />}>
         <Route index={true} path="/" element={<HomeScreen />} />
-        <Route path="checkout" element={<CheckoutScreen />} />
-        <Route path="support" element={<HelpScreen />} />
-        <Route path="payments" element={<PaymentScreen />} />
-        <Route path="orders" element={<OrdersScreen />} />
-        <Route path="favorites" element={<FavoritesScreen />} />
-        <Route
-          path="/restaurant/:name/:id"
-          element={<RestaurantDetailsScreen />}
-        />
       </Route>
       <Route path="*" element={<h1>404 Component</h1>} />
     </Route>
