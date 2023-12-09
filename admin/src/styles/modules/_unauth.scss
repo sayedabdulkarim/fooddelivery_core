@@ -189,6 +189,11 @@
 
                         .submit_button {
 
+                            &.isActive {
+                                background-color: rgb(228, 115, 78);
+                                cursor: pointer;
+                            }
+                            cursor: not-allowed;
                             background-color: rgb(212, 213, 217);
                             height: 46px;
                             display: flex;

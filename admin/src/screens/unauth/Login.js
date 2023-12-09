@@ -46,6 +46,9 @@ const Login = () => {
     }
   };
 
+  const { email_number, password } = formData;
+  const isEnable = email_number && password;
+
   return (
     <div className="form_container">
       {/*  */}
@@ -92,7 +95,10 @@ const Login = () => {
           />
         </div>
         {/* button */}
-        <button className="submit_button" type="submit">
+        <button
+          className={`submit_button ${isEnable ? "isActive" : ""}`}
+          type="submit"
+        >
           <div className="btn_text">Continue</div>
         </button>
         {/*  */}

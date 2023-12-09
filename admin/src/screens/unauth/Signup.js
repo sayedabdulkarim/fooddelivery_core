@@ -51,6 +51,10 @@ const Signup = () => {
     // console.log(signupFormData, " signupFormData");
   };
 
+  //
+  const { username, email, phone, password } = formData;
+  const isEnable = username && email && phone && password;
+
   return (
     <div className="form_container">
       {/*  */}
@@ -130,7 +134,11 @@ const Signup = () => {
           />
         </div>
         {/* button */}
-        <button className="submit_button" type="submit">
+        {/* <button className="submit_button isActive" type="submit"> */}
+        <button
+          className={`submit_button ${isEnable ? "isActive" : ""}`}
+          type="submit"
+        >
           <div className="btn_text">Continue</div>
         </button>
         {/*  */}
