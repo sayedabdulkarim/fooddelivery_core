@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { AuthInfoIcon } from "../../utils/svgs";
 
 const Login = () => {
+  //state
+  const [formData, setFormData] = useState({
+    email_number: "",
+    password: "",
+  });
+
+  //func
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData, " formmm");
+  };
+
   return (
     <div className="form_container">
       {/*  */}
@@ -14,27 +33,43 @@ const Login = () => {
         </div>
       </div>
       {/*  */}
-      <form>
+      <form onSubmit={handleSubmit}>
         {/* input */}
-        <div className="css-175oi2r input_item">
+        <div className=" input_item">
           <input
-            maxLength="10"
-            placeholder="Enter Restaurant ID / Mobile number"
+            name="email_number"
+            placeholder="Enter Email ID / Mobile number"
             autoCapitalize="sentences"
             autoComplete="on"
             autoCorrect="on"
             inputMode="decimal"
             spellCheck="true"
-            className="css-11aywtz r-6taxm2"
-            value=""
+            className=""
+            type="text"
+            value={formData?.email_number}
+            onChange={handleChange}
+          />
+        </div>
+        {/*  */}
+        <div className=" input_item">
+          <input
+            name="password"
+            type="password"
+            placeholder="Enter Password"
+            autoCapitalize="sentences"
+            autoComplete="on"
+            autoCorrect="on"
+            inputMode="decimal"
+            spellCheck="true"
+            className=""
+            value={formData?.password}
+            onChange={handleChange}
           />
         </div>
         {/* button */}
-        <div className="css-175oi2r r-1awozwy r-1f0042m r-195d4m8 r-1777fci r-1u916t5 r-633pao submit_button">
-          <div className="css-1rynq56 r-1dt6c6u r-1i10wst r-hbpseb r-q4m81j r-ndvcnb r-jwli3a r-lrvibr btn_text">
-            Continue
-          </div>
-        </div>
+        <button className="submit_button" type="submit">
+          <div className="btn_text">Continue</div>
+        </button>
         {/*  */}
       </form>
     </div>

@@ -42,6 +42,7 @@
         z-index: 0;
 
         .left_section {
+            margin-right: 80px;
             
             .title {
                 letter-spacing: 2px;
@@ -160,7 +161,7 @@
                             background-color: rgba(0, 0, 0, 0);
                             height: 40px;
                             padding: 12px 18px 0 18px;
-
+                            margin-bottom: 10px;
                             input {
                                 color: rgb(59, 58, 58);
                                 padding: 20px 0px 0px;
@@ -195,6 +196,9 @@
                             justify-content: center;
                             border-radius: 5px;
                             margin-top: 30px;
+                            width: 100%;
+                            outline: none;
+                            border: none;
 
                             .btn_text {
                                 font-size: 18px;
@@ -206,6 +210,25 @@
                         }
                     }
 
+                }
+
+                .condition_text {
+                    // border: 1px solid red;
+                    margin-top: 20px;
+                    color: rgba(40, 44, 62, 0.7);
+                    letter-spacing: -0.1px;
+                    font-size: 14px;
+                    line-height: 16px;
+                    padding: 27px 0;
+
+                    strong {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: rgb(61, 64, 81);
+                        text-decoration: underline;
+                        text-decoration-color: rgb(61, 64, 81);
+                    }
+                
                 }
             }
         }
