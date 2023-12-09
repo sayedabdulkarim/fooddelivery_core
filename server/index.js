@@ -13,6 +13,9 @@ import restaurantRoutes from "./routes/restaurantRoute.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import cartRoutes from "./routes/cartRoute.js";
 
+//adminRoutes
+import adminUserRoutes from "./routes/admin/adminUserRoutes.js";
+
 const port = process.env.PORT || 5000;
 
 connectDb();
@@ -52,6 +55,9 @@ app.use("/api/users", restaurantRoutes);
 app.use("/api/users", addressRoutes);
 //cart
 app.use("/api/users", cartRoutes);
+
+////////// ADMIN /////////////
+app.use("/api/admin", adminUserRoutes);
 
 ////////////DEPLOYMENT //////////////
 
