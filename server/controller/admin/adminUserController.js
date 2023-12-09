@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 //modals
-// import UserModal from "../modals/userModal.js";
+import AllRestaurantsModal from "../../modals/home/allRestaurants.js";
 import AdminUserModal from "../../modals/admin/adminSingupModal.js";
 //helpers
 import generateToken from "../../utils/generateToken.js";
@@ -32,6 +32,11 @@ const adminUserLogin = asyncHandler(async (req, res) => {
   });
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    // Find the restaurant associated with this user
+    const restaurant = await AllRestaurantsModal.findOne({
+      adminUserId: user._id,
+    });
+
     // If user is found and password matches, generate a token
     generateToken(res, user._id);
 
@@ -42,6 +47,7 @@ const adminUserLogin = asyncHandler(async (req, res) => {
         name: user.name,
         email: user.email,
         phone: user.phone,
+        restaurant: restaurant || null, // Include restaurant details or null if not found
         // Include other user details you want to return
       },
       message: "Login successful",

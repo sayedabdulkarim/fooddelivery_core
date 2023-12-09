@@ -55,6 +55,11 @@ const restaurantSchema = new Schema({
   totalRatingsString: String,
   type: String,
   veg: Boolean,
+  adminUserId: {
+    type: mongoose.Types.ObjectId,
+    ref: "AdminUser", // assuming 'AdminUser' is your admin user model name
+    required: true,
+  },
 });
 
 const AllRestaurants = mongoose.model("AllRestaurant", restaurantSchema);
