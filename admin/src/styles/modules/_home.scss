@@ -1,0 +1,17 @@
+.home_container {
+    border: 1px solid green;
+    .add_restaurant_btn_container {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        border: 1px solid red;
+
+        > button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    }
+}
