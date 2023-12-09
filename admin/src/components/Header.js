@@ -1,33 +1,49 @@
 import React from "react";
-import { Layout, Menu, Avatar } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Layout, Menu, Avatar, Popover } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { NavbarLogo } from "../utils/svgs";
+import { logOutUser } from "../slices/authSlice";
+import { useLogoutMutation } from "../apiSlices/userApiSlice";
 
 const { Header } = Layout;
 
 const AppHeader = () => {
-  return (
-    <Layout>
-      <Header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        {/* Logo */}
-        <div style={{ color: "white", fontSize: "20px" }}>
-          <img
-            src="/path-to-your-logo.png"
-            alt="Logo"
-            style={{ height: "30px" }}
-          />{" "}
-          Logo
-        </div>
+  //misc
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  //apis
+  const [logOut] = useLogoutMutation();
+  //func
+  const handleLogout = async (e) => {
+    try {
+      const res = await logOut().unwrap();
+      console.log(res, "res, from logoutttt");
+      dispatch(logOutUser());
+      navigate("/auth");
+    } catch (error) {
+      console.log(error, " errrrrrrr");
+    }
+  };
 
+  const content = (
+    <Menu>
+      <Menu.Item key="logout" onClick={() => handleLogout()}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
+  return (
+    <Layout className="nav_container">
+      <Header className="custom_header">
+        <Link to={"/"} className="logo">
+          <NavbarLogo />
+        </Link>
         {/* Profile Icon */}
-        <div>
+        <Popover content={content} trigger="hover">
           <Avatar size="large" icon={<UserOutlined />} />
-        </div>
+        </Popover>
       </Header>
     </Layout>
   );
