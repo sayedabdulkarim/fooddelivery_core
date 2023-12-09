@@ -29,7 +29,12 @@ const Home = () => {
         </div>
       ) : (
         <div className="add_restaurant_btn_container">
-          <button>Add Restaurant</button>
+          <div className="wrapper">
+            <div>
+              <h2>Please add restaurant.</h2>
+              <button>Add Restaurant</button>
+            </div>
+          </div>
         </div>
       )}
     </div>
