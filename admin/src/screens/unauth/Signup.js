@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { AuthInfoIcon } from "../../utils/svgs";
+import { useDispatch } from "react-redux";
+import { useRegisterUserMutation } from "../../apiSlices/userApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 
 const Signup = () => {
+  //misc
+  const dispatch = useDispatch();
   //state
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
-    number: "",
+    phone: "",
     password: "",
   });
+
+  //queries n mutation
+  const [registerUser, { isLoading: registerLoading, error: registerError }] =
+    useRegisterUserMutation();
 
   //func
   const handleChange = (e) => {
@@ -17,9 +27,32 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData, " formmm");
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, " formmm");
+    const { username, phone, email, password } = formData;
+    const formattedNumber = `+91${phone}`;
+
+    try {
+      const res = await registerUser({
+        name: username,
+        email,
+        phone: formattedNumber,
+        password,
+      }).unwrap();
+      console.log(res, " resss");
+      // handleShowAlert(dispatch, "success", res?.message);
+      dispatch(setCredentials({ ...res }));
+      // navigate("/");
+    } catch (err) {
+      // handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
+    // console.log(signupFormData, " signupFormData");
   };
 
   return (
@@ -36,6 +69,22 @@ const Signup = () => {
       {/*  */}
       <form onSubmit={handleSubmit}>
         {/* input */}
+        <div className=" input_item">
+          <input
+            name="username"
+            placeholder="Enter Username"
+            autoCapitalize="sentences"
+            autoComplete="on"
+            autoCorrect="on"
+            inputMode="decimal"
+            spellCheck="true"
+            className=""
+            type="text"
+            value={formData?.username}
+            onChange={handleChange}
+          />
+        </div>
+
         <div className=" input_item">
           <input
             name="email"
@@ -55,7 +104,7 @@ const Signup = () => {
         <div className=" input_item">
           <input
             maxLength={10}
-            name="number"
+            name="phone"
             placeholder="Enter Mobile number"
             autoCapitalize="sentences"
             autoComplete="on"
@@ -64,7 +113,7 @@ const Signup = () => {
             spellCheck="true"
             className=""
             type="text"
-            value={formData?.number}
+            value={formData?.phone}
             onChange={handleChange}
           />
         </div>

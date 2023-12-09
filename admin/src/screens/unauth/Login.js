@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { AuthInfoIcon } from "../../utils/svgs";
+import { useDispatch } from "react-redux";
+import {
+  useLoginMutation,
+  useRegisterUserMutation,
+} from "../../apiSlices/userApiSlice";
+import { setCredentials } from "../../slices/authSlice";
 
 const Login = () => {
+  //misc
+  const dispatch = useDispatch();
   //state
   const [formData, setFormData] = useState({
     email_number: "",
     password: "",
   });
+
+  //queries n mutation
+  const [loginUser, { isLoading: loginLoading, error: loginError }] =
+    useLoginMutation();
 
   //func
   const handleChange = (e) => {
@@ -16,9 +28,24 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, " formmm");
+    // console.log(formData, " formmm");
+    const { email_number, password } = formData;
+
+    try {
+      const res = await loginUser({
+        email_number,
+        password,
+      }).unwrap();
+      console.log(res, " resss");
+      // handleShowAlert(dispatch, "success", res?.message);
+      dispatch(setCredentials({ ...res }));
+      // navigate("/");
+    } catch (err) {
+      // handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
   };
 
   return (

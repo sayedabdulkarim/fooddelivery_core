@@ -1,4 +1,5 @@
 import asyncHandler from "express-async-handler";
+import bcrypt from "bcryptjs";
 //modals
 // import UserModal from "../modals/userModal.js";
 import AdminUserModal from "../../modals/admin/adminSingupModal.js";
@@ -9,13 +10,29 @@ import generateToken from "../../utils/generateToken.js";
 // route POST /api/admin/login
 // @ccess PUBLIC
 const adminUserLogin = asyncHandler(async (req, res) => {
-  const { phone } = req.body; // Expecting phone from the client
+  const { email_number, password } = req.body; // email_number can be either email or phone
 
-  // Find user by phone number
-  const user = await AdminUserModal.findOne({ phone });
+  // Check if the email_number is an email or a phone number
+  const isEmail = email_number.includes("@");
+  const isPhoneNumber = !isNaN(email_number) && email_number.length <= 10;
 
-  if (user) {
-    // If user is found, generate a token (Assuming you're still using token-based authentication)
+  // Normalize the phone number by adding '+91' if it's a phone number
+  const normalizedPhone = isPhoneNumber ? `+91${email_number}` : email_number;
+
+  // Find user by email or phone number
+  //   const user = await AdminUserModal.findOne({
+  //     $or: [{ email: email_number }, { phone: email_number }],
+  //   });
+
+  const user = await AdminUserModal.findOne({
+    $or: [
+      { email: isEmail ? email_number : null },
+      { phone: isPhoneNumber ? normalizedPhone : null },
+    ],
+  });
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+    // If user is found and password matches, generate a token
     generateToken(res, user._id);
 
     // Respond with user details
@@ -24,14 +41,14 @@ const adminUserLogin = asyncHandler(async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        phoneNumber: user.phone,
-        favorites: user.favorites, // Add this line to include the favorites in the response
+        phone: user.phone,
+        // Include other user details you want to return
       },
       message: "Login successful",
     });
   } else {
-    // If user is not found, send an error response
-    res.status(404).json({ message: "User not found" });
+    // If user is not found or password does not match, send an error response
+    res.status(401).json({ message: "Invalid credentials" });
   }
 });
 
@@ -39,45 +56,52 @@ const adminUserLogin = asyncHandler(async (req, res) => {
 // route POST api/admin/signup
 // @ccess PUBLIC
 const adminUserSignUp = asyncHandler(async (req, res) => {
-  const { name, email, phone } = req.body;
+  const { name, email, phone, password } = req.body;
 
   // Check if the user already exists based on phone
   const existingUser = await AdminUserModal.findOne({ phone });
   if (existingUser) {
     res.status(400).json({
-      message: "User with this phone number already exists.Please Login.",
+      message: "User with this phone number already exists. Please Login.",
     });
     return;
   }
 
   // Check if the user already exists based on email
-  //   const existingUserByEmail = await AdminUserModal.findOne({ email });
-  //   if (existingUserByEmail) {
-  //     res
-  //       .status(400)
-  //       .json({ message: "User with this email already exists.Please Login." });
-  //     return;
-  //   }
+  const existingEmailUser = await AdminUserModal.findOne({ email });
+  if (existingEmailUser) {
+    res.status(400).json({
+      message: "User with this email already exists. Please Login.",
+    });
+    return;
+  }
 
-  // Create a new user
+  // Hash password
+  const salt = await bcrypt.genSalt(10); // 10 rounds is a good balance of security and performance
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  // Create a new user with the hashed password
   const newUser = new AdminUserModal({
     name,
     email,
     phone,
+    password: hashedPassword,
   });
 
-  await newUser.save();
+  // Save the new user
+  const savedUser = await newUser.save();
+
   // Generate token or handle OTP logic here (if applicable)
-  generateToken(res, newUser._id);
+  generateToken(res, savedUser._id);
 
   res.status(201).json({
     message: "User registered successfully.",
     user: {
-      name,
-      email,
-      phone,
+      id: savedUser._id,
+      name: savedUser.name,
+      email: savedUser.email,
+      phone: savedUser.phone,
     },
-    // Other user data can go here
   });
 });
 
