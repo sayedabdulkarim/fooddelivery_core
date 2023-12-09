@@ -107,6 +107,7 @@ const adminUserSignUp = asyncHandler(async (req, res) => {
       name: savedUser.name,
       email: savedUser.email,
       phone: savedUser.phone,
+      restaurant: null,
     },
   });
 });
