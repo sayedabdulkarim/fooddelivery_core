@@ -4,7 +4,8 @@ import { AuthInfoIcon } from "../../utils/svgs";
 const Signup = () => {
   //state
   const [formData, setFormData] = useState({
-    email_number: "",
+    email: "",
+    number: "",
     password: "",
   });
 
@@ -37,8 +38,8 @@ const Signup = () => {
         {/* input */}
         <div className=" input_item">
           <input
-            name="email_number"
-            placeholder="Enter Email ID / Mobile number"
+            name="email"
+            placeholder="Enter Email ID"
             autoCapitalize="sentences"
             autoComplete="on"
             autoCorrect="on"
@@ -46,7 +47,24 @@ const Signup = () => {
             spellCheck="true"
             className=""
             type="text"
-            value={formData?.email_number}
+            value={formData?.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className=" input_item">
+          <input
+            maxLength={10}
+            name="number"
+            placeholder="Enter Mobile number"
+            autoCapitalize="sentences"
+            autoComplete="on"
+            autoCorrect="on"
+            inputMode="decimal"
+            spellCheck="true"
+            className=""
+            type="text"
+            value={formData?.number}
             onChange={handleChange}
           />
         </div>
