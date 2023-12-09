@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="main_wrapper">
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
