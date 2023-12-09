@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { AuthInfoIcon } from "../../utils/svgs";
 import { useDispatch } from "react-redux";
-import {
-  useLoginMutation,
-  useRegisterUserMutation,
-} from "../../apiSlices/userApiSlice";
+import { useLoginMutation } from "../../apiSlices/userApiSlice";
 import { setCredentials } from "../../slices/authSlice";
+import { handleShowAlert } from "../../utils/commonHelper";
 
 const Login = () => {
   //misc
@@ -39,11 +37,11 @@ const Login = () => {
         password,
       }).unwrap();
       console.log(res, " resss");
-      // handleShowAlert(dispatch, "success", res?.message);
+      handleShowAlert(dispatch, "success", res?.message);
       dispatch(setCredentials({ ...res }));
       // navigate("/");
     } catch (err) {
-      // handleShowAlert(dispatch, "error", err?.data?.message);
+      handleShowAlert(dispatch, "error", err?.data?.message);
       console.log(err, " errr");
     }
   };

@@ -3,6 +3,7 @@ import { AuthInfoIcon } from "../../utils/svgs";
 import { useDispatch } from "react-redux";
 import { useRegisterUserMutation } from "../../apiSlices/userApiSlice";
 import { setCredentials } from "../../slices/authSlice";
+import { handleShowAlert } from "../../utils/commonHelper";
 
 const Signup = () => {
   //misc
@@ -27,11 +28,6 @@ const Signup = () => {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(formData, " formmm");
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { username, phone, email, password } = formData;
@@ -45,11 +41,11 @@ const Signup = () => {
         password,
       }).unwrap();
       console.log(res, " resss");
-      // handleShowAlert(dispatch, "success", res?.message);
+      handleShowAlert(dispatch, "success", res?.message);
       dispatch(setCredentials({ ...res }));
       // navigate("/");
     } catch (err) {
-      // handleShowAlert(dispatch, "error", err?.data?.message);
+      handleShowAlert(dispatch, "error", err?.data?.message);
       console.log(err, " errr");
     }
     // console.log(signupFormData, " signupFormData");
