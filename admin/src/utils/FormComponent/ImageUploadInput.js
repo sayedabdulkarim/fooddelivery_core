@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Upload, Button, message } from "antd";
+import { Upload, Button, message, Image } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -14,6 +14,7 @@ const getBase64 = (file) =>
 
 const ImageUpload = ({ onImageUpload }) => {
   const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(""); // State for storing the preview image URL
 
   const beforeUpload = (file) => {
     const isImage = file.type.startsWith("image/");
@@ -24,20 +25,24 @@ const ImageUpload = ({ onImageUpload }) => {
   };
 
   const handleChange = async (info) => {
-    if (info.file.status === "uploading") {
-      setLoading(true);
-      return;
-    }
-    // This assumes the file selection is done and the file is available
-    if (info.file.originFileObj) {
-      getBase64(info.file.originFileObj).then((base64) => {
+    setLoading(true);
+    if (info.file.status === "done" && info.file.originFileObj) {
+      try {
+        const base64 = await getBase64(info.file.originFileObj);
         setLoading(false);
+        setImageUrl(base64); // Update the imageUrl state to the base64 string
         onImageUpload(base64); // Pass the Base64 string to the parent component's state.
-      });
+      } catch (error) {
+        setLoading(false);
+        message.error("File read failed: " + error.message);
+      }
+    } else if (info.file.status === "error") {
+      setLoading(false);
+      message.error(`${info.file.name} file upload failed.`);
     }
   };
 
-  const dummyRequest = ({ file, onSuccess }) => {
+  const dummyRequest = ({ onSuccess }) => {
     // Delay the success callback to ensure file object is available
     setTimeout(() => {
       onSuccess("ok");
@@ -51,15 +56,23 @@ const ImageUpload = ({ onImageUpload }) => {
   );
 
   return (
-    <Upload
-      name="avatar"
-      showUploadList={true}
-      onChange={handleChange}
-      customRequest={dummyRequest} // Prevent actual POST request
-      beforeUpload={beforeUpload}
-    >
-      {uploadButton}
-    </Upload>
+    <div>
+      <Upload
+        name="avatar"
+        // listType="picture-card"
+        showUploadList={false}
+        onChange={handleChange}
+        customRequest={dummyRequest} // Prevent actual POST request
+        beforeUpload={beforeUpload}
+      >
+        {imageUrl ? (
+          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
+        ) : (
+          uploadButton
+        )}
+      </Upload>
+      {loading && <div>Loading...</div>}
+    </div>
   );
 };
 
