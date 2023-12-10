@@ -334,7 +334,18 @@ const RestaurantForm = ({ onSave }) => {
         {/* Cuisines */}
         <Row gutter={16}>
           <Col span={6}>
-            <Form.Item name="cuisines" label="Cuisines">
+            <Form.Item
+              name="cuisines"
+              label="Cuisines"
+              rules={[
+                {
+                  required: true,
+                  type: "array",
+                  min: 1,
+                  message: "Please add at least one cuisine!",
+                },
+              ]}
+            >
               <CuisineTagsInput />
             </Form.Item>
           </Col>
