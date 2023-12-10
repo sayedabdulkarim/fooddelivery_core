@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { Upload, Button, message, Image } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Upload, Button, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
-// Function to get Base64 from file object
-const getBase64 = (file) =>
-  new Promise((resolve, reject) => {
+const getBase64 = (file) => {
+  return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
+};
 
-const ImageUpload = ({ onImageUpload }) => {
+const ImageUpload = ({ value, onChange }) => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState(""); // State for storing the preview image URL
 
   const beforeUpload = (file) => {
     const isImage = file.type.startsWith("image/");
@@ -30,8 +28,7 @@ const ImageUpload = ({ onImageUpload }) => {
       try {
         const base64 = await getBase64(info.file.originFileObj);
         setLoading(false);
-        setImageUrl(base64); // Update the imageUrl state to the base64 string
-        onImageUpload(base64); // Pass the Base64 string to the parent component's state.
+        onChange(base64); // Notify Form that there is a new value
       } catch (error) {
         setLoading(false);
         message.error("File read failed: " + error.message);
@@ -42,37 +39,36 @@ const ImageUpload = ({ onImageUpload }) => {
     }
   };
 
-  const dummyRequest = ({ onSuccess }) => {
-    // Delay the success callback to ensure file object is available
-    setTimeout(() => {
-      onSuccess("ok");
-    }, 0);
+  const dummyRequest = ({ file, onSuccess }) => {
+    // Simulate a server response
+    setTimeout(() => onSuccess("ok"), 0);
   };
 
   const uploadButton = (
     <div>
-      <Button icon={<UploadOutlined />}>Click to Upload</Button>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+      )}
     </div>
   );
 
   return (
-    <div>
-      <Upload
-        name="avatar"
-        // listType="picture-card"
-        showUploadList={false}
-        onChange={handleChange}
-        customRequest={dummyRequest} // Prevent actual POST request
-        beforeUpload={beforeUpload}
-      >
-        {imageUrl ? (
-          <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
-      {loading && <div>Loading...</div>}
-    </div>
+    <Upload
+      name="avatar"
+      // listType="picture-card"
+      showUploadList={false}
+      onChange={handleChange}
+      beforeUpload={beforeUpload}
+      customRequest={dummyRequest} // Prevent actual POST request
+    >
+      {value ? (
+        <img src={value} alt="avatar" style={{ width: "100%" }} />
+      ) : (
+        uploadButton
+      )}
+    </Upload>
   );
 };
 

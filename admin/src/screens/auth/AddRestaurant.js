@@ -319,10 +319,14 @@ const RestaurantForm = ({ onSave }) => {
         {/* Image */}
         <Row gutter={16}>
           <Col span={8}>
-            <Form.Item label="Restaurant Image">
-              <ImageUploadInput
-                onImageUpload={(base64) => setImageBase64(base64)}
-              />
+            <Form.Item
+              label="Restaurant Image"
+              name="imageUpload" // Make sure this matches your form model
+              valuePropName="value"
+              getValueFromEvent={(e) => e}
+              rules={[{ required: true, message: "Please upload an image!" }]}
+            >
+              <ImageUploadInput />
             </Form.Item>
           </Col>
         </Row>
