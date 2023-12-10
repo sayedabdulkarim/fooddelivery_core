@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import AllRestaurantsModal from "../../modals/home/allRestaurants.js";
 import AdminUserModal from "../../modals/admin/adminSingupModal.js";
 //helpers
-import generateToken from "../../utils/generateToken.js";
+import { generateAdminToken } from "../../utils/generateToken.js";
 
 // @desc authenticated admin/ token
 // route POST /api/admin/login
@@ -38,7 +38,7 @@ const adminUserLogin = asyncHandler(async (req, res) => {
     });
 
     // If user is found and password matches, generate a token
-    generateToken(res, user._id);
+    generateAdminToken(res, user._id);
 
     // Respond with user details
     res.status(200).json({
@@ -98,7 +98,7 @@ const adminUserSignUp = asyncHandler(async (req, res) => {
   const savedUser = await newUser.save();
 
   // Generate token or handle OTP logic here (if applicable)
-  generateToken(res, savedUser._id);
+  generateAdminToken(res, savedUser._id);
 
   res.status(201).json({
     message: "User registered successfully.",

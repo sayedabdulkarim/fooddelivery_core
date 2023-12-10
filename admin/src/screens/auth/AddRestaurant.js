@@ -7,24 +7,29 @@ import {
   Row,
   Col,
   Rate,
-  DatePicker,
   TimePicker,
   Select,
 } from "antd";
 import CuisineTagsInput from "../../utils/FormComponent/TagInput";
 import ImageUploadInput from "../../utils/FormComponent/ImageUploadInput";
+import { useAddRestaurantMutation } from "../../apiSlices/restaurantSlice";
 
 const RestaurantForm = ({ onSave }) => {
   //misc
   const [form] = Form.useForm();
   const { Option } = Select;
   const format = "HH:mm"; // 24-hour format
-
-  //start
+  //state
   const [imageBase64, setImageBase64] = useState("");
 
+  //queries n mutation
+  const [
+    addRestaurant,
+    { isLoading: addRestaurantLoading, error: addRestaurantError },
+  ] = useAddRestaurantMutation();
+
   //func
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     // Format startTime and nextCloseTime using the 'HH:mm' format
     const {
       name,
@@ -44,6 +49,7 @@ const RestaurantForm = ({ onSave }) => {
       cuisines,
       badges,
     } = values;
+
     console.log(values, " vvv");
     const formattedValues = {
       aggregatedDiscountInfo: {
@@ -80,6 +86,16 @@ const RestaurantForm = ({ onSave }) => {
 
     console.log("Formatted values for submission:", formattedValues);
     // onSave(formattedValues);
+    try {
+      const res = await addRestaurant(formattedValues).unwrap();
+      console.log(res, " resss");
+      // handleShowAlert(dispatch, "success", res?.message);
+      // dispatch(setCredentials({ ...res }));
+      // navigate("/");
+    } catch (err) {
+      // handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
   };
 
   return (

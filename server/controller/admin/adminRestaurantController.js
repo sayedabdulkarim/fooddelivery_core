@@ -1,13 +1,17 @@
-import asyncHandler from "express-async-handler"; // Make sure you have express-async-handler installed
-import AllRestaurants from "../models/restaurantModel"; // Replace with the actual path to your model
+import asyncHandler from "express-async-handler"; //
+//modals
+import AllRestaurantsModal from "../../modals/home/allRestaurants.js";
 
 // @desc    Add a new restaurant
-// @route   POST /api/restaurants
+// @route   POST /api/admin/addrestaurant
 // @access  Private
-const addRestaurant = asyncHandler(async (req, res) => {
+const addAdminRestaurant = asyncHandler(async (req, res) => {
+  const adminUserId = req.adminuser._id; // Assuming the authenticated user ID is stored in req.user._id
+
+  console.log(adminUserId, " adminUserIdadminUserIdadminUserIdadminUserId");
+
   const {
     aggregatedDiscountInfo,
-    adminUserId, // Make sure this is provided, or use req.user.id if the user is authenticated
     areaName,
     availability,
     avgRating,
@@ -24,7 +28,7 @@ const addRestaurant = asyncHandler(async (req, res) => {
   } = req.body;
 
   // Create a new restaurant
-  const restaurant = new AllRestaurants({
+  const restaurant = new AllRestaurantsModal({
     aggregatedDiscountInfoV3: aggregatedDiscountInfo,
     areaName,
     availability,
@@ -51,4 +55,14 @@ const addRestaurant = asyncHandler(async (req, res) => {
   });
 });
 
-export default addRestaurant;
+// const addAdminRestaurant = asyncHandler(async (req, res) => {
+//   console.log(req.adminuser, "  req form addREsss");
+//   //   const userId = req.user._id; // Or however you access the authenticated user's ID
+//   //   console.log(userId, " userId fro,m addAdmin");
+//   res.status(201).json({
+//     message: "New restaurant added successfully",
+//     // restaurant: adminUserId,
+//   });
+// });
+
+export { addAdminRestaurant };

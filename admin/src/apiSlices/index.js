@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 const getCsrfToken = () => {
   // set 'XSRF-TOKEN'
-  return Cookies.get("XSRF-TOKEN");
+  return Cookies.get("admin_XSRF-TOKEN");
 };
 
 const baseQuery = fetchBaseQuery({

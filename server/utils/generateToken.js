@@ -61,3 +61,31 @@ const generateToken = (res, userId, expiresIn = "2d") => {
 };
 
 export default generateToken;
+
+export const generateAdminToken = (res, userId, expiresIn = "2d") => {
+  const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {
+    expiresIn: expiresIn,
+  });
+
+  const csrfToken = crypto.randomBytes(24).toString("hex");
+  const expiration = new Date();
+  // expiration.setMilliseconds(expiration.getMilliseconds() + 3600000); // Set it to 1 hour from now
+  expiration.setDate(expiration.getDate() + 2); // Set it to 2 days from now
+
+  // JWT Token
+  res.cookie("admin_jwt", token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== "development",
+    sameSite: "strict",
+    expires: expiration,
+  });
+
+  // CSRF Token
+  res.cookie("admin_XSRF-TOKEN", csrfToken, {
+    secure: process.env.NODE_ENV !== "development",
+    sameSite: "strict",
+    expires: expiration,
+  });
+
+  return csrfToken; // Return CSRF token to include in the response
+};
