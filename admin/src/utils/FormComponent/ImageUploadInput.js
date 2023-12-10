@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Upload, message } from "antd";
+import { Upload, Button, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
 // Function to get Base64 from file object
@@ -27,13 +27,20 @@ const ImageUpload = ({ onImageUpload }) => {
       setLoading(true);
       return;
     }
-    if (info.file.status === "done") {
-      // Get this url from response in real world.
+    // This assumes the file selection is done and the file is available
+    if (info.file.originFileObj) {
       getBase64(info.file.originFileObj).then((base64) => {
         setLoading(false);
         onImageUpload(base64); // Pass the Base64 string to the parent component's state.
       });
     }
+  };
+
+  const dummyRequest = ({ file, onSuccess }) => {
+    // Delay the success callback to ensure file object is available
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
   };
 
   const uploadButton = (
@@ -49,8 +56,9 @@ const ImageUpload = ({ onImageUpload }) => {
       listType="picture-card"
       className="avatar-uploader"
       showUploadList={false}
-      beforeUpload={beforeUpload}
       onChange={handleChange}
+      customRequest={dummyRequest} // Prevent actual POST request
+      beforeUpload={beforeUpload}
     >
       {uploadButton}
     </Upload>
