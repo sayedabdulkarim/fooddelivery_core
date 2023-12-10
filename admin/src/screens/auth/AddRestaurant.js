@@ -52,112 +52,115 @@ const RestaurantForm = ({ onSave }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSave(formData);
+    console.log(formData, " ffff");
+    // onSave(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Restaurant Name"
-        required
-      />
-      <input
-        name="areaName"
-        value={formData.areaName}
-        onChange={handleChange}
-        placeholder="Area Name"
-      />
-      <input
-        type="number"
-        name="avgRating"
-        value={formData.avgRating}
-        onChange={handleChange}
-        placeholder="Average Rating"
-      />
-      <input
-        name="cloudinaryImageId"
-        value={formData.cloudinaryImageId}
-        onChange={handleChange}
-        placeholder="Cloudinary Image ID"
-      />
-      <input
-        name="costForTwo"
-        value={formData.costForTwo}
-        onChange={handleChange}
-        placeholder="Cost for Two"
-      />
-      <input
-        name="cuisines"
-        value={formData.cuisines}
-        onChange={handleChange}
-        placeholder="Cuisines (comma separated)"
-      />
-      <input
-        name="type"
-        value={formData.type}
-        onChange={handleChange}
-        placeholder="Type"
-      />
-      <label>
-        Open:
+    <div className="add_restaurant_container">
+      <form onSubmit={handleSubmit}>
         <input
-          type="checkbox"
-          name="isOpen"
-          checked={formData.isOpen}
+          name="name"
+          value={formData.name}
           onChange={handleChange}
+          placeholder="Restaurant Name"
+          required
         />
-      </label>
-      <label>
-        Vegetarian:
         <input
-          type="checkbox"
-          name="veg"
-          checked={formData.veg}
+          name="areaName"
+          value={formData.areaName}
           onChange={handleChange}
+          placeholder="Area Name"
         />
-      </label>
-
-      {/* SLA Schema Inputs */}
-      <input
-        name="sla.deliveryTime"
-        value={formData.sla.deliveryTime}
-        onChange={handleChange}
-        placeholder="SLA Delivery Time"
-        type="number"
-      />
-      {/* ...similarly add other inputs for all fields in slaSchema... */}
-
-      {/* Availability Schema Inputs */}
-      <input
-        name="availability.nextCloseTime"
-        value={formData.availability.nextCloseTime}
-        onChange={handleChange}
-        placeholder="Next Close Time"
-      />
-      <label>
-        Availability Open:
         <input
-          type="checkbox"
-          name="availability.opened"
-          checked={formData.availability.opened}
+          type="number"
+          name="avgRating"
+          value={formData.avgRating}
           onChange={handleChange}
+          placeholder="Average Rating"
         />
-      </label>
+        <input
+          name="cloudinaryImageId"
+          value={formData.cloudinaryImageId}
+          onChange={handleChange}
+          placeholder="Cloudinary Image ID"
+        />
+        <input
+          name="costForTwo"
+          value={formData.costForTwo}
+          onChange={handleChange}
+          placeholder="Cost for Two"
+        />
+        <input
+          name="cuisines"
+          value={formData.cuisines}
+          onChange={handleChange}
+          placeholder="Cuisines (comma separated)"
+        />
+        <input
+          name="type"
+          value={formData.type}
+          onChange={handleChange}
+          placeholder="Type"
+        />
+        <label>
+          Open:
+          <input
+            type="checkbox"
+            name="isOpen"
+            checked={formData.isOpen}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Vegetarian:
+          <input
+            type="checkbox"
+            name="veg"
+            checked={formData.veg}
+            onChange={handleChange}
+          />
+        </label>
 
-      {/* Aggregated Discount Info Inputs */}
-      <input
-        name="aggregatedDiscountInfoV3.header"
-        value={formData.aggregatedDiscountInfoV3.header}
-        onChange={handleChange}
-        placeholder="Discount Info Header"
-      />
-      {/* ...similarly add other inputs for all fields in aggregatedDiscountInfoV3Schema... */}
+        {/* SLA Schema Inputs */}
+        <input
+          name="sla.deliveryTime"
+          value={formData.sla.deliveryTime}
+          onChange={handleChange}
+          placeholder="SLA Delivery Time"
+          type="number"
+        />
+        {/* ...similarly add other inputs for all fields in slaSchema... */}
 
-      <button type="submit">Save Restaurant</button>
-    </form>
+        {/* Availability Schema Inputs */}
+        <input
+          name="availability.nextCloseTime"
+          value={formData.availability.nextCloseTime}
+          onChange={handleChange}
+          placeholder="Next Close Time"
+        />
+        <label>
+          Availability Open:
+          <input
+            type="checkbox"
+            name="availability.opened"
+            checked={formData.availability.opened}
+            onChange={handleChange}
+          />
+        </label>
+
+        {/* Aggregated Discount Info Inputs */}
+        <input
+          name="aggregatedDiscountInfoV3.header"
+          value={formData.aggregatedDiscountInfoV3.header}
+          onChange={handleChange}
+          placeholder="Discount Info Header"
+        />
+        {/* ...similarly add other inputs for all fields in aggregatedDiscountInfoV3Schema... */}
+
+        <button type="submit">Save Restaurant</button>
+      </form>
+    </div>
   );
 };
 

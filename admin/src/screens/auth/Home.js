@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { userInfo } = useSelector((state) => state.authReducer);
@@ -32,7 +33,9 @@ const Home = () => {
           <div className="wrapper">
             <div>
               <h2>Please add restaurant.</h2>
-              <button>Add Restaurant</button>
+              <Link to={"restaurant"}>
+                <button>Add Restaurant</button>
+              </Link>
             </div>
           </div>
         </div>

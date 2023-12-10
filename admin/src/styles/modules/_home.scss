@@ -23,30 +23,32 @@
                 h2 {
                     font-size: 24px;
                 }
-    
-                 button {
-                    //
-                    padding: 10px;
-                    background-color: rgb(228, 115, 78);
-                    cursor: pointer;
-                    // background-color: rgb(212, 213, 217);
-                    height: 46px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 5px;
-                    margin-top: 30px;
-                    // width: 100%;
-                    outline: none;
-                    border: none;
-                    font-size: 14px;
-                    line-height: 22px;
-                    text-align: center;
-                    color: rgb(255, 255, 255);
-                
-                
+                a {
+
+                    text-decoration: none;
+
+                    button {
+                       //
+                       padding: 10px;
+                       background-color: rgb(228, 115, 78);
+                       cursor: pointer;
+                       // background-color: rgb(212, 213, 217);
+                       height: 46px;
+                       display: flex;
+                       align-items: center;
+                       justify-content: center;
+                       border-radius: 5px;
+                       margin-top: 30px;
+                       // width: 100%;
+                       outline: none;
+                       border: none;
+                       font-size: 14px;
+                       line-height: 22px;
+                       text-align: center;
+                       color: rgb(255, 255, 255);
+                   }
+               }
                 }
-            }
 
         }
 
