@@ -22,5 +22,13 @@
                 text-transform: capitalize;
             }
         }
+
+        .submit_button {
+            margin-top: 20px;
+            height: 46px;
+            background-color: rgb(228, 115, 78);
+            display: flex;
+            align-items: center;
+        }
     }
 }

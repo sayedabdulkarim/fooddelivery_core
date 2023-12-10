@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   Form,
   Input,
@@ -13,9 +15,13 @@ import {
 import CuisineTagsInput from "../../utils/FormComponent/TagInput";
 import ImageUploadInput from "../../utils/FormComponent/ImageUploadInput";
 import { useAddRestaurantMutation } from "../../apiSlices/restaurantSlice";
+import { handleShowAlert } from "../../utils/commonHelper";
 
 const RestaurantForm = ({ onSave }) => {
   //misc
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [form] = Form.useForm();
   const { Option } = Select;
   const format = "HH:mm"; // 24-hour format
@@ -86,16 +92,16 @@ const RestaurantForm = ({ onSave }) => {
 
     console.log("Formatted values for submission:", formattedValues);
     // onSave(formattedValues);
-    // try {
-    //   const res = await addRestaurant(formattedValues).unwrap();
-    //   console.log(res, " resss");
-    //   // handleShowAlert(dispatch, "success", res?.message);
-    //   // dispatch(setCredentials({ ...res }));
-    //   // navigate("/");
-    // } catch (err) {
-    //   // handleShowAlert(dispatch, "error", err?.data?.message);
-    //   console.log(err, " errr");
-    // }
+    try {
+      const res = await addRestaurant(formattedValues).unwrap();
+      console.log(res, " resss");
+      handleShowAlert(dispatch, "success", res?.message);
+      // dispatch(setCredentials({ ...res }));
+      navigate("/");
+    } catch (err) {
+      handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
   };
 
   return (
@@ -353,7 +359,7 @@ const RestaurantForm = ({ onSave }) => {
         {/* ...add more rows and cols for all fields... */}
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" className="submit_button">
             Save Restaurant
           </Button>
         </Form.Item>
