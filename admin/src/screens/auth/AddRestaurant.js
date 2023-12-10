@@ -50,7 +50,7 @@ const RestaurantForm = ({ onSave }) => {
       badges,
     } = values;
 
-    console.log(values, " vvv");
+    // console.log(values, " vvv");
     const formattedValues = {
       aggregatedDiscountInfo: {
         header: discountHeader,
@@ -86,16 +86,16 @@ const RestaurantForm = ({ onSave }) => {
 
     console.log("Formatted values for submission:", formattedValues);
     // onSave(formattedValues);
-    try {
-      const res = await addRestaurant(formattedValues).unwrap();
-      console.log(res, " resss");
-      // handleShowAlert(dispatch, "success", res?.message);
-      // dispatch(setCredentials({ ...res }));
-      // navigate("/");
-    } catch (err) {
-      // handleShowAlert(dispatch, "error", err?.data?.message);
-      console.log(err, " errr");
-    }
+    // try {
+    //   const res = await addRestaurant(formattedValues).unwrap();
+    //   console.log(res, " resss");
+    //   // handleShowAlert(dispatch, "success", res?.message);
+    //   // dispatch(setCredentials({ ...res }));
+    //   // navigate("/");
+    // } catch (err) {
+    //   // handleShowAlert(dispatch, "error", err?.data?.message);
+    //   console.log(err, " errr");
+    // }
   };
 
   return (
@@ -103,7 +103,7 @@ const RestaurantForm = ({ onSave }) => {
       <h1 className="title">Add Restaurant</h1>
 
       <Form form={form} layout="vertical" onFinish={onFinish}>
-        {/*  */}
+        {/* basic Info  */}
         <div className="form_item">
           <h3 className="section_title">Basic Info</h3>
           <Row gutter={16}>
@@ -139,7 +139,7 @@ const RestaurantForm = ({ onSave }) => {
           </Row>
         </div>
 
-        {/*  */}
+        {/* SLA */}
         <div className="form_item">
           <h3 className="section_title">Service Level Agreement ( SLA )</h3>
           <Row gutter={16}>
@@ -203,9 +203,8 @@ const RestaurantForm = ({ onSave }) => {
             </Col>
           </Row>
         </div>
-        {/*  */}
 
-        {/*  */}
+        {/* Avaibility */}
         <div className="form_item">
           <h3 className="section_title">Availability</h3>
           <Row gutter={16}>
@@ -244,7 +243,7 @@ const RestaurantForm = ({ onSave }) => {
           </Row>
         </div>
 
-        {/*  */}
+        {/* Discoutn */}
         <div className="form_item">
           <h3 className="section_title">Discount Information</h3>
           <Row gutter={16}>
@@ -271,8 +270,8 @@ const RestaurantForm = ({ onSave }) => {
             </Col>
           </Row>
         </div>
-        {/*  */}
 
+        {/* Image */}
         <Row gutter={16}>
           <Col span={8}>
             <Form.Item label="Restaurant Image">
@@ -283,8 +282,7 @@ const RestaurantForm = ({ onSave }) => {
           </Col>
         </Row>
 
-        {/*  */}
-
+        {/* Cuisines */}
         <Row gutter={16}>
           <Col span={6}>
             <Form.Item name="cuisines" label="Cuisines">
