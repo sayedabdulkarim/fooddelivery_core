@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Upload, Button, message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import { UploadOutlined } from "@ant-design/icons";
 
 // Function to get Base64 from file object
 const getBase64 = (file) =>
@@ -45,17 +46,14 @@ const ImageUpload = ({ onImageUpload }) => {
 
   const uploadButton = (
     <div>
-      {loading ? <PlusOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
+      <Button icon={<UploadOutlined />}>Click to Upload</Button>
     </div>
   );
 
   return (
     <Upload
       name="avatar"
-      listType="picture-card"
-      className="avatar-uploader"
-      showUploadList={false}
+      showUploadList={true}
       onChange={handleChange}
       customRequest={dummyRequest} // Prevent actual POST request
       beforeUpload={beforeUpload}
