@@ -122,17 +122,44 @@ const RestaurantForm = ({ onSave }) => {
               </Form.Item>
             </Col>
             <Col span={6}>
-              <Form.Item name="areaName" label="Area Name">
+              <Form.Item
+                name="areaName"
+                label="Area Name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input the area name!",
+                  },
+                ]}
+              >
                 <Input placeholder="Area Name" />
               </Form.Item>
             </Col>
             <Col span={6}>
-              <Form.Item name="avgRating" label="Average Rating">
+              <Form.Item
+                name="avgRating"
+                label="Average Rating"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please give an average rating!",
+                  },
+                ]}
+              >
                 <Rate allowHalf />
               </Form.Item>
             </Col>
             <Col span={6}>
-              <Form.Item name="costForTwo" label="Cost for Two">
+              <Form.Item
+                name="costForTwo"
+                label="Cost for Two"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input the cost for two people!",
+                  },
+                ]}
+              >
                 <Input type="number" placeholder="Cost for Two" />
               </Form.Item>
             </Col>
@@ -209,12 +236,30 @@ const RestaurantForm = ({ onSave }) => {
           <h3 className="section_title">Availability</h3>
           <Row gutter={16}>
             <Col span={5}>
-              <Form.Item name="startTime" label="Start Time">
+              <Form.Item
+                name="startTime"
+                label="Start Time"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select a start time!",
+                  },
+                ]}
+              >
                 <TimePicker format={format} placeholder="Select Start Time" />
               </Form.Item>
             </Col>
             <Col span={5}>
-              <Form.Item name="nextCloseTime" label="Next Close Time">
+              <Form.Item
+                name="nextCloseTime"
+                label="Next Close Time"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select the next close time!",
+                  },
+                ]}
+              >
                 <TimePicker
                   format={format}
                   placeholder="Select Next Close Time"
