@@ -26,15 +26,56 @@ const RestaurantForm = ({ onSave }) => {
   //func
   const onFinish = (values) => {
     // Format startTime and nextCloseTime using the 'HH:mm' format
+    const {
+      name,
+      areaName,
+      avgRating,
+      costForTwo,
+      deliveryTime,
+      lastMileTravel,
+      serviceability,
+      iconType,
+      startTime,
+      nextCloseTime,
+      isOpen,
+      isVeg,
+      discountHeader,
+      discountSubHeader,
+      cuisines,
+      badges,
+    } = values;
+    console.log(values, " vvv");
     const formattedValues = {
-      ...values,
-      startTime: values.startTime
-        ? values.startTime.format("HH:mm")
-        : undefined,
-      nextCloseTime: values.nextCloseTime
-        ? values.nextCloseTime.format("HH:mm")
-        : undefined,
-      imageBase64,
+      aggregatedDiscountInfo: {
+        header: discountHeader,
+        subHeader: discountSubHeader,
+      },
+      areaName,
+      availability: {
+        startTime: startTime ? startTime.format("HH:mm") : undefined,
+        nextCloseTime: nextCloseTime
+          ? nextCloseTime.format("HH:mm")
+          : undefined,
+        isOpen: isOpen,
+      },
+      avgRating,
+      avgRatingString: avgRating,
+      badges,
+      cloudinaryImageId: imageBase64,
+      costForTwo,
+      cuisines,
+      isOpen,
+      name,
+      sla: {
+        deliveryTime, //
+        lastMileTravel, //
+        serviceability, //
+        slaString: `${deliveryTime} mins`, //
+        lastMileTravelString: `${lastMileTravel} km`,
+        iconType,
+      },
+      type: isVeg ? "veg" : "non-veg",
+      veg: isVeg,
     };
 
     console.log("Formatted values for submission:", formattedValues);
@@ -76,7 +117,7 @@ const RestaurantForm = ({ onSave }) => {
             </Col>
             <Col span={6}>
               <Form.Item name="costForTwo" label="Cost for Two">
-                <Input placeholder="Cost for Two" />
+                <Input type="number" placeholder="Cost for Two" />
               </Form.Item>
             </Col>
           </Row>
@@ -180,8 +221,8 @@ const RestaurantForm = ({ onSave }) => {
               </Form.Item>
             </Col>
             <Col span={4}>
-              <Form.Item name="costForTwo" label="Cost for Two">
-                <Input type="number" placeholder="e.g., 5" />
+              <Form.Item name="badges" valuePropName="checked" label="Badge">
+                <Checkbox />
               </Form.Item>
             </Col>
           </Row>
