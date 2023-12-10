@@ -2,6 +2,28 @@ import asyncHandler from "express-async-handler"; //
 //modals
 import AllRestaurantsModal from "../../modals/home/allRestaurants.js";
 
+// @desc    Get restaurants by admin user ID
+// @route   GET /api/admin/adminresturant
+// @access  Private
+const getRestaurantsByAdminUserId = asyncHandler(async (req, res) => {
+  const adminUserId = req.adminuser._id; // Assuming the authenticated user ID is stored in req.adminuser._id
+
+  // Find restaurants where 'adminUserId' matches the provided user ID
+  const restaurants = await AllRestaurantsModal.findOne({ adminUserId });
+
+  console.log({
+    adminUserId,
+    restaurants,
+  });
+
+  if (restaurants) {
+    res.json(restaurants);
+  } else {
+    res.status(404);
+    throw new Error("Restaurants not found");
+  }
+});
+
 // @desc    Add a new restaurant
 // @route   POST /api/admin/addrestaurant
 // @access  Private
@@ -65,4 +87,4 @@ const addAdminRestaurant = asyncHandler(async (req, res) => {
 //   });
 // });
 
-export { addAdminRestaurant };
+export { addAdminRestaurant, getRestaurantsByAdminUserId };

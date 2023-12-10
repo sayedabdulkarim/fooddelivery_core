@@ -11,7 +11,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getUserRestaurantDetails: builder.query({
+      query: (id) => ({
+        url: `${USERS_URL}/adminrestaurant`,
+      }),
+    }),
   }),
 });
 
-export const { useAddRestaurantMutation } = userApiSlice;
+export const { useAddRestaurantMutation, useGetUserRestaurantDetailsQuery } =
+  userApiSlice;

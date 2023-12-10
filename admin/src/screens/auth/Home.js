@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+//apiSLice
+import { useGetUserRestaurantDetailsQuery } from "../../apiSlices/restaurantSlice";
 
 const Home = () => {
+  //misc
   const { userInfo } = useSelector((state) => state.authReducer);
+
+  //
+  // RTK Query hook
+  const {
+    data: getUserRestaurantDetails,
+    refetch,
+    isLoading: isLoadinGetUserRestaurantDetails,
+  } = useGetUserRestaurantDetailsQuery();
+
+  useEffect(() => {
+    console.log({ getUserRestaurantDetails }, "getUserRestaurantDetails");
+  }, [getUserRestaurantDetails]);
 
   return (
     <div className="home_container">
