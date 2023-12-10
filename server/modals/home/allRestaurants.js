@@ -28,6 +28,7 @@ const slaSchema = new Schema({
 });
 
 const availabilitySchema = new Schema({
+  startTime: String,
   nextCloseTime: String,
   opened: Boolean,
 });

@@ -1,165 +1,111 @@
-import React, { useState } from "react";
+import React from "react";
+import { Form, Input, Button, Checkbox, Row, Col, Rate } from "antd";
+import CuisineTagsInput from "../../utils/FormComponent/TagInput";
 
 const RestaurantForm = ({ onSave }) => {
-  const [formData, setFormData] = useState({
-    areaName: "",
-    avgRating: "",
-    cloudinaryImageId: "",
-    costForTwo: "",
-    cuisines: [""],
-    isOpen: false,
-    name: "",
-    type: "",
-    veg: false,
-    sla: {
-      deliveryTime: "",
-      lastMileTravel: "",
-      serviceability: "",
-      slaString: "",
-      lastMileTravelString: "",
-      iconType: "",
-    },
-    availability: {
-      nextCloseTime: "",
-      opened: false,
-    },
-    aggregatedDiscountInfoV3: {
-      header: "",
-      subHeader: "",
-      discountTag: "",
-    },
-  });
+  const [form] = Form.useForm();
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (name.includes(".")) {
-      const [key, subkey] = name.split(".");
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [key]: {
-          ...prevFormData[key],
-          [subkey]: type === "checkbox" ? checked : value,
-        },
-      }));
-    } else {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
-      }));
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData, " ffff");
-    // onSave(formData);
+  const onFinish = (values) => {
+    console.log("Received values from form: ", values);
+    // onSave(values);
   };
 
   return (
     <div className="add_restaurant_container">
-      <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Restaurant Name"
-          required
-        />
-        <input
-          name="areaName"
-          value={formData.areaName}
-          onChange={handleChange}
-          placeholder="Area Name"
-        />
-        <input
-          type="number"
-          name="avgRating"
-          value={formData.avgRating}
-          onChange={handleChange}
-          placeholder="Average Rating"
-        />
-        <input
-          name="cloudinaryImageId"
-          value={formData.cloudinaryImageId}
-          onChange={handleChange}
-          placeholder="Cloudinary Image ID"
-        />
-        <input
-          name="costForTwo"
-          value={formData.costForTwo}
-          onChange={handleChange}
-          placeholder="Cost for Two"
-        />
-        <input
-          name="cuisines"
-          value={formData.cuisines}
-          onChange={handleChange}
-          placeholder="Cuisines (comma separated)"
-        />
-        <input
-          name="type"
-          value={formData.type}
-          onChange={handleChange}
-          placeholder="Type"
-        />
-        <label>
-          Open:
-          <input
-            type="checkbox"
-            name="isOpen"
-            checked={formData.isOpen}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Vegetarian:
-          <input
-            type="checkbox"
-            name="veg"
-            checked={formData.veg}
-            onChange={handleChange}
-          />
-        </label>
+      <h1 className="title">Add Restaurant</h1>
 
-        {/* SLA Schema Inputs */}
-        <input
-          name="sla.deliveryTime"
-          value={formData.sla.deliveryTime}
-          onChange={handleChange}
-          placeholder="SLA Delivery Time"
-          type="number"
-        />
-        {/* ...similarly add other inputs for all fields in slaSchema... */}
+      <Form form={form} layout="vertical" onFinish={onFinish}>
+        {/*  */}
+        <div className="form_item">
+          <h3 className="section_title">Basic Info</h3>
+          <Row gutter={16}>
+            <Col span={6}>
+              <Form.Item
+                name="name"
+                label="Restaurant Name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input the restaurant name!",
+                  },
+                ]}
+              >
+                <Input placeholder="Restaurant Name" />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item name="areaName" label="Area Name">
+                <Input placeholder="Area Name" />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item name="avgRating" label="Average Rating">
+                <Rate allowHalf />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item name="costForTwo" label="Cost for Two">
+                <Input placeholder="Cost for Two" />
+              </Form.Item>
+            </Col>
+          </Row>
+        </div>
 
-        {/* Availability Schema Inputs */}
-        <input
-          name="availability.nextCloseTime"
-          value={formData.availability.nextCloseTime}
-          onChange={handleChange}
-          placeholder="Next Close Time"
-        />
-        <label>
-          Availability Open:
-          <input
-            type="checkbox"
-            name="availability.opened"
-            checked={formData.availability.opened}
-            onChange={handleChange}
-          />
-        </label>
+        {/*  */}
 
-        {/* Aggregated Discount Info Inputs */}
-        <input
-          name="aggregatedDiscountInfoV3.header"
-          value={formData.aggregatedDiscountInfoV3.header}
-          onChange={handleChange}
-          placeholder="Discount Info Header"
-        />
-        {/* ...similarly add other inputs for all fields in aggregatedDiscountInfoV3Schema... */}
+        <Row gutter={16}>
+          <Col span={8}>
+            <Form.Item name="cloudinaryImageId" label="Cloudinary Image ID">
+              <Input placeholder="Cloudinary Image ID" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item name="costForTwo" label="Cost for Two">
+              <Input placeholder="Cost for Two" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item name="cuisines" label="Cuisines (comma separated)">
+              <Input placeholder="Cuisines" />
+            </Form.Item>
+          </Col>
+        </Row>
 
-        <button type="submit">Save Restaurant</button>
-      </form>
+        {/*  */}
+
+        <Row gutter={16}>
+          <Col span={8}>
+            <Form.Item name="type" label="Type">
+              <Input placeholder="Type" />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item name="isOpen" valuePropName="checked" label="Open">
+              <Checkbox />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item name="veg" valuePropName="checked" label="Vegetarian">
+              <Checkbox />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={16}>
+          <Col span={6}>
+            <Form.Item name="cuisines" label="Cuisines">
+              <CuisineTagsInput />
+            </Form.Item>
+          </Col>
+        </Row>
+        {/* ...add more rows and cols for all fields... */}
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Save Restaurant
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

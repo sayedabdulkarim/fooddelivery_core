@@ -1,4 +1,26 @@
 .add_restaurant_container {
     border: 1px solid red;
     margin-top: 100px;
+    margin-left: calc(10% + 36px);
+    margin-right: calc(10% + 36px);
+
+    .title {
+        font-size: 24px;
+        font-weight: 900;
+        color: #282c3f;
+    }
+
+    form {
+        margin-top: 30px;
+
+        .form_item {
+            .section_title {
+                font-size: 18px;
+                font-weight: 600;
+                color: #282c3f;
+                margin-bottom: 8px;
+                text-transform: capitalize;
+            }
+        }
+    }
 }
