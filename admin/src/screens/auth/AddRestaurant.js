@@ -84,40 +84,6 @@ const RestaurantForm = ({ onSave }) => {
 
         {/*  */}
         <div className="form_item">
-          <h3 className="section_title">Availability</h3>
-          <Row gutter={16}>
-            <Col span={6}>
-              <Form.Item name="startTime" label="Start Time">
-                <TimePicker format={format} placeholder="Select Start Time" />
-              </Form.Item>
-            </Col>
-            <Col span={6}>
-              <Form.Item name="nextCloseTime" label="Next Close Time">
-                <TimePicker
-                  format={format}
-                  placeholder="Select Next Close Time"
-                />
-              </Form.Item>
-            </Col>
-            <Col span={6}>
-              <Form.Item name="isOpen" valuePropName="checked" label="Open">
-                <Checkbox />
-              </Form.Item>
-            </Col>
-            <Col span={6}>
-              <Form.Item
-                name="isVeg"
-                valuePropName="checked"
-                label="Vegetarian"
-              >
-                <Checkbox />
-              </Form.Item>
-            </Col>
-          </Row>
-        </div>
-
-        {/*  */}
-        <div className="form_item">
           <h3 className="section_title">Service Level Agreement ( SLA )</h3>
           <Row gutter={16}>
             <Col span={6}>
@@ -182,21 +148,80 @@ const RestaurantForm = ({ onSave }) => {
         </div>
         {/*  */}
 
+        {/*  */}
+        <div className="form_item">
+          <h3 className="section_title">Availability</h3>
+          <Row gutter={16}>
+            <Col span={5}>
+              <Form.Item name="startTime" label="Start Time">
+                <TimePicker format={format} placeholder="Select Start Time" />
+              </Form.Item>
+            </Col>
+            <Col span={5}>
+              <Form.Item name="nextCloseTime" label="Next Close Time">
+                <TimePicker
+                  format={format}
+                  placeholder="Select Next Close Time"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={5}>
+              <Form.Item name="isOpen" valuePropName="checked" label="Open">
+                <Checkbox />
+              </Form.Item>
+            </Col>
+            <Col span={5}>
+              <Form.Item
+                name="isVeg"
+                valuePropName="checked"
+                label="Vegetarian"
+              >
+                <Checkbox />
+              </Form.Item>
+            </Col>
+            <Col span={4}>
+              <Form.Item name="costForTwo" label="Cost for Two">
+                <Input type="number" placeholder="e.g., 5" />
+              </Form.Item>
+            </Col>
+          </Row>
+        </div>
+
+        {/*  */}
+        <div className="form_item">
+          <h3 className="section_title">Discount Information</h3>
+          <Row gutter={16}>
+            <Col span={6}>
+              <Form.Item
+                name="discountHeader"
+                label="Header"
+                rules={[{ required: true, message: "Header is required" }]}
+              >
+                <Input maxLength={10} placeholder="Enter header e.g 20% OFF" />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name="discountSubHeader"
+                label="Subheader"
+                rules={[{ required: true, message: "Subheader is required" }]}
+              >
+                <Input
+                  maxLength={10}
+                  placeholder="Enter subheader e.g UPTO ₹120"
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+        </div>
+        {/*  */}
+
         <Row gutter={16}>
           <Col span={8}>
-            {/* <Form.Item name="cloudinaryImageId" label="Cloudinary Image ID">
-              <Input placeholder="Cloudinary Image ID" />
-            </Form.Item> */}
-
             <Form.Item label="Restaurant Image">
               <ImageUploadInput
                 onImageUpload={(base64) => setImageBase64(base64)}
               />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item name="costForTwo" label="Cost for Two">
-              <Input type="number" placeholder="e.g., 5" />
             </Form.Item>
           </Col>
         </Row>
