@@ -41,7 +41,6 @@ const RestaurantForm = ({ onSave }) => {
     // onSave(formattedValues);
   };
 
-  console.log(imageBase64, " bbb");
   return (
     <div className="add_restaurant_container">
       <h1 className="title">Add Restaurant</h1>
@@ -197,7 +196,7 @@ const RestaurantForm = ({ onSave }) => {
           </Col>
           <Col span={8}>
             <Form.Item name="costForTwo" label="Cost for Two">
-              <Input placeholder="Cost for Two" />
+              <Input type="number" placeholder="e.g., 5" />
             </Form.Item>
           </Col>
         </Row>
