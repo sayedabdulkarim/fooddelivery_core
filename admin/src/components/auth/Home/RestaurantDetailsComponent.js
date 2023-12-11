@@ -30,7 +30,14 @@ const RestaurantDetailsComponent = ({ restaurantDetails, userDetails }) => {
 
   return (
     <div className="restaurant_detail_container">
-      <h1 className="title">Hello {userDetails?.name}</h1>
+      <h1
+        className="title"
+        onClick={() =>
+          console.log({ restaurantDetails, userDetails }, " userDett")
+        }
+      >
+        Hello {userDetails?.name}
+      </h1>
 
       <div className="wrapper">
         <Card className="left_section" bordered={false}>
