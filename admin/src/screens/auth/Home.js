@@ -40,13 +40,21 @@ const Home = () => {
         </>
       ) : userInfo?.data?.restaurant || restaurantDetails ? (
         <div>
-          <RestaurantDetailsComponent restaurantDetails={restaurantDetails} />
+          <RestaurantDetailsComponent
+            restaurantDetails={restaurantDetails}
+            userDetails={userInfo?.data}
+          />
         </div>
       ) : (
         <div className="add_restaurant_btn_container">
           <div className="wrapper">
             <div>
-              <h2>Please add restaurant.</h2>
+              <h2
+                className="title"
+                onClick={() => console.log(userInfo, " usss")}
+              >
+                Hello {userInfo?.data?.name}, Please add restaurant.
+              </h2>
               <Link to="restaurant">
                 <button>Add Restaurant</button>
               </Link>
