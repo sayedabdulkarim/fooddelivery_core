@@ -1,6 +1,32 @@
 import asyncHandler from "express-async-handler"; //
 //modals
-import RestaurantDetails from "../../modals/home/singleRestaurant.js";
+import RestaurantDetailsModal from "../../modals/home/singleRestaurant.js";
+
+// @desc    Get restaurant menu by restaurant ID
+// @route   GET /api/admin/menu/:restaurantId
+// @access  Private
+const getRestaurantMenu = asyncHandler(async (req, res) => {
+  const { restaurantId } = req.params;
+
+  // Find the restaurant details with the given restaurantId
+  const restaurantMenuDetails = await RestaurantDetailsModal.findOne({
+    restaurantId,
+  });
+
+  if (restaurantMenuDetails) {
+    // Return the menu to the client
+    res.json({
+      message: "Menu retrieved successfully",
+      restaurantMenu: restaurantMenuDetails,
+    });
+  } else {
+    // If the restaurant details are not found, send a 404 response
+    res.status(404).json({
+      message: "Restaurant menu not found",
+    });
+  }
+});
+
 // @desc    Add a new category to a restaurant
 // @route   POST /api/admin/menucategory/:restaurantId/category
 // @access  Private
@@ -9,11 +35,13 @@ const addCategoryToRestaurant = asyncHandler(async (req, res) => {
   const { categoryName } = req.body;
 
   // Check if restaurant details already exist for the given restaurantId
-  let restaurantDetails = await RestaurantDetails.findOne({ restaurantId });
+  let restaurantDetails = await RestaurantDetailsModal.findOne({
+    restaurantId,
+  });
 
   // If restaurant details don't exist, create a new document
   if (!restaurantDetails) {
-    restaurantDetails = new RestaurantDetails({
+    restaurantDetails = new RestaurantDetailsModal({
       restaurantId,
       menu: [{ categoryName, items: [] }], // Create new category with an empty items array
     });
@@ -50,7 +78,7 @@ const addItemToCategory = asyncHandler(async (req, res) => {
   const { restaurantId, categoryId } = req.params;
   const { itemName, description, price /*, other item details*/ } = req.body;
 
-  const restaurant = await RestaurantDetails.findById(restaurantId);
+  const restaurant = await RestaurantDetailsModal.findById(restaurantId);
 
   if (restaurant) {
     const category = restaurant.menu.id(categoryId);
@@ -81,4 +109,4 @@ const addItemToCategory = asyncHandler(async (req, res) => {
   }
 });
 
-export { addCategoryToRestaurant, addItemToCategory };
+export { addCategoryToRestaurant, addItemToCategory, getRestaurantMenu };
