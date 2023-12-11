@@ -16,8 +16,16 @@ export const restaurantApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}/adminrestaurant`,
       }),
     }),
+    getRestaurantMenu: builder.query({
+      query: (restaurantId) => ({
+        url: `${USERS_URL}/menu/${restaurantId}`,
+      }),
+    }),
   }),
 });
 
-export const { useAddRestaurantMutation, useGetUserRestaurantDetailsQuery } =
-  restaurantApiSlice;
+export const {
+  useAddRestaurantMutation,
+  useGetUserRestaurantDetailsQuery,
+  useGetRestaurantMenuQuery,
+} = restaurantApiSlice;

@@ -1,8 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Rate, Tag, Card } from "antd";
-// import 'antd/dist/antd.css'; // Ensure you import Ant Design CSS
 
 const RestaurantDetailsComponent = ({ restaurantDetails, userDetails }) => {
+  const { restaurantMenuDetails } = useSelector((state) => state.menuReducer);
   if (!restaurantDetails) {
     return <div>Loading restaurant details...</div>;
   }
@@ -33,7 +34,10 @@ const RestaurantDetailsComponent = ({ restaurantDetails, userDetails }) => {
       <h1
         className="title"
         onClick={() =>
-          console.log({ restaurantDetails, userDetails }, " userDett")
+          console.log(
+            { restaurantDetails, userDetails, restaurantMenuDetails },
+            " userDett"
+          )
         }
       >
         Hello {userDetails?.name}

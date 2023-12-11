@@ -8,10 +8,14 @@ import {
 } from "../../controller/admin/adminMenuController.js";
 
 router.post(
-  "/menucategory",
+  "/menucategory/:restaurantId",
   protectedAdminRoutesWithParser,
   addCategoryToRestaurant
 );
-router.get("/menu", protectedAdminRoutesWithParser, getRestaurantMenu);
+router.get(
+  "/menu/:restaurantId",
+  protectedAdminRoutesWithParser,
+  getRestaurantMenu
+);
 
 export default router;

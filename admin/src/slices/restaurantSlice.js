@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const restaurantSlice = createSlice({
-  name: "test",
+  name: "restaurant slice",
   initialState,
   reducers: {
     setRestaurantDetails: (state, action) => {

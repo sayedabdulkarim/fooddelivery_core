@@ -3,10 +3,15 @@ import { Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //apiSlice
-import { useGetUserRestaurantDetailsQuery } from "../../apiSlices/restaurantApiSlice";
+import {
+  useGetUserRestaurantDetailsQuery,
+  useGetRestaurantMenuQuery,
+} from "../../apiSlices/restaurantApiSlice";
 import { setRestaurantDetails } from "../../slices/restaurantSlice";
+import { setRestaurantMenuDetails } from "../../slices/menuSlice";
 import ProgressBar from "../../components/Progressbar";
 import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDetailsComponent";
+import { skipToken } from "@reduxjs/toolkit/query/react"; // Import skipToken
 
 const Home = () => {
   //misc
@@ -21,11 +26,31 @@ const Home = () => {
     isLoading: isLoadinGetUserRestaurantDetails,
   } = useGetUserRestaurantDetailsQuery();
 
+  const {
+    data: getRestaurantMenu,
+    refetch: getRestaurantMenuRefetch,
+    isLoading: isLoadingetRestaurantMenu,
+    // } = useGetRestaurantMenuQuery(restaurantDetails?._id ?? skipToken);
+  } = useGetRestaurantMenuQuery("6562b871e80e73e2cb0e696e");
+
+  //async
   useEffect(() => {
     if (getUserRestaurantDetails) {
       dispatch(setRestaurantDetails(getUserRestaurantDetails));
     }
   }, [getUserRestaurantDetails, dispatch]);
+
+  useEffect(() => {
+    if (restaurantDetails?._id) {
+      getRestaurantMenuRefetch();
+    }
+  }, [restaurantDetails, getRestaurantMenuRefetch]);
+
+  useEffect(() => {
+    if (getRestaurantMenu) {
+      dispatch(setRestaurantMenuDetails(getRestaurantMenu));
+    }
+  }, [dispatch, getRestaurantMenu]);
 
   return (
     <div className="home_container">

@@ -5,6 +5,7 @@ import testReducer from "./slices/testSlice";
 import authReducer from "./slices/authSlice";
 import alertReducer from "./slices/alertSlice";
 import restaurantReducer from "./slices/restaurantSlice";
+import menuReducer from "./slices/menuSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     authReducer,
     alertReducer,
     restaurantReducer,
+    menuReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => [
