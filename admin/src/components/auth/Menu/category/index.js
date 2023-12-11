@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryModal from "./CategoryModal";
-import { setMenuCategoryModal } from "../../../../slices/menuSlice";
+import {
+  setMenuCategory,
+  setMenuCategoryModal,
+} from "../../../../slices/menuSlice";
 
 const Index = () => {
   //misc
+  const navigate = useNavigate("");
   const dispatch = useDispatch();
   const { categoryModal } = useSelector((state) => state.menuReducer);
 
@@ -24,16 +29,20 @@ const Index = () => {
     // Here you would typically make an API call to your backend to add the new category
     // For demonstration, we're just adding it to the local state
     setCategoryList((prev) => [...prev, newCategoryName]);
-    // setModalVisible(false); // Close the modal after adding
-    dispatch(setMenuCategoryModal(false));
+    dispatch(setMenuCategory(newCategoryName));
+    navigate("/addmenu");
+    // dispatch(setMenuCategoryModal(false));
   };
 
   // Handler for selecting an existing category - This might be used to filter items or similar
   const handleSelectCategory = (selectedCategory) => {
     console.log("Selected category:", selectedCategory);
+    dispatch(setMenuCategory(selectedCategory));
+    navigate("/addmenu");
+
     // Perform actions based on the selected category
     // setModalVisible(false); // Close the modal after selection
-    dispatch(setMenuCategoryModal(false));
+    // dispatch(setMenuCategoryModal(false));
   };
 
   // Handler to open the modal

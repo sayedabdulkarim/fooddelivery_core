@@ -4,7 +4,7 @@ const initialState = {
   name: "menu slice",
   restaurantMenuDetails: null,
   categoryModal: false,
-  category: "",
+  categoryName: "",
 };
 
 const menuSlice = createSlice({
@@ -19,7 +19,7 @@ const menuSlice = createSlice({
       state.categoryModal = action.payload;
     },
     setMenuCategory: (state, action) => {
-      state.category = action.payload;
+      state.categoryName = action.payload;
     },
   },
 });
