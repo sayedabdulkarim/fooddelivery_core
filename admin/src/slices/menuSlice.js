@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: "menu slice",
   restaurantMenuDetails: null,
+  categoryModal: false,
+  category: "",
 };
 
 const menuSlice = createSlice({
@@ -12,9 +14,19 @@ const menuSlice = createSlice({
     setRestaurantMenuDetails: (state, action) => {
       state.restaurantMenuDetails = action.payload;
     },
+    setMenuCategoryModal: (state, action) => {
+      state.categoryModal = action.payload;
+    },
+    setMenuCategory: (state, action) => {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { setRestaurantMenuDetails } = menuSlice.actions;
+export const {
+  setRestaurantMenuDetails,
+  setMenuCategoryModal,
+  setMenuCategory,
+} = menuSlice.actions;
 
 export default menuSlice.reducer;
