@@ -76,7 +76,7 @@ const addCategoryToRestaurant = asyncHandler(async (req, res) => {
 // @access  Private
 const addItemToCategory = asyncHandler(async (req, res) => {
   const { restaurantId, categoryId } = req.params;
-  const { itemName, description, price /*, other item details*/ } = req.body;
+  const { name, description, price, imageId, inStock } = req.body;
 
   const restaurant = await RestaurantDetailsModal.findById(restaurantId);
 
@@ -86,8 +86,10 @@ const addItemToCategory = asyncHandler(async (req, res) => {
     if (category) {
       const newItem = {
         id: new mongoose.Types.ObjectId(), // Generate new ID for the item
-        name: itemName,
+        name,
         description,
+        imageId,
+        inStock,
         price,
         // other item details
       };
