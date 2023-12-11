@@ -45,24 +45,41 @@ const RestaurantDetailsComponent = ({ restaurantDetails, userDetails }) => {
             <span className="smallKeyName">Area:</span> {areaName}
           </p>
         </Card>
+        {/*  */}
         <Card className="right_section" bordered={false}>
-          <h3>Details</h3>
-          <p>Cost for Two: {costForTwo}</p>
-          <p>Availability: {availability.isOpen ? "Open" : "Closed"}</p>
-          <p>Delivery Time: {sla.deliveryTime} mins</p>
-          <p>Last Mile Travel: {sla.lastMileTravel} km</p>
-          <p>
-            Cuisines:{" "}
+          <h2 className="keyName">Details</h2>
+          <p className="item">
+            <span className="smallKeyName">Cost for Two:</span> {costForTwo}
+          </p>
+          <p className="item">
+            <span className="smallKeyName">Availability:</span>{" "}
+            {availability.isOpen ? "Open" : "Closed"}
+          </p>
+          <p className="item">
+            <span className="smallKeyName">Delivery Time:</span>{" "}
+            {sla.deliveryTime} mins
+          </p>
+          <p className="item">
+            <span className="smallKeyName">Last Mile Travel:</span>{" "}
+            {sla.lastMileTravel} km
+          </p>
+          <p className="item">
+            <span className="smallKeyName">Cuisines: </span>{" "}
             {cuisines.map((cuisine) => (
               <Tag key={cuisine}>{cuisine}</Tag>
             ))}
           </p>
-          {aggregatedDiscountInfoV3 && (
+          <p className="item">
+            <span className="smallKeyName">Discounts:</span>{" "}
+            {aggregatedDiscountInfoV3.header} /{" "}
+            {aggregatedDiscountInfoV3.subHeader}
+          </p>
+          {/* {aggregatedDiscountInfoV3 && (
             <Card title="Discounts" size="small">
               <p>{aggregatedDiscountInfoV3.header}</p>
               <p>{aggregatedDiscountInfoV3.subHeader}</p>
             </Card>
-          )}
+          )} */}
         </Card>
       </div>
     </div>
