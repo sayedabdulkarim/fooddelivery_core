@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryModal from "./CategoryModal";
@@ -8,12 +8,15 @@ import {
 } from "../../../../slices/menuSlice";
 
 import { useAddCategoryToRestaurantMutation } from "../../../../apiSlices/menuApiSlice";
+import { handleShowAlert } from "../../../../utils/commonHelper";
 
 const Index = () => {
   //misc
   const navigate = useNavigate("");
   const dispatch = useDispatch();
-  const { categoryModal } = useSelector((state) => state.menuReducer);
+  const { categoryModal, restaurantMenuDetails } = useSelector(
+    (state) => state.menuReducer
+  );
   const { restaurantDetails } = useSelector((state) => state.restaurantReducer);
 
   //queries n mutation
@@ -26,11 +29,7 @@ const Index = () => {
   ] = useAddCategoryToRestaurantMutation();
 
   // State for category list - This should ideally come from your API/backend
-  const [categoryList, setCategoryList] = useState([
-    "Appetizers",
-    "Main Course",
-    "Desserts",
-  ]);
+  const [categoryList, setCategoryList] = useState([]);
 
   // Handler for adding a new category - This should make an API call to save the category
   const handleAddCategory = async (categoryName) => {
@@ -47,11 +46,11 @@ const Index = () => {
       }).unwrap();
 
       console.log(res, " resss");
-      // handleShowAlert(dispatch, "success", res?.message);
+      handleShowAlert(dispatch, "success", res?.message);
       // dispatch(setCredentials({ ...res }));
-      // navigate("/");
+      navigate("/addmenu");
     } catch (err) {
-      // handleShowAlert(dispatch, "error", err?.data?.message);
+      handleShowAlert(dispatch, "error", err?.data?.message);
       console.log(err, " errr");
     }
 
@@ -70,11 +69,29 @@ const Index = () => {
     // dispatch(setMenuCategoryModal(false));
   };
 
-  // Handler to open the modal
-  // const openModal = () => {
-  //       dispatch(setMenuCategoryModal(true))
-  //     // setModalVisible(true);
-  //   };
+  // Helper function to extract category names
+  const extractCategoryNames = (categories) => {
+    if (!categories || categories.length === 0) {
+      return [];
+    }
+
+    return categories.map((category) => category.categoryName);
+  };
+
+  useEffect(() => {
+    if (restaurantMenuDetails?.restaurantMenu?.menu) {
+      const categories = extractCategoryNames(
+        restaurantMenuDetails?.restaurantMenu?.menu
+      );
+      setCategoryList(categories);
+    }
+  }, [restaurantMenuDetails]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setMenuCategoryModal(false));
+    };
+  }, []);
 
   return (
     <div>

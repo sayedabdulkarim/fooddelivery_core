@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Input, Select, Button, Form } from "antd";
+import { useSelector } from "react-redux";
 
 const CategoryModal = ({
   visible,
@@ -8,6 +9,10 @@ const CategoryModal = ({
   categories,
   onClose,
 }) => {
+  const { categoryModal, restaurantMenuDetails } = useSelector(
+    (state) => state.menuReducer
+  );
+  //
   const [form] = Form.useForm();
   const [isNewCategory, setIsNewCategory] = useState(true);
 
@@ -23,6 +28,7 @@ const CategoryModal = ({
     form.resetFields();
     onClose();
   };
+  //
 
   useEffect(() => {
     form.resetFields();
@@ -34,6 +40,12 @@ const CategoryModal = ({
       visible={visible}
       onCancel={handleCancel}
       footer={[
+        <Button
+          key="test"
+          onClick={() => console.log({ restaurantMenuDetails })}
+        >
+          TEst
+        </Button>,
         <Button key="cancel" onClick={handleCancel}>
           Cancel
         </Button>,
