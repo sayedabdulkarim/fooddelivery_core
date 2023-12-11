@@ -35,11 +35,15 @@ const RestaurantDetailsComponent = ({ restaurantDetails, userDetails }) => {
       <div className="wrapper">
         <Card className="left_section" bordered={false}>
           <img src={imageUrl} alt={name} className="restaurant_image" />
-          <h2>{name}</h2>
+          <h2 className="keyName">{name}</h2>
           <Rate allowHalf defaultValue={avgRating} disabled />
           <p>{avgRatingString} out of 5</p>
-          <p>Type: {type}</p>
-          <p>Area: {areaName}</p>
+          <p>
+            <span className="smallKeyName">Type:</span> {type}
+          </p>
+          <p>
+            <span className="smallKeyName">Area:</span> {areaName}
+          </p>
         </Card>
         <Card className="right_section" bordered={false}>
           <h3>Details</h3>
