@@ -11,10 +11,10 @@ const getRestaurantsByAdminUserId = asyncHandler(async (req, res) => {
   // Find restaurants where 'adminUserId' matches the provided user ID
   const restaurants = await AllRestaurantsModal.findOne({ adminUserId });
 
-  console.log({
-    adminUserId,
-    restaurants,
-  });
+  // console.log({
+  //   adminUserId,
+  //   restaurants,
+  // });
 
   if (restaurants) {
     res.json(restaurants);

@@ -7,14 +7,23 @@ import {
   setMenuCategoryModal,
 } from "../../../../slices/menuSlice";
 
+import { useAddCategoryToRestaurantMutation } from "../../../../apiSlices/menuApiSlice";
+
 const Index = () => {
   //misc
   const navigate = useNavigate("");
   const dispatch = useDispatch();
   const { categoryModal } = useSelector((state) => state.menuReducer);
+  const { restaurantDetails } = useSelector((state) => state.restaurantReducer);
 
-  // State for modal visibility
-  //   const [modalVisible, setModalVisible] = useState(false);
+  //queries n mutation
+  const [
+    addCategoryToRestaurant,
+    {
+      isLoading: addCategoryToRestaurantLoading,
+      error: addCategoryToRestaurantError,
+    },
+  ] = useAddCategoryToRestaurantMutation();
 
   // State for category list - This should ideally come from your API/backend
   const [categoryList, setCategoryList] = useState([
@@ -24,13 +33,29 @@ const Index = () => {
   ]);
 
   // Handler for adding a new category - This should make an API call to save the category
-  const handleAddCategory = async (newCategoryName) => {
-    console.log("Adding new category:", newCategoryName);
+  const handleAddCategory = async (categoryName) => {
+    console.log("Adding new category:", categoryName);
     // Here you would typically make an API call to your backend to add the new category
     // For demonstration, we're just adding it to the local state
-    setCategoryList((prev) => [...prev, newCategoryName]);
-    dispatch(setMenuCategory(newCategoryName));
-    navigate("/addmenu");
+    setCategoryList((prev) => [...prev, categoryName]);
+    dispatch(setMenuCategory(categoryName));
+
+    try {
+      const res = await addCategoryToRestaurant({
+        restaurantId: restaurantDetails?._id, // This should be a string
+        categoryName: categoryName,
+      }).unwrap();
+
+      console.log(res, " resss");
+      // handleShowAlert(dispatch, "success", res?.message);
+      // dispatch(setCredentials({ ...res }));
+      // navigate("/");
+    } catch (err) {
+      // handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
+
+    // navigate("/addmenu");
     // dispatch(setMenuCategoryModal(false));
   };
 

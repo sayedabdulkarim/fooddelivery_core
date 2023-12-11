@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ import ProgressBar from "../../components/Progressbar";
 import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDetailsComponent";
 import { skipToken } from "@reduxjs/toolkit/query/react"; // Import skipToken
 import CategoryModal from "../../components/auth/Menu/category";
+import { areAllItemsEmpty } from "../../utils/commonHelper";
 
 const Home = () => {
   //misc
@@ -56,6 +57,8 @@ const Home = () => {
     }
   }, [dispatch, getRestaurantMenu]);
 
+  // useEffect(() => {})
+
   return (
     <div className="home_container">
       {isLoadinGetUserRestaurantDetails ? (
@@ -72,9 +75,16 @@ const Home = () => {
             restaurantDetails={restaurantDetails}
             userDetails={userInfo?.data}
           />
-          {getRestaurantMenu?.restaurantMenu?.menu?.length ? (
+          {/* {getRestaurantMenu?.restaurantMenu?.menu?.length ? ( */}
+          {!areAllItemsEmpty(getRestaurantMenu?.restaurantMenu?.menu || []) ? (
             <>
-              <h1>Menu Listt</h1>
+              <h1
+                onClick={() =>
+                  console.log(getRestaurantMenu?.restaurantMenu?.menu)
+                }
+              >
+                Menu Listt
+              </h1>
               <h1>Menu Listt</h1>
               <h1>Menu Listt</h1>
             </>

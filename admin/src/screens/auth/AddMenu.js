@@ -6,7 +6,9 @@ const AddMenu = () => {
   //misc
   const navigate = useNavigate("");
   const dispatch = useDispatch();
-  const { categoryName } = useSelector((state) => state.menuReducer);
+  const { categoryName, restaurantMenuDetails } = useSelector(
+    (state) => state.menuReducer
+  );
 
   useEffect(() => {
     if (!categoryName) {
@@ -16,7 +18,11 @@ const AddMenu = () => {
 
   return (
     <div>
-      <h1 onClick={() => console.log(categoryName, " categoryName")}>
+      <h1
+        onClick={() =>
+          console.log({ categoryName, restaurantMenuDetails }, " categoryName")
+        }
+      >
         AddMenu
       </h1>
       <h1>AddMenu</h1>

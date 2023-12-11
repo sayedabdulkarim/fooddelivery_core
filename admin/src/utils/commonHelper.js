@@ -114,6 +114,11 @@ const filterObjectsByIds = (objects, ids) => {
   return objects.filter((obj) => ids.includes(obj._id));
 };
 
+const areAllItemsEmpty = (arr) => {
+  console.log(arr, " arrr");
+  return arr.every((category) => category.items.length === 0);
+};
+
 export {
   toggleTheme,
   handleShowAlert,
@@ -126,4 +131,5 @@ export {
   getRestaurantById,
   calculateTotalPrice,
   filterObjectsByIds,
+  areAllItemsEmpty,
 };
