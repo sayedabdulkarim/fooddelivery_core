@@ -14,7 +14,7 @@ import {
 } from "antd";
 import CuisineTagsInput from "../../utils/FormComponent/TagInput";
 import ImageUploadInput from "../../utils/FormComponent/ImageUploadInput";
-import { useAddRestaurantMutation } from "../../apiSlices/restaurantSlice";
+import { useAddRestaurantMutation } from "../../apiSlices/restaurantApiSlice";
 import { handleShowAlert } from "../../utils/commonHelper";
 
 const RestaurantForm = ({ onSave }) => {

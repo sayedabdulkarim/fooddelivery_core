@@ -3,7 +3,7 @@ import { Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //apiSlice
-import { useGetUserRestaurantDetailsQuery } from "../../apiSlices/restaurantSlice";
+import { useGetUserRestaurantDetailsQuery } from "../../apiSlices/restaurantApiSlice";
 import { setRestaurantDetails } from "../../slices/restaurantSlice";
 import ProgressBar from "../../components/Progressbar";
 import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDetailsComponent";
@@ -25,7 +25,6 @@ const Home = () => {
     if (getUserRestaurantDetails) {
       dispatch(setRestaurantDetails(getUserRestaurantDetails));
     }
-    // console.log({ getUserRestaurantDetails }, "getUserRestaurantDetails");
   }, [getUserRestaurantDetails, dispatch]);
 
   return (

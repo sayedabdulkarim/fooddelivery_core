@@ -2,7 +2,7 @@ import { apiSlice } from ".";
 
 const USERS_URL = "api/admin";
 
-export const userApiSlice = apiSlice.injectEndpoints({
+export const restaurantApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     addRestaurant: builder.mutation({
       query: (data) => ({
@@ -20,4 +20,4 @@ export const userApiSlice = apiSlice.injectEndpoints({
 });
 
 export const { useAddRestaurantMutation, useGetUserRestaurantDetailsQuery } =
-  userApiSlice;
+  restaurantApiSlice;
