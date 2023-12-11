@@ -38,21 +38,17 @@ const AddMenu = () => {
         <span>Selected Category</span> : {categoryName}
       </h3>
       {/*  */}
-      <Form form={form} layout="vertical" onFinish={onFinish}>
-        {/* Row 1: id, name, and price */}
+      <Form
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        initialValues={{
+          isVeg: false, // Default value for isVeg
+          inStock: false, // Default value for inStock
+        }}
+      >
         <div className="form_item">
           <Row gutter={16}>
-            {/* <Col span={6}>
-              <Form.Item
-                name="id"
-                label="ID"
-                rules={[
-                  { required: true, message: "Please input the item ID" },
-                ]}
-              >
-                <Input placeholder="Item ID" />
-              </Form.Item>
-            </Col> */}
             <Col span={6}>
               <Form.Item
                 name="name"
