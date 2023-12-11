@@ -4,6 +4,7 @@ import ImageUploadInput from "../../utils/FormComponent/ImageUploadInput";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useAddItemToCategoryMutation } from "../../apiSlices/menuApiSlice";
 
 const AddMenu = () => {
   //misc
@@ -12,13 +13,57 @@ const AddMenu = () => {
   const { categoryName, restaurantMenuDetails } = useSelector(
     (state) => state.menuReducer
   );
-
+  const { restaurantDetails } = useSelector((state) => state.restaurantReducer);
+  //queries n mutation
+  const [
+    addItemToCategory,
+    { isLoading: addItemToCategoryLoading, error: addItemToCategoryError },
+  ] = useAddItemToCategoryMutation();
   //state
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log(values);
-    // onSubmit(values);
+  function findCategoryId(categories, name) {
+    for (let category of categories) {
+      if (category.categoryName.toLowerCase() === name.toLowerCase()) {
+        return category._id;
+      }
+    }
+    return null;
+  }
+
+  const onFinish = async (values) => {
+    // console.log(values);
+    const { name, isVeg, inStock, price, description, imageUpload } = values;
+    const categoryId = findCategoryId(
+      restaurantMenuDetails?.restaurantMenu?.menu,
+      categoryName
+    );
+
+    const payload = {
+      name,
+      description,
+      imageId: imageUpload,
+      inStock,
+      price,
+    };
+
+    console.log(payload, " payoaddd");
+
+    try {
+      const res = await addItemToCategory({
+        restaurantId: restaurantDetails?._id, // This should be a string
+        categoryId,
+        data: payload,
+      }).unwrap();
+
+      console.log(res, " resss");
+      // handleShowAlert(dispatch, "success", res?.message);
+      // dispatch(setCredentials({ ...res }));
+      navigate("/addmenu");
+    } catch (err) {
+      // handleShowAlert(dispatch, "error", err?.data?.message);
+      console.log(err, " errr");
+    }
   };
 
   useEffect(() => {
@@ -31,7 +76,10 @@ const AddMenu = () => {
     <div className="menu_form_container">
       <h3
         onClick={() =>
-          console.log({ categoryName, restaurantMenuDetails }, " categoryName")
+          console.log(
+            { categoryName, restaurantMenuDetails, restaurantDetails },
+            " categoryName"
+          )
         }
         className="title"
       >

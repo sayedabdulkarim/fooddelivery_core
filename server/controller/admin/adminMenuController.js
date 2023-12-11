@@ -78,37 +78,53 @@ const addItemToCategory = asyncHandler(async (req, res) => {
   const { restaurantId, categoryId } = req.params;
   const { name, description, price, imageId, inStock } = req.body;
 
-  const restaurant = await RestaurantDetailsModal.findById(restaurantId);
+  //   console.log(
+  //     {
+  //       restaurantId,
+  //       categoryId,
+  //       req: req.body,
+  //     },
+  //     " from ad item"
+  //   );
 
-  if (restaurant) {
-    const category = restaurant.menu.id(categoryId);
+  // Assume restaurantId is the _id of the RestaurantDetailsModal document
+  const restaurant = await RestaurantDetailsModal.findById(
+    "6576fdbd12cb1d8988333f0a"
+  );
 
-    if (category) {
-      const newItem = {
-        id: new mongoose.Types.ObjectId(), // Generate new ID for the item
-        name,
-        description,
-        imageId,
-        inStock,
-        price,
-        // other item details
-      };
-
-      category.items.push(newItem);
-      await restaurant.save();
-
-      res.status(201).json({
-        message: "Item added successfully",
-        item: newItem,
-      });
-    } else {
-      res.status(404);
-      throw new Error("Category not found");
-    }
-  } else {
-    res.status(404);
-    throw new Error("Restaurant not found");
+  if (!restaurant) {
+    return res.status(404).json({ message: "Restaurant not found" });
   }
+
+  // Find the category by its _id within the menu array
+  const category = restaurant.menu.id(categoryId);
+  if (!category) {
+    return res.status(404).json({ message: "Category not found" });
+  }
+
+  // Check for existing item name within the category
+  if (category.items.some((item) => item.name === name)) {
+    return res
+      .status(400)
+      .json({ message: "Item with this name already exists" });
+  }
+
+  // Create new item and add to category items array
+  const newItem = {
+    name,
+    description,
+    imageId,
+    inStock,
+    price,
+  };
+  category.items.push(newItem);
+
+  // Save changes to the database
+  await restaurant.save();
+  res.status(201).json({
+    message: "Item added successfully",
+    item: newItem, // newItem will have _id automatically assigned by Mongoose
+  });
 });
 
 export { addCategoryToRestaurant, addItemToCategory, getRestaurantMenu };

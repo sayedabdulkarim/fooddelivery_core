@@ -4,6 +4,7 @@ const router = express.Router();
 import { protectedAdminRoutesWithParser } from "../../middleware/authMiddleware.js";
 import {
   addCategoryToRestaurant,
+  addItemToCategory,
   getRestaurantMenu,
 } from "../../controller/admin/adminMenuController.js";
 
@@ -12,6 +13,13 @@ router.post(
   protectedAdminRoutesWithParser,
   addCategoryToRestaurant
 );
+
+router.post(
+  "/additem/:restaurantId/:categoryId",
+  protectedAdminRoutesWithParser,
+  addItemToCategory
+);
+
 router.get(
   "/menu/:restaurantId",
   protectedAdminRoutesWithParser,

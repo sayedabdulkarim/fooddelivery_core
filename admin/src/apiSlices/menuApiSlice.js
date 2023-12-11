@@ -16,8 +16,18 @@ export const restaurantApiSlice = apiSlice.injectEndpoints({
         body: { categoryName },
       }),
     }),
+    addItemToCategory: builder.mutation({
+      query: ({ restaurantId, categoryId, data }) => ({
+        url: `${USERS_URL}/additem/${restaurantId}/${categoryId}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetRestaurantMenuQuery, useAddCategoryToRestaurantMutation } =
-  restaurantApiSlice;
+export const {
+  useGetRestaurantMenuQuery,
+  useAddCategoryToRestaurantMutation,
+  useAddItemToCategoryMutation,
+} = restaurantApiSlice;

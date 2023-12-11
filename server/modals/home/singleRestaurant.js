@@ -27,7 +27,7 @@ const OfferSchema = new mongoose.Schema({
 //offerSchema end
 
 const ItemSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true },
+  id: String,
   name: { type: String, required: true },
   description: String,
   imageId: String,
