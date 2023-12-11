@@ -1,6 +1,7 @@
 .home_container {
     border: 1px solid green;
-
+    margin-left: calc(10% + 36px);
+    margin-right: calc(10% + 36px);
     //add restaurant
 
     .add_restaurant_btn_container {
@@ -153,6 +154,41 @@
 
     }
 
+
+    .add_menu_container {
+        margin-left: calc(10% + 36px);
+        margin-right: calc(10% + 36px);
+
+        h4 {
+            margin: 20px 0;
+            -webkit-font-smoothing: antialiased;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+            color: rgba(2, 6, 12, 0.92);
+            width: 100%;
+        }
+
+        button {
+            background-color: rgb(228, 115, 78);
+            cursor: pointer;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-top: 30px;
+            width: 30%;
+            outline: none;
+            border: none;
+            //
+            font-size: 18px;
+            line-height: 22px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+        }
+
+    }
 
 
 }

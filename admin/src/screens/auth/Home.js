@@ -30,8 +30,8 @@ const Home = () => {
     data: getRestaurantMenu,
     refetch: getRestaurantMenuRefetch,
     isLoading: isLoadingetRestaurantMenu,
-    // } = useGetRestaurantMenuQuery(restaurantDetails?._id ?? skipToken);
-  } = useGetRestaurantMenuQuery("6562b871e80e73e2cb0e696e");
+  } = useGetRestaurantMenuQuery(restaurantDetails?._id ?? skipToken);
+  // } = useGetRestaurantMenuQuery("6562b871e80e73e2cb0e696e");
 
   //async
   useEffect(() => {
@@ -68,6 +68,18 @@ const Home = () => {
             restaurantDetails={restaurantDetails}
             userDetails={userInfo?.data}
           />
+          {getRestaurantMenu?.restaurantMenu?.menu?.length ? (
+            <>
+              <h1>Menu Listt</h1>
+              <h1>Menu Listt</h1>
+              <h1>Menu Listt</h1>
+            </>
+          ) : (
+            <div className="add_menu_container">
+              <h4>Seems, you don't have any menu items for your restaurant.</h4>
+              <button>Add Menu</button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="add_restaurant_btn_container">
