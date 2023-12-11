@@ -8,10 +8,14 @@ import {
   useGetRestaurantMenuQuery,
 } from "../../apiSlices/restaurantApiSlice";
 import { setRestaurantDetails } from "../../slices/restaurantSlice";
-import { setRestaurantMenuDetails } from "../../slices/menuSlice";
+import {
+  setMenuCategoryModal,
+  setRestaurantMenuDetails,
+} from "../../slices/menuSlice";
 import ProgressBar from "../../components/Progressbar";
 import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDetailsComponent";
 import { skipToken } from "@reduxjs/toolkit/query/react"; // Import skipToken
+import CategoryModal from "../../components/auth/Menu/category";
 
 const Home = () => {
   //misc
@@ -77,7 +81,10 @@ const Home = () => {
           ) : (
             <div className="add_menu_container">
               <h4>Seems, you don't have any menu items for your restaurant.</h4>
-              <button>Add Menu</button>
+              <button onClick={() => dispatch(setMenuCategoryModal(true))}>
+                Add Menu
+              </button>
+              <CategoryModal />
             </div>
           )}
         </div>

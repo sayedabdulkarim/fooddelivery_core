@@ -15,6 +15,7 @@ const menuSlice = createSlice({
       state.restaurantMenuDetails = action.payload;
     },
     setMenuCategoryModal: (state, action) => {
+      console.log(action.payload, " ppp");
       state.categoryModal = action.payload;
     },
     setMenuCategory: (state, action) => {
