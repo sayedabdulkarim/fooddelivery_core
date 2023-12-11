@@ -1,5 +1,8 @@
 .home_container {
     border: 1px solid green;
+
+    //add restaurant
+
     .add_restaurant_btn_container {
         height: 100vh;
         width: 100%;
@@ -53,4 +56,35 @@
         }
 
     }
+
+    // restaurant details
+    .restaurant_detail_container {
+        border: 1px solid red;
+        margin-top: 100px;
+        margin-left: calc(10% + 36px);
+        margin-right: calc(10% + 36px);
+        display: flex;
+        gap: 20px;
+    
+        .left_section, .right_section {
+            width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            padding: 16px;
+          }
+          
+          .left_section:hover, .right_section:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+          }
+          
+          .restaurant_image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover; /* Add this to maintain aspect ratio */
+          }
+    }
+
+      
+
 }

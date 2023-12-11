@@ -1,14 +1,19 @@
 import React, { useEffect } from "react";
+import { Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-//apiSLice
+//apiSlice
 import { useGetUserRestaurantDetailsQuery } from "../../apiSlices/restaurantSlice";
+import { setRestaurantDetails } from "../../slices/restaurantSlice";
+import ProgressBar from "../../components/Progressbar";
+import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDetailsComponent";
 
 const Home = () => {
   //misc
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.authReducer);
+  const { restaurantDetails } = useSelector((state) => state.restaurantReducer);
 
-  //
   // RTK Query hook
   const {
     data: getUserRestaurantDetails,
@@ -17,38 +22,32 @@ const Home = () => {
   } = useGetUserRestaurantDetailsQuery();
 
   useEffect(() => {
-    console.log({ getUserRestaurantDetails }, "getUserRestaurantDetails");
-  }, [getUserRestaurantDetails]);
+    if (getUserRestaurantDetails) {
+      dispatch(setRestaurantDetails(getUserRestaurantDetails));
+    }
+    // console.log({ getUserRestaurantDetails }, "getUserRestaurantDetails");
+  }, [getUserRestaurantDetails, dispatch]);
 
   return (
     <div className="home_container">
-      {userInfo?.data?.restaurant ? (
+      {isLoadinGetUserRestaurantDetails ? (
+        <>
+          <ProgressBar
+            onStart={isLoadinGetUserRestaurantDetails}
+            onEnd={!isLoadinGetUserRestaurantDetails}
+          />
+          <Skeleton active paragraph={{ rows: 15 }} />
+        </>
+      ) : userInfo?.data?.restaurant || restaurantDetails ? (
         <div>
-          <h1 onClick={() => console.log(userInfo?.data?.restaurant)}>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
-          <h1>Home</h1>
+          <RestaurantDetailsComponent restaurantDetails={restaurantDetails} />
         </div>
       ) : (
         <div className="add_restaurant_btn_container">
           <div className="wrapper">
             <div>
               <h2>Please add restaurant.</h2>
-              <Link to={"restaurant"}>
+              <Link to="restaurant">
                 <button>Add Restaurant</button>
               </Link>
             </div>
