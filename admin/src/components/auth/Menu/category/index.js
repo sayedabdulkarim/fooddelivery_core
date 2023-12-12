@@ -5,6 +5,7 @@ import CategoryModal from "./CategoryModal";
 import {
   setMenuCategory,
   setMenuCategoryModal,
+  setNewMenuItems,
 } from "../../../../slices/menuSlice";
 
 import { useAddCategoryToRestaurantMutation } from "../../../../apiSlices/menuApiSlice";
@@ -46,6 +47,7 @@ const Index = () => {
       }).unwrap();
 
       console.log(res, " resss");
+      dispatch(setNewMenuItems(res?.menu));
       handleShowAlert(dispatch, "success", res?.message);
       // dispatch(setCredentials({ ...res }));
       navigate("/addmenu");

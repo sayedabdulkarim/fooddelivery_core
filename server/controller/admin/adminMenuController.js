@@ -88,9 +88,7 @@ const addItemToCategory = asyncHandler(async (req, res) => {
   //   );
 
   // Assume restaurantId is the _id of the RestaurantDetailsModal document
-  const restaurant = await RestaurantDetailsModal.findById(
-    "6576fdbd12cb1d8988333f0a"
-  );
+  const restaurant = await RestaurantDetailsModal.findById(restaurantId);
 
   if (!restaurant) {
     return res.status(404).json({ message: "Restaurant not found" });

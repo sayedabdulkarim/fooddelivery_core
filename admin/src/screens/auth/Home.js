@@ -75,9 +75,9 @@ const Home = () => {
             restaurantDetails={restaurantDetails}
             userDetails={userInfo?.data}
           />
-          {/* {getRestaurantMenu?.restaurantMenu?.menu?.length ? ( */}
-          {!areAllItemsEmpty(getRestaurantMenu?.restaurantMenu?.menu || []) ? (
-            <>
+          {getRestaurantMenu ? (
+            // {!areAllItemsEmpty(getRestaurantMenu?.restaurantMenu?.menu || []) ? (
+            <div className="menu_list_container">
               <h1
                 onClick={() =>
                   console.log(getRestaurantMenu?.restaurantMenu?.menu)
@@ -87,7 +87,13 @@ const Home = () => {
               </h1>
               <h1>Menu Listt</h1>
               <h1>Menu Listt</h1>
-            </>
+              <div className="add_menu_container">
+                <button onClick={() => dispatch(setMenuCategoryModal(true))}>
+                  Add Menu
+                </button>
+                <CategoryModal />
+              </div>
+            </div>
           ) : (
             <div className="add_menu_container">
               <h4>Seems, you don't have any menu items for your restaurant.</h4>

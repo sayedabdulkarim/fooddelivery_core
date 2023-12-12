@@ -5,6 +5,7 @@ import ImageUploadInput from "../../utils/FormComponent/ImageUploadInput";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAddItemToCategoryMutation } from "../../apiSlices/menuApiSlice";
+import { handleShowAlert } from "../../utils/commonHelper";
 
 const AddMenu = () => {
   //misc
@@ -47,21 +48,22 @@ const AddMenu = () => {
       price,
     };
 
-    console.log(payload, " payoaddd");
+    console.log({ payload, categoryId }, " payoaddd");
 
     try {
       const res = await addItemToCategory({
-        restaurantId: restaurantDetails?._id, // This should be a string
+        // restaurantId: restaurantDetails?._id, // This should be a string
+        restaurantId: restaurantMenuDetails?.restaurantMenu?._id, // This should be a string
         categoryId,
         data: payload,
       }).unwrap();
 
       console.log(res, " resss");
-      // handleShowAlert(dispatch, "success", res?.message);
+      handleShowAlert(dispatch, "success", res?.message);
       // dispatch(setCredentials({ ...res }));
-      navigate("/addmenu");
+      navigate("/");
     } catch (err) {
-      // handleShowAlert(dispatch, "error", err?.data?.message);
+      handleShowAlert(dispatch, "error", err?.data?.message);
       console.log(err, " errr");
     }
   };

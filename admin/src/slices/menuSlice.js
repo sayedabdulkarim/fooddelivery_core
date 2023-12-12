@@ -21,6 +21,15 @@ const menuSlice = createSlice({
     setMenuCategory: (state, action) => {
       state.categoryName = action.payload;
     },
+    setNewMenuItems: (state, action) => {
+      state.restaurantMenuDetails = {
+        ...state.restaurantMenuDetails,
+        restaurantMenu: {
+          ...state.restaurantMenuDetails.restaurantMenu,
+          menu: action.payload,
+        },
+      };
+    },
   },
 });
 
@@ -28,6 +37,7 @@ export const {
   setRestaurantMenuDetails,
   setMenuCategoryModal,
   setMenuCategory,
+  setNewMenuItems,
 } = menuSlice.actions;
 
 export default menuSlice.reducer;
