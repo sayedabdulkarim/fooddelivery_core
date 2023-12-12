@@ -81,15 +81,20 @@ const Home = () => {
           {getRestaurantMenu ? (
             // {!areAllItemsEmpty(getRestaurantMenu?.restaurantMenu?.menu || []) ? (
             <div className="menu_list_container">
-              <h1
+              <div className="add_menu_container">
+                <button onClick={() => dispatch(setMenuCategoryModal(true))}>
+                  Add Menu
+                </button>
+                <CategoryModal />
+              </div>
+
+              <h2
                 onClick={() =>
                   console.log(getRestaurantMenu?.restaurantMenu?.menu)
                 }
               >
-                Menu Listt
-              </h1>
-              <h1>Menu Listt</h1>
-              <h1>Menu Listt</h1>
+                Menu Items
+              </h2>
               {/* <Accordion
                 categories={getRestaurantMenu?.restaurantMenu?.menu || []}
                 categoryRefs={categoryRefs}
@@ -97,12 +102,6 @@ const Home = () => {
               <MenuAccordion
                 menuData={getRestaurantMenu?.restaurantMenu?.menu || []}
               />
-              <div className="add_menu_container">
-                <button onClick={() => dispatch(setMenuCategoryModal(true))}>
-                  Add Menu
-                </button>
-                <CategoryModal />
-              </div>
             </div>
           ) : (
             <div className="add_menu_container">
