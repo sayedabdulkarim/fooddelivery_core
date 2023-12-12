@@ -191,4 +191,33 @@
     }
 
 
+    .prod_accordion {
+        border: 1px solid red;
+        padding-bottom: 16px;
+
+        .accordion_item {
+            .item_title {
+                .icon-downArrow  {
+                    font-family: icomoon;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                    -webkit-font-smoothing: antialiased;
+
+                    &::before {
+                        content: "\e923";
+                    }
+                }
+            }
+
+            .main_border {
+                height: 16px;
+                border-bottom: 16px solid #f1f1f6;
+            }
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Skeleton } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -17,9 +17,12 @@ import RestaurantDetailsComponent from "../../components/auth/Home/RestaurantDet
 import { skipToken } from "@reduxjs/toolkit/query/react"; // Import skipToken
 import CategoryModal from "../../components/auth/Menu/category";
 import { areAllItemsEmpty } from "../../utils/commonHelper";
+import { Accordion } from "../../components/auth/Menu/Accordion";
+import MenuAccordion from "../../components/auth/Menu/Accordion/MenuAccordion";
 
 const Home = () => {
   //misc
+  const categoryRefs = useRef({});
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.authReducer);
   const { restaurantDetails } = useSelector((state) => state.restaurantReducer);
@@ -87,6 +90,13 @@ const Home = () => {
               </h1>
               <h1>Menu Listt</h1>
               <h1>Menu Listt</h1>
+              {/* <Accordion
+                categories={getRestaurantMenu?.restaurantMenu?.menu || []}
+                categoryRefs={categoryRefs}
+              /> */}
+              <MenuAccordion
+                menuData={getRestaurantMenu?.restaurantMenu?.menu || []}
+              />
               <div className="add_menu_container">
                 <button onClick={() => dispatch(setMenuCategoryModal(true))}>
                   Add Menu
