@@ -44,10 +44,10 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
   //async
   useEffect(() => {
     if (userInfo && restaurantDetails) {
-      const isPresent = userInfo?.data?.favorites.includes(
+      const isPresent = userInfo?.data?.favorites?.includes(
         restaurantDetails?._id
       );
-      setIsFavorite(isPresent);
+      setIsFavorite(isPresent ?? false);
     }
   }, [userInfo, restaurantDetails]);
 
@@ -125,7 +125,14 @@ const RestaurantDetailsTopComponent = ({ restaurantDetails }) => {
                 </a>
               </span>
               <span className="_1yRfx"></span>
-              <span className="kpkwa">{name ?? ""}</span>
+              <span
+                className="kpkwa"
+                onClick={() =>
+                  console.log({ restaurantDetails }, " restaurantDetails")
+                }
+              >
+                {name ?? ""}
+              </span>
             </>
           )}
         </div>

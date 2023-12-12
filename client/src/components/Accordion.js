@@ -57,7 +57,13 @@ const MenuItem = ({ item }) => {
                 className="styles_itemImage__3CsDL"
                 loading="lazy"
                 width="256"
-                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
+                src={
+                  imageId.startsWith("data:image")
+                    ? imageId
+                    : `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`
+                }
+
+                // src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
               />
             </button>
           </div>
