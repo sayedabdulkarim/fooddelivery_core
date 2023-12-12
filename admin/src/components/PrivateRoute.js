@@ -10,7 +10,7 @@ const PrivateRoute = () => {
     <div>
       <Header /> {/* Render Header component */}
       <Outlet /> {/* Continue rendering the child components */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   ) : (
     <Navigate to={"/auth"} replace />
